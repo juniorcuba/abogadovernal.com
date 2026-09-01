@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — Abogado Vernal
+ * Valores extraídos del archivo de Figma "ABOGADO-VERNAL-WEB" vía la API de Figma.
+ * No estimar ni medir de capturas: cualquier token nuevo sale del nodo correspondiente.
+ * Mapa de nodos → docs/FIGMA.md
+ */
+@theme {
+  /* Marca */
+  --color-vernal-accent: #08b6ff;
+
+  /* Superficies oscuras (gradiente radial del header, nodo 6:91) */
+  --color-vernal-navy: #172339;
+  --color-vernal-slate: #131924;
+  --color-vernal-ink: #0f0f0f;
+
+  /* Tipografía */
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Sombras — variables locales de Figma */
+  --shadow-vernal-1: 8px 18px 37.1px 0px rgb(0 0 0 / 0.51); /* "Vernal Shadow 1" #00000082 */
+  --shadow-vernal-2: 8px 36px 37.1px 0px rgb(0 0 0 / 0.84); /* "Vernal Shadow 2" #000000D6 */
+  --shadow-vernal-header: 0px 4px 33.3px 12px rgb(0 0 0 / 0.06); /* nodo 6:91 */
+}
+
+@utility bg-vernal-grad {
+  /* Gradiente radial del header (nodo 6:91). Los stops vienen del archivo, no aproximados. */
+  background-image: radial-gradient(
+    ellipse 84.74% 80.62% at 51.13% 50.42%,
+    var(--color-vernal-navy) 0%,
+    var(--color-vernal-slate) 50%,
+    var(--color-vernal-ink) 100%
+  );
+}
+
+:root {
+  --background: var(--color-vernal-ink);
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
