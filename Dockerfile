@@ -9,9 +9,20 @@ RUN npm ci
 
 FROM node:22-alpine AS builder
 WORKDIR /app
-# basePath tiene que estar presente en build: Next lo hornea en el bundle.
+# Las NEXT_PUBLIC_* se hornean en el bundle durante el build; en runtime ya no
+# se leen. Si no llegan hasta aqui, no existen en la pagina servida, por mucho
+# que esten declaradas en render.yaml.
 ARG NEXT_PUBLIC_BASE_PATH=""
 ENV NEXT_PUBLIC_BASE_PATH=$NEXT_PUBLIC_BASE_PATH
+# Por defecto "true": un despliegue que olvide pasarla queda SIN indexar. Es el
+# fallo seguro para el sitio de un despacho real servido desde una URL
+# provisional. Para publicar de verdad hay que ponerla a "false" a proposito.
+ARG NEXT_PUBLIC_NOINDEX="true"
+ENV NEXT_PUBLIC_NOINDEX=$NEXT_PUBLIC_NOINDEX
+# Vacia = se usa site.url. En un preview conviene la URL real del servicio, para
+# que el canonical y las etiquetas OG no apunten al dominio de produccion.
+ARG NEXT_PUBLIC_SITE_URL=""
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .

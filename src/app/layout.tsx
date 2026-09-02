@@ -20,7 +20,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  // El despliegue manda sobre el dominio de produccion: en un preview el
+  // canonical y las OG deben apuntar al propio preview, no a abogadovernal.com.
+  // `||` y no `??`: la variable llega como cadena vacia cuando no se define,
+  // y `new URL("")` lanza.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || site.url),
   title: {
     default: "Abogado Vernal | Abogado de inmigración en Texas",
     template: "%s | Abogado Vernal",
