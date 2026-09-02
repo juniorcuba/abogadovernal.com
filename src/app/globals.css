@@ -9,11 +9,20 @@
 @theme {
   /* Marca */
   --color-vernal-accent: #08b6ff;
+  --color-vernal-green: #00b567; /* CTA "¡Agenda tu consulta!", nodo 97:45 */
+  --color-vernal-steel: #40629f; /* stop final del degradado del formulario, nodo 18:7 */
 
   /* Superficies oscuras (gradiente radial del header, nodo 6:91) */
   --color-vernal-navy: #172339;
-  --color-vernal-slate: #131924;
   --color-vernal-ink: #0f0f0f;
+
+  /*
+   * Ancho del artboard de Figma (1920px). Va en rem a propósito: Tailwind ordena
+   * los breakpoints por valor y no sabe comparar px con los suyos, que son rem.
+   * Declarado en px, este media query se emitía ANTES que sm/lg/xl/2xl y perdía
+   * contra ellos. 120rem = 1920px y ordena donde debe: el último.
+   */
+  --breakpoint-design: 120rem;
 
   /* Tipografía */
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
@@ -24,12 +33,42 @@
   --shadow-vernal-header: 0px 4px 33.3px 12px rgb(0 0 0 / 0.06); /* nodo 6:91 */
 }
 
+@utility bg-vernal-footer {
+  /*
+   * Fondo del footer (nodo 41:13). Degradado lineal vertical: los handles del
+   * archivo van de y=-0.798 a y=0.8268, así que los stops 0.5277 y 1.0 caen en
+   * 5.95% y 82.68% del alto del nodo.
+   */
+  background-image: linear-gradient(
+    180deg,
+    var(--color-vernal-navy) 5.95%,
+    var(--color-vernal-ink) 82.68%
+  );
+}
+
+@utility bg-vernal-card {
+  /*
+   * Degradado de la tarjeta del formulario del hero (nodo 18:7), con la opacidad
+   * de capa 0.71 ya aplicada. Ángulo y stops derivados de los handles del archivo;
+   * la fórmula se validó reproduciendo exactamente el degradado del footer.
+   */
+  background-image: linear-gradient(
+    209.48deg,
+    rgb(23 35 57 / 0.71) 28.28%,
+    rgb(64 98 159 / 0.71) 77.89%
+  );
+}
+
 @utility bg-vernal-grad {
-  /* Gradiente radial del header (nodo 6:91). Los stops vienen del archivo, no aproximados. */
+  /*
+   * Degradado radial del header (nodo 6:91), derivado de gradientHandlePositions:
+   * centro (51.13%, 50.42%), radio x = 44.14% del ancho, radio y = 629.83% del alto.
+   * El radio vertical enorme hace que en la práctica sea un degradado horizontal.
+   * Son SOLO 2 stops: el #131924 intermedio no existe en el archivo.
+   */
   background-image: radial-gradient(
-    ellipse 84.74% 80.62% at 51.13% 50.42%,
+    44.14% 629.83% at 51.13% 50.42%,
     var(--color-vernal-navy) 0%,
-    var(--color-vernal-slate) 50%,
     var(--color-vernal-ink) 100%
   );
 }
@@ -43,4 +82,18 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+/*
+ * El desplegable "Oficina o modalidad de atención:" muestra su etiqueta en DOS
+ * líneas (nodo 6:46, 169×35), cosa que un <select> nativo no sabe hacer. Se
+ * superpone una etiqueta propia y se oculta en cuanto hay una sede elegida.
+ * Por defecto visible: si el navegador no soporta :has(), se queda puesta en vez
+ * de no aparecer nunca.
+ */
+.select-placeholder {
+  display: block;
+}
+select:has(option:not([value=""]):checked) ~ .select-placeholder {
+  display: none;
 }
