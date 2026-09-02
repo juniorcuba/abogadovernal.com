@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: abogadovernal
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      # Prefijo de ruta. Vacío = raíz del servicio. Para servirlo bajo /vernal,
+      # ponlo aquí Y como build arg (Next lo necesita en build, no en runtime).
+      - key: NEXT_PUBLIC_BASE_PATH
+        value: ""
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      # Mientras sea un preview: evita que Google lo indexe y confunda a quien
+      # busque al despacho. Poner a "false" solo en el despliegue definitivo.
+      - key: NEXT_PUBLIC_NOINDEX
+        value: "true"
