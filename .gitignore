@@ -47,3 +47,6 @@ next-env.d.ts
 
 # Token de Figma (vive en ~/.figma-token; esto es solo por si acaso)
 .figma-token
+
+# Clave de API de Render (vive en ~/.render-token; igual que la anterior)
+.render-token

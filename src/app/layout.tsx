@@ -36,9 +36,12 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
   },
-  // En los despliegues de preview se bloquea la indexación: es el sitio de un
-  // despacho real y no debe aparecer en Google desde una URL provisional.
-  ...(process.env.NEXT_PUBLIC_NOINDEX === "true"
+  // Se bloquea la indexación salvo que alguien la habilite A PROPÓSITO con
+  // NEXT_PUBLIC_NOINDEX="false". La comparación va al reves adrede: si la
+  // variable falta —despliegue nuevo, plataforma distinta, alguien que la
+  // olvida— el resultado es no indexar. Es el sitio de un despacho real y una
+  // URL provisional suya no debe competir en Google con la definitiva.
+  ...(process.env.NEXT_PUBLIC_NOINDEX !== "false"
     ? { robots: { index: false, follow: false } }
     : {}),
 };
