@@ -164,12 +164,31 @@ Por eso todo el proyecto usa `leading-[17px]` y no `leading-[1.04]`. La regla:
 Durante un tiempo esto estuvo documentado aquí como "una tolerancia inevitable del
 rasterizado". **Era falso.** Corregirlo bajó el diff del bio de 101 bloques a 1.
 
-### Trampa de Tailwind con el breakpoint `design`
+### `design:` es una clase, no un breakpoint
 
-`--breakpoint-design` **debe ir en `rem`** (`120rem`), no en px. Tailwind ordena los
-media queries por valor y no sabe comparar px con los suyos, que van en rem: declarado
-como `1920px` se emitía ANTES que `sm`/`lg`/`xl`/`2xl` y perdía contra ellos, así que
-cosas como `design:text-[82px]` no llegaban a aplicarse nunca.
+El diseño solo existe a 1920. Mientras `design:` fue un media query, cualquiera con
+un portátil de 1366 o 1440 —o sea, casi todo el mundo— veía adaptaciones improvisadas
+en vez del diseño real. Ahora la maqueta se monta **siempre** a 1920 dentro de
+`LienzoDiseno` (`src/components/layout/lienzo-diseno.tsx`) y se escala con `zoom` para
+caber en la ventana: a 1440 se ve el diseño tal cual, solo que más pequeño.
+
+- `@custom-variant design (&:is(.modo-diseno, .modo-diseno *))` en `globals.css`.
+  El `:is()` le da la especificidad de una clase, así que gana a `sm:`/`lg:`/`xl:`/`2xl:`
+  sin depender del orden en que Tailwind emita las reglas.
+- Se usa `zoom` y no `transform: scale()` porque zoom sí participa en el flujo y la
+  altura del documento se ajusta sola.
+- **`zoom` NO afecta a los media queries** (comprobado: con zoom en `<html>`,
+  `matchMedia("(min-width: 1920px)")` sigue devolviendo `false`). Por eso `design:`
+  no puede ser un breakpoint: a 1440 nunca se activaría aunque el lienzo midiera 1920.
+- Por debajo de 1280 se desactiva el lienzo y entra la maqueta apilada. A 1280 el
+  factor ya es 0,667 y el texto de cuerpo baja a ~10px; más abajo dejaría de leerse.
+- Sin JavaScript no hay lienzo y sale la maqueta apilada. Es la degradación que
+  queremos: mejor eso que un diseño de 1920 con scroll horizontal.
+
+**Trampa histórica, por si vuelve el breakpoint:** si algún día se declara
+`--breakpoint-*` en px, Tailwind ordena los media queries por valor y no sabe comparar
+px con rem, así que `1920px` se emitía ANTES que `sm`/`lg`/`xl`/`2xl` y perdía contra
+ellos. En `rem` (`120rem`) sí ordenaba bien.
 
 ## Mapa de secciones de la homepage (`1:2`, de arriba abajo)
 

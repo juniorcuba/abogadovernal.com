@@ -58,6 +58,11 @@ export function SobreNosotros() {
                   alt=""
                   fill
                   sizes="634px"
+                  /* La tira se desplaza sola, asi que hay fotos que arrancan fuera
+                     de pantalla por la derecha y con carga diferida no llegan a
+                     pedirse nunca: se veia el respaldo cian y la foto aparecia de
+                     golpe al entrar. Son 4 archivos, no compensa diferirlos. */
+                  loading="eager"
                   className="object-cover opacity-[0.81] grayscale mix-blend-hard-light"
                 />
               </div>

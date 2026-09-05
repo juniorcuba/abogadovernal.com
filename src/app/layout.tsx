@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
+import { LienzoDiseno } from "@/components/layout/lienzo-diseno";
 
 /**
  * Poppins es la única familia del diseño. Pesos y estilos en uso confirmados:
@@ -51,7 +52,26 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={poppins.variable}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <LienzoDiseno>{children}</LienzoDiseno>
+        {/*
+          El lienzo se maqueta a 1920 y se escala para caber en la ventana. Esa
+          escala se calcula en un efecto, o sea despues de hidratar: sin este
+          script se veria un fogonazo con la maqueta a 1920 desbordada.
+
+          Va DESPUES del div a proposito. Un script en linea corre en cuanto el
+          parser lo encuentra, asi que si fuera antes el div todavia no existiria.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var w=document.documentElement.clientWidth;" +
+              "if(w<1280)return;var e=document.currentScript.previousElementSibling;" +
+              "if(!e)return;e.className='modo-diseno';e.style.width='1920px';" +
+              "e.style.zoom=Math.min(1,w/1920);}catch(_){}})();",
+          }}
+        />
+      </body>
     </html>
   );
 }

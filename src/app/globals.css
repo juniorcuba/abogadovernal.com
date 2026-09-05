@@ -1,6 +1,21 @@
 @import "tailwindcss";
 
 /*
+ * El variante `design:` NO es un breakpoint, es una CLASE.
+ *
+ * El diseño se maqueta sobre un lienzo fijo de 1920px que luego se escala para
+ * caber en la ventana. Un media query no serviría: las media queries evalúan
+ * contra el viewport real, así que a 1440 nunca se activarían aunque el lienzo
+ * interno sí mida 1920 (comprobado: con zoom en <html>, matchMedia("min-width:
+ * 1920px") sigue devolviendo false).
+ *
+ * Con `:is()` la regla suma la especificidad de `.modo-diseno`, así que gana a
+ * cualquier `sm:` / `lg:` / `xl:` sin depender del orden en que Tailwind las
+ * emita —que fue justo lo que falló cuando esto era un breakpoint en px.
+ */
+@custom-variant design (&:is(.modo-diseno, .modo-diseno *));
+
+/*
  * Design tokens — Abogado Vernal
  * Valores extraídos del archivo de Figma "ABOGADO-VERNAL-WEB" vía la API de Figma.
  * No estimar ni medir de capturas: cualquier token nuevo sale del nodo correspondiente.
@@ -15,14 +30,6 @@
   /* Superficies oscuras (gradiente radial del header, nodo 6:91) */
   --color-vernal-navy: #172339;
   --color-vernal-ink: #0f0f0f;
-
-  /*
-   * Ancho del artboard de Figma (1920px). Va en rem a propósito: Tailwind ordena
-   * los breakpoints por valor y no sabe comparar px con los suyos, que son rem.
-   * Declarado en px, este media query se emitía ANTES que sm/lg/xl/2xl y perdía
-   * contra ellos. 120rem = 1920px y ordena donde debe: el último.
-   */
-  --breakpoint-design: 120rem;
 
   /* Tipografía */
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;

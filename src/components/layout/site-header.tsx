@@ -83,7 +83,7 @@ export function SiteHeader() {
             </a>
           </div>
 
-          <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex">
+          <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex design:flex">
             {socials.map((social) => (
               <li key={social.label} className="flex shrink-0">
                 <a
