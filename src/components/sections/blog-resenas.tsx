@@ -137,8 +137,8 @@ export function BlogResenas() {
           {resenas.map((r) => (
             <li
               key={r.autor}
-              className="design:absolute design:top-[583px] design:w-[294px]"
-              style={{ left: r.left }}
+              className="design:absolute design:top-[583px] design:left-[var(--x)] design:w-[294px]"
+              style={{ "--x": `${r.left}px` } as React.CSSProperties}
             >
               <Estrellas className="justify-center design:justify-start" />
               <p className="mt-[18px] text-center text-[16px] leading-[17px] text-white">

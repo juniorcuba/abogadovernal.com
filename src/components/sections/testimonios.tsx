@@ -59,8 +59,8 @@ export function Testimonios() {
           {testimonios.map((t) => (
             <li
               key={t.left}
-              className="relative h-[415px] overflow-hidden design:absolute design:top-[120px] design:w-[359px]"
-              style={{ left: t.left }}
+              className="relative h-[415px] overflow-hidden design:absolute design:top-[120px] design:left-[var(--x)] design:w-[359px]"
+              style={{ "--x": `${t.left}px` } as React.CSSProperties}
             >
               <Image
                 src={t.foto}

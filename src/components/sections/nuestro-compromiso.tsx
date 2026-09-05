@@ -97,12 +97,14 @@ export function NuestroCompromiso() {
           {tarjetas.map((t) => (
             <li
               key={t.left}
-              className="relative h-[413px] overflow-hidden design:absolute design:top-[240px] design:w-[280px]"
-              style={{
-                left: t.left,
-                backgroundImage:
-                  "linear-gradient(210.91deg, #40629F 7.57%, #172339 63.60%)",
-              }}
+              className="relative h-[413px] overflow-hidden design:absolute design:top-[240px] design:left-[var(--x)] design:w-[280px]"
+              style={
+                {
+                  "--x": `${t.left}px`,
+                  backgroundImage:
+                    "linear-gradient(210.91deg, #40629F 7.57%, #172339 63.60%)",
+                } as React.CSSProperties
+              }
             >
               <Image
                 src={t.foto}

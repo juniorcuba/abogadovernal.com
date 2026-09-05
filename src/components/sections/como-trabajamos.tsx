@@ -39,13 +39,13 @@ const marcadores = [
 
 export function ComoTrabajamos() {
   return (
-    <section className="bg-vernal-accent relative overflow-hidden design:h-[668px]">
+    <section className="relative overflow-hidden bg-[#023451] design:bg-vernal-accent design:h-[668px]">
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[668px] design:p-0">
         {/* Mapa de Texas: multiply sobre el cian. El original tiene fondo blanco y
             el multiply lo hace desaparecer dejando solo el relieve. */}
         <div
           aria-hidden
-          className="pointer-events-none relative mx-auto h-[300px] w-full max-w-[560px] design:absolute design:top-[-102px] design:left-[-445px] design:mx-0 design:h-[784px] design:w-[1437px] design:max-w-none"
+          className="pointer-events-none relative mx-auto hidden h-[300px] w-full max-w-[560px] design:absolute design:block design:top-[-102px] design:left-[-445px] design:mx-0 design:h-[784px] design:w-[1437px] design:max-w-none"
         >
           <Image
             src="/images/trabajo/mapa-texas.webp"
@@ -59,7 +59,7 @@ export function ComoTrabajamos() {
         {/* Capa 3: el degradado que apaga la mitad derecha. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 hidden design:block"
           style={{
             backgroundImage:
               "linear-gradient(112.07deg, rgb(5 126 188 / 0) 4.70%, #023451 46.06%)",
@@ -71,12 +71,14 @@ export function ComoTrabajamos() {
           <span
             key={`${m.left}-${m.top}`}
             aria-hidden
-            className="absolute hidden h-[36px] w-[36px] items-center justify-center rounded-full border-[5px] border-[#3ee66b] bg-[#0b3b2a] design:flex"
-            style={{
-              left: m.left,
-              top: m.top,
-              boxShadow: "0 0 26px 9px rgb(62 230 107 / 0.55)",
-            }}
+            className="absolute hidden h-[36px] w-[36px] items-center justify-center rounded-full border-[5px] border-[#3ee66b] bg-[#0b3b2a] design:top-[var(--y)] design:left-[var(--x)] design:flex"
+            style={
+              {
+                "--x": `${m.left}px`,
+                "--y": `${m.top}px`,
+                boxShadow: "0 0 26px 9px rgb(62 230 107 / 0.55)",
+              } as React.CSSProperties
+            }
           >
             <span className="h-[10px] w-[10px] rounded-full bg-[#3ee66b]" />
           </span>
@@ -88,7 +90,7 @@ export function ComoTrabajamos() {
           nuestro trabajo
         </h2>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[239px] design:left-[1021px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white design:absolute design:top-[239px] design:left-[1021px] design:mt-0 design:w-[580px]">
           {"El equipo de cada oficina se pondrá en contacto contigo para agendar la fecha y hora de tu cita. "}
           <span className="text-vernal-accent">
             {"Durante tu consulta, serás atendido por el equipo del "}
@@ -113,8 +115,8 @@ export function ComoTrabajamos() {
           {offices.map((office, i) => (
             <li
               key={office.city}
-              className="text-[16px] leading-[17px] font-light text-white design:absolute design:top-[17px] design:w-[130px]"
-              style={{ left: i * 167 }}
+              className="text-[16px] leading-[17px] font-light text-white design:absolute design:top-[17px] design:left-[var(--x)] design:w-[130px]"
+              style={{ "--x": `${i * 167}px` } as React.CSSProperties}
             >
               <span className="text-vernal-accent block font-bold">{office.city}</span>
               {office.address}
@@ -124,8 +126,8 @@ export function ComoTrabajamos() {
             <li
               key={`sep-${i}`}
               aria-hidden
-              className="hidden bg-white design:absolute design:top-0 design:block design:h-[108px] design:w-[3px]"
-              style={{ left: 147 + i * 167 }}
+              className="hidden bg-white design:absolute design:top-0 design:left-[var(--x)] design:block design:h-[108px] design:w-[3px]"
+              style={{ "--x": `${147 + i * 167}px` } as React.CSSProperties}
             />
           ))}
         </ul>

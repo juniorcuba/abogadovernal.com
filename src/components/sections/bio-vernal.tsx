@@ -32,11 +32,11 @@ export function BioVernal() {
       />
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
         {/* Composición: rectángulo cian, "VERNAL" detrás y el retrato recortado. */}
-        <div className="relative mx-auto h-[380px] w-[385px] design:absolute design:top-[108px] design:left-[278px] design:mx-0 design:h-[547px] design:w-[554px]">
+        <div className="relative mx-auto h-[300px] w-full max-w-[340px] sm:h-[380px] sm:w-[385px] sm:max-w-none design:absolute design:top-[108px] design:left-[278px] design:mx-0 design:h-[547px] design:w-[554px]">
           <div className="bg-vernal-accent absolute top-[102px] left-[2px] h-[278px] w-[381px] design:top-[147px] design:left-[3px] design:h-[400px] design:w-[548px]" />
           <p
             aria-hidden
-            className="text-vernal-accent absolute top-[14px] left-0 text-[101px] leading-[105px] font-semibold uppercase design:top-[20px] design:leading-[152px] design:text-[146px]"
+            className="text-vernal-accent absolute top-[14px] left-0 text-[56px] leading-[59px] font-semibold uppercase sm:text-[101px] sm:leading-[105px] design:top-[20px] design:leading-[152px] design:text-[146px]"
           >
             VERNAL
           </p>
@@ -71,7 +71,7 @@ export function BioVernal() {
           <span className="text-vernal-accent block">abogado Vernal</span>
         </h2>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[335px] design:left-[924px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white design:absolute design:top-[335px] design:left-[924px] design:mt-0 design:w-[580px]">
           {"Antes de convertirse en abogado de inmigración, el "}
           <span className="text-vernal-accent">Abogado Vernal</span>
           {" ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con inmigración en Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que “cada cliente que llega a la oficina lleva a mi familia”, no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos."}

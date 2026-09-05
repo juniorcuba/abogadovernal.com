@@ -46,7 +46,7 @@ export function Servicios() {
           servicios
         </h2>
 
-        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
+        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
           {"Como firma de inmigración en Texas, "}
           <span className="text-vernal-accent">
             podemos ayudarte a través de distintas áreas de práctica, adaptadas a las

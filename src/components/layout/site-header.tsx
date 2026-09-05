@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
+import { MenuMovil } from "@/components/layout/menu-movil";
 import { navItems, site, socials } from "@/lib/site";
 
 /**
@@ -26,7 +27,9 @@ import { navItems, site, socials } from "@/lib/site";
  *
  * El Figma solo trae el artboard de escritorio (1920). Los cortes de aquí abajo
  * son decisiones de implementación, no del diseño:
- *   - < lg (1024): falta el menú móvil (hamburguesa). PENDIENTE de diseño.
+ *   - < xl (1280): menú hamburguesa (ver menu-movil.tsx). A 1024 el nav completo
+ *     desbordaba la ventana, de ahí el corte en xl. No viene del Figma:
+ *     el archivo no trae diseño móvil, así que es una solución de oficio.
  *   - < 2xl (1536): se ocultan las redes; el nav completo + teléfono no caben con ellas.
  */
 
@@ -48,7 +51,9 @@ export function SiteHeader() {
   return (
     <header className="bg-vernal-grad shadow-vernal-header relative z-50 opacity-95">
       <div className="relative mx-auto flex h-[128px] max-w-[1920px] items-center justify-between gap-x-8 px-6 lg:px-10 design:pt-[32px] design:pr-[166px] design:pl-[201px]">
-        <nav className="hidden items-center gap-x-6 lg:flex xl:gap-x-8 design:gap-x-[52px]">
+        <MenuMovil />
+
+        <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:gap-x-[52px]">
           {leftNav.map((item) => (
             <NavLink key={item.href} {...item} />
           ))}
@@ -57,14 +62,14 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label={site.name}
-          className="design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
+          className="absolute left-1/2 -translate-x-1/2 xl:static xl:translate-x-0 design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
         >
           <Logo />
         </Link>
 
         <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:gap-x-[26px]">
           <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:gap-x-[48px]">
-            <nav className="hidden items-center gap-x-6 lg:flex xl:gap-x-8 design:gap-x-[48px]">
+            <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:gap-x-[48px]">
               {rightNav.map((item) => (
                 <NavLink key={item.href} {...item} />
               ))}

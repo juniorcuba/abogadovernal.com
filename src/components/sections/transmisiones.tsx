@@ -54,7 +54,7 @@ export function Transmisiones() {
           </span>
         </p>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] font-light text-justify italic design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] font-light design:text-justify italic design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
           {/* La frase en cian NO es itálica y va en peso 400; el resto sí es
               itálica en 300. Ponerlo todo en itálica cambiaba el corte de línea. */}
           <span className="text-vernal-accent font-normal not-italic">
@@ -133,15 +133,15 @@ export function Transmisiones() {
         >
           <span
             aria-hidden
-            className="flex h-[78px] w-[78px] shrink-0 items-center justify-center rounded-full border-[3px] border-white design:absolute design:top-[22.5px] design:left-[31.5px]"
+            className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border-[3px] border-white design:h-[78px] design:w-[78px] design:absolute design:top-[22.5px] design:left-[31.5px]"
           >
             <span className="ml-[4px] border-t-[11px] border-b-[11px] border-l-[19px] border-t-transparent border-b-transparent border-l-white" />
           </span>
           <span className="text-white design:absolute design:top-[26px] design:left-[123.5px]">
-            <span className="block text-[25px] leading-[26px] font-semibold uppercase">
+            <span className="block text-[16px] leading-[17px] font-semibold uppercase design:text-[25px] design:leading-[26px]">
               aclara tus dudas
             </span>
-            <span className="block text-[46px] leading-[48px] font-bold uppercase">
+            <span className="block text-[28px] leading-[30px] font-bold uppercase design:text-[46px] design:leading-[48px]">
               migratorias
             </span>
           </span>

@@ -103,7 +103,7 @@ export function NuestroEquipo() {
           equipo
         </h2>
 
-        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[286px] design:left-[279px] design:mt-0 design:w-[580px]">
+        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white design:absolute design:top-[286px] design:left-[279px] design:mt-0 design:w-[580px]">
           {"En Texas, Estados Unidos, la oficina del "}
           <span className="text-vernal-accent font-bold">
             Abogado Vernal Farnum Mejía
@@ -127,8 +127,8 @@ export function NuestroEquipo() {
           {equipo.map((p) => (
             <li
               key={p.nombre}
-              className="design:absolute design:top-[253px] design:w-[325px]"
-              style={{ left: p.left }}
+              className="design:absolute design:top-[253px] design:left-[var(--x)] design:w-[325px]"
+              style={{ "--x": `${p.left}px` } as React.CSSProperties}
             >
               <p className="text-vernal-accent text-center text-[18px] leading-[19px] font-semibold uppercase">
                 {p.nombre}
