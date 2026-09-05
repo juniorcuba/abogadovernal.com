@@ -49,12 +49,15 @@ export function Transmisiones() {
         <p className="mt-6 text-[20px] leading-[21px] font-light uppercase design:absolute design:top-[339px] design:left-[264px] design:mt-0 design:leading-[31px] design:text-[30px]">
           <span className="text-vernal-accent">sintonízanos</span>
           <span className="ml-[43px] text-white">
-            martes <span className="text-white/50">|</span> 5p.m.
+            martes <span className="text-white/50">|</span>{" "}
+            <span className="text-vernal-accent">5p.m.</span>
           </span>
         </p>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] text-justify italic design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
-          <span className="text-vernal-accent">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] font-light text-justify italic design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
+          {/* La frase en cian NO es itálica y va en peso 400; el resto sí es
+              itálica en 300. Ponerlo todo en itálica cambiaba el corte de línea. */}
+          <span className="text-vernal-accent font-normal not-italic">
             No te pierdas las transmisiones en vivo del Abogado Vernal: Inmigrantes
             Como Tú.
           </span>
@@ -73,6 +76,11 @@ export function Transmisiones() {
 
         {/* Vídeo de la transmisión */}
         <div className="relative mt-12 aspect-[733/425] w-full design:absolute design:top-[122px] design:left-[914px] design:mt-0 design:aspect-auto design:h-[425px] design:w-[733px]">
+          {/* Borde cian de 2px alrededor del vídeo (rect x915 y5537, stroke #08B6FF). */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 border-2 border-vernal-accent design:top-[1px] design:left-[1px] design:h-[423px] design:w-[731px]"
+          />
           <div className="absolute inset-0 overflow-hidden">
             <Image
               src="/images/live/transmision.webp"
@@ -112,9 +120,11 @@ export function Transmisiones() {
           </button>
         </div>
 
-        {/* Barra "aclara tus dudas migratorias" y badge LIVE */}
+        {/* Barra "aclara tus dudas migratorias": rect x1036.5 y5887.5, 471×119,
+            rx 29.5 (redondeada), opacidad 0.73. Los textos van en x1160, con
+            líneas base en y5931.8 y y5976.1 del archivo. */}
         <div
-          className="mt-6 flex items-center gap-x-4 px-6 py-4 design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:h-[119px] design:w-[471px] design:px-[32px]"
+          className="mt-6 flex items-center gap-x-4 rounded-[30px] px-6 py-4 design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[29.5px] design:p-0"
           style={{
             backgroundImage:
               "linear-gradient(274.95deg, #08B6FF -23.70%, #172339 110.67%)",
@@ -123,11 +133,11 @@ export function Transmisiones() {
         >
           <span
             aria-hidden
-            className="flex h-[78px] w-[78px] shrink-0 items-center justify-center rounded-full border-[3px] border-white"
+            className="flex h-[78px] w-[78px] shrink-0 items-center justify-center rounded-full border-[3px] border-white design:absolute design:top-[22.5px] design:left-[31.5px]"
           >
             <span className="ml-[4px] border-t-[11px] border-b-[11px] border-l-[19px] border-t-transparent border-b-transparent border-l-white" />
           </span>
-          <span className="text-white">
+          <span className="text-white design:absolute design:top-[26px] design:left-[123.5px]">
             <span className="block text-[25px] leading-[26px] font-semibold uppercase">
               aclara tus dudas
             </span>
@@ -137,19 +147,22 @@ export function Transmisiones() {
           </span>
         </div>
 
+        {/* Badge LIVE: rect x1398.5 y5853.5, 141×55, rx 27.5 (píldora completa).
+            El punto rojo es un círculo de r=11 centrado en (1434, 5881). */}
         <span
           aria-hidden
-          className="hidden items-center justify-center gap-x-[10px] design:absolute design:top-[439.5px] design:left-[1398.5px] design:flex design:h-[55px] design:w-[141px]"
+          className="hidden items-center design:absolute design:top-[439.5px] design:left-[1398.5px] design:flex design:h-[55px] design:w-[141px] design:rounded-[27.5px]"
           style={{
             backgroundImage:
               "linear-gradient(273.17deg, #000000 -24.82%, #3A3A3A 111.58%)",
           }}
         >
-          <span className="h-[22px] w-[22px] rounded-full bg-[#e02020]" />
-          <span className="text-[30px] leading-[31px] font-bold text-white uppercase">
+          <span className="absolute top-[16.5px] left-[24.5px] h-[22px] w-[22px] rounded-full bg-[#EE0303]" />
+          <span className="absolute top-[12px] left-[54.5px] text-[30px] leading-[31px] font-bold text-white uppercase">
             live
           </span>
         </span>
+
       </div>
     </section>
   );
