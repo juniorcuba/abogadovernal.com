@@ -3,6 +3,8 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Hero } from "@/components/sections/hero";
 import { SobreNosotros } from "@/components/sections/sobre-nosotros";
 import { BioVernal } from "@/components/sections/bio-vernal";
+import { Servicios } from "@/components/sections/servicios";
+import { ComoTrabajamos } from "@/components/sections/como-trabajamos";
 
 export default function HomePage() {
   return (
@@ -12,6 +14,8 @@ export default function HomePage() {
         <Hero />
         <SobreNosotros />
         <BioVernal />
+        <Servicios />
+        <ComoTrabajamos />
         {/*
           Secciones pendientes de la frame 1:2, en orden:
           Bio del abogado (y1751) · Nuestro equipo (y2559)
