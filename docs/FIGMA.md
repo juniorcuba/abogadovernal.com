@@ -70,6 +70,51 @@ leído en línea dentro de la cabecera, como en el `curl` de arriba.
 | Campos de formulario | Regular 15px, negro | `6:40` |
 | Aviso de consentimiento | ExtraLight Italic 12px, leading 1.17, justificado | `6:87` |
 
+## La fuente buena: el export SVG de la frame
+
+**El archivo no es nuestro.** Pertenece al diseñador, vive en un plan Starter y él
+lo sigue editando. Eso importa por dos motivos:
+
+1. Los límites de la API los marca **el plan donde vive el archivo**, no el nuestro.
+   En Starter son ~6-20 peticiones **al mes**, no por minuto. Se agotan en una sesión.
+2. El diseño es un blanco móvil: conviene confirmar con el diseñador qué secciones
+   están cerradas antes de clavarlas al píxel.
+
+La salida es pedirle un **export SVG de la frame** (Figma → seleccionar frame →
+Export → SVG). No consume cuota y para casi todo es MEJOR que la API:
+
+| Dato | API | SVG |
+|---|---|---|
+| Degradados (ángulo y paradas) | ambiguo | **exacto, en coordenadas absolutas** |
+| Colores planos | sí | sí |
+| Posición y tamaño de imágenes | sí | **sí, con su matriz de escala** |
+| Modos de fusión y opacidades | sí | sí |
+| Las imágenes en sí | URLs que caducan | **embebidas en base64** |
+| Tipografía | sí | **no** (el texto se exporta como paths) |
+
+Lo único que el SVG no da es la tipografía. Para eso: medir el ancho de una línea
+en el render PNG y calibrarlo contra la fuente real (ver más abajo).
+
+### Los degradados: el SVG manda
+
+Derivar el ángulo CSS de los `gradientHandlePositions` de la API **da valores
+incorrectos**: el segundo handle no es el punto final del eje. La tarjeta del hero
+salía a 209.48deg cuando la real es 216.12deg. El SVG trae `x1,y1,x2,y2` absolutos
+y la conversión es directa:
+
+```
+angulo = atan2(dx, -dy)
+L      = |w·sin(a)| + |h·cos(a)|
+parada = proyeccion del punto sobre el eje centrado en la caja, / L, + 0.5
+```
+
+### Los fondos son pilas de capas, no un color
+
+Casi todas las secciones apilan tres cosas y hacen falta las tres. Ejemplo de
+"cómo es nuestro trabajo": cian plano `#08B6FF` + el mapa al 92% en `multiply` +
+un degradado `112.07deg` de transparente a `#023451`. Yo había deducido del render
+un único degradado de 129° que no existe en el archivo.
+
 ## Verificación de fidelidad
 
 Hay un arnés de captura y comparación en el scratchpad de la sesión (`shot/`), con

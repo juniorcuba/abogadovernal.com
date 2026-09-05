@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 
 /**
@@ -19,12 +20,20 @@ import { ButtonLink } from "@/components/ui/button";
  *                     líneas da 50px y es incorrecto: hay que medir el ancho de una
  *                     línea en el render (490px) y calibrarlo contra la tipografía.
  *
- * PENDIENTE: la foto de fondo. La API de Figma sigue devolviendo 429 y sin el árbol
- * no sé qué imageRef le corresponde; descartada ya `ed879e3c9` (es otra toma).
+ * El fondo es una foto a 34% de opacidad, dibujada a 1122×1682 con desplazamiento
+ * (+882, −173) dentro del rect de la sección. Sale del export SVG de la frame.
  */
 export function Servicios() {
   return (
     <section className="relative overflow-hidden bg-[#161616] design:h-[668px]">
+      <Image
+        src="/images/servicios/fondo.webp"
+        alt=""
+        aria-hidden
+        width={1122}
+        height={1682}
+        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-[0.34] design:top-[-173px] design:right-auto design:left-[882px] design:h-[1682px] design:w-[1122px]"
+      />
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[668px] design:p-0">
         <div
           aria-hidden

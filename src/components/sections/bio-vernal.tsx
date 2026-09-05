@@ -5,7 +5,8 @@ import Link from "next/link";
  * "Conocé al abogado Vernal" — nodos del rango y=1751..2559 de la frame 1:2.
  * Coordenadas relativas al inicio de la sección (y absoluta − 1751).
  *
- *   fondo       59:38    1923×808, oscuro con un retrato difuminado a la derecha
+ *   fondo       59:38    #0F0F10 con una foto al 25%, dibujada a 1923×1283 con
+ *                        desplazamiento (+446, −211). Del export SVG de la frame.
  *   composición 129:211  x278 y108  554×547
  *     rect cian 129:192  +3,+147  548×400  #08b6ff
  *     "VERNAL"  129:193  +0,+20   Poppins 600 146px #08b6ff UPPER (detrás)
@@ -21,6 +22,14 @@ import Link from "next/link";
 export function BioVernal() {
   return (
     <section className="bg-vernal-ink relative overflow-hidden design:h-[808px]">
+      <Image
+        src="/images/bio/fondo-bio.webp"
+        alt=""
+        aria-hidden
+        width={1923}
+        height={1283}
+        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-25 design:top-[-211px] design:right-auto design:left-[446px] design:h-[1283px] design:w-[1923px]"
+      />
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
         {/* Composición: rectángulo cian, "VERNAL" detrás y el retrato recortado. */}
         <div className="relative mx-auto h-[380px] w-[385px] design:absolute design:top-[108px] design:left-[278px] design:mx-0 design:h-[547px] design:w-[554px]">

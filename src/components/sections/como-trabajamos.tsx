@@ -7,8 +7,11 @@ import { offices } from "@/lib/site";
  * dentro de esta misma sección, no en la siguiente.
  * Coordenadas relativas al inicio de la sección (y absoluta − 4746).
  *
- *   fondo    59:41   1923×668, degradado azul en diagonal
- *   mapa             imagen del mapa de Texas, a la izquierda
+ *   fondo    59:41   tres capas apiladas, todas del export SVG:
+ *                      1. cian plano #08B6FF
+ *                      2. mapa 1437×784 en (−445, −102), opacidad 0.92, multiply
+ *                      3. degradado 112.07deg de #057EBC transparente al 4.70%
+ *                         hasta #023451 opaco al 46.06%  ← esto oscurece la derecha
  *   marcadores 104:78 x324 y151 · 104:75 x416 y115 · 104:72 x458 y287 ·
  *              104:69 x405 y364 · 83:111 x626 y251, todos de 36.46×36.46
  *   título   59:42   x1021 y84  657×134  Poppins 600 64px lh1.04 UPPER, blanco
@@ -18,10 +21,12 @@ import { offices } from "@/lib/site";
  *   sedes    97:29   x944 y462 798×108   5 columnas de 130, separadores de 3px
  *                    ciudad en #08b6ff, dirección blanca, 16px lh1.04
  *
- * PENDIENTE (la API de Figma sigue en 429): los handles exactos del degradado del
- * fondo —el ángulo de 129° está estimado midiendo el render, no leído del archivo—
- * el modo de fusión del mapa, y los SVG reales de los marcadores, que aquí van
- * aproximados en CSS.
+ * Fondo, mapa y sus transformaciones salen del export SVG de la frame. Antes estaban
+ * estimados y estaban mal: había deducido un degradado de 129° que no existe, y el
+ * mapa a 1029×561 cuando en realidad va a 1437×784.
+ *
+ * Los marcadores siguen aproximados en CSS: el SVG los trae como paths y no he
+ * extraído sus vectores.
  */
 
 const marcadores = [
@@ -34,32 +39,32 @@ const marcadores = [
 
 export function ComoTrabajamos() {
   return (
-    <section
-      className="relative overflow-hidden design:h-[668px]"
-      style={{
-        backgroundImage:
-          "linear-gradient(129deg, #0696d6 0%, #013451 45%, #013451 100%)",
-      }}
-    >
+    <section className="bg-vernal-accent relative overflow-hidden design:h-[668px]">
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[668px] design:p-0">
-        {/* Mapa de Texas. Escala y posición DEDUCIDAS, no leídas del archivo: la
-            separación Fort Worth→Houston entre mis marcadores (302px) frente a la
-            del mapa original (~413px) da un factor de 0.73, y de ahí el desplazamiento.
-            Las posiciones de las etiquetas en el original se midieron a ojo, así que
-            esto tiene un margen de ±20px. Confirmar con la caja del nodo cuando la
-            API de Figma vuelva a responder. */}
+        {/* Mapa de Texas: multiply sobre el cian. El original tiene fondo blanco y
+            el multiply lo hace desaparecer dejando solo el relieve. */}
         <div
           aria-hidden
-          className="pointer-events-none relative mx-auto h-[300px] w-full max-w-[560px] design:absolute design:top-[10px] design:left-[-137px] design:mx-0 design:h-[561px] design:w-[1029px] design:max-w-none"
+          className="pointer-events-none relative mx-auto h-[300px] w-full max-w-[560px] design:absolute design:top-[-102px] design:left-[-445px] design:mx-0 design:h-[784px] design:w-[1437px] design:max-w-none"
         >
           <Image
             src="/images/trabajo/mapa-texas.webp"
             alt=""
             fill
-            sizes="1029px"
+            sizes="1437px"
             className="object-contain opacity-90 mix-blend-multiply"
           />
         </div>
+
+        {/* Capa 3: el degradado que apaga la mitad derecha. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(112.07deg, rgb(5 126 188 / 0) 4.70%, #023451 46.06%)",
+          }}
+        />
 
         {/* Marcadores: van en coordenadas exactas del archivo, relativas a la sección. */}
         {marcadores.map((m) => (

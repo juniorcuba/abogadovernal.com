@@ -49,13 +49,17 @@
 @utility bg-vernal-card {
   /*
    * Degradado de la tarjeta del formulario del hero (nodo 18:7), con la opacidad
-   * de capa 0.71 ya aplicada. Ángulo y stops derivados de los handles del archivo;
-   * la fórmula se validó reproduciendo exactamente el degradado del footer.
+   * de capa 0.71 ya aplicada. Valores leídos del export SVG de la frame, que trae
+   * las coordenadas absolutas del degradado.
+   *
+   * Derivarlo de los gradientHandlePositions de la API daba 209.48deg y era
+   * INCORRECTO: el segundo handle no es el punto final del eje. Para degradados,
+   * el SVG es más fiable que la API.
    */
   background-image: linear-gradient(
-    209.48deg,
-    rgb(23 35 57 / 0.71) 28.28%,
-    rgb(64 98 159 / 0.71) 77.89%
+    216.12deg,
+    rgb(23 35 57 / 0.71) 28.64%,
+    rgb(64 98 159 / 0.71) 76.27%
   );
 }
 
