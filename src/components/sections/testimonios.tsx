@@ -5,6 +5,7 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 import { Carrusel } from "@/components/ui/carrusel";
+import { SelloVerificado } from "@/components/ui/iconos";
 
 /**
  * Testimonios de clientes — nodos del rango y=6077..6917 de la frame 1:2.
@@ -52,7 +53,7 @@ function Flecha({
       type="button"
       onClick={onClick}
       aria-label={hacia === "izquierda" ? "Testimonio anterior" : "Testimonio siguiente"}
-      className="bg-vernal-accent text-vernal-navy z-20 hidden h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full text-[20px] transition-opacity hover:opacity-90 design:flex"
+      className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] shrink-0 cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:flex"
     >
       {hacia === "izquierda" ? "←" : "→"}
     </button>
@@ -74,16 +75,16 @@ export function Testimonios() {
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 design:block"
           controles={({ anterior, siguiente }) => (
             <>
-              <div className="relative z-20 design:absolute design:top-[311px] design:left-[176px]">
+              <div className="relative z-20 design:absolute design:top-[300px] design:left-[171px]">
                 <Flecha hacia="izquierda" onClick={anterior} />
               </div>
-              <div className="relative z-20 design:absolute design:top-[311px] design:left-[1700px]">
+              <div className="relative z-20 design:absolute design:top-[300px] design:left-[1694px]">
                 <Flecha hacia="derecha" onClick={siguiente} />
               </div>
             </>
           )}
         >
-          {(t, i) => {
+          {(t, i, relevo) => {
             const r = ranuras[i];
             return (
               <li
@@ -92,12 +93,13 @@ export function Testimonios() {
                 style={{ "--x": `${r.left}px` } as React.CSSProperties}
               >
                 <Image
+                  key={relevo}
                   src={t.foto}
                   alt=""
                   aria-hidden
                   width={t.img.w}
                   height={t.img.h}
-                  className="absolute max-w-none object-cover"
+                  className="animate-vernal-relevo absolute max-w-none object-cover"
                   style={{ left: t.img.x, top: t.img.y, width: t.img.w, height: t.img.h }}
                 />
                 <div
@@ -107,13 +109,11 @@ export function Testimonios() {
                     backgroundImage: `linear-gradient(${r.deg}deg, rgb(8 182 255 / 0) ${r.ini}%, #08B6FF ${r.fin}%)`,
                   }}
                 />
-                <div className="absolute bottom-[22px] left-[22px] flex items-center gap-x-[10px]">
-                  <span
-                    aria-hidden
-                    className="flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full bg-white text-[15px] leading-none text-vernal-accent"
-                  >
-                    ✓
-                  </span>
+                {/* El grupo sello+texto va CENTRADO en la tarjeta (en el archivo
+                    ocupa 178 de los 359 y su centro coincide con el de la foto),
+                    no pegado a la izquierda. El hueco entre sello y texto es 9. */}
+                <div className="absolute bottom-[22px] left-[22px] flex items-center gap-x-[10px] design:right-[22px] design:bottom-[29px] design:left-[22px] design:justify-center design:gap-x-[9px]">
+                  <SelloVerificado className="shrink-0" />
                   <span className="text-white">
                     <span className="block text-[16px] leading-[17px] font-bold">
                       Nombre cliente

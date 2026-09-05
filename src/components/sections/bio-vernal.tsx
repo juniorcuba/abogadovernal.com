@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FlechaEnlace } from "@/components/ui/iconos";
 import Link from "next/link";
 
 /**
@@ -61,9 +62,7 @@ export function BioVernal() {
           className="mt-8 flex items-center justify-center gap-x-[10px] text-[16px] leading-[17px] text-white transition-colors hover:text-vernal-accent design:absolute design:top-[683px] design:left-[464px] design:mt-0"
         >
           Conoce mi historia
-          <span aria-hidden className="text-[18px]">
-            &rarr;
-          </span>
+          <FlechaEnlace />
         </Link>
 
         <h2 className="mt-12 text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[138px] design:left-[924px] design:mt-0 design:w-[587px] design:leading-[67px] design:text-[64px]">

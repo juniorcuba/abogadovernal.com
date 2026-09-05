@@ -127,8 +127,8 @@ export function NuestroEquipo() {
           Latinos luchando <span className="text-vernal-accent">por Latinos...</span>
         </p>
 
-        {/* Carrusel del equipo. Las flechas van donde el archivo las coloca
-            (x914 y x1591, y3052 → y493 relativo a la sección). */}
+        {/* Carrusel del equipo. Las flechas van donde el archivo las coloca:
+            55×55 en (899, 3026) y (1552, 3026) absolutos → y467 de la sección. */}
         <Carrusel
           items={equipo}
           className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 design:absolute design:top-0 design:left-0 design:mt-0 design:block design:h-full design:w-full"
@@ -138,7 +138,7 @@ export function NuestroEquipo() {
                 type="button"
                 onClick={anterior}
                 aria-label="Miembro anterior del equipo"
-                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[44px] w-[44px] items-center justify-center rounded-full text-[20px] transition-opacity hover:opacity-90 design:absolute design:top-[471px] design:left-[892px] design:flex"
+                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[467px] design:left-[899px] design:flex"
               >
                 ←
               </button>
@@ -146,34 +146,39 @@ export function NuestroEquipo() {
                 type="button"
                 onClick={siguiente}
                 aria-label="Siguiente miembro del equipo"
-                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[44px] w-[44px] items-center justify-center rounded-full text-[20px] transition-opacity hover:opacity-90 design:absolute design:top-[471px] design:left-[1569px] design:flex"
+                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[467px] design:left-[1552px] design:flex"
               >
                 →
               </button>
             </>
           )}
         >
-          {(p, i) => (
+          {(p, i, relevo) => (
             <li
               key={ranuras[i].left}
               className="design:absolute design:top-[253px] design:left-[var(--x)] design:w-[325px]"
               style={{ "--x": `${ranuras[i].left}px` } as React.CSSProperties}
             >
-              <p className="text-vernal-accent text-center text-[18px] leading-[19px] font-semibold uppercase">
-                {p.nombre}
-              </p>
-              <p
-                className={`text-center text-[12px] leading-[12px] font-semibold uppercase ${p.cargoClase}`}
-              >
-                {p.cargo}
-              </p>
-              <Image
-                src={p.foto}
-                alt={`${p.nombre}, ${p.cargo}`}
-                width={325}
-                height={387}
-                className="mt-[47px] h-[387px] w-[325px] object-contain"
-              />
+              {/* La `key` con el relevo obliga a remontar en cada giro, que es lo
+                  que vuelve a disparar la animación de entrada. Sin ella React
+                  reutiliza el nodo y el cambio de abogado es un salto seco. */}
+              <div key={relevo} className="animate-vernal-relevo">
+                <p className="text-vernal-accent text-center text-[18px] leading-[19px] font-semibold uppercase">
+                  {p.nombre}
+                </p>
+                <p
+                  className={`text-center text-[12px] leading-[12px] font-semibold uppercase ${p.cargoClase}`}
+                >
+                  {p.cargo}
+                </p>
+                <Image
+                  src={p.foto}
+                  alt={`${p.nombre}, ${p.cargo}`}
+                  width={325}
+                  height={387}
+                  className="mt-[47px] h-[387px] w-[325px] object-contain"
+                />
+              </div>
             </li>
           )}
         </Carrusel>

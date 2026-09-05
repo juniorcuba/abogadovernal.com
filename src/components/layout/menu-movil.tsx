@@ -41,7 +41,7 @@ export function MenuMovil() {
         onClick={() => setAbierto(true)}
         aria-label="Abrir menú"
         aria-expanded={abierto}
-        className="flex h-[44px] w-[44px] items-center justify-center"
+        className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center"
       >
         <span aria-hidden className="relative block h-[16px] w-[26px]">
           <span className="absolute top-0 left-0 h-[2px] w-full bg-white" />
@@ -64,7 +64,7 @@ export function MenuMovil() {
               type="button"
               onClick={() => setAbierto(false)}
               aria-label="Cerrar menú"
-              className="flex h-[44px] w-[44px] items-center justify-center text-[30px] leading-none text-white"
+              className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center text-[30px] leading-none text-white"
             >
               ×
             </button>

@@ -5,6 +5,7 @@
 import Image from "next/image";
 import { ConsentNotice } from "@/components/ui/consent-notice";
 import { Carrusel } from "@/components/ui/carrusel";
+import { FlechaEnlace } from "@/components/ui/iconos";
 
 /**
  * "Mantente informado" (newsletter) + reseñas de Google — nodos del rango
@@ -24,7 +25,8 @@ import { Carrusel } from "@/components/ui/carrusel";
  *   aviso     83:69   x271 y332  558×81  mismo texto legal que el hero
  *   reseñas   83:151  x278 y449  422×109 dos líneas, la segunda en #08b6ff
  *   logo      83:186  x618 y456  190×63
- *   fichas    x298 y583 y x666 y583, 294×198; estrellas #F0CC00; nombre en #08b6ff
+ *   fichas    x298 y583 y x666 y583, 294×198; nombre en #08b6ff
+ *             estrellas #F0CC00 de 23×22, CENTRADAS sobre la columna (x360 y x733)
  *   flechas   x195 y654 y x1008 y654, 55×55
  *
  * El diseño solo trae DOS reseñas y no hay tarjetas de blog: esta sección es
@@ -51,7 +53,9 @@ const resenas = [
 
 function Estrellas({ className }: { className?: string }) {
   return (
-    <span className={`flex gap-x-[10px] ${className ?? ""}`} aria-label="5 de 5 estrellas">
+    // Paso de 34 entre estrellas en el archivo (23 de estrella + 11 de hueco),
+    // que deja la fila en 159 de ancho.
+    <span className={`flex gap-x-[11px] ${className ?? ""}`} aria-label="5 de 5 estrellas">
       {[0, 1, 2, 3, 4].map((i) => (
         <Image key={i} src="/icons/estrella.svg" alt="" width={23} height={22} />
       ))}
@@ -116,9 +120,9 @@ export function BlogResenas() {
           <button
             type="submit"
             aria-label="Suscribirse"
-            className="bg-vernal-accent text-vernal-navy flex h-[52px] w-[124px] shrink-0 items-center justify-center text-[20px] transition-opacity hover:opacity-90 design:absolute design:left-[438px]"
+            className="bg-vernal-accent text-vernal-navy flex h-[52px] w-[124px] shrink-0 cursor-pointer items-center justify-center transition-opacity hover:opacity-90 design:absolute design:left-[438px]"
           >
-            →
+            <FlechaEnlace />
           </button>
         </form>
 
@@ -147,7 +151,7 @@ export function BlogResenas() {
                 type="button"
                 onClick={anterior}
                 aria-label="Reseña anterior"
-                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[55px] w-[55px] items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[195px] design:flex"
+                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[195px] design:flex"
               >
                 ←
               </button>
@@ -155,26 +159,28 @@ export function BlogResenas() {
                 type="button"
                 onClick={siguiente}
                 aria-label="Reseña siguiente"
-                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[55px] w-[55px] items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[1008px] design:flex"
+                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[1008px] design:flex"
               >
                 →
               </button>
             </>
           )}
         >
-          {(r, i) => (
+          {(r, i, relevo) => (
             <li
               key={ranuras[i].left}
               className="design:absolute design:top-[583px] design:left-[var(--x)] design:w-[294px]"
               style={{ "--x": `${ranuras[i].left}px` } as React.CSSProperties}
             >
-              <Estrellas className="justify-center design:justify-start" />
-              <p className="mt-[18px] text-center text-[16px] leading-[17px] text-white">
-                {r.texto}
-              </p>
-              <p className="text-vernal-accent mt-[10px] text-center text-[16px] leading-[17px] font-bold">
-                {r.autor}
-              </p>
+              <Estrellas className="justify-center" />
+              <div key={relevo} className="animate-vernal-relevo">
+                <p className="mt-[18px] text-center text-[16px] leading-[17px] text-white">
+                  {r.texto}
+                </p>
+                <p className="text-vernal-accent mt-[10px] text-center text-[16px] leading-[17px] font-bold">
+                  {r.autor}
+                </p>
+              </div>
             </li>
           )}
         </Carrusel>

@@ -11,12 +11,14 @@ import { useCallback, useState, type ReactNode } from "react";
  * qué elemento cae en cada una. Así el carrusel es infinito por construcción
  * —nunca hay un extremo— y el diseño se respeta al píxel.
  *
- * `children` recibe el elemento y el índice de RANURA (no el del dato), que es lo
- * que hace falta para posicionarlo.
+ * `children` recibe el elemento, el índice de RANURA (no el del dato, que es lo
+ * que hace falta para posicionarlo) y el número de relevo. El relevo sirve para
+ * dar `key` a lo que deba volver a montarse en cada cambio, que es la única
+ * forma de que una animación de entrada se dispare otra vez.
  */
 type Props<T> = {
   items: T[];
-  children: (item: T, ranura: number) => ReactNode;
+  children: (item: T, ranura: number, relevo: number) => ReactNode;
   className?: string;
   /** Recibe los controles para pintar las flechas donde el diseño las coloca. */
   controles?: (c: {
@@ -37,7 +39,7 @@ export function Carrusel<T>({ items, children, className, controles }: Props<T>)
 
   return (
     <>
-      <ul className={className}>{vista.map((item, i) => children(item, i))}</ul>
+      <ul className={className}>{vista.map((item, i) => children(item, i, inicio))}</ul>
       {controles?.({ anterior, siguiente, puede: n > 1 })}
     </>
   );

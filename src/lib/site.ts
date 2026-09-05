@@ -25,12 +25,18 @@ export type Office = {
   address: string;
 };
 
+/**
+ * Las direcciones van LITERALES del archivo de Figma, con su puntuación tal cual:
+ * Austin sin comas y con "Tx", San Antonio con "LOOP" en mayúsculas. Están
+ * pendientes de que el cliente las confirme; si las corrige, se corrigen aquí y
+ * cambian a la vez en el footer y en el bloque de las 5 sedes.
+ */
 export const offices: Office[] = [
   { city: "Dallas", address: "7929 Brookriver Dr #540, Dallas, TX 75247" },
   { city: "Fort Worth", address: "2001 Beach St Suite #225, Fort Worth, TX 76103" },
   { city: "Houston", address: "10333 Harwin Dr. Suite 105, Houston, TX 77036" },
-  { city: "Austin", address: "13809 Research Blvd Suite 745, Austin, TX 78750" },
-  { city: "San Antonio", address: "1802 NE Loop 410 Ste 120, San Antonio, TX 78217" },
+  { city: "Austin", address: "13809 Research Blvd Suite 745 Austin Tx 78750" },
+  { city: "San Antonio", address: "1802 NE LOOP 410 Ste 120 San Antonio TX 78217" },
 ];
 
 export type NavItem = {

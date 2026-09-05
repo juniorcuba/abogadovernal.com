@@ -51,7 +51,7 @@ export function SobreNosotros() {
                 /* El cian va aquí dentro a propósito: el transform del marquee crea
                    un contexto de apilamiento, así que mix-blend-mode no alcanza el
                    fondo de la sección. El respaldo tiene que estar en este contexto. */
-                className="bg-vernal-accent relative h-[280px] w-[400px] shrink-0 design:h-[442px] design:w-[634px]"
+                className="bg-vernal-accent shadow-vernal-1 relative h-[280px] w-[400px] shrink-0 design:h-[442px] design:w-[634px]"
               >
                 <Image
                   src={src}

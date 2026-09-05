@@ -130,7 +130,13 @@ export function NuestroCompromiso() {
               >
                 <Image src={t.icono} alt="" width={75} height={75} />
               </span>
-              <p className="absolute right-[24px] bottom-[30px] left-[24px] text-[16px] leading-[17px] text-white">
+              {/* Negro, no blanco: el archivo lo trae con fill "black". Va anclado
+                  ARRIBA —anclarlo abajo dejaba el texto 32px más lejos del icono en
+                  la tarjeta de 4 líneas— a 40 del borde izquierdo.
+                  El ancho de 190 sale de acotarlo con los cortes de línea del
+                  archivo: por debajo de 183 la tarjeta 2 parte una línea de más, y
+                  a partir de ~193 las tarjetas 1, 4 y 5 juntan dos en una. */}
+              <p className="absolute right-[24px] bottom-[30px] left-[24px] text-[16px] leading-[17px] text-white design:top-[283px] design:right-auto design:bottom-auto design:left-[40px] design:w-[190px] design:text-black">
                 {t.texto}
               </p>
             </li>

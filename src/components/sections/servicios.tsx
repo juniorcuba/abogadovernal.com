@@ -5,7 +5,11 @@ import { ButtonLink } from "@/components/ui/button";
  * "Nuestros servicios" — nodos del rango y=4078..4746 de la frame 1:2.
  * Coordenadas relativas al inicio de la sección (y absoluta − 4078).
  *
- *   fondo    59:37    1923×668, oscuro (#161616) con una foto desaturada a la derecha
+ *   fondo    59:37    1923×668. En el archivo la sección NO tiene relleno propio:
+ *                     lo que se ve es la foto desaturada al 34% sobre el fondo de
+ *                     la página (#0f0f0f) y encima
+ *                     linear-gradient(77.74deg, #171717 48.45% → transp. 61.05%),
+ *                     que es lo que tapa el canto izquierdo de la foto.
  *   barra    97:46    x215 y96   12×443   #08b6ff
  *   título   59:35    x290 y106  348×134  Poppins 600 64px lh1.04 UPPER, TODO en #08b6ff
  *   cuerpo   59:36    x290 y270  580×209  Poppins 400 16px lh1.04 justificado, blanco
@@ -25,7 +29,7 @@ import { ButtonLink } from "@/components/ui/button";
  */
 export function Servicios() {
   return (
-    <section className="relative overflow-hidden bg-[#161616] design:mt-px design:h-[668px]">
+    <section className="relative overflow-hidden bg-vernal-ink design:mt-px design:h-[668px]">
       <Image
         src="/images/servicios/fondo.webp"
         alt=""
@@ -34,6 +38,17 @@ export function Servicios() {
         height={1682}
         className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-[0.34] design:top-[-173px] design:right-auto design:left-[882px] design:h-[1682px] design:w-[1122px]"
       />
+      {/* Sin esto se ve el canto vertical de la foto a x882, como si el video
+          estuviera pegado encima en vez de fundido con el panel oscuro. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(77.74deg, #171717 48.45%, rgb(23 23 23 / 0) 61.05%)",
+        }}
+      />
+
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[668px] design:p-0">
         <div
           aria-hidden
@@ -66,7 +81,7 @@ export function Servicios() {
         <button
           type="button"
           aria-label="Ver vídeo"
-          className="mt-10 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-white transition-transform hover:scale-105 design:absolute design:top-[256px] design:left-[1262px] design:mt-0 design:h-[96px] design:w-[96px]"
+          className="mt-10 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-white transition-transform hover:scale-105 design:absolute design:top-[256px] design:left-[1262px] design:mt-0 design:h-[96px] design:w-[96px]"
         >
           <span
             aria-hidden

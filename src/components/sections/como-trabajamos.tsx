@@ -25,8 +25,7 @@ import { offices } from "@/lib/site";
  * estimados y estaban mal: había deducido un degradado de 129° que no existe, y el
  * mapa a 1029×561 cuando en realidad va a 1437×784.
  *
- * Los marcadores siguen aproximados en CSS: el SVG los trae como paths y no he
- * extraído sus vectores.
+ *   sedes    97:29   las direcciones van CENTRADAS en su columna, no a la izquierda
  */
 
 const marcadores = [
@@ -36,6 +35,20 @@ const marcadores = [
   { left: 405, top: 364 },
   { left: 626, top: 251 },
 ];
+
+/**
+ * Resplandor de los marcadores, de los filtros del export SVG (filter2..filter11).
+ * Cada marcador lleva dos capas: el anillo y el punto, cada una con su sombra.
+ *
+ *   feMorphology dilate 11  → extensión 11px
+ *   feGaussianBlur σ 9.55   → desenfoque 19.1px (el radio CSS es 2σ)
+ *   feOffset dx 3 dy -2     → desplazamiento
+ *
+ * Antes esto era un `0 0 26px 9px` verde a media opacidad puesto a ojo, y en el
+ * render el marcador salía apagado al lado del archivo.
+ */
+const BRILLO_ANILLO = "3px -2px 19.1px 11px rgb(39 255 161)";
+const BRILLO_PUNTO = "3px -2px 19.1px 11px rgb(21 255 154)";
 
 export function ComoTrabajamos() {
   return (
@@ -71,16 +84,22 @@ export function ComoTrabajamos() {
           <span
             key={`${m.left}-${m.top}`}
             aria-hidden
-            className="absolute hidden h-[36px] w-[36px] items-center justify-center rounded-full border-[5px] border-[#3ee66b] bg-[#0b3b2a] design:top-[var(--y)] design:left-[var(--x)] design:flex"
+            className="absolute hidden h-[36.46px] w-[36.46px] design:top-[var(--y)] design:left-[var(--x)] design:block"
             style={
-              {
-                "--x": `${m.left}px`,
-                "--y": `${m.top}px`,
-                boxShadow: "0 0 26px 9px rgb(62 230 107 / 0.55)",
-              } as React.CSSProperties
+              { "--x": `${m.left}px`, "--y": `${m.top}px` } as React.CSSProperties
             }
           >
-            <span className="h-[10px] w-[10px] rounded-full bg-[#3ee66b]" />
+            {/* El punto va ANTES del anillo aunque quede dentro: su resplandor se
+                pinta encima de lo que ya haya, así que si fuera hijo del anillo le
+                lavaría el borde y taparía el hueco entre los dos. */}
+            <span
+              className="bg-vernal-green absolute inset-[8.63px] rounded-full"
+              style={{ boxShadow: BRILLO_PUNTO }}
+            />
+            <span
+              className="border-vernal-green absolute inset-0 rounded-full border-[5px]"
+              style={{ boxShadow: BRILLO_ANILLO }}
+            />
           </span>
         ))}
 
@@ -115,7 +134,7 @@ export function ComoTrabajamos() {
           {offices.map((office, i) => (
             <li
               key={office.city}
-              className="text-[16px] leading-[17px] font-light text-white design:absolute design:top-[17px] design:left-[var(--x)] design:w-[130px]"
+              className="text-[16px] leading-[17px] font-light text-white design:absolute design:top-[17px] design:left-[var(--x)] design:w-[130px] design:text-center"
               style={{ "--x": `${i * 167}px` } as React.CSSProperties}
             >
               <span className="text-vernal-accent block font-bold">{office.city}</span>

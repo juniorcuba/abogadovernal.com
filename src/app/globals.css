@@ -130,8 +130,28 @@ select:has(option:not([value=""]):checked) ~ .select-placeholder {
   animation: vernal-marquee 45s linear infinite;
 }
 
+/*
+ * Relevo de los carruseles. El diseño coloca cada tarjeta en una x fija y lo que
+ * rota es el orden de los datos, así que sin esto el cambio es un salto seco: la
+ * foto y el nombre se sustituyen de un fotograma a otro. Solo se funde, sin
+ * desplazar, para no mover nada de sitio mientras dura.
+ */
+@keyframes vernal-relevo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility animate-vernal-relevo {
+  animation: vernal-relevo 300ms ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-vernal-marquee {
+  .animate-vernal-marquee,
+  .animate-vernal-relevo {
     animation: none;
   }
 }

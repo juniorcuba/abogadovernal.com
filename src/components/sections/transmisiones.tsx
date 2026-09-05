@@ -111,7 +111,7 @@ export function Transmisiones() {
           <button
             type="button"
             aria-label="Ver la transmisión"
-            className="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 transition-transform hover:scale-105 design:top-[175px] design:left-[316px] design:translate-x-0 design:translate-y-0"
+            className="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 transition-transform hover:scale-105 design:top-[175px] design:left-[316px] design:translate-x-0 design:translate-y-0"
           >
             <span
               aria-hidden
