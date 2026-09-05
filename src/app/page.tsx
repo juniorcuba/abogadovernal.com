@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Hero } from "@/components/sections/hero";
 import { SobreNosotros } from "@/components/sections/sobre-nosotros";
 import { BioVernal } from "@/components/sections/bio-vernal";
+import { NuestroEquipo } from "@/components/sections/nuestro-equipo";
 import { Servicios } from "@/components/sections/servicios";
 import { ComoTrabajamos } from "@/components/sections/como-trabajamos";
 
@@ -14,6 +15,7 @@ export default function HomePage() {
         <Hero />
         <SobreNosotros />
         <BioVernal />
+        <NuestroEquipo />
         <Servicios />
         <ComoTrabajamos />
         {/*
