@@ -86,10 +86,10 @@ export function Testimonios() {
                   ✓
                 </span>
                 <span className="text-white">
-                  <span className="block text-[14px] leading-[15px] font-bold">
+                  <span className="block text-[16px] leading-[17px] font-bold">
                     Nombre cliente
                   </span>
-                  <span className="block text-[13px] leading-[14px]">
+                  <span className="block text-[16px] leading-[17px]">
                     Ajuste de estatus
                   </span>
                 </span>

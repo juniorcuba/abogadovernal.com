@@ -113,7 +113,7 @@ export function ComoTrabajamos() {
           {offices.map((office, i) => (
             <li
               key={office.city}
-              className="text-[16px] leading-[17px] text-white design:absolute design:top-[17px] design:w-[130px]"
+              className="text-[16px] leading-[17px] font-light text-white design:absolute design:top-[17px] design:w-[130px]"
               style={{ left: i * 167 }}
             >
               <span className="text-vernal-accent block font-bold">{office.city}</span>

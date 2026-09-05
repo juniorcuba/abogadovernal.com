@@ -70,7 +70,18 @@ leído en línea dentro de la cabecera, como en el `curl` de arriba.
 | Campos de formulario | Regular 15px, negro | `6:40` |
 | Aviso de consentimiento | ExtraLight Italic 12px, leading 1.17, justificado | `6:87` |
 
-## La fuente buena: el export SVG de la frame
+## La fuente buena: el export SVG de la frame, SIN "Outline text"
+
+**Al exportar el SVG hay que desmarcar "Outline text"** (Export → SVG → los tres
+puntos). Por defecto está activado y convierte todo el texto en trazos: el export
+queda sin una sola etiqueta `<text>` y hay que deducir la tipografía midiendo.
+
+Desmarcado, el SVG trae `font-size`, `font-weight`, `font-style` y `letter-spacing`
+de cada texto. Conviene marcar también **"Include 'id' attribute"**, que añade los
+identificadores de nodo y permite trazar cada elemento.
+
+Con eso el SVG cubre TODO y la API de Figma deja de hacer falta.
+
 
 **El archivo no es nuestro.** Pertenece al diseñador, vive en un plan Starter y él
 lo sigue editando. Eso importa por dos motivos:
@@ -140,16 +151,18 @@ peticiones pequeñas durante bastantes minutos. Conviene traerse el árbol de un
 Referencia: hero 0 bloques con diferencia; footer 28, todos en texto pequeño con
 desfases de 0–2px, que es la diferencia de rasterizado entre Figma y Chrome.
 
-### Tolerancia conocida: altura de los bloques de texto largos
+### Interlineado: usar píxeles, no proporciones
 
-Figma y Chrome no reparten igual el interlineado fraccionario. Con el mismo
-`line-height: 1.04` del archivo, Chrome deja los bloques de texto largos entre un
-1% y un 2% más cortos (unos 4px en 11 líneas, 7px en 22). Se acumula línea a línea
-y no es un error de maquetación: no hay que "corregirlo" subiendo el interlineado,
-porque eso sí se desviaría del valor del archivo y rompería otros tamaños.
+**Figma redondea el interlineado a píxeles enteros al renderizar.** El archivo
+declara `lineHeightPx = 16.64` para el cuerpo de 16px, pero pinta 17px por línea.
+Chrome mantiene el fraccionario, y sobre 20 líneas eso acumula 7px.
 
-Al comparar por bloques, esto aparece siempre como diferencias en las últimas
-líneas de cada párrafo largo. Es esperable.
+Por eso todo el proyecto usa `leading-[17px]` y no `leading-[1.04]`. La regla:
+
+    interlineado en px = round(tamaño × 1.04)     (o × 1.17 donde el archivo lo diga)
+
+Durante un tiempo esto estuvo documentado aquí como "una tolerancia inevitable del
+rasterizado". **Era falso.** Corregirlo bajó el diff del bio de 101 bloques a 1.
 
 ### Trampa de Tailwind con el breakpoint `design`
 

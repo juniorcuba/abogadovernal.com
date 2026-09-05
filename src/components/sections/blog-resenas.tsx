@@ -141,10 +141,10 @@ export function BlogResenas() {
               style={{ left: r.left }}
             >
               <Estrellas className="justify-center design:justify-start" />
-              <p className="mt-[18px] text-center text-[13px] leading-[17px] text-white">
+              <p className="mt-[18px] text-center text-[16px] leading-[17px] text-white">
                 {r.texto}
               </p>
-              <p className="text-vernal-accent mt-[10px] text-center text-[14px] leading-[15px] font-bold">
+              <p className="text-vernal-accent mt-[10px] text-center text-[16px] leading-[17px] font-bold">
                 {r.autor}
               </p>
             </li>

@@ -130,11 +130,11 @@ export function NuestroEquipo() {
               className="design:absolute design:top-[253px] design:w-[325px]"
               style={{ left: p.left }}
             >
-              <p className="text-vernal-accent text-center text-[17px] leading-[18px] font-bold uppercase">
+              <p className="text-vernal-accent text-center text-[18px] leading-[19px] font-semibold uppercase">
                 {p.nombre}
               </p>
               <p
-                className={`text-center text-[12px] leading-[12px] font-bold uppercase ${p.cargoClase}`}
+                className={`text-center text-[12px] leading-[12px] font-semibold uppercase ${p.cargoClase}`}
               >
                 {p.cargo}
               </p>

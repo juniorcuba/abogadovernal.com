@@ -128,14 +128,14 @@ export function NuestroCompromiso() {
               >
                 <Image src={t.icono} alt="" width={75} height={75} />
               </span>
-              <p className="absolute right-[24px] bottom-[30px] left-[24px] text-[15px] leading-[16px] font-medium text-white">
+              <p className="absolute right-[24px] bottom-[30px] left-[24px] text-[16px] leading-[17px] text-white">
                 {t.texto}
               </p>
             </li>
           ))}
         </ul>
 
-        <p className="mt-10 text-center text-[22px] leading-[23px] font-light text-white design:absolute design:top-[697px] design:left-[427px] design:mt-0 design:w-[1102px] design:leading-[35px] design:text-[34px]">
+        <p className="mt-10 text-center text-[22px] leading-[23px] font-light text-white design:absolute design:top-[697px] design:left-[427px] design:mt-0 design:w-[1102px] design:leading-[37px] design:text-[36px]">
           “nuestra misión es{" "}
           <span className="text-vernal-accent">facilitar los sueños</span> de nuestros
           clientes”

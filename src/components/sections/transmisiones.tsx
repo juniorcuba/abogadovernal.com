@@ -128,10 +128,10 @@ export function Transmisiones() {
             <span className="ml-[4px] border-t-[11px] border-b-[11px] border-l-[19px] border-t-transparent border-b-transparent border-l-white" />
           </span>
           <span className="text-white">
-            <span className="block text-[19px] leading-[20px] font-medium uppercase">
+            <span className="block text-[25px] leading-[26px] font-semibold uppercase">
               aclara tus dudas
             </span>
-            <span className="block text-[34px] leading-[35px] font-bold uppercase">
+            <span className="block text-[46px] leading-[48px] font-bold uppercase">
               migratorias
             </span>
           </span>
@@ -146,7 +146,7 @@ export function Transmisiones() {
           }}
         >
           <span className="h-[22px] w-[22px] rounded-full bg-[#e02020]" />
-          <span className="text-[26px] leading-[27px] font-bold text-white uppercase">
+          <span className="text-[30px] leading-[31px] font-bold text-white uppercase">
             live
           </span>
         </span>
