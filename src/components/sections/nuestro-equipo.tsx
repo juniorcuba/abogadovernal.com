@@ -1,5 +1,10 @@
+"use client";
+
+// Cliente porque su carrusel necesita estado. Un componente de servidor no
+// puede pasar funciones de render a uno de cliente.
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
+import { Carrusel } from "@/components/ui/carrusel";
 
 /**
  * "Nuestro equipo" — nodos del rango y=2559..3269 de la frame 1:2.
@@ -24,6 +29,9 @@ import { ButtonLink } from "@/components/ui/button";
  * reconocer caras: no se debe adivinar la identidad de personas reales.
  */
 
+/** Ranuras del archivo; se quedan fijas y rota quién cae en cada una. */
+const ranuras = [{ left: 915 }, { left: 1255.6 }, { left: 1596.3 }];
+
 const equipo = [
   {
     nombre: "Vernal Farnum",
@@ -31,21 +39,18 @@ const equipo = [
     foto: "/images/equipo/vernal-farnum.webp",
     // El cargo del fundador va en verde; el resto en blanco.
     cargoClase: "text-[#27ffa2]",
-    left: 915,
   },
   {
     nombre: "Marysol Rogel",
     cargo: "Asistente legal",
     foto: "/images/equipo/marysol-rogel.webp",
     cargoClase: "text-white",
-    left: 1255.6,
   },
   {
     nombre: "Katiuska Rodriguez",
     cargo: "Asistente legal en tribunales",
     foto: "/images/equipo/katiuska-rodriguez.webp",
     cargoClase: "text-white",
-    left: 1596.3,
   },
 ];
 
@@ -122,13 +127,37 @@ export function NuestroEquipo() {
           Latinos luchando <span className="text-vernal-accent">por Latinos...</span>
         </p>
 
-        {/* Carrusel del equipo */}
-        <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 design:absolute design:top-0 design:left-0 design:mt-0 design:block design:h-full design:w-full">
-          {equipo.map((p) => (
+        {/* Carrusel del equipo. Las flechas van donde el archivo las coloca
+            (x914 y x1591, y3052 → y493 relativo a la sección). */}
+        <Carrusel
+          items={equipo}
+          className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 design:absolute design:top-0 design:left-0 design:mt-0 design:block design:h-full design:w-full"
+          controles={({ anterior, siguiente }) => (
+            <>
+              <button
+                type="button"
+                onClick={anterior}
+                aria-label="Miembro anterior del equipo"
+                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[44px] w-[44px] items-center justify-center rounded-full text-[20px] transition-opacity hover:opacity-90 design:absolute design:top-[471px] design:left-[892px] design:flex"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                onClick={siguiente}
+                aria-label="Siguiente miembro del equipo"
+                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[44px] w-[44px] items-center justify-center rounded-full text-[20px] transition-opacity hover:opacity-90 design:absolute design:top-[471px] design:left-[1569px] design:flex"
+              >
+                →
+              </button>
+            </>
+          )}
+        >
+          {(p, i) => (
             <li
-              key={p.nombre}
+              key={ranuras[i].left}
               className="design:absolute design:top-[253px] design:left-[var(--x)] design:w-[325px]"
-              style={{ "--x": `${p.left}px` } as React.CSSProperties}
+              style={{ "--x": `${ranuras[i].left}px` } as React.CSSProperties}
             >
               <p className="text-vernal-accent text-center text-[18px] leading-[19px] font-semibold uppercase">
                 {p.nombre}
@@ -146,8 +175,8 @@ export function NuestroEquipo() {
                 className="mt-[47px] h-[387px] w-[325px] object-contain"
               />
             </li>
-          ))}
-        </ul>
+          )}
+        </Carrusel>
 
         {/* Fundido del borde derecho del carrusel. */}
         <div

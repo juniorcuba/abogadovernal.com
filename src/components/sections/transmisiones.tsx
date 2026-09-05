@@ -124,20 +124,26 @@ export function Transmisiones() {
             rx 29.5 (redondeada), opacidad 0.73. Los textos van en x1160, con
             líneas base en y5931.8 y y5976.1 del archivo. */}
         <div
-          className="mt-6 flex items-center gap-x-4 rounded-[30px] px-6 py-4 design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[29.5px] design:p-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(274.95deg, #08B6FF -23.70%, #172339 110.67%)",
-            opacity: 0.73,
-          }}
+          className="relative mt-6 flex items-center gap-x-4 overflow-hidden rounded-[30px] px-6 py-4 design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[29.5px] design:p-0"
         >
+          {/* La opacidad 0.73 del archivo es del RECTÁNGULO, no del contenido.
+              Aplicada al contenedor oscurecía también el texto y los iconos. */}
           <span
             aria-hidden
-            className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border-[3px] border-white design:h-[78px] design:w-[78px] design:absolute design:top-[22.5px] design:left-[31.5px]"
+            className="absolute inset-0 rounded-[inherit]"
+            style={{
+              backgroundImage:
+                "linear-gradient(274.95deg, #08B6FF -23.70%, #172339 110.67%)",
+              opacity: 0.73,
+            }}
+          />
+          <span
+            aria-hidden
+            className="relative flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full border-[3px] border-white design:h-[78px] design:w-[78px] design:absolute design:top-[22.5px] design:left-[31.5px]"
           >
             <span className="ml-[4px] border-t-[11px] border-b-[11px] border-l-[19px] border-t-transparent border-b-transparent border-l-white" />
           </span>
-          <span className="text-white design:absolute design:top-[26px] design:left-[123.5px]">
+          <span className="relative text-white design:absolute design:top-[26px] design:left-[123.5px]">
             <span className="block text-[16px] leading-[17px] font-semibold uppercase design:text-[25px] design:leading-[26px]">
               aclara tus dudas
             </span>

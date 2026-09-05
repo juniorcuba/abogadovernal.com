@@ -1,5 +1,10 @@
+"use client";
+
+// Cliente porque su carrusel necesita estado. Un componente de servidor no
+// puede pasar funciones de render a uno de cliente.
 import Image from "next/image";
 import { ConsentNotice } from "@/components/ui/consent-notice";
+import { Carrusel } from "@/components/ui/carrusel";
 
 /**
  * "Mantente informado" (newsletter) + reseñas de Google — nodos del rango
@@ -26,21 +31,21 @@ import { ConsentNotice } from "@/components/ui/consent-notice";
  * únicamente la suscripción y las opiniones. Los textos van literales del archivo.
  */
 
+/** Posición de cada ranura según el archivo; no rota. */
+const ranuras = [{ left: 298 }, { left: 666 }];
+
+/** Lo que rota: el texto y su autora. */
 const resenas = [
   {
     texto:
       "Definitely recommend this law firm, the staff was very friendly and always helpful. Marysol was very professional and always helpful, thanks to her the whole process was easy and not stressful she is very much appreciated!",
     autor: "Jacquelyn Arroyo",
-    left: 298,
-    estrellasLeft: 360 - 298,
   },
   {
     // "el.abogado" va tal cual: es la reseña literal de una clienta, no una errata nuestra.
     texto:
       "Fui a una cita de consulta y la atención es excelente durante todo el proceso, el.abogado respondió todas mis dudas, evaluó y me presentó todas las opciones disponibles en mi caso. Gracias por toda la información suministrada.",
     autor: "Angelica Villegas",
-    left: 666,
-    estrellasLeft: 733 - 666,
   },
 ];
 
@@ -133,12 +138,35 @@ export function BlogResenas() {
           className="mt-6 design:absolute design:top-[456px] design:left-[618px] design:mt-0"
         />
 
-        <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 design:mt-0 design:block">
-          {resenas.map((r) => (
+        <Carrusel
+          items={resenas}
+          className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 design:mt-0 design:block"
+          controles={({ anterior, siguiente }) => (
+            <>
+              <button
+                type="button"
+                onClick={anterior}
+                aria-label="Reseña anterior"
+                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[55px] w-[55px] items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[195px] design:flex"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                onClick={siguiente}
+                aria-label="Reseña siguiente"
+                className="bg-vernal-accent text-vernal-navy z-20 hidden h-[55px] w-[55px] items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[1008px] design:flex"
+              >
+                →
+              </button>
+            </>
+          )}
+        >
+          {(r, i) => (
             <li
-              key={r.autor}
+              key={ranuras[i].left}
               className="design:absolute design:top-[583px] design:left-[var(--x)] design:w-[294px]"
-              style={{ "--x": `${r.left}px` } as React.CSSProperties}
+              style={{ "--x": `${ranuras[i].left}px` } as React.CSSProperties}
             >
               <Estrellas className="justify-center design:justify-start" />
               <p className="mt-[18px] text-center text-[16px] leading-[17px] text-white">
@@ -148,23 +176,9 @@ export function BlogResenas() {
                 {r.autor}
               </p>
             </li>
-          ))}
-        </ul>
+          )}
+        </Carrusel>
 
-        <button
-          type="button"
-          aria-label="Reseña anterior"
-          className="bg-vernal-accent text-vernal-navy hidden h-[55px] w-[55px] items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[195px] design:flex"
-        >
-          ←
-        </button>
-        <button
-          type="button"
-          aria-label="Reseña siguiente"
-          className="bg-vernal-accent text-vernal-navy hidden h-[55px] w-[55px] items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[1008px] design:flex"
-        >
-          →
-        </button>
       </div>
     </section>
   );
