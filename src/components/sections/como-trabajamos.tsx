@@ -18,6 +18,8 @@ import { offices } from "@/lib/site";
  *   cuerpo   59:43   x1021 y239 580×189  Poppins 400 16px lh1.04 justificado
  *   "5 SEDES" 83:104 x172 y416 684×183   ~176px, blanco
  *   subtítulo 83:105 x189 y590 560×47    ~45px
+ *             las DOS líneas llevan la "Vernal Shadow 1" como sombra de texto:
+ *             un único filtro del export las cubre (x186 y5186, 660×189)
  *   sedes    97:29   x944 y462 798×108   5 columnas de 130, separadores de 3px
  *                    ciudad en #08b6ff, dirección blanca, 16px lh1.04
  *
@@ -121,12 +123,27 @@ export function ComoTrabajamos() {
           {" se encuentra de visita en la oficina que corresponde, también podrás ser atendido directamente por él, con una cita previamente agendada."}
         </p>
 
-        <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase design:absolute design:top-[416px] design:left-[172px] design:mt-0 design:w-[684px] design:text-left design:leading-[183px] design:text-[176px]">
-          5 sedes
-        </p>
-        <p className="text-center text-[20px] leading-[21px] font-semibold text-white uppercase design:absolute design:top-[590px] design:left-[189px] design:w-[560px] design:text-left design:leading-[47px] design:text-[45px]">
-          operando en el estado
-        </p>
+        {/* La sombra va en el envoltorio, no en cada línea: en el archivo un único
+            efecto cubre las dos (x186 y5186, 660×189), o sea que se desenfoca la
+            silueta de las dos juntas una sola vez. Con una sombra por línea, las
+            dos se suman en el hueco de en medio y sale más oscuro de la cuenta.
+
+            El envoltorio ocupa toda la sección en modo diseño porque un elemento
+            con `filter` pasa a ser el bloque contenedor de sus hijos absolutos:
+            así las coordenadas de las dos líneas siguen siendo las del archivo.
+
+            Queda un resto: en la franja entre las dos líneas sale ~14/255 más
+            oscuro que el archivo. En una columna donde solo influye "5 SEDES" la
+            caída coincide al 1-2, así que el desajuste está en cómo suma el
+            archivo la sombra del subtítulo. No se aprecia a simple vista. */}
+        <div className="drop-shadow-vernal-1 design:absolute design:inset-0">
+          <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase design:absolute design:top-[416px] design:left-[172px] design:mt-0 design:w-[684px] design:text-left design:leading-[183px] design:text-[176px]">
+            5 sedes
+          </p>
+          <p className="text-center text-[20px] leading-[21px] font-semibold text-white uppercase design:absolute design:top-[590px] design:left-[189px] design:w-[560px] design:text-left design:leading-[47px] design:text-[45px]">
+            operando en el estado
+          </p>
+        </div>
 
         {/* Cinco columnas de 130 con paso de 167; los separadores de 3px caen a
             17px del final de cada columna (x1091, 1258, 1425, 1592 en el archivo). */}

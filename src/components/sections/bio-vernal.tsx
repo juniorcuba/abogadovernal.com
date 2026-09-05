@@ -50,8 +50,7 @@ export function BioVernal() {
           />
           <p
             aria-hidden
-            className="shadow-vernal-1 absolute top-[344px] left-[21px] text-[24px] leading-[25px] font-bold tracking-[14px] text-[#0f0f10] uppercase design:top-[496px] design:left-[30px] design:leading-[36px] design:text-[35px] design:tracking-[21px]"
-            style={{ textShadow: "8px 18px 37.1px rgb(0 0 0 / 0.51)" }}
+            className="text-shadow-vernal-1 absolute top-[344px] left-[21px] text-[24px] leading-[25px] font-bold tracking-[14px] text-[#0f0f10] uppercase design:top-[496px] design:left-[30px] design:leading-[36px] design:text-[35px] design:tracking-[21px]"
           >
             texas lawyer
           </p>

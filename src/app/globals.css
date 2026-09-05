@@ -38,6 +38,28 @@
   --shadow-vernal-1: 8px 18px 37.1px 0px rgb(0 0 0 / 0.51); /* "Vernal Shadow 1" #00000082 */
   --shadow-vernal-2: 8px 36px 37.1px 0px rgb(0 0 0 / 0.84); /* "Vernal Shadow 2" #000000D6 */
   --shadow-vernal-header: 0px 4px 33.3px 12px rgb(0 0 0 / 0.06); /* nodo 6:91 */
+
+  /*
+   * La misma "Vernal Shadow 1", pero para texto. En el archivo varios textos
+   * grandes la llevan como efecto de capa ("TEXAS LAWYER", "5 SEDES" y su
+   * subtítulo), y en CSS eso es text-shadow, no box-shadow: la sombra sigue el
+   * contorno de las letras, no una caja.
+   */
+  --text-shadow-vernal-1: 8px 18px 37.1px rgb(0 0 0 / 0.51);
+
+  /*
+   * Y la misma sombra otra vez, ahora como filtro. Hace falta cuando el efecto
+   * cubre VARIOS textos a la vez, como en "5 SEDES" + su subtítulo: ahí el
+   * archivo desenfoca la silueta de los dos juntos, una sola vez. Con
+   * text-shadow en cada uno, las dos sombras se suman en el hueco entre líneas
+   * y sale ~14/255 más oscuro de la cuenta.
+   *
+   * OJO con el radio: son 18.55 y no 37.1 como en las otras dos. `drop-shadow`
+   * es `feDropShadow`, cuyo radio ES la desviación típica; en box-shadow y
+   * text-shadow el radio es 2σ. Comprobado midiendo las tres con el mismo valor:
+   * drop-shadow(18.55) y box-shadow(37.1) dan el mismo perfil de caída.
+   */
+  --drop-shadow-vernal-1: 8px 18px 18.55px rgb(0 0 0 / 0.51);
 }
 
 @utility bg-vernal-footer {
