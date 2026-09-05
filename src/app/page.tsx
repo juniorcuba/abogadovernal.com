@@ -4,8 +4,12 @@ import { Hero } from "@/components/sections/hero";
 import { SobreNosotros } from "@/components/sections/sobre-nosotros";
 import { BioVernal } from "@/components/sections/bio-vernal";
 import { NuestroEquipo } from "@/components/sections/nuestro-equipo";
+import { NuestroCompromiso } from "@/components/sections/nuestro-compromiso";
 import { Servicios } from "@/components/sections/servicios";
 import { ComoTrabajamos } from "@/components/sections/como-trabajamos";
+import { Transmisiones } from "@/components/sections/transmisiones";
+import { Testimonios } from "@/components/sections/testimonios";
+import { BlogResenas } from "@/components/sections/blog-resenas";
 
 export default function HomePage() {
   return (
@@ -16,15 +20,12 @@ export default function HomePage() {
         <SobreNosotros />
         <BioVernal />
         <NuestroEquipo />
+        <NuestroCompromiso />
         <Servicios />
         <ComoTrabajamos />
-        {/*
-          Secciones pendientes de la frame 1:2, en orden:
-          Bio del abogado (y1751) · Nuestro equipo (y2559)
-          Nuestro compromiso (y3269) · Servicios (y4078) · Cómo trabajamos (y4746)
-          5 sedes + live (y5414) · Testimonios (y6077) · Blog (y6917) · Reseñas (y7366)
-          Ver docs/FIGMA.md
-        */}
+        <Transmisiones />
+        <Testimonios />
+        <BlogResenas />
       </main>
       <SiteFooter />
     </>

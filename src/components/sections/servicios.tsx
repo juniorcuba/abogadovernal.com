@@ -25,7 +25,7 @@ import { ButtonLink } from "@/components/ui/button";
  */
 export function Servicios() {
   return (
-    <section className="relative overflow-hidden bg-[#161616] design:h-[668px]">
+    <section className="relative overflow-hidden bg-[#161616] design:mt-px design:h-[668px]">
       <Image
         src="/images/servicios/fondo.webp"
         alt=""
