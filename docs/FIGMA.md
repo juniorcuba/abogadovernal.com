@@ -82,8 +82,29 @@ Hay un arnés de captura y comparación en el scratchpad de la sesión (`shot/`)
   coordenadas del artboard y marcan las que se desvían más de 1px.
 
 Con la frame renderizada por la API (`/v1/images`) se hace un diff por bloques.
+
+**El servidor de desarrollo cachea las imágenes optimizadas en memoria.** Si se
+cambia un archivo de `public/`, sigue sirviendo el anterior aunque el disco y las
+URLs `/_next/image` ya estén bien. Solo se limpia reiniciando `next dev`; borrar
+`.next/cache/images` no basta. Perdí un buen rato con esto.
+
+**Límites de la API.** El MCP tiene una cuota baja en plan Starter (~15 llamadas) y
+la API REST aplica un límite por coste que, al dispararse, bloquea también las
+peticiones pequeñas durante bastantes minutos. Conviene traerse el árbol de una vez
+(`?ids=1:2`) y trabajar sobre el JSON en local, en lugar de pedir nodo a nodo.
 Referencia: hero 0 bloques con diferencia; footer 28, todos en texto pequeño con
 desfases de 0–2px, que es la diferencia de rasterizado entre Figma y Chrome.
+
+### Tolerancia conocida: altura de los bloques de texto largos
+
+Figma y Chrome no reparten igual el interlineado fraccionario. Con el mismo
+`line-height: 1.04` del archivo, Chrome deja los bloques de texto largos entre un
+1% y un 2% más cortos (unos 4px en 11 líneas, 7px en 22). Se acumula línea a línea
+y no es un error de maquetación: no hay que "corregirlo" subiendo el interlineado,
+porque eso sí se desviaría del valor del archivo y rompería otros tamaños.
+
+Al comparar por bloques, esto aparece siempre como diferencias en las últimas
+líneas de cada párrafo largo. Es esperable.
 
 ### Trampa de Tailwind con el breakpoint `design`
 
