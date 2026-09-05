@@ -97,3 +97,30 @@ body {
 select:has(option:not([value=""]):checked) ~ .select-placeholder {
   display: none;
 }
+
+/*
+ * Carrusel de "Sobre nosotros" (nodo 129:148). En el archivo hay 4 fotos únicas
+ * DUPLICADAS en una tira de 8: es la construcción típica de un bucle sin corte,
+ * así que la intención del diseño es scroll continuo, no un carrusel de clic.
+ * OJO con el desplazamiento: la tira son 8 fotos con 7 huecos, así que el 50% NO
+ * cae donde empieza la copia, sino 20px antes (medio hueco). Hay que recorrer un
+ * período completo = 4 fotos + 4 huecos = 50% + gap/2, o el bucle salta en cada vuelta.
+ */
+@keyframes vernal-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 20px));
+  }
+}
+
+@utility animate-vernal-marquee {
+  animation: vernal-marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-vernal-marquee {
+    animation: none;
+  }
+}
