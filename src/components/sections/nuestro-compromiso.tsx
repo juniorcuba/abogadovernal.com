@@ -83,11 +83,11 @@ export function NuestroCompromiso() {
       />
 
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
-        <h2 className="text-center text-[38px] leading-[1.04] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[67px] design:left-[582px] design:w-[760px] design:text-[54px]">
+        <h2 className="text-center text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[67px] design:left-[582px] design:w-[760px] design:leading-[67px] design:text-[64px]">
           Nuestro compromiso
         </h2>
 
-        <p className="mt-6 text-center text-[16px] leading-[1.04] text-white design:absolute design:top-[150px] design:left-[583px] design:mt-0 design:w-[759px]">
+        <p className="mt-6 text-center text-[16px] leading-[17px] text-white design:absolute design:top-[150px] design:left-[583px] design:mt-0 design:w-[759px]">
           {"En la firma de "}
           <span className="font-bold">Vernal Farnum Mejia</span>
           {", nuestra misión es facilitar los sueños de nuestros clientes con honestidad, profesionalismo y amor, siempre tomando en cuenta sus mejores intereses y defendiendo lo más valioso que tiene todo ser humano: su familia."}
@@ -128,14 +128,14 @@ export function NuestroCompromiso() {
               >
                 <Image src={t.icono} alt="" width={75} height={75} />
               </span>
-              <p className="absolute right-[24px] bottom-[30px] left-[24px] text-[15px] leading-[1.2] font-medium text-white">
+              <p className="absolute right-[24px] bottom-[30px] left-[24px] text-[15px] leading-[16px] font-medium text-white">
                 {t.texto}
               </p>
             </li>
           ))}
         </ul>
 
-        <p className="mt-10 text-center text-[22px] leading-[1.04] font-light text-white design:absolute design:top-[697px] design:left-[427px] design:mt-0 design:w-[1102px] design:text-[34px]">
+        <p className="mt-10 text-center text-[22px] leading-[23px] font-light text-white design:absolute design:top-[697px] design:left-[427px] design:mt-0 design:w-[1102px] design:leading-[35px] design:text-[34px]">
           “nuestra misión es{" "}
           <span className="text-vernal-accent">facilitar los sueños</span> de nuestros
           clientes”

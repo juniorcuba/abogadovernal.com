@@ -81,11 +81,11 @@ export function BlogResenas() {
       />
 
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[877px] design:p-0">
-        <h2 className="text-[38px] leading-[1.04] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[95px] design:left-[265px] design:w-[745px] design:text-[54px]">
+        <h2 className="text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[95px] design:left-[265px] design:w-[745px] design:leading-[67px] design:text-[64px]">
           Mantente informado
         </h2>
 
-        <p className="mt-6 max-w-[541px] text-[16px] leading-[1.2] text-white design:absolute design:top-[183px] design:left-[271px] design:mt-0 design:w-[541px]">
+        <p className="mt-6 max-w-[541px] text-[16px] leading-[17px] text-white design:absolute design:top-[183px] design:left-[271px] design:mt-0 design:w-[541px]">
           Cambios en las leyes de inmigración, consejos prácticos y respuestas a las
           dudas más comunes de nuestra comunidad.
         </p>
@@ -105,7 +105,7 @@ export function BlogResenas() {
               required
               aria-label="Correo Electrónico"
               placeholder="Correo Electrónico"
-              className="ml-[17px] h-full w-full bg-transparent text-[15px] leading-[1.04] text-black outline-none placeholder:text-black"
+              className="ml-[17px] h-full w-full bg-transparent text-[15px] leading-[16px] text-black outline-none placeholder:text-black"
             />
           </div>
           <button
@@ -120,7 +120,7 @@ export function BlogResenas() {
         <ConsentNotice className="mt-6 max-w-[558px] design:absolute design:top-[332px] design:left-[271px] design:mt-0 design:w-[558px]" />
 
         {/* Reseñas de Google */}
-        <p className="mt-14 text-[28px] leading-[1.04] font-light design:absolute design:top-[449px] design:left-[278px] design:mt-0 design:w-[422px] design:text-[36px]">
+        <p className="mt-14 text-[28px] leading-[29px] font-light design:absolute design:top-[449px] design:left-[278px] design:mt-0 design:w-[422px] design:leading-[37px] design:text-[36px]">
           <span className="block text-white">Lo que piensan</span>
           <span className="text-vernal-accent block">nuestros clientes</span>
         </p>
@@ -141,10 +141,10 @@ export function BlogResenas() {
               style={{ left: r.left }}
             >
               <Estrellas className="justify-center design:justify-start" />
-              <p className="mt-[18px] text-center text-[13px] leading-[1.25] text-white">
+              <p className="mt-[18px] text-center text-[13px] leading-[17px] text-white">
                 {r.texto}
               </p>
-              <p className="text-vernal-accent mt-[10px] text-center text-[14px] leading-[1.04] font-bold">
+              <p className="text-vernal-accent mt-[10px] text-center text-[14px] leading-[15px] font-bold">
                 {r.autor}
               </p>
             </li>

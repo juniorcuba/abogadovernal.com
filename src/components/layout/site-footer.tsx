@@ -29,7 +29,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-vernal-footer relative text-white design:h-[468px]">
       <div className="relative mx-auto max-w-[1920px] px-6 pt-[84px] pb-10 lg:px-12 design:h-full design:p-0">
-        <p className="text-center text-[22px] leading-[1.04] font-light design:absolute design:top-[84px] design:left-[211px] design:w-[347px] design:text-left">
+        <p className="text-center text-[22px] leading-[23px] font-light design:absolute design:top-[84px] design:left-[211px] design:w-[347px] design:text-left">
           {site.tagline}
         </p>
 
@@ -43,21 +43,21 @@ export function SiteFooter() {
 
         <Link
           href="/contacto"
-          className="mt-8 block text-center text-[14px] leading-[1.04] transition-colors hover:text-vernal-accent design:absolute design:top-[103px] design:left-[1237px] design:mt-0"
+          className="mt-8 block text-center text-[14px] leading-[15px] transition-colors hover:text-vernal-accent design:absolute design:top-[103px] design:left-[1237px] design:mt-0"
         >
           Agenda tu consulta
         </Link>
 
         <a
           href={`mailto:${site.email}`}
-          className="mt-3 block text-center text-[14px] leading-[1.04] transition-colors hover:text-vernal-accent design:absolute design:top-[84px] design:left-[1343px] design:mt-0"
+          className="mt-3 block text-center text-[14px] leading-[15px] transition-colors hover:text-vernal-accent design:absolute design:top-[84px] design:left-[1343px] design:mt-0"
         >
           {site.email}
         </a>
 
         <a
           href={site.phoneHref}
-          className="text-vernal-accent mt-2 block text-center text-[16px] leading-[1.04] font-bold whitespace-nowrap design:absolute design:top-[102px] design:left-[1383px] design:mt-0"
+          className="text-vernal-accent mt-2 block text-center text-[16px] leading-[17px] font-bold whitespace-nowrap design:absolute design:top-[102px] design:left-[1383px] design:mt-0"
         >
           {site.phone}
         </a>
@@ -88,7 +88,7 @@ export function SiteFooter() {
           {offices.map((office) => (
             <li
               key={office.city}
-              className="max-w-[230px] text-center text-[16px] leading-[1.04] font-light design:w-[230px] design:max-w-none"
+              className="max-w-[230px] text-center text-[16px] leading-[17px] font-light design:w-[230px] design:max-w-none"
             >
               <span className="font-bold">{office.city}</span>
               <br />
@@ -99,7 +99,7 @@ export function SiteFooter() {
 
         <hr className="mt-14 border-0 border-t-[0.5px] border-white design:absolute design:top-[333px] design:left-[101px] design:mt-0 design:w-[1745px]" />
 
-        <p className="mt-6 text-center text-[12px] leading-[1.04] font-light design:absolute design:top-[394px] design:left-1/2 design:mt-0 design:w-[288px] design:-translate-x-1/2">
+        <p className="mt-6 text-center text-[12px] leading-[12px] font-light design:absolute design:top-[394px] design:left-1/2 design:mt-0 design:w-[288px] design:-translate-x-1/2">
           © 2026 – ABOGADO VERNAL. All right reserved.
           <br />
           <a href={site.privacyUrl} className="underline hover:text-vernal-accent">

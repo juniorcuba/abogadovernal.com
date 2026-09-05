@@ -40,20 +40,20 @@ export function Transmisiones() {
       />
 
       <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[688px] design:p-0">
-        <h2 className="text-[38px] leading-[1.04] font-semibold uppercase sm:text-[48px] design:absolute design:top-[122px] design:left-[264px] design:w-[434px] design:text-[64px]">
+        <h2 className="text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[122px] design:left-[264px] design:w-[434px] design:leading-[67px] design:text-[64px]">
           <span className="block text-white">Somos</span>
           <span className="text-vernal-accent block">inmigrantes</span>
           <span className="text-vernal-accent block">como tú</span>
         </h2>
 
-        <p className="mt-6 text-[20px] leading-[1.04] font-light uppercase design:absolute design:top-[339px] design:left-[264px] design:mt-0 design:text-[30px]">
+        <p className="mt-6 text-[20px] leading-[21px] font-light uppercase design:absolute design:top-[339px] design:left-[264px] design:mt-0 design:leading-[31px] design:text-[30px]">
           <span className="text-vernal-accent">sintonízanos</span>
           <span className="ml-[43px] text-white">
             martes <span className="text-white/50">|</span> 5p.m.
           </span>
         </p>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[1.04] text-justify italic design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] text-justify italic design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
           <span className="text-vernal-accent">
             No te pierdas las transmisiones en vivo del Abogado Vernal: Inmigrantes
             Como Tú.
@@ -81,6 +81,15 @@ export function Transmisiones() {
               height={644}
               className="absolute top-[-109px] left-[-73px] h-[644px] w-[857px] max-w-none object-cover"
             />
+            {/* Marca de agua "LIVE" (nodo 83:28, x999 y5721, caja 564×287 → 277px).
+                Va dentro del vídeo, que la recorta por abajo igual que el archivo. */}
+            <span
+              aria-hidden
+              className="absolute hidden text-[277px] leading-[288px] font-bold text-white/25 uppercase design:block"
+              style={{ left: 999 - 914, top: 5721 - 5536 }}
+            >
+              live
+            </span>
             <div
               aria-hidden
               className="absolute inset-0"
@@ -119,10 +128,10 @@ export function Transmisiones() {
             <span className="ml-[4px] border-t-[11px] border-b-[11px] border-l-[19px] border-t-transparent border-b-transparent border-l-white" />
           </span>
           <span className="text-white">
-            <span className="block text-[19px] leading-[1.2] font-medium uppercase">
+            <span className="block text-[19px] leading-[20px] font-medium uppercase">
               aclara tus dudas
             </span>
-            <span className="block text-[34px] leading-[1.1] font-bold uppercase">
+            <span className="block text-[34px] leading-[35px] font-bold uppercase">
               migratorias
             </span>
           </span>
@@ -137,7 +146,7 @@ export function Transmisiones() {
           }}
         >
           <span className="h-[22px] w-[22px] rounded-full bg-[#e02020]" />
-          <span className="text-[26px] leading-[1.04] font-bold text-white uppercase">
+          <span className="text-[26px] leading-[27px] font-bold text-white uppercase">
             live
           </span>
         </span>

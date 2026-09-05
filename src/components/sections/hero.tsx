@@ -35,13 +35,13 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto flex max-w-[1920px] flex-col gap-y-10 px-6 pt-[168px] pb-20 lg:px-12 design:block design:h-[1142px] design:w-[1920px] design:p-0">
-        <h1 className="text-[44px] leading-[1.04] font-semibold uppercase sm:text-[62px] design:absolute design:top-[276px] design:left-[223px] design:w-[565px] design:text-[82px]">
+        <h1 className="text-[44px] leading-[46px] font-semibold uppercase sm:text-[62px] design:absolute design:top-[276px] design:left-[223px] design:w-[565px] design:leading-[85px] design:text-[82px]">
           <span className="block text-white">abogado de</span>
           <span className="text-vernal-accent block">inmigración</span>
           <span className="text-vernal-accent block">en texas</span>
         </h1>
 
-        <p className="max-w-[440px] text-[26px] leading-[1.04] font-light text-white design:absolute design:top-[412px] design:left-[1300px] design:w-[440px] design:max-w-none design:text-[36px]">
+        <p className="max-w-[440px] text-[26px] leading-[27px] font-light text-white design:absolute design:top-[412px] design:left-[1300px] design:w-[440px] design:max-w-none design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent">Somos inmigrantes</span> como tú y
           defendemos tus derechos.
         </p>

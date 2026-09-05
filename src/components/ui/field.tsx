@@ -47,7 +47,7 @@ export function Field({
         required={required}
         placeholder={label}
         aria-label={label}
-        className="ml-[17px] h-full w-full bg-transparent text-[15px] leading-[1.04] text-black outline-none placeholder:text-black"
+        className="ml-[17px] h-full w-full bg-transparent text-[15px] leading-[16px] text-black outline-none placeholder:text-black"
       />
     </div>
   );
@@ -80,7 +80,7 @@ export function FieldArea({
         rows={1}
         placeholder={label}
         aria-label={label}
-        className="ml-[17px] h-full w-full resize-none bg-transparent pt-[17px] text-[15px] leading-[1.04] text-black outline-none placeholder:text-black"
+        className="ml-[17px] h-full w-full resize-none bg-transparent pt-[17px] text-[15px] leading-[16px] text-black outline-none placeholder:text-black"
       />
     </div>
   );
@@ -118,7 +118,7 @@ export function FieldSelect({
         name={name}
         defaultValue=""
         aria-label={label}
-        className="ml-[17px] h-full w-full appearance-none bg-transparent pr-[50px] text-[15px] leading-[1.04] text-black outline-none"
+        className="ml-[17px] h-full w-full appearance-none bg-transparent pr-[50px] text-[15px] leading-[16px] text-black outline-none"
       >
         <option value="" disabled hidden />
         {options.map((o) => (
@@ -129,7 +129,7 @@ export function FieldSelect({
       </select>
       <span
         aria-hidden
-        className="select-placeholder pointer-events-none absolute top-1/2 left-[48px] w-[169px] -translate-y-1/2 text-[15px] leading-[1.17] text-black"
+        className="select-placeholder pointer-events-none absolute top-1/2 left-[48px] w-[169px] -translate-y-1/2 text-[15px] leading-[18px] text-black"
       >
         {label}
       </span>

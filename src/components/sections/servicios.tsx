@@ -40,13 +40,13 @@ export function Servicios() {
           className="bg-vernal-accent hidden design:absolute design:top-[96px] design:left-[215px] design:block design:h-[443px] design:w-[12px]"
         />
 
-        <h2 className="text-vernal-accent text-[38px] leading-[1.04] font-semibold uppercase sm:text-[48px] design:absolute design:top-[106px] design:left-[290px] design:w-[348px] design:text-[64px]">
+        <h2 className="text-vernal-accent text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[106px] design:left-[290px] design:w-[348px] design:leading-[67px] design:text-[64px]">
           Nuestros
           <br />
           servicios
         </h2>
 
-        <p className="mt-8 max-w-[580px] text-[16px] leading-[1.04] whitespace-pre-line text-justify text-white design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
+        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
           {"Como firma de inmigración en Texas, "}
           <span className="text-vernal-accent">
             podemos ayudarte a través de distintas áreas de práctica, adaptadas a las
@@ -74,7 +74,7 @@ export function Servicios() {
           />
         </button>
 
-        <p className="mt-8 max-w-[556px] text-center text-[24px] leading-[1.04] font-light text-white design:absolute design:top-[400px] design:left-[1032px] design:mt-0 design:w-[556px] design:text-[36px]">
+        <p className="mt-8 max-w-[556px] text-center text-[24px] leading-[25px] font-light text-white design:absolute design:top-[400px] design:left-[1032px] design:mt-0 design:w-[556px] design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent">Nos adaptamos a tu caso y</span>{" "}
           luchamos por ofrecerte la mejor opción.
         </p>

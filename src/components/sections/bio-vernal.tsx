@@ -36,7 +36,7 @@ export function BioVernal() {
           <div className="bg-vernal-accent absolute top-[102px] left-[2px] h-[278px] w-[381px] design:top-[147px] design:left-[3px] design:h-[400px] design:w-[548px]" />
           <p
             aria-hidden
-            className="text-vernal-accent absolute top-[14px] left-0 text-[101px] leading-[1.04] font-semibold uppercase design:top-[20px] design:text-[146px]"
+            className="text-vernal-accent absolute top-[14px] left-0 text-[101px] leading-[105px] font-semibold uppercase design:top-[20px] design:leading-[152px] design:text-[146px]"
           >
             VERNAL
           </p>
@@ -49,7 +49,7 @@ export function BioVernal() {
           />
           <p
             aria-hidden
-            className="shadow-vernal-1 absolute top-[344px] left-[21px] text-[24px] leading-[1.04] font-bold tracking-[14px] text-[#0f0f10] uppercase design:top-[496px] design:left-[30px] design:text-[35px] design:tracking-[21px]"
+            className="shadow-vernal-1 absolute top-[344px] left-[21px] text-[24px] leading-[25px] font-bold tracking-[14px] text-[#0f0f10] uppercase design:top-[496px] design:left-[30px] design:leading-[36px] design:text-[35px] design:tracking-[21px]"
             style={{ textShadow: "8px 18px 37.1px rgb(0 0 0 / 0.51)" }}
           >
             texas lawyer
@@ -58,7 +58,7 @@ export function BioVernal() {
 
         <Link
           href="/nosotros"
-          className="mt-8 flex items-center justify-center gap-x-[10px] text-[16px] leading-[1.04] text-white transition-colors hover:text-vernal-accent design:absolute design:top-[683px] design:left-[464px] design:mt-0"
+          className="mt-8 flex items-center justify-center gap-x-[10px] text-[16px] leading-[17px] text-white transition-colors hover:text-vernal-accent design:absolute design:top-[683px] design:left-[464px] design:mt-0"
         >
           Conoce mi historia
           <span aria-hidden className="text-[18px]">
@@ -66,12 +66,12 @@ export function BioVernal() {
           </span>
         </Link>
 
-        <h2 className="mt-12 text-[38px] leading-[1.04] font-semibold uppercase sm:text-[48px] design:absolute design:top-[138px] design:left-[924px] design:mt-0 design:w-[587px] design:text-[64px]">
+        <h2 className="mt-12 text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[138px] design:left-[924px] design:mt-0 design:w-[587px] design:leading-[67px] design:text-[64px]">
           <span className="block text-white">Conocé al</span>
           <span className="text-vernal-accent block">abogado Vernal</span>
         </h2>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[1.04] whitespace-pre-line text-justify text-white design:absolute design:top-[335px] design:left-[924px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[335px] design:left-[924px] design:mt-0 design:w-[580px]">
           {"Antes de convertirse en abogado de inmigración, el "}
           <span className="text-vernal-accent">Abogado Vernal</span>
           {" ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con inmigración en Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que “cada cliente que llega a la oficina lleva a mi familia”, no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos."}

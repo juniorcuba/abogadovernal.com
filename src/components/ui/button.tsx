@@ -7,7 +7,7 @@ import Link from "next/link";
  */
 
 const base =
-  "inline-flex h-[52px] items-center justify-center px-6 text-[16px] leading-[1.04] transition-opacity hover:opacity-90";
+  "inline-flex h-[52px] items-center justify-center px-6 text-[16px] leading-[17px] transition-opacity hover:opacity-90";
 
 const variants = {
   accent: "bg-vernal-accent text-vernal-navy",

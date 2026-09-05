@@ -15,13 +15,13 @@ export function FloatingCta() {
     <div className="absolute top-[886px] right-0 z-10 hidden w-[349px] design:block">
       <Link
         href="/contacto"
-        className="bg-vernal-green shadow-vernal-1 flex h-[37px] items-center justify-center text-[21px] leading-[1.04] font-semibold text-vernal-navy transition-opacity hover:opacity-90"
+        className="bg-vernal-green shadow-vernal-1 flex h-[37px] items-center justify-center text-[21px] leading-[22px] font-semibold text-vernal-navy transition-opacity hover:opacity-90"
       >
         ¡Agenda tu consulta!
       </Link>
       <a
         href={site.phoneHref}
-        className="bg-vernal-accent shadow-vernal-1 flex h-[73px] items-center justify-center gap-[15px] text-[21px] leading-[1.04] text-vernal-navy transition-opacity hover:opacity-90"
+        className="bg-vernal-accent shadow-vernal-1 flex h-[73px] items-center justify-center gap-[15px] text-[21px] leading-[22px] text-vernal-navy transition-opacity hover:opacity-90"
       >
         <Image
           src="/icons/chat.svg"

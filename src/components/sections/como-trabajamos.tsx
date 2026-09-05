@@ -82,13 +82,13 @@ export function ComoTrabajamos() {
           </span>
         ))}
 
-        <h2 className="mt-10 text-[38px] leading-[1.04] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[84px] design:left-[1021px] design:mt-0 design:w-[657px] design:text-[64px]">
+        <h2 className="mt-10 text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[84px] design:left-[1021px] design:mt-0 design:w-[657px] design:leading-[67px] design:text-[64px]">
           Cómo es
           <br />
           nuestro trabajo
         </h2>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[1.04] whitespace-pre-line text-justify text-white design:absolute design:top-[239px] design:left-[1021px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[239px] design:left-[1021px] design:mt-0 design:w-[580px]">
           {"El equipo de cada oficina se pondrá en contacto contigo para agendar la fecha y hora de tu cita. "}
           <span className="text-vernal-accent">
             {"Durante tu consulta, serás atendido por el equipo del "}
@@ -100,10 +100,10 @@ export function ComoTrabajamos() {
           {" se encuentra de visita en la oficina que corresponde, también podrás ser atendido directamente por él, con una cita previamente agendada."}
         </p>
 
-        <p className="mt-10 text-center text-[72px] leading-[1.04] font-semibold text-white uppercase design:absolute design:top-[416px] design:left-[172px] design:mt-0 design:w-[684px] design:text-left design:text-[176px]">
+        <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase design:absolute design:top-[416px] design:left-[172px] design:mt-0 design:w-[684px] design:text-left design:leading-[183px] design:text-[176px]">
           5 sedes
         </p>
-        <p className="text-center text-[20px] leading-[1.04] font-semibold text-white uppercase design:absolute design:top-[590px] design:left-[189px] design:w-[560px] design:text-left design:text-[45px]">
+        <p className="text-center text-[20px] leading-[21px] font-semibold text-white uppercase design:absolute design:top-[590px] design:left-[189px] design:w-[560px] design:text-left design:leading-[47px] design:text-[45px]">
           operando en el estado
         </p>
 
@@ -113,7 +113,7 @@ export function ComoTrabajamos() {
           {offices.map((office, i) => (
             <li
               key={office.city}
-              className="text-[16px] leading-[1.04] text-white design:absolute design:top-[17px] design:w-[130px]"
+              className="text-[16px] leading-[17px] text-white design:absolute design:top-[17px] design:w-[130px]"
               style={{ left: i * 167 }}
             >
               <span className="text-vernal-accent block font-bold">{office.city}</span>

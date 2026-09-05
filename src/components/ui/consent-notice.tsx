@@ -9,7 +9,7 @@
 export function ConsentNotice({ className }: { className?: string }) {
   return (
     <p
-      className={`text-[12px] leading-[1.17] font-extralight text-justify italic text-white ${className ?? ""}`}
+      className={`text-[12px] leading-[14px] font-extralight text-justify italic text-white ${className ?? ""}`}
     >
       Al enviar este formulario aceptas recibir mensajes transaccionales por SMS o
       WhatsApp de The Law Office Of{" "}

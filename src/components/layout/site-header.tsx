@@ -37,7 +37,7 @@ function NavLink({ label, href }: { label: string; href: string }) {
   return (
     <Link
       href={href}
-      className="text-[16px] leading-[1.04] whitespace-nowrap text-white transition-colors hover:text-vernal-accent"
+      className="text-[16px] leading-[17px] whitespace-nowrap text-white transition-colors hover:text-vernal-accent"
     >
       {label}
     </Link>
@@ -72,7 +72,7 @@ export function SiteHeader() {
 
             <a
               href={site.phoneHref}
-              className="text-vernal-accent text-[16px] leading-[1.04] font-bold whitespace-nowrap"
+              className="text-vernal-accent text-[16px] leading-[17px] font-bold whitespace-nowrap"
             >
               {site.phone}
             </a>

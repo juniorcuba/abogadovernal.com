@@ -86,10 +86,10 @@ export function Testimonios() {
                   ✓
                 </span>
                 <span className="text-white">
-                  <span className="block text-[14px] leading-[1.15] font-bold">
+                  <span className="block text-[14px] leading-[15px] font-bold">
                     Nombre cliente
                   </span>
-                  <span className="block text-[13px] leading-[1.15]">
+                  <span className="block text-[13px] leading-[14px]">
                     Ajuste de estatus
                   </span>
                 </span>
@@ -98,7 +98,7 @@ export function Testimonios() {
           ))}
         </ul>
 
-        <p className="mt-12 text-center text-[24px] leading-[1.04] font-light design:absolute design:top-[588px] design:left-[489px] design:mt-0 design:w-[946px] design:text-[36px]">
+        <p className="mt-12 text-center text-[24px] leading-[25px] font-light design:absolute design:top-[588px] design:left-[489px] design:mt-0 design:w-[946px] design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent block">
             Historias reales, nuevos comienzos.
           </span>

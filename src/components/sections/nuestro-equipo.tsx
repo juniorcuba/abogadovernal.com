@@ -97,13 +97,13 @@ export function NuestroEquipo() {
           className="bg-vernal-accent hidden design:absolute design:top-[130px] design:left-[215px] design:block design:h-[443px] design:w-[12px]"
         />
 
-        <h2 className="text-[38px] leading-[1.04] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[122px] design:left-[279px] design:w-[309px] design:text-[64px]">
+        <h2 className="text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[122px] design:left-[279px] design:w-[309px] design:leading-[67px] design:text-[64px]">
           Nuestro
           <br />
           equipo
         </h2>
 
-        <p className="mt-8 max-w-[580px] text-[16px] leading-[1.04] whitespace-pre-line text-justify text-white design:absolute design:top-[286px] design:left-[279px] design:mt-0 design:w-[580px]">
+        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-white design:absolute design:top-[286px] design:left-[279px] design:mt-0 design:w-[580px]">
           {"En Texas, Estados Unidos, la oficina del "}
           <span className="text-vernal-accent font-bold">
             Abogado Vernal Farnum Mejía
@@ -118,7 +118,7 @@ export function NuestroEquipo() {
           Conoce al equipo completo
         </ButtonLink>
 
-        <p className="mt-12 text-[24px] leading-[1.04] font-light text-white design:absolute design:top-[141px] design:left-[1041px] design:mt-0 design:w-[530px] design:text-[36px]">
+        <p className="mt-12 text-[24px] leading-[25px] font-light text-white design:absolute design:top-[141px] design:left-[1041px] design:mt-0 design:w-[530px] design:leading-[37px] design:text-[36px]">
           Latinos luchando <span className="text-vernal-accent">por Latinos...</span>
         </p>
 
@@ -130,11 +130,11 @@ export function NuestroEquipo() {
               className="design:absolute design:top-[253px] design:w-[325px]"
               style={{ left: p.left }}
             >
-              <p className="text-vernal-accent text-center text-[17px] leading-[1.04] font-bold uppercase">
+              <p className="text-vernal-accent text-center text-[17px] leading-[18px] font-bold uppercase">
                 {p.nombre}
               </p>
               <p
-                className={`text-center text-[12px] leading-[1.04] font-bold uppercase ${p.cargoClase}`}
+                className={`text-center text-[12px] leading-[12px] font-bold uppercase ${p.cargoClase}`}
               >
                 {p.cargo}
               </p>

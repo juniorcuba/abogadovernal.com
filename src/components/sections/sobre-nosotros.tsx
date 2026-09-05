@@ -90,7 +90,7 @@ export function SobreNosotros() {
           className="bg-vernal-navy hidden design:absolute design:top-[135px] design:left-[215px] design:block design:h-[351px] design:w-[12px]"
         />
 
-        <h2 className="text-vernal-navy text-[38px] leading-[1.04] font-semibold uppercase sm:text-[48px] design:absolute design:top-[127px] design:left-[271px] design:w-[354px] design:text-[64px]">
+        <h2 className="text-vernal-navy text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[127px] design:left-[271px] design:w-[354px] design:leading-[67px] design:text-[64px]">
           Sobre
           <br />
           nosotros
@@ -99,16 +99,16 @@ export function SobreNosotros() {
         {/* Un solo bloque con salto doble, como el nodo 8:97: así la línea en
             blanco entre párrafos mide exactamente un interlineado, en vez de un
             margen aproximado entre dos <p>. */}
-        <p className="mt-8 max-w-[580px] text-[16px] leading-[1.04] whitespace-pre-line text-justify text-black design:absolute design:top-[302px] design:left-[279px] design:mt-0 design:w-[580px]">
+        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-justify text-black design:absolute design:top-[302px] design:left-[279px] design:mt-0 design:w-[580px]">
           {"En Texas, Estados Unidos, la oficina del "}
           <span className="font-bold">Abogado Vernal Farnum Mejía</span>
           {" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca."}
         </p>
 
-        <p className="mt-10 text-center text-[72px] leading-[1.04] font-semibold text-white uppercase design:absolute design:top-[358px] design:left-[1025px] design:mt-0 design:text-left design:text-[176px]">
+        <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase design:absolute design:top-[358px] design:left-[1025px] design:mt-0 design:text-left design:leading-[183px] design:text-[176px]">
           +10,000
         </p>
-        <p className="text-center text-[24px] leading-[1.04] font-semibold text-white uppercase design:absolute design:top-[532px] design:left-[1265px] design:text-left design:text-[45px]">
+        <p className="text-center text-[24px] leading-[25px] font-semibold text-white uppercase design:absolute design:top-[532px] design:left-[1265px] design:text-left design:leading-[47px] design:text-[45px]">
           familias reunidas
         </p>
       </div>
