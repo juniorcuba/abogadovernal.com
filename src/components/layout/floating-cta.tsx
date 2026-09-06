@@ -10,9 +10,15 @@ import { site } from "@/lib/site";
  *   icono chat     18:22  41×35.279
  * Ambas barras llevan "Vernal Shadow 1".
  */
-export function FloatingCta() {
+export function FloatingCta({ className }: { className?: string } = {}) {
   return (
-    <div className="absolute top-[886px] right-0 z-10 hidden w-[349px] design:block">
+    // La `y` la pone quien lo usa: en la home cae dentro del hero y en /nosotros
+    // dentro de la sección siguiente, porque ese hero es más corto.
+    <div
+      className={`absolute right-0 z-10 hidden w-[349px] design:block ${
+        className ?? "design:top-[886px]"
+      }`}
+    >
       <Link
         href="/contacto"
         className="bg-vernal-green shadow-vernal-1 flex h-[37px] items-center justify-center text-[21px] leading-[22px] font-semibold text-vernal-navy transition-opacity hover:opacity-90"
