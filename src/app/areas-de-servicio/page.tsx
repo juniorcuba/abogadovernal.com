@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { AreasCiudades } from "@/components/sections/areas-ciudades";
 import { AreasHero } from "@/components/sections/areas-hero";
 import { BlogResenas } from "@/components/sections/blog-resenas";
 
@@ -13,7 +14,7 @@ import { BlogResenas } from "@/components/sections/blog-resenas";
  * |------|------|-------------------------------------|--------|
  * |    0 |  991 | hero: título, claim, CTA y selector de ciudad | ✅ |
  * |    0 |  128 | cabecera, ENCIMA del hero           | ✅ la misma de la home |
- * |  996 | 1607 | "Abogado de inmigración en …" + acordeón de las 5 ciudades | pendiente |
+ * |  996 | 1607 | "Abogado de inmigración en …" + acordeón de las 5 ciudades | ✅ |
  * | 2603 |  877 | "Mantente informado" + reseñas      | ✅ la misma de la home |
  * | 3480 |  468 | footer                              | ✅ el mismo de la home |
  * | 3948 |   61 | espacio vacío al final del artboard | — |
@@ -48,7 +49,7 @@ export default function AreasDeServicioPage() {
       <SiteHeader />
       <main className="relative">
         <AreasHero />
-        {/* Aquí va el bloque de ciudades (y996, alto 1607). */}
+        <AreasCiudades />
         <BlogResenas />
       </main>
       <SiteFooter />

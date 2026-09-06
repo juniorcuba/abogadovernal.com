@@ -208,7 +208,7 @@ LANDING - MOBILE»). No son parte de este sitio.
 |---|---|---|---|
 | 0 | 991 | hero + selector de ciudad | ✅ implementado |
 | 0 | 128 | cabecera, **encima** del hero | ✅ es la de la home (dif. media 0.81) |
-| 996 | 1607 | "Abogado de inmigración en…" + acordeón de 5 ciudades | pendiente |
+| 996 | 1607 | "Abogado de inmigración en…" + acordeón de 5 ciudades | ✅ implementado |
 | 2603 | 877 | "Mantente informado" + reseñas | ✅ es la de la home (dif. media 0.35) |
 | 3480 | 468 | footer | ✅ es el de la home (dif. media 0.48) |
 | 3948 | 61 | espacio vacío al final del artboard | — |
@@ -223,9 +223,19 @@ desplazamiento vertical que minimiza la diferencia media contra este artboard.
 Que salga por debajo de 1 sobre 255 quiere decir que es el mismo bloque, no uno
 parecido.
 
-Dos erratas del archivo, pendientes de confirmar con el cliente: el título dice
-"ÁREAS DE PRACTICA" sin tilde, y la cuarta ciudad "FORTH WORTH" en vez de Fort
-Worth.
+**Erratas del archivo, pendientes de confirmar con el cliente:**
+
+1. El título dice "ÁREAS DE PRACTICA", sin tilde.
+2. La cuarta ciudad dice "FORTH WORTH"; la ciudad es Fort Worth.
+3. Los enlaces del desplegable de **San Antonio** dicen "en Dallas" ("Defensa
+   Contra la Deportación en Dallas", "Visa K1 (Prometidos) en Dallas", "Visas
+   Humanitarias en Dallas"). El párrafo de esa misma sede sí habla de San
+   Antonio, así que parece que el diseñador duplicó el bloque de Dallas y se
+   dejó los enlaces. Se han puesto **literales** para que la página siga siendo
+   verificable contra el render.
+
+**Contenido que falta:** el archivo solo trae el párrafo de San Antonio. Las
+otras cuatro sedes necesitan el suyo; no se inventan.
 
 ## Los límites son POR ENDPOINT, y se recuperan en ~30 horas
 

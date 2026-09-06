@@ -50,3 +50,23 @@ export function SelloVerificado({ className }: { className?: string }) {
     </svg>
   );
 }
+
+/**
+ * "Abrir en una pestaña nueva", al final de cada área de práctica del acordeón
+ * de /areas-de-servicio. Caja de 22 en el archivo.
+ */
+export function IconoEnlaceExterno({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 22 22"
+      width={22}
+      height={22}
+      fill="currentColor"
+      aria-hidden
+      className={className}
+    >
+      <path d="M18.14 14C18.26 13.28 18.8 12.91 19.42 12.91C20.01 12.9 20.72 13.3 20.72 14.01V19.51C20.72 21.06 19.37 22 17.91 22H2.86C1.15 22 0 20.83 0 19.12L0.01 4.04C0.01 2.64 0.95 1.31 2.42 1.3H8.05C8.69 1.3 9.15 2 9.07 2.56C9.15 3.38 8.52 3.9 7.75 3.89H2.62V19.39H18.13L18.14 14Z" />
+      <path d="M19.37 4.51L12.5 11.33C11.98 11.84 11.2 11.7 10.76 11.25C10.25 10.74 10.24 9.95 10.77 9.41L17.49 2.68L14.14 2.59C13.46 2.52 13 2.07 12.96 1.38C12.92 0.75 13.31 0.01 14.03 0.01L20.91 0C21.39 0 22 0.46 22 0.99L21.99 8.08C21.99 8.72 21.21 9.07 20.71 9.06C20.06 9.04 19.55 8.65 19.44 7.99L19.37 4.51V4.51Z" />
+    </svg>
+  );
+}
