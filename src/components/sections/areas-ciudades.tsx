@@ -28,6 +28,8 @@ import { IconoEnlaceExterno } from "@/components/ui/iconos";
  * El archivo trae la fila 05 abierta y por eso arranca así, aunque para el sitio
  * real lo lógico sería abrir Dallas, que es de quien habla el título. Pendiente
  * de decidir con el cliente.
+ *
+ * El texto de las sedes es PROVISIONAL: ver `parrafoProvisional`.
  */
 
 /** Las cuatro áreas, tal como están en el archivo. */
@@ -53,13 +55,23 @@ const SEDES = [
 ];
 
 /**
- * El párrafo de la sede. En el archivo solo existe el de San Antonio; los otros
- * cuatro los tiene que dar el cliente, no me los invento.
+ * TEXTO PROVISIONAL. En el archivo solo existe el párrafo de San Antonio; aquí se
+ * reutiliza cambiando el nombre de la ciudad para que las cinco sedes se vean
+ * llenas mientras llega el texto real del cliente.
+ *
+ * Con "San Antonio" sale palabra por palabra el del archivo, así que la página
+ * se puede seguir comparando contra el render.
+ *
+ * NO PUBLICAR ASÍ: son cinco párrafos idénticos hablando de ciudades distintas.
  */
-const PARRAFOS: Record<string, string> = {
-  "San Antonio":
-    "San Antonio es una de las ciudades con mayor crecimiento de comunidad inmigrante en Texas, y nuestra oficina está aquí para acompañarte en cada etapa de tu proceso migratorio. Desde nuestra sede en San Antonio, ofrecemos representación en las siguientes áreas:",
-};
+function parrafoProvisional(ciudad: string) {
+  return (
+    `${ciudad} es una de las ciudades con mayor crecimiento de comunidad ` +
+    `inmigrante en Texas, y nuestra oficina está aquí para acompañarte en cada ` +
+    `etapa de tu proceso migratorio. Desde nuestra sede en ${ciudad}, ofrecemos ` +
+    `representación en las siguientes áreas:`
+  );
+}
 
 /** Alto de la fila cerrada y de la abierta, del archivo. */
 const ALTO_FILA = 109;
@@ -153,7 +165,6 @@ export function AreasCiudades() {
         <div className="mt-12 design:absolute design:top-[564px] design:left-[237px] design:mt-0 design:w-[1441px]">
           {SEDES.map((s) => {
             const open = abierta === s.ciudad;
-            const parrafo = PARRAFOS[s.ciudad];
             return (
               <div key={s.n} className="relative">
                 <button
@@ -210,14 +221,9 @@ export function AreasCiudades() {
                   <div /* 86 y no 71: el archivo pone el párrafo en x365 con 315 de ancho y la
                      primera columna en x766. Entre columnas sí son 71. */
                   className="pb-8 design:flex design:h-[378px] design:gap-x-[86px] design:pb-0 design:pl-[128px]">
-                    {parrafo ? (
-                      <p className="max-w-[315px] text-[16px] leading-[17px] text-white design:w-[315px] design:pt-[7px]">
-                        {parrafo}
-                      </p>
-                    ) : (
-                      /* Las otras cuatro sedes no tienen texto en el archivo. */
-                      <div aria-hidden className="design:w-[315px]" />
-                    )}
+                    <p className="max-w-[315px] text-[16px] leading-[17px] text-white design:w-[315px] design:pt-[7px]">
+                      {parrafoProvisional(s.ciudad)}
+                    </p>
                     <div className="mt-6 grid gap-x-[71px] sm:grid-cols-2 design:mt-0 design:flex">
                       <Areas columna={0} />
                       <Areas columna={1} />

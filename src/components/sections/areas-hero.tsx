@@ -46,6 +46,10 @@ export function AreasHero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 design:top-0 design:left-[972px] design:h-[991px] design:w-[963px]"
       >
+        {/* 900×600 estirados a 1766×1178. Probé a servir el JPEG original sin
+            optimizar por si la recompresión era la culpable de la diferencia con
+            el render de Figma: no cambió nada (13.9% → 14.2%). Lo que separa las
+            dos imágenes es el algoritmo de ampliación, no la compresión. */}
         <Image
           src="/images/areas/skyline-dallas.webp"
           alt=""
