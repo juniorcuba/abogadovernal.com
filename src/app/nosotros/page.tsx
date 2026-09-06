@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { NosotrosCaso } from "@/components/sections/nosotros-caso";
+import { NosotrosCifras } from "@/components/sections/nosotros-cifras";
 import { NosotrosHero } from "@/components/sections/nosotros-hero";
+import { NosotrosHoy } from "@/components/sections/nosotros-hoy";
+import { NosotrosLeccion } from "@/components/sections/nosotros-leccion";
 import { BlogResenas } from "@/components/sections/blog-resenas";
 
 /**
@@ -13,11 +17,11 @@ import { BlogResenas } from "@/components/sections/blog-resenas";
  * |------|------|-----------------------------------------------|--------|
  * |    9 |  772 | hero: "Abogado Vernal" + su historia + la cita | ✅ |
  * |    0 |  128 | cabecera, encima del hero                      | ✅ la de la home (dif. 0.55) |
- * |  781 |  608 | "Una lección que su propia familia le enseñó"  | pendiente |
- * | 1391 |  648 | banda cian "El caso que lo confirmó todo"      | pendiente |
- * | 2034 |  883 | "Hoy, al frente de un equipo que piensa igual" | pendiente |
- * | 2629 |  288 | tira de cinco fotos — VACÍA en el archivo      | pendiente |
- * | 2920 |  801 | "+15,000 personas asesoradas"                  | pendiente |
+ * |  781 |  608 | "Una lección que su propia familia le enseñó"  | ✅ |
+ * | 1391 |  648 | banda cian "El caso que lo confirmó todo"      | ✅ |
+ * | 2034 |  883 | "Hoy, al frente de un equipo que piensa igual" | ✅ |
+ * | 2629 |  288 | tira de cinco fotos — VACÍA en el archivo      | huecos |
+ * | 2920 |  801 | "+15,000 personas asesoradas"                  | ✅ |
  * | 3721 |  877 | "Mantente informado" + reseñas                 | ✅ la de la home (dif. 0.35) |
  * | 4598 |  468 | footer                                         | ✅ el de la home (dif. 0.49) |
  * | 5066 |  272 | espacio vacío al final del artboard            | — |
@@ -45,8 +49,10 @@ export default function NosotrosPage() {
       <SiteHeader />
       <main className="relative">
         <NosotrosHero />
-        {/* Aquí van la lección (y781), el caso (y1391), el equipo de hoy (y2034)
-            y las cifras (y2920). */}
+        <NosotrosLeccion />
+        <NosotrosCaso />
+        <NosotrosHoy />
+        <NosotrosCifras />
         <BlogResenas />
       </main>
       <SiteFooter />
