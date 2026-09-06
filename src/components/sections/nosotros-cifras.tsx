@@ -49,7 +49,7 @@ export function NosotrosCifras() {
           Personas asesoradas
         </p>
 
-        <p className="mt-10 text-[16px] leading-[22px] whitespace-pre-line text-white design:absolute design:top-[251px] design:left-[543px] design:mt-0 design:w-[832px] design:text-justify design:leading-[17px]">
+        <p className="mt-10 text-[16px] leading-[22px] whitespace-pre-line text-white design:absolute design:top-[251px] design:left-[543px] design:mt-0 design:w-[832px] design:text-justify design:leading-[17px] max-w-[680px] design:max-w-none">
           {"Ese enfoque se refleja en los números. A lo largo de su trayectoria, el despacho ha acompañado a más de 15,000 personas en su proceso migratorio, desde peticiones familiares hasta casos de asilo y defensa contra la deportación y ha ayudado a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos.\n\nPero para el Abogado Vernal, ese número no se mide en casos cerrados, sino en las cenas familiares, los cumpleaños y los momentos cotidianos que esas 10,000 familias pudieron volver a compartir gracias a un proceso bien llevado.\n\nSu firma ha sido mencionada en medios como Univisión, Telemundo y Estrella TV pero su filosofía sigue siendo la misma desde el primer día: contratar personas a quienes de verdad les importe la historia de cada cliente, no solo su caso, y construir, como él lo describe, una firma \"imperfectamente honesta”"}
         </p>
       </div>

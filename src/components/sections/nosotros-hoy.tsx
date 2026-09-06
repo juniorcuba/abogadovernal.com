@@ -60,7 +60,7 @@ export function NosotrosHoy() {
           </span>
         </h2>
 
-        <p className="mt-6 text-[16px] leading-[22px] text-white design:absolute design:top-[320px] design:left-[549px] design:mt-0 design:w-[822px] design:text-justify design:leading-[17px]">
+        <p className="mt-6 text-[16px] leading-[22px] text-white design:absolute design:top-[320px] design:left-[549px] design:mt-0 design:w-[822px] design:text-justify design:leading-[17px] max-w-[680px] design:max-w-none">
           Hoy, el Abogado Vernal lidera un equipo de más de 50 personas, repartido en
           sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro
           ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las

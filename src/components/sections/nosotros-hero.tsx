@@ -51,7 +51,7 @@ export function NosotrosHero() {
           Vernal
         </h1>
 
-        <p className="mt-8 text-[16px] leading-[22px] whitespace-pre-line text-white design:absolute design:top-[428px] design:left-[227px] design:mt-0 design:w-[788px] design:text-justify design:leading-[17px]">
+        <p className="mt-8 text-[16px] leading-[22px] whitespace-pre-line text-white design:absolute design:top-[428px] design:left-[227px] design:mt-0 design:w-[788px] design:text-justify design:leading-[17px] max-w-[680px] design:max-w-none">
           {"Antes de convertirse en abogado de inmigración, el Abogado Vernal Farum ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con la inmigración a Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que “cada cliente que llega a la oficina lleva a mi familia”, no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda, es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos."}
         </p>
 

@@ -49,7 +49,7 @@ export function NosotrosCaso() {
             </span>
           </h2>
 
-          <p className="text-vernal-navy mt-6 text-[16px] leading-[22px] design:absolute design:top-[371px] design:left-[288px] design:mt-0 design:w-[580px] design:leading-[17px]">
+          <p className="text-vernal-navy mt-6 text-[16px] leading-[22px] design:absolute design:top-[371px] design:left-[288px] design:mt-0 design:w-[580px] design:leading-[17px] max-w-[680px] design:max-w-none">
             Entre los casos que marcaron su carrera como abogado de inmigración en
             Texas, destaca uno que llegó casi por accidente: una familia con un menor
             que enfrentaba una situación médica delicada, y que ya había sido

@@ -65,7 +65,7 @@ export function NosotrosLeccion() {
             <span className="text-vernal-accent">familia le enseñó</span>
           </h2>
 
-          <p className="mt-6 text-[16px] leading-[22px] whitespace-pre-line text-white design:absolute design:top-[309px] design:left-[1089px] design:mt-0 design:w-[580px] design:leading-[17px]">
+          <p className="mt-6 text-[16px] leading-[22px] whitespace-pre-line text-white design:absolute design:top-[309px] design:left-[1089px] design:mt-0 design:w-[580px] design:leading-[17px] max-w-[680px] design:max-w-none">
             {"A lo largo de su carrera, ha visto de cerca cómo una mala asesoría legal puede cambiar por completo el rumbo de una familia, no tuvo que buscar lejos para entenderlo. Su propio hermano vivió un proceso migratorio que pudo haber terminado de forma muy distinta, de no ser porque buscó la orientación correcta a tiempo.\n\nEsa experiencia marcó cómo entiende el costo real de un mal proceso legal, no en dinero, sino en tiempo con la familia que nunca se recupera."}
           </p>
         </div>
