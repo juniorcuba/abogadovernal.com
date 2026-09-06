@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
+import { anclaSede } from "@/lib/anclas";
 
 /**
  * Hero de /areas-de-servicio — rango y=0..991 de la frame `211:750`.
@@ -120,8 +121,8 @@ export function AreasHero() {
           Explora las opciones
         </ButtonLink>
 
-        {/* Listado de ciudades. De momento son enlaces al ancla de cada ciudad
-            en el bloque de abajo; el diseño no define otro comportamiento. */}
+        {/* Listado de ciudades: cada una enlaza a su fila del acordeón de abajo,
+            que se abre sola al llegar por el ancla. */}
         <div className="mt-12 design:absolute design:top-0 design:left-0 design:mt-0 design:h-full design:w-full">
           <p className="text-vernal-accent text-[18px] leading-[19px] font-light design:absolute design:top-[287px] design:left-[1120px] design:text-[20px] design:leading-[21px]">
             Seleccione la ciudad
@@ -136,7 +137,7 @@ export function AreasHero() {
                   style={{ "--linea": `${c.linea}px` } as React.CSSProperties}
                 />
                 <a
-                  href={`#${c.nombre.toLowerCase().replace(/ /g, "-")}`}
+                  href={`#${anclaSede(c.nombre)}`}
                   className={`block py-3 text-[28px] leading-[29px] font-semibold uppercase design:absolute design:top-[var(--base)] design:left-[1119.5px] design:py-0 design:text-[40px] design:leading-[42px] ${
                     c.activa ? "text-vernal-accent" : "text-white"
                   }`}

@@ -2,8 +2,9 @@
 
 // Cliente porque el acordeón necesita estado.
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IconoEnlaceExterno } from "@/components/ui/iconos";
+import { anclaSede } from "@/lib/anclas";
 
 /**
  * "Abogado de Inmigración en Dallas, TX" + acordeón de las cinco sedes.
@@ -99,7 +100,22 @@ function Areas({ columna }: { columna: 0 | 1 }) {
 }
 
 export function AreasCiudades() {
+  // Por defecto la que trae el archivo abierta.
   const [abierta, setAbierta] = useState("San Antonio");
+
+  // El listado del hero enlaza aquí por ancla. Sin esto el enlace desplaza hasta
+  // una fila cerrada, que es peor que no enlazar. Se escucha el hash en vez de
+  // compartir estado entre las dos secciones, que no son hermanas.
+  useEffect(() => {
+    const abrirSegunHash = () => {
+      const ancla = decodeURIComponent(window.location.hash.slice(1));
+      const sede = SEDES.find((s) => anclaSede(s.ciudad) === ancla);
+      if (sede) setAbierta(sede.ciudad);
+    };
+    abrirSegunHash();
+    window.addEventListener("hashchange", abrirSegunHash);
+    return () => window.removeEventListener("hashchange", abrirSegunHash);
+  }, []);
 
   return (
     <section className="relative overflow-hidden design:mt-[5px] design:h-[1607px]">
@@ -166,7 +182,7 @@ export function AreasCiudades() {
           {SEDES.map((s) => {
             const open = abierta === s.ciudad;
             return (
-              <div key={s.n} className="relative">
+              <div key={s.n} id={anclaSede(s.ciudad)} className="relative scroll-mt-[128px]">
                 <button
                   type="button"
                   onClick={() => setAbierta(open ? "" : s.ciudad)}
