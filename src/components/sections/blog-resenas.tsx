@@ -148,12 +148,16 @@ export function BlogResenas({ className }: { className?: string } = {}) {
           items={resenas}
           className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 design:mt-0 design:block"
           controles={({ anterior, siguiente }) => (
-            <>
+            /* Por debajo de 1280 las flechas van centradas bajo las fichas: en el
+               archivo están a los lados, pero ahí no hay sitio y sin ellas el
+               carrusel no se puede mover. `design:contents` deshace el envoltorio
+               para que a 1920 vuelvan a sus coordenadas. */
+            <div className="mt-8 flex justify-center gap-x-4 design:mt-0 design:contents">
               <button
                 type="button"
                 onClick={anterior}
                 aria-label="Reseña anterior"
-                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[195px] design:flex"
+                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 flex h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[195px]"
               >
                 ←
               </button>
@@ -161,11 +165,11 @@ export function BlogResenas({ className }: { className?: string } = {}) {
                 type="button"
                 onClick={siguiente}
                 aria-label="Reseña siguiente"
-                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[1008px] design:flex"
+                className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 flex h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:absolute design:top-[654px] design:left-[1008px]"
               >
                 →
               </button>
-            </>
+            </div>
           )}
         >
           {(r, i, relevo) => (

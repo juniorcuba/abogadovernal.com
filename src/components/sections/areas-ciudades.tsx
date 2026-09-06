@@ -80,7 +80,7 @@ const ALTO_FILA = 109;
 function Areas({ columna }: { columna: 0 | 1 }) {
   // Las dos columnas del archivo tienen exactamente los mismos cuatro enlaces.
   return (
-    <ul className="design:w-[401px]">
+    <ul className="w-full design:w-[401px]">
       {AREAS.map((a) => (
         <li key={`${columna}-${a.texto}`} className="border-t-2 border-white/50">
           <a
@@ -236,13 +236,18 @@ export function AreasCiudades() {
                 {open && (
                   <div /* 86 y no 71: el archivo pone el párrafo en x365 con 315 de ancho y la
                      primera columna en x766. Entre columnas sí son 71. */
-                  className="pb-8 design:flex design:h-[378px] design:gap-x-[86px] design:pb-0 design:pl-[128px]">
-                    <p className="max-w-[315px] text-[16px] leading-[17px] text-white design:w-[315px] design:pt-[7px]">
+                  className="pb-8 md:flex md:gap-x-10 design:flex design:h-[378px] design:gap-x-[86px] design:pb-0 design:pl-[128px]">
+                    <p className="text-[16px] leading-[21px] text-white md:w-[38%] md:shrink-0 design:w-[315px] design:pt-[7px] design:leading-[17px]">
                       {parrafoProvisional(s.ciudad)}
                     </p>
-                    <div className="mt-6 grid gap-x-[71px] sm:grid-cols-2 design:mt-0 design:flex">
+                    {/* En el archivo la segunda columna es un duplicado exacto
+                        de la primera. A 1920 se respeta, pero por debajo serían
+                        ocho enlaces con cuatro repetidos: se deja una sola. */}
+                    <div className="mt-6 flex-1 md:mt-0 design:mt-0 design:flex design:flex-none">
                       <Areas columna={0} />
-                      <Areas columna={1} />
+                      <div className="hidden design:ml-[71px] design:block">
+                        <Areas columna={1} />
+                      </div>
                     </div>
                   </div>
                 )}

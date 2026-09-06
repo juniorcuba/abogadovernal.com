@@ -45,7 +45,7 @@ export function AreasHero() {
           panel izquierdo se dibuja encima. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 design:top-0 design:left-[972px] design:h-[991px] design:w-[963px]"
+        className="pointer-events-none absolute inset-0 design:inset-auto design:top-0 design:left-[972px] design:h-[991px] design:w-[963px]"
       >
         {/* 900×600 estirados a 1766×1178. Probé a servir el JPEG original sin
             optimizar por si la recompresión era la culpable de la diferencia con
@@ -56,7 +56,7 @@ export function AreasHero() {
           alt=""
           width={1766}
           height={1178}
-          className="absolute max-w-none opacity-[0.72] design:top-[-141px] design:left-[119px] design:h-[1178px] design:w-[1766px]"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.72] design:inset-auto design:top-[-141px] design:left-[119px] design:h-[1178px] design:w-[1766px] design:max-w-none design:object-fill"
         />
         <div
           className="absolute inset-0"
@@ -72,7 +72,7 @@ export function AreasHero() {
           salen de proyectar los ejes girados sobre los ejes de la caja). */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 design:top-0 design:left-[6px] design:h-[991px] design:w-[963px]"
+        className="pointer-events-none absolute inset-0 hidden design:inset-auto design:top-0 design:left-[6px] design:block design:h-[991px] design:w-[963px]"
         style={{
           backgroundImage:
             "radial-gradient(45.68% 64.95% at 0% 84.71%, #172339 0%, #0F0F0F 100%)",
@@ -82,7 +82,7 @@ export function AreasHero() {
       {/* El abogado. La foto es mayor que su caja y se recorta. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden design:top-[271px] design:left-[452px] design:h-[725px] design:w-[668px]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[280px] overflow-hidden sm:h-[340px] design:inset-auto design:top-[271px] design:left-[452px] design:h-[725px] design:w-[668px]"
       >
         <Image
           src="/images/areas/abogado-locaciones.webp"
@@ -90,7 +90,7 @@ export function AreasHero() {
           width={672}
           height={710}
           priority
-          className="absolute max-w-none design:top-[15px] design:left-[-24px] design:h-[710px] design:w-[672px]"
+          className="absolute inset-0 h-full w-full object-contain object-bottom design:inset-auto design:top-[15px] design:left-[-24px] design:h-[710px] design:w-[672px] design:max-w-none design:object-fill"
         />
         <div
           className="absolute inset-0"
@@ -101,14 +101,17 @@ export function AreasHero() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-[1920px] px-6 pt-[168px] pb-20 lg:px-12 design:h-[991px] design:p-0">
-        <h1 className="text-[40px] leading-[42px] font-normal uppercase sm:text-[52px] design:absolute design:top-[286px] design:left-[237px] design:leading-[67px] design:text-[64px]">
+      {/* El `pb` reserva la banda de la foto. Por debajo de 1280 el abogado deja
+          de ir detrás del texto y pasa a ocupar el fondo de la sección: a 768 el
+          listado de ciudades le caía justo encima de la cara. */}
+      <div className="relative mx-auto grid max-w-[1920px] gap-x-12 px-6 pt-[152px] pb-[300px] md:grid-cols-2 md:items-start sm:pb-[360px] lg:px-12 design:block design:h-[991px] design:p-0">
+        <h1 className="max-w-[9ch] text-[38px] leading-[40px] font-normal uppercase sm:text-[52px] sm:leading-[54px] design:max-w-none design:absolute design:top-[286px] design:left-[237px] design:leading-[67px] design:text-[64px]">
           <span className="text-vernal-accent block">Áreas de</span>
           <span className="text-vernal-accent block">practica</span>
           <span className="block text-white">&amp; servicios</span>
         </h1>
 
-        <p className="mt-6 text-[26px] leading-[28px] font-light text-white design:absolute design:top-[528px] design:left-[237px] design:mt-0 design:leading-[37px] design:text-[36px]">
+        <p className="mt-5 text-[24px] leading-[26px] font-light text-white sm:text-[26px] sm:leading-[28px] design:absolute design:top-[528px] design:left-[237px] design:mt-0 design:leading-[37px] design:text-[36px]">
           Justicia sin
           <br />
           fronteras
@@ -116,21 +119,26 @@ export function AreasHero() {
 
         <ButtonLink
           href="/contacto"
-          className="mt-8 w-full sm:w-[224px] design:absolute design:top-[801px] design:left-[237px] design:mt-0"
+          className="mt-8 w-full sm:w-[224px] md:col-start-1 design:absolute design:top-[801px] design:left-[237px] design:mt-0"
         >
           Explora las opciones
         </ButtonLink>
 
         {/* Listado de ciudades: cada una enlaza a su fila del acordeón de abajo,
             que se abre sola al llegar por el ancla. */}
-        <div className="mt-12 design:absolute design:top-0 design:left-0 design:mt-0 design:h-full design:w-full">
+        <div className="mt-12 md:col-start-2 md:row-span-3 md:row-start-1 md:mt-0 design:absolute design:top-0 design:left-0 design:mt-0 design:h-full design:w-full">
           <p className="text-vernal-accent text-[18px] leading-[19px] font-light design:absolute design:top-[287px] design:left-[1120px] design:text-[20px] design:leading-[21px]">
             Seleccione la ciudad
           </p>
 
-          <ul className="mt-6 design:mt-0">
+          <ul className="mt-5 design:mt-0">
             {ciudades.map((c) => (
-              <li key={c.n}>
+              // En flujo la fila es número + ciudad con una línea encima; en modo
+              // diseño cada pieza va a su coordenada del archivo.
+              <li
+                key={c.n}
+                className="border-t border-white/40 design:border-0"
+              >
                 <span
                   aria-hidden
                   className="hidden bg-white/100 design:absolute design:top-[var(--linea)] design:left-[1114px] design:block design:h-[0.5px] design:w-[525px]"
@@ -138,11 +146,17 @@ export function AreasHero() {
                 />
                 <a
                   href={`#${anclaSede(c.nombre)}`}
-                  className={`block py-3 text-[28px] leading-[29px] font-semibold uppercase design:absolute design:top-[var(--base)] design:left-[1119.5px] design:py-0 design:text-[40px] design:leading-[42px] ${
+                  className={`flex items-baseline gap-x-4 py-4 text-[24px] leading-[26px] font-semibold uppercase transition-opacity hover:opacity-80 sm:text-[28px] sm:leading-[29px] design:block design:absolute design:top-[var(--base)] design:left-[1119.5px] design:py-0 design:text-[40px] design:leading-[42px] ${
                     c.activa ? "text-vernal-accent" : "text-white"
                   }`}
                   style={{ "--base": `${c.base - 34}px` } as React.CSSProperties}
                 >
+                  <span
+                    aria-hidden
+                    className="text-[16px] leading-none font-light text-white/70 design:hidden"
+                  >
+                    {c.n}
+                  </span>
                   {c.nombre}
                 </a>
                 <span

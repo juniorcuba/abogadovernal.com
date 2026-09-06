@@ -50,7 +50,7 @@ function NavLink({ label, href }: { label: string; href: string }) {
 export function SiteHeader() {
   return (
     <header className="bg-vernal-grad shadow-vernal-header relative z-50 opacity-95">
-      <div className="relative mx-auto flex h-[128px] max-w-[1920px] items-center justify-between gap-x-8 px-6 lg:px-10 design:pt-[32px] design:pr-[166px] design:pl-[201px]">
+      <div className="relative mx-auto flex h-[128px] max-w-[1920px] items-center justify-between gap-x-3 px-5 sm:gap-x-8 sm:px-6 lg:px-10 design:pt-[32px] design:pr-[166px] design:pl-[201px]">
         <MenuMovil />
 
         <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:gap-x-[52px]">
@@ -62,7 +62,7 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label={site.name}
-          className="absolute left-1/2 -translate-x-1/2 xl:static xl:translate-x-0 design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
+          className="static translate-x-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2 xl:static xl:translate-x-0 design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
         >
           <Logo />
         </Link>
@@ -77,7 +77,7 @@ export function SiteHeader() {
 
             <a
               href={site.phoneHref}
-              className="text-vernal-accent text-[16px] leading-[17px] font-bold whitespace-nowrap"
+              className="text-vernal-accent text-[13px] leading-[17px] font-bold whitespace-nowrap sm:text-[16px]"
             >
               {site.phone}
             </a>
