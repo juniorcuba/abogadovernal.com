@@ -206,11 +206,17 @@ LANDING - MOBILE»). No son parte de este sitio.
 
 | y | alto | bloque | estado |
 |---|---|---|---|
-| 0 | 128 | cabecera | ✅ es la de la home (dif. media 0.81) |
-| 128 | 905 | hero + selector de ciudad | pendiente |
-| 1033 | 1570 | "Abogado de inmigración en…" + acordeón de 5 ciudades | pendiente |
+| 0 | 991 | hero + selector de ciudad | ✅ implementado |
+| 0 | 128 | cabecera, **encima** del hero | ✅ es la de la home (dif. media 0.81) |
+| 996 | 1607 | "Abogado de inmigración en…" + acordeón de 5 ciudades | pendiente |
 | 2603 | 877 | "Mantente informado" + reseñas | ✅ es la de la home (dif. media 0.35) |
-| 3480 | 529 | footer | ✅ es el de la home (dif. media 0.48) |
+| 3480 | 468 | footer | ✅ es el de la home (dif. media 0.48) |
+| 3948 | 61 | espacio vacío al final del artboard | — |
+
+Las bandas salen del **export SVG**, no del render. El bloque cian empieza en 996
+aunque a ojo parezca que lo hace en 1033: su degradado arranca transparente y
+hasta 1033 no llega a tapar el fondo oscuro. Medirlo en la captura habría
+desplazado toda la página 37px.
 
 Las coincidencias se comprobaron buscando, para cada bloque de la home, el
 desplazamiento vertical que minimiza la diferencia media contra este artboard.
