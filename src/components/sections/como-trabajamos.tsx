@@ -55,7 +55,7 @@ const BRILLO_PUNTO = "3px -2px 19.1px 11px rgb(21 255 154)";
 export function ComoTrabajamos() {
   return (
     <section className="relative overflow-hidden bg-[#023451] design:bg-vernal-accent design:h-[668px]">
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[668px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[668px] design:p-0">
         {/* Mapa de Texas: multiply sobre el cian. El original tiene fondo blanco y
             el multiply lo hace desaparecer dejando solo el relieve. */}
         <div

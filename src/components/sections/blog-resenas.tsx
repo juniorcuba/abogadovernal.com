@@ -91,7 +91,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[877px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[877px] design:p-0">
         <h2 className="text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[95px] design:left-[265px] design:w-[745px] design:leading-[67px] design:text-[64px]">
           Mantente informado
         </h2>
@@ -101,7 +101,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
           dudas más comunes de nuestra comunidad.
         </p>
 
-        <form className="mt-8 flex max-w-[686px] design:absolute design:top-[258px] design:left-[271px] design:mt-0 design:w-[562px]">
+        <form className="mt-8 flex max-w-[562px] design:absolute design:top-[258px] design:left-[271px] design:mt-0 design:w-[562px]">
           <div className="flex h-[52px] flex-1 items-center bg-white/97 pl-3">
             <Image
               src="/icons/form/mail.svg"
@@ -130,23 +130,27 @@ export function BlogResenas({ className }: { className?: string } = {}) {
 
         <ConsentNotice className="mt-6 max-w-[558px] design:absolute design:top-[332px] design:left-[271px] design:mt-0 design:w-[558px]" />
 
-        {/* Reseñas de Google */}
-        <p className="mt-14 text-[28px] leading-[29px] font-light design:absolute design:top-[449px] design:left-[278px] design:mt-0 design:w-[422px] design:leading-[37px] design:text-[36px]">
-          <span className="block text-white">Lo que piensan</span>
-          <span className="text-vernal-accent block">nuestros clientes</span>
-        </p>
+        {/* Reseñas de Google. En flujo el título y el logo van juntos en una
+            fila, como en el archivo; apilados quedaban sueltos y ocupaban el
+            doble de alto. `design:contents` deshace la fila a 1920. */}
+        <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-4 design:mt-0 design:contents">
+          <p className="text-[26px] leading-[28px] font-light sm:text-[28px] sm:leading-[29px] design:absolute design:top-[449px] design:left-[278px] design:w-[422px] design:leading-[37px] design:text-[36px]">
+            <span className="block text-white">Lo que piensan</span>
+            <span className="text-vernal-accent block">nuestros clientes</span>
+          </p>
 
-        <Image
-          src="/icons/google-reviews.svg"
-          alt="Google Customer Reviews"
-          width={190}
-          height={63}
-          className="mt-6 design:absolute design:top-[456px] design:left-[618px] design:mt-0"
-        />
+          <Image
+            src="/icons/google-reviews.svg"
+            alt="Google Customer Reviews"
+            width={190}
+            height={63}
+            className="design:absolute design:top-[456px] design:left-[618px]"
+          />
+        </div>
 
         <Carrusel
           items={resenas}
-          className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 design:mt-0 design:block"
+          className="mt-10 grid max-w-[900px] grid-cols-1 gap-8 sm:grid-cols-2 design:mt-0 design:block design:max-w-none"
           controles={({ anterior, siguiente }) => (
             /* Por debajo de 1280 las flechas van centradas bajo las fichas: en el
                archivo están a los lados, pero ahí no hay sitio y sin ellas el

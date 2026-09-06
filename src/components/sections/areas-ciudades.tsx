@@ -141,7 +141,7 @@ export function AreasCiudades() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[1607px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[1607px] design:p-0">
         <h2 className="text-[44px] leading-[48px] font-normal text-white sm:text-[58px] design:absolute design:top-[94px] design:left-[237px] design:w-[760px] design:leading-[85px] design:text-[82px]">
           Abogado de
           <br />

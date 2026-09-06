@@ -82,7 +82,7 @@ export function NuestroCompromiso() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
         <h2 className="text-center text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] design:absolute design:top-[67px] design:left-[582px] design:w-[760px] design:leading-[67px] design:text-[64px]">
           Nuestro compromiso
         </h2>

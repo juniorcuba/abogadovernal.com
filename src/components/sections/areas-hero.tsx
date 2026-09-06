@@ -104,7 +104,7 @@ export function AreasHero() {
       {/* El `pb` reserva la banda de la foto. Por debajo de 1280 el abogado deja
           de ir detrás del texto y pasa a ocupar el fondo de la sección: a 768 el
           listado de ciudades le caía justo encima de la cara. */}
-      <div className="relative mx-auto grid max-w-[1920px] gap-x-12 px-6 pt-[152px] pb-[300px] md:grid-cols-2 md:items-start sm:pb-[360px] lg:px-12 design:block design:h-[991px] design:p-0">
+      <div className="relative mx-auto grid max-w-[1040px] gap-x-12 design:max-w-[1920px] px-6 pt-[152px] pb-[300px] md:grid-cols-2 md:items-start sm:pb-[360px] lg:px-12 design:block design:h-[991px] design:p-0">
         <h1 className="max-w-[9ch] text-[38px] leading-[40px] font-normal uppercase sm:text-[52px] sm:leading-[54px] design:max-w-none design:absolute design:top-[286px] design:left-[237px] design:leading-[67px] design:text-[64px]">
           <span className="text-vernal-accent block">Áreas de</span>
           <span className="text-vernal-accent block">practica</span>

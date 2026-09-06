@@ -28,7 +28,7 @@ import { offices, site, socials } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="bg-vernal-footer relative text-white design:h-[468px]">
-      <div className="relative mx-auto max-w-[1920px] px-6 pt-[84px] pb-10 lg:px-12 design:h-full design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 pt-[84px] pb-10 lg:px-12 design:h-full design:p-0">
         <p className="text-center text-[22px] leading-[23px] font-light design:absolute design:top-[84px] design:left-[211px] design:w-[347px] design:text-left">
           {site.tagline}
         </p>

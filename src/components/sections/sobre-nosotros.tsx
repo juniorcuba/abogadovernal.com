@@ -89,7 +89,7 @@ export function SobreNosotros() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[609px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[609px] design:p-0">
         <div
           aria-hidden
           className="bg-vernal-navy hidden design:absolute design:top-[135px] design:left-[215px] design:block design:h-[351px] design:w-[12px]"

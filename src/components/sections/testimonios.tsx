@@ -69,7 +69,7 @@ export function Testimonios() {
           "linear-gradient(351.95deg, #0F0F0F 31.23%, #172339 66.26%)",
       }}
     >
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[843px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[843px] design:p-0">
         <Carrusel
           items={testimonios}
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 design:block"

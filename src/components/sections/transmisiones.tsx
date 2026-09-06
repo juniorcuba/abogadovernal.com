@@ -39,7 +39,7 @@ export function Transmisiones() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[688px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[688px] design:p-0">
         <h2 className="text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[122px] design:left-[264px] design:w-[434px] design:leading-[67px] design:text-[64px]">
           <span className="block text-white">Somos</span>
           <span className="text-vernal-accent block">inmigrantes</span>

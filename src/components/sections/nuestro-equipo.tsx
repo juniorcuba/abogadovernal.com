@@ -96,7 +96,7 @@ export function NuestroEquipo() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[710px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[710px] design:p-0">
         <div
           aria-hidden
           className="bg-vernal-accent hidden design:absolute design:top-[130px] design:left-[215px] design:block design:h-[443px] design:w-[12px]"

@@ -31,7 +31,7 @@ export function BioVernal() {
         height={1283}
         className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-25 design:top-[-211px] design:right-auto design:left-[446px] design:h-[1283px] design:w-[1923px]"
       />
-      <div className="relative mx-auto max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
         {/* Composición: rectángulo cian, "VERNAL" detrás y el retrato recortado. */}
         <div className="relative mx-auto h-[300px] w-full max-w-[340px] sm:h-[380px] sm:w-[385px] sm:max-w-none design:absolute design:top-[108px] design:left-[278px] design:mx-0 design:h-[547px] design:w-[554px]">
           <div className="bg-vernal-accent absolute top-[102px] left-[2px] h-[278px] w-[381px] design:top-[147px] design:left-[3px] design:h-[400px] design:w-[548px]" />
