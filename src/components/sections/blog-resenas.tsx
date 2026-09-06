@@ -12,7 +12,9 @@ import { FlechaEnlace } from "@/components/ui/iconos";
  * y=6917..7794 de la frame 1:2. En el archivo comparten un mismo fondo, por eso
  * van en un único componente. Coordenadas relativas al inicio de la sección.
  *
- * Solapa 3px con testimonios (que acaba en 6920), de ahí el margen negativo.
+ * En la HOME solapa 3px con testimonios (que acaba en 6920), y por eso quien la
+ * usa le pasa el margen negativo. En /areas-de-servicio arranca pegada al bloque
+ * de ciudades, sin solape, así que ahí no se le pasa nada.
  *
  *   fondo   1923×877, tres capas del export SVG:
  *             1. linear-gradient(82.07deg, #172339 28.78%, #0F0F0F 43.26%)
@@ -63,10 +65,10 @@ function Estrellas({ className }: { className?: string }) {
   );
 }
 
-export function BlogResenas() {
+export function BlogResenas({ className }: { className?: string } = {}) {
   return (
     <section
-      className="relative overflow-hidden design:-mt-[3px] design:h-[877px]"
+      className={`relative overflow-hidden design:h-[877px] ${className ?? ""}`}
       style={{
         backgroundImage:
           "linear-gradient(82.07deg, #172339 28.78%, #0F0F0F 43.26%)",

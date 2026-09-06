@@ -190,6 +190,58 @@ caber en la ventana: a 1440 se ve el diseño tal cual, solo que más pequeño.
 px con rem, así que `1920px` se emitía ANTES que `sm`/`lg`/`xl`/`2xl` y perdía contra
 ellos. En `rem` (`120rem`) sí ordenaba bien.
 
+## Otras pantallas del archivo
+
+| Nodo | Nombre | Tamaño | Ruta |
+|---|---|---|---|
+| `1:2` | VERNAL - HOMEPAGE | 1920 × 8282 | `/` |
+| `211:750` | VERNAL - AREAS DE SERVICIO | 1920 × 4009 | `/areas-de-servicio` |
+| `181:2125` | VERNAL - NOSOTROS | 1920 × 5338 | `/nosotros` |
+
+El resto de nodos sueltos del canvas son variantes descartadas, recortes de
+referencia de otros despachos y un artboard de otro proyecto («VESPER AGENCY
+LANDING - MOBILE»). No son parte de este sitio.
+
+### `/areas-de-servicio` (`211:750`)
+
+| y | alto | bloque | estado |
+|---|---|---|---|
+| 0 | 128 | cabecera | ✅ es la de la home (dif. media 0.81) |
+| 128 | 905 | hero + selector de ciudad | pendiente |
+| 1033 | 1570 | "Abogado de inmigración en…" + acordeón de 5 ciudades | pendiente |
+| 2603 | 877 | "Mantente informado" + reseñas | ✅ es la de la home (dif. media 0.35) |
+| 3480 | 529 | footer | ✅ es el de la home (dif. media 0.48) |
+
+Las coincidencias se comprobaron buscando, para cada bloque de la home, el
+desplazamiento vertical que minimiza la diferencia media contra este artboard.
+Que salga por debajo de 1 sobre 255 quiere decir que es el mismo bloque, no uno
+parecido.
+
+Dos erratas del archivo, pendientes de confirmar con el cliente: el título dice
+"ÁREAS DE PRACTICA" sin tilde, y la cuarta ciudad "FORTH WORTH" en vez de Fort
+Worth.
+
+## Los límites son POR ENDPOINT, y se recuperan en ~30 horas
+
+Medido el 2026-09-05, con el archivo en un plan Starter:
+
+| Endpoint | Estado |
+|---|---|
+| `/v1/files/:key?depth=N` | funcionó |
+| `/v1/images/:key?ids=…` (render PNG) | funcionó |
+| `/v1/files/:key/images` (mapa de imágenes) | funcionó |
+| `/v1/files/:key/nodes?ids=…` (el árbol) | **429**, `Retry-After: 109189` = 30,3 h |
+
+O sea que no es una cuota mensual única: cada endpoint lleva su propio contador y
+el del árbol es el más restrictivo. El `Retry-After` viene en la respuesta y dice
+exactamente cuánto falta — conviene leerlo en vez de suponer.
+
+Descargar el PNG desde la URL que devuelve `/v1/images` NO gasta cuota: la URL
+apunta a S3, no a la API.
+
+El MCP de Figma tiene su propio tope y va contra **nuestro** plan, no contra el
+del archivo. Sigue agotado.
+
 ## Mapa de secciones de la homepage (`1:2`, de arriba abajo)
 
 | y | Sección | Nodos clave | Estado |

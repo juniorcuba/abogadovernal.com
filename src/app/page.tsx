@@ -25,7 +25,7 @@ export default function HomePage() {
         <ComoTrabajamos />
         <Transmisiones />
         <Testimonios />
-        <BlogResenas />
+        <BlogResenas className="design:-mt-[3px]" />
       </main>
       <SiteFooter />
     </>
