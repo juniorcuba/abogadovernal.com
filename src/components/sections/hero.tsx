@@ -22,32 +22,41 @@ import { offices } from "@/lib/site";
  */
 export function Hero() {
   return (
-    <section className="relative -mt-[128px] overflow-hidden design:h-[1142px]">
-      <div className="absolute inset-0 design:top-[9px] design:left-[-3px] design:h-[1231px] design:w-[1920px]">
+    <section className="relative -mt-[128px] overflow-hidden movil:-mt-[106px] movil:h-[1308px] design:h-[1142px]">
+      <div className="absolute inset-0 movil:inset-auto movil:top-[-2px] movil:left-0 movil:h-[700px] movil:w-[402px] design:top-[9px] design:left-[-3px] design:h-[1231px] design:w-[1920px]">
         <Image
           src="/images/hero-vernal.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[62%_center]"
+          className="object-cover object-[62%_center] movil:!static movil:!ml-[-381px] movil:!mt-[27px] movil:!h-[1413px] movil:!w-[1095px] movil:!max-w-none movil:!object-fill"
+        />
+        {/* Degradado del archivo móvil; en escritorio no lo lleva. */}
+        <div
+          aria-hidden
+          className="absolute inset-0 hidden movil:block"
+          style={{
+            backgroundImage:
+              "linear-gradient(198.53deg, rgb(15 15 15 / 0) 51.15%, #0F0F10 85.37%)",
+          }}
         />
       </div>
 
-      <div className="relative mx-auto flex max-w-[1920px] flex-col gap-y-10 px-6 pt-[168px] pb-20 lg:px-12 design:block design:h-[1142px] design:w-[1920px] design:p-0">
-        <h1 className="text-[44px] leading-[46px] font-semibold uppercase sm:text-[62px] design:absolute design:top-[276px] design:left-[223px] design:w-[565px] design:leading-[85px] design:text-[82px]">
+      <div className="relative mx-auto flex max-w-[1040px] flex-col gap-y-10 px-6 pt-[168px] pb-20 lg:px-12 movil:block movil:h-[1308px] movil:max-w-none movil:p-0 design:block design:h-[1142px] design:w-[1920px] design:max-w-[1920px] design:p-0">
+        <h1 className="text-[44px] leading-[46px] font-semibold uppercase sm:text-[62px] movil:absolute movil:top-[406px] movil:left-[38px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[276px] design:left-[223px] design:w-[565px] design:leading-[85px] design:text-[82px]">
           <span className="block text-white">abogado de</span>
           <span className="text-vernal-accent block">inmigración</span>
           <span className="text-vernal-accent block">en texas</span>
         </h1>
 
-        <p className="max-w-[440px] text-[26px] leading-[27px] font-light text-white design:absolute design:top-[412px] design:left-[1300px] design:w-[440px] design:max-w-none design:leading-[37px] design:text-[36px]">
+        <p className="max-w-[440px] text-[26px] leading-[27px] font-light text-white movil:absolute movil:top-[563px] movil:left-[38px] movil:w-[282px] movil:max-w-none movil:text-[24px] movil:leading-[25px] design:absolute design:top-[412px] design:left-[1300px] design:w-[440px] design:max-w-none design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent">Somos inmigrantes</span> como tú y
           defendemos tus derechos.
         </p>
 
-        <form className="bg-vernal-card w-full max-w-[648px] p-[38px] design:absolute design:top-[583px] design:left-[223px] design:h-[559px] design:w-[648px] design:max-w-none design:pt-[32px] design:pr-[45px] design:pb-0 design:pl-[38px]">
-          <div className="grid grid-cols-1 gap-[23px] sm:grid-cols-2">
+        <form className="bg-vernal-card w-full max-w-[648px] p-[38px] movil:absolute movil:top-[698px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:px-[38px] movil:pt-[39px] movil:pb-0 design:absolute design:top-[583px] design:left-[223px] design:h-[559px] design:w-[648px] design:max-w-none design:pt-[32px] design:pr-[45px] design:pb-0 design:pl-[38px]">
+          <div className="grid grid-cols-1 gap-[23px] sm:grid-cols-2 movil:grid-cols-1 movil:gap-[18px]">
             <Field name="nombre" label="Nombre" icon="/icons/form/user.svg" iconWidth={17} iconHeight={19} required />
             <Field name="telefono" label="Teléfono" type="tel" icon="/icons/form/phone.svg" iconWidth={22} iconHeight={22} required />
             <Field name="correo" label="Correo" type="email" icon="/icons/form/mail.svg" iconWidth={18} iconHeight={14} required />
@@ -57,10 +66,10 @@ export function Hero() {
             <FieldArea name="comentarios" label="Comentarios" icon="/icons/form/comment.svg" iconWidth={20} iconHeight={20} className="sm:col-span-2" />
           </div>
 
-          <Button className="mt-[21px] w-full sm:w-[224px]">Enviar</Button>
+          <Button className="mt-[21px] w-full sm:w-[224px] movil:mt-[18px] movil:w-[224px]">Enviar</Button>
 
           {/* El aviso va 7px más adentro que los campos (x268 vs x261). */}
-          <ConsentNotice className="mt-[20px] design:ml-[7px]" />
+          <ConsentNotice className="mt-[20px] movil:mt-[21px] movil:ml-0 design:ml-[7px]" />
         </form>
 
         <FloatingCta />
