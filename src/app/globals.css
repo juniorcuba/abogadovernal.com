@@ -16,6 +16,12 @@
 @custom-variant design (&:is(.modo-diseno, .modo-diseno *));
 
 /*
+ * Y su hermano para el lienzo móvil de 402. Mismo truco y mismo motivo: el
+ * lienzo se escala con zoom, y zoom no afecta a los media queries.
+ */
+@custom-variant movil (&:is(.modo-movil, .modo-movil *));
+
+/*
  * Design tokens — Abogado Vernal
  * Valores extraídos del archivo de Figma "ABOGADO-VERNAL-WEB" vía la API de Figma.
  * No estimar ni medir de capturas: cualquier token nuevo sale del nodo correspondiente.

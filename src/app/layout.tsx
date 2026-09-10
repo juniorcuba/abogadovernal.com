@@ -65,10 +65,12 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var w=document.documentElement.clientWidth;" +
-              "if(w<1280)return;var e=document.currentScript.previousElementSibling;" +
-              "if(!e)return;e.className='modo-diseno';e.style.width='1920px';" +
-              "e.style.zoom=Math.min(1,w/1920);}catch(_){}})();",
+              "(function(){try{var w=document.documentElement.clientWidth," +
+              "e=document.currentScript.previousElementSibling;if(!e)return;" +
+              "if(w>=1280){e.className='modo-diseno';e.style.width='1920px';" +
+              "e.style.zoom=Math.min(1,w/1920);}" +
+              "else if(w<=560){e.className='modo-movil';e.style.width='402px';" +
+              "e.style.zoom=w/402;}}catch(_){}})();",
           }}
         />
       </body>

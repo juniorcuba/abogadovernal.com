@@ -49,8 +49,15 @@ function NavLink({ label, href }: { label: string; href: string }) {
 
 export function SiteHeader() {
   return (
-    <header className="bg-vernal-grad shadow-vernal-header relative z-50 opacity-95">
-      <div className="relative mx-auto flex h-[128px] max-w-[1920px] items-center justify-between gap-x-3 px-5 sm:gap-x-8 sm:px-6 lg:px-10 design:pt-[32px] design:pr-[166px] design:pl-[201px]">
+    <header className="bg-vernal-grad shadow-vernal-header relative z-50 opacity-95 movil:bg-none movil:opacity-100 movil:shadow-none">
+      {/* En el lienzo móvil la cabecera son DOS filas: el degradado radial de
+          402×70 con menú, logo e idioma, y debajo una barra cian de 36 con el
+          teléfono. En escritorio es una sola de 128. */}
+      <div className="relative mx-auto flex h-[128px] max-w-[1920px] items-center justify-between gap-x-3 px-5 sm:gap-x-8 sm:px-6 lg:px-10 movil:h-[70px] movil:px-0 design:pt-[32px] design:pr-[166px] design:pl-[201px]">
+        <div
+          aria-hidden
+          className="bg-vernal-grad pointer-events-none absolute inset-0 hidden movil:block"
+        />
         <MenuMovil />
 
         <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:gap-x-[52px]">
@@ -62,12 +69,12 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label={site.name}
-          className="static translate-x-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2 xl:static xl:translate-x-0 design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
+          className="static translate-x-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2 xl:static xl:translate-x-0 movil:absolute movil:top-[16px] movil:left-[172px] movil:translate-x-0 design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
         >
-          <Logo />
+          <Logo className="movil:h-[40px] movil:w-[57px]" />
         </Link>
 
-        <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:gap-x-[26px]">
+        <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 movil:hidden design:gap-x-[26px]">
           <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:gap-x-[48px]">
             <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:gap-x-[48px]">
               {rightNav.map((item) => (
@@ -105,7 +112,30 @@ export function SiteHeader() {
             ))}
           </ul>
         </div>
+
+        {/* Selector de idioma. SOLO está en el diseño móvil: el de escritorio no
+            lo trae. De momento es un rótulo, sin traducción detrás. */}
+        <p
+          aria-hidden
+          className="hidden text-[14px] leading-[15px] font-medium movil:absolute movil:top-[24px] movil:left-[327px] movil:flex movil:gap-x-[12px]"
+        >
+          <span className="text-white">ES</span>
+          <span className="text-[#323B4C]">EN</span>
+        </p>
       </div>
+
+      {/* Segunda fila del móvil: barra cian de 36 con el teléfono. */}
+      <a
+        href={site.phoneHref}
+        className="bg-vernal-accent hidden items-center justify-center gap-x-[9px] movil:flex movil:h-[36px]"
+      >
+        <span className="text-vernal-navy text-[13px] leading-[14px]">
+          ¡Llámanos y agenda hoy!
+        </span>
+        <span className="text-[13px] leading-[14px] font-bold text-white">
+          {site.phone}
+        </span>
+      </a>
     </header>
   );
 }

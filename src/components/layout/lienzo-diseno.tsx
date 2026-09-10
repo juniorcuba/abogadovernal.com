@@ -7,11 +7,18 @@ import {
   type ReactNode,
 } from "react";
 
-/** Ancho del artboard de Figma. Toda la maqueta está posicionada sobre él. */
+/** Los dos artboards de Figma. Cada maqueta está posicionada sobre el suyo. */
 const ANCHO_DISENO = 1920;
+const ANCHO_MOVIL = 402;
 
-/** Por debajo de esto se usa la maqueta apilada en vez del diseño escalado. */
-const MINIMO = 1280;
+/** Desde aquí se usa el lienzo de escritorio. */
+const MINIMO_DISENO = 1280;
+
+/**
+ * Hasta aquí se usa el lienzo móvil. Ampliar un diseño de 402 más allá de esto
+ * lo deja gigante: a 560 ya va al 1.39.
+ */
+const MAXIMO_MOVIL = 560;
 
 /**
  * useLayoutEffect avisa por consola cuando se ejecuta en el servidor, donde no
@@ -21,41 +28,57 @@ const MINIMO = 1280;
 const useEfectoDeLayout =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
 
+type Lienzo = { clase: string; ancho: number; escala: number } | null;
+
+/** Qué lienzo toca para un ancho de ventana dado. */
+export function lienzoPara(w: number): Lienzo {
+  if (w >= MINIMO_DISENO) {
+    return {
+      clase: "modo-diseno",
+      ancho: ANCHO_DISENO,
+      escala: Math.min(1, w / ANCHO_DISENO),
+    };
+  }
+  if (w <= MAXIMO_MOVIL) {
+    return { clase: "modo-movil", ancho: ANCHO_MOVIL, escala: w / ANCHO_MOVIL };
+  }
+  return null;
+}
+
 /**
  * Lienzo del diseño.
  *
- * El diseño solo existe a 1920. Cuando esa medida era un media query, cualquiera
- * con un portátil de 1366 o 1440 —o sea, casi todo el mundo— veía adaptaciones
- * improvisadas por mí en lugar del diseño real, y de ahí venía el "se ve muy
- * distinto" en algunas secciones.
+ * Hay DOS diseños, uno de 1920 y otro de 402, y ninguno cubre las medidas
+ * intermedias. En vez de adaptarlos a ojo, cada uno se maqueta a su tamaño real
+ * y se ESCALA para caber en la ventana: a 1440 se ve el de escritorio tal cual,
+ * solo más pequeño, y a 430 el de móvil. Cero invención, porque es el diseño
+ * mismo, y además se puede verificar midiendo contra el render del artboard.
  *
- * Aquí el contenido se maqueta SIEMPRE a 1920 y se escala para caber en la
- * ventana: a 1440 se ve el diseño tal cual, solo que más pequeño. Cero invención,
- * porque es el diseño mismo.
+ *   ≥ 1280   lienzo de escritorio, 1920 escalado
+ *   561–1279 maqueta apilada, que no la cubre ningún diseño y es criterio propio
+ *   ≤ 560    lienzo móvil, 402 escalado
  *
  * Se escala con `zoom` y no con `transform: scale()` porque zoom sí participa en
  * el flujo, así que la altura del documento se ajusta sola; con transform habría
  * que compensarla a mano. A cambio, zoom NO afecta a los media queries
- * (comprobado), y por eso `design:` es una clase y no un breakpoint: si fuera un
- * breakpoint nunca se activaría a 1440 aunque el lienzo interno midiera 1920.
+ * (comprobado), y por eso `design:` y `movil:` son clases y no breakpoints: si
+ * fueran breakpoints nunca se activarían, porque las media queries siguen viendo
+ * el ancho real de la ventana y no el del lienzo.
  */
 export function LienzoDiseno({ children }: { children: ReactNode }) {
-  const [escala, setEscala] = useState<number | null>(null);
+  const [lienzo, setLienzo] = useState<Lienzo>(null);
 
   useEfectoDeLayout(() => {
     const medir = () => {
       // clientWidth y no innerWidth: descuenta la barra de scroll. Con innerWidth
       // el lienzo quedaría unos píxeles más ancho que el hueco disponible y
       // aparecería scroll horizontal.
-      const w = document.documentElement.clientWidth;
-      setEscala(w >= MINIMO ? Math.min(1, w / ANCHO_DISENO) : null);
+      setLienzo(lienzoPara(document.documentElement.clientWidth));
     };
     medir();
     window.addEventListener("resize", medir);
     return () => window.removeEventListener("resize", medir);
   }, []);
-
-  const enDiseno = escala !== null;
 
   return (
     // El script en línea de layout.tsx ya deja puestos clase y estilo antes de
@@ -63,8 +86,10 @@ export function LienzoDiseno({ children }: { children: ReactNode }) {
     // propósito. suppressHydrationWarning evita que React deshaga ese trabajo.
     <div
       suppressHydrationWarning
-      className={enDiseno ? "modo-diseno" : undefined}
-      style={enDiseno ? { width: ANCHO_DISENO, zoom: escala } : undefined}
+      className={lienzo?.clase}
+      style={
+        lienzo ? { width: lienzo.ancho, zoom: lienzo.escala } : undefined
+      }
     >
       {children}
     </div>

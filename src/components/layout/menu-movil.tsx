@@ -41,12 +41,17 @@ export function MenuMovil() {
         onClick={() => setAbierto(true)}
         aria-label="Abrir menú"
         aria-expanded={abierto}
-        className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center"
+        className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center movil:absolute movil:top-[23px] movil:left-[25px] movil:h-[24px] movil:w-[36px]"
       >
-        <span aria-hidden className="relative block h-[16px] w-[26px]">
-          <span className="absolute top-0 left-0 h-[2px] w-full bg-white" />
-          <span className="absolute top-[7px] left-0 h-[2px] w-full bg-white" />
-          <span className="absolute top-[14px] left-0 h-[2px] w-full bg-white" />
+        {/* El icono del lienzo móvil no es el de escritorio: son tres trazos de
+            3px ESCALONADOS —36, 28 y 19— en x25 y y25/35/46 del artboard. */}
+        <span
+          aria-hidden
+          className="relative block h-[16px] w-[26px] movil:h-[24px] movil:w-[36px]"
+        >
+          <span className="absolute top-0 left-0 h-[2px] w-full bg-white movil:h-[3px]" />
+          <span className="absolute top-[7px] left-0 h-[2px] w-full bg-white movil:top-[10px] movil:h-[3px] movil:w-[28px]" />
+          <span className="absolute top-[14px] left-0 h-[2px] w-full bg-white movil:top-[21px] movil:h-[3px] movil:w-[19px]" />
         </span>
       </button>
 
