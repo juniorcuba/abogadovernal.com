@@ -38,20 +38,20 @@ const fotos = [
 
 export function SobreNosotros() {
   return (
-    <section className="bg-vernal-accent relative overflow-hidden design:h-[609px]">
+    <section className="bg-vernal-accent relative overflow-hidden movil:h-[922px] design:h-[609px]">
       {/* Carrusel: la tira se duplica para que el bucle no tenga corte. */}
-      <div className="relative h-[320px] overflow-hidden design:absolute design:top-[36px] design:left-[932px] design:h-[573px] design:w-[982px]">
+      <div className="relative h-[320px] overflow-hidden movil:absolute movil:top-[545px] movil:left-0 movil:h-[253px] movil:w-[402px] design:absolute design:top-[36px] design:left-[932px] design:h-[573px] design:w-[982px]">
         {/* El desplazamiento inicial (x1080 dentro de una ventana que empieza en
             x932) va en un envoltorio estático, para no romper el bucle. */}
-        <div className="design:translate-x-[148px]">
-          <div className="animate-vernal-marquee flex w-max gap-[40px] design:pt-[29px]">
+        <div className="movil:translate-x-[20px] design:translate-x-[148px]">
+          <div className="animate-vernal-marquee flex w-max gap-[40px] movil:gap-[23px] movil:pt-0 design:pt-[29px]">
             {[...fotos, ...fotos].map((src, i) => (
               <div
                 key={`${src}-${i}`}
                 /* El cian va aquí dentro a propósito: el transform del marquee crea
                    un contexto de apilamiento, así que mix-blend-mode no alcanza el
                    fondo de la sección. El respaldo tiene que estar en este contexto. */
-                className="bg-vernal-accent shadow-vernal-1 relative h-[280px] w-[400px] shrink-0 design:h-[442px] design:w-[634px]"
+                className="bg-vernal-accent shadow-vernal-1 relative h-[280px] w-[400px] shrink-0 movil:h-[253px] movil:w-[362px] movil:shadow-none design:h-[442px] design:w-[634px]"
               >
                 <Image
                   src={src}
@@ -95,7 +95,7 @@ export function SobreNosotros() {
           className="bg-vernal-navy hidden design:absolute design:top-[135px] design:left-[215px] design:block design:h-[351px] design:w-[12px]"
         />
 
-        <h2 className="text-vernal-navy text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[127px] design:left-[271px] design:w-[354px] design:leading-[67px] design:text-[64px]">
+        <h2 className="text-vernal-navy text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[47px] movil:left-[46px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[127px] design:left-[271px] design:w-[354px] design:leading-[67px] design:text-[64px]">
           Sobre
           <br />
           nosotros
@@ -104,16 +104,16 @@ export function SobreNosotros() {
         {/* Un solo bloque con salto doble, como el nodo 8:97: así la línea en
             blanco entre párrafos mide exactamente un interlineado, en vez de un
             margen aproximado entre dos <p>. */}
-        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-black design:absolute design:top-[302px] design:left-[279px] design:mt-0 design:w-[580px]">
+        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-black movil:absolute movil:top-[163px] movil:left-[41px] movil:mt-0 movil:w-[315px] movil:max-w-none movil:text-justify design:absolute design:top-[302px] design:left-[279px] design:mt-0 design:w-[580px]">
           {"En Texas, Estados Unidos, la oficina del "}
           <span className="font-bold">Abogado Vernal Farnum Mejía</span>
           {" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca."}
         </p>
 
-        <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase design:absolute design:top-[358px] design:left-[1025px] design:mt-0 design:text-left design:leading-[183px] design:text-[176px]">
+        <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase movil:absolute movil:top-[750px] movil:left-[3px] movil:mt-0 movil:text-left movil:text-[99px] movil:leading-[103px] design:absolute design:top-[358px] design:left-[1025px] design:mt-0 design:text-left design:leading-[183px] design:text-[176px]">
           +10,000
         </p>
-        <p className="text-center text-[24px] leading-[25px] font-semibold text-white uppercase design:absolute design:top-[532px] design:left-[1265px] design:text-left design:leading-[47px] design:text-[45px]">
+        <p className="text-center text-[24px] leading-[25px] font-semibold text-white uppercase movil:absolute movil:top-[840px] movil:left-[46px] movil:text-left movil:text-[34px] movil:leading-[36px] design:absolute design:top-[532px] design:left-[1265px] design:text-left design:leading-[47px] design:text-[45px]">
           familias reunidas
         </p>
       </div>
