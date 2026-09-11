@@ -41,6 +41,9 @@ import { Carrusel } from "@/components/ui/carrusel";
  *   cargo   centrado y694   12/600
  *   foto    x45 y744   313×373
  *   flechas 55×55 en y895, x18 y x323
+ *
+ * En el archivo arranca en y3465 y la bio acaba en 3466: solapa 1px, de ahí el
+ * margen negativo. Sin él, todo lo de debajo baja un píxel.
  */
 
 /** Ranuras del archivo; se quedan fijas y rota quién cae en cada una. */
@@ -71,7 +74,7 @@ const equipo = [
 export function NuestroEquipo() {
   return (
     <section
-      className="relative overflow-hidden movil:h-[1117px] design:h-[710px]"
+      className="relative overflow-hidden movil:-mt-px movil:h-[1117px] design:h-[710px]"
       style={{
         backgroundImage:
           "linear-gradient(80.23deg, #172339 28.78%, #0F0F0F 43.26%)",

@@ -23,6 +23,16 @@ import { SelloVerificado } from "@/components/ui/iconos";
  * OJO: "Nombre cliente / Ajuste de estatus" es TEXTO DE RELLENO del diseño, igual
  * en las cuatro tarjetas. Hay que pedirle al cliente los nombres y casos reales
  * antes de publicar, y su consentimiento para usarlos.
+ *
+ * Lienzo móvil (y=9634..10290): una sola tarjeta de 299×345 en x50 y43, que es
+ * la de escritorio escalada exactamente ×0.8329 (foto, recorte, degradado y
+ * sello salen proporcionales). En vez de reescribir cada medida se le aplica
+ * `zoom`. Ojo: con zoom, el `top`/`left` del propio elemento también se escala,
+ * así que se escriben divididos entre 0.8329.
+ *
+ * El rect de fondo mide 398×818 y la sección siguiente lo tapa desde y656: aquí
+ * la sección mide 656 y el fondo va en una capa de 398×818 recortada, para que
+ * el degradado reparta igual que en el archivo.
  */
 
 /** Lo que es de la RANURA: posición y degradado, fijos según el archivo. */
@@ -53,7 +63,7 @@ function Flecha({
       type="button"
       onClick={onClick}
       aria-label={hacia === "izquierda" ? "Testimonio anterior" : "Testimonio siguiente"}
-      className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] shrink-0 cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 design:flex"
+      className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] shrink-0 cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 movil:flex movil:h-[47px] movil:w-[47px] movil:text-[19px] design:flex"
     >
       {hacia === "izquierda" ? "←" : "→"}
     </button>
@@ -62,23 +72,21 @@ function Flecha({
 
 export function Testimonios() {
   return (
-    <section
-      className="relative overflow-hidden design:-mt-[25px] design:h-[843px]"
-      style={{
-        backgroundImage:
-          "linear-gradient(351.95deg, #0F0F0F 31.23%, #172339 66.26%)",
-      }}
-    >
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[843px] design:p-0">
+    <section className="relative overflow-hidden bg-[linear-gradient(351.95deg,#0F0F0F_31.23%,#172339_66.26%)] movil:h-[656px] movil:bg-none design:-mt-[25px] design:h-[843px]">
+      <div
+        aria-hidden
+        className="pointer-events-none hidden movil:absolute movil:top-0 movil:left-0 movil:block movil:h-[818px] movil:w-[398px] movil:bg-[linear-gradient(326.46deg,#0F0F0F_31.23%,#172339_66.26%)]"
+      />
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[656px] movil:p-0 design:h-[843px] design:p-0">
         <Carrusel
           items={testimonios}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 design:block"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 movil:block design:block"
           controles={({ anterior, siguiente }) => (
             <>
-              <div className="relative z-20 design:absolute design:top-[300px] design:left-[171px]">
+              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[24px] design:absolute design:top-[300px] design:left-[171px]">
                 <Flecha hacia="izquierda" onClick={anterior} />
               </div>
-              <div className="relative z-20 design:absolute design:top-[300px] design:left-[1694px]">
+              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[325px] design:absolute design:top-[300px] design:left-[1694px]">
                 <Flecha hacia="derecha" onClick={siguiente} />
               </div>
             </>
@@ -89,7 +97,11 @@ export function Testimonios() {
             return (
               <li
                 key={r.left}
-                className="relative h-[415px] overflow-hidden design:absolute design:top-[120px] design:left-[var(--x)] design:w-[359px]"
+                className={`relative h-[415px] overflow-hidden design:absolute design:top-[120px] design:left-[var(--x)] design:w-[359px] ${
+                  i === 0
+                    ? "movil:absolute movil:top-[51.63px] movil:left-[60.03px] movil:w-[359px] movil:[zoom:0.8329]"
+                    : "movil:hidden"
+                }`}
                 style={{ "--x": `${r.left}px` } as React.CSSProperties}
               >
                 <Image
@@ -112,7 +124,7 @@ export function Testimonios() {
                 {/* El grupo sello+texto va CENTRADO en la tarjeta (en el archivo
                     ocupa 178 de los 359 y su centro coincide con el de la foto),
                     no pegado a la izquierda. El hueco entre sello y texto es 9. */}
-                <div className="absolute bottom-[22px] left-[22px] flex items-center gap-x-[10px] design:right-[22px] design:bottom-[29px] design:left-[22px] design:justify-center design:gap-x-[9px]">
+                <div className="absolute bottom-[22px] left-[22px] flex items-center gap-x-[10px] movil:right-[22px] movil:bottom-[29px] movil:justify-center movil:gap-x-[9px] design:right-[22px] design:bottom-[29px] design:left-[22px] design:justify-center design:gap-x-[9px]">
                   <SelloVerificado className="shrink-0" />
                   <span className="text-white">
                     <span className="block text-[16px] leading-[17px] font-bold">
@@ -128,7 +140,7 @@ export function Testimonios() {
           }}
         </Carrusel>
 
-        <p className="mt-12 text-center text-[24px] leading-[25px] font-light design:absolute design:top-[588px] design:left-[489px] design:mt-0 design:w-[946px] design:leading-[37px] design:text-[36px]">
+        <p className="mt-12 text-center text-[24px] leading-[25px] font-light movil:absolute movil:top-[432px] movil:left-[31px] movil:mt-0 movil:w-[340px] design:absolute design:top-[588px] design:left-[489px] design:mt-0 design:w-[946px] design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent block">
             Historias reales, nuevos comienzos.
           </span>
@@ -137,8 +149,8 @@ export function Testimonios() {
           </span>
         </p>
 
-        <div className="mt-8 flex justify-center design:absolute design:top-[697px] design:left-[818px] design:mt-0 design:block">
-          <ButtonLink href="/testimoniales" className="w-full sm:w-[277px]">
+        <div className="mt-8 flex justify-center movil:absolute movil:top-[560px] movil:left-[62px] movil:mt-0 movil:block design:absolute design:top-[697px] design:left-[818px] design:mt-0 design:block">
+          <ButtonLink href="/testimoniales" className="w-full sm:w-[277px] movil:w-[277px]">
             Ver más testimonios
           </ButtonLink>
         </div>

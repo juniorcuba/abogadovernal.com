@@ -84,10 +84,10 @@ export function Hero() {
           <Button className="mt-[21px] w-full sm:w-[224px] movil:mt-[18px] movil:w-[224px]">Enviar</Button>
 
           {/* El aviso va 7px más adentro que los campos (x268 vs x261). */}
-          <ConsentNotice className="mt-[20px] movil:mt-[21px] movil:ml-0 design:ml-[7px]" />
+          <ConsentNotice className="mt-[20px] movil:mt-[21px] movil:ml-0 movil:text-[10px] design:ml-[7px]" />
         </form>
 
-        <FloatingCta />
+        <FloatingCta className="movil:top-[672px] movil:block design:top-[886px]" />
       </div>
     </section>
   );

@@ -11,14 +11,17 @@ import { site } from "@/lib/site";
  * Ambas barras llevan "Vernal Shadow 1".
  *
  * En el lienzo móvil deja de ser un flotante a la derecha y pasa a ocupar el
- * ancho entero en y672: verde de 37 y cian de 62.
+ * ancho entero: verde de 37 y cian de 62. Solo se enseña donde quien lo usa le
+ * pone `movil:block` y su `top`: la home la tiene en y672 de su hero, pero en
+ * las páginas sin diseño móvil esa y cae en mitad de otra sección.
  */
 export function FloatingCta({ className }: { className?: string } = {}) {
   return (
     // La `y` la pone quien lo usa: en la home cae dentro del hero y en /nosotros
-    // dentro de la sección siguiente, porque ese hero es más corto.
+    // dentro de la sección siguiente, porque ese hero es más corto. En móvil,
+    // además, quien la quiera visible tiene que pedirla con `movil:block`.
     <div
-      className={`absolute right-0 z-10 hidden w-[349px] movil:top-[672px] movil:right-auto movil:left-[-2px] movil:block movil:w-[403px] design:block ${
+      className={`absolute right-0 z-10 hidden w-[349px] movil:right-auto movil:left-[-2px] movil:w-[403px] design:block ${
         className ?? "design:top-[886px]"
       }`}
     >

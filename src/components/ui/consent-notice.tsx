@@ -2,8 +2,13 @@
  * Aviso de consentimiento SMS/WhatsApp — texto literal de los nodos 6:87
  * (formulario del hero) y 83:69 (newsletter).
  * Poppins ExtraLight Italic 12px, leading 1.17, justificado, blanco.
- * En el lienzo móvil baja a 10px con interlineado de 12 y peso 275, que sin
- * fuente variable se queda en Light.
+ * En el lienzo móvil va justificado y con interlineado de 12. El archivo pide
+ * peso 275, que no existe sin fuente variable: con Light (300) la línea sale
+ * más ancha y el newsletter corta distinto, así que se queda en ExtraLight
+ * como en escritorio. El tamaño
+ * cambia según dónde vaya: 10px en el hero y 12px en el newsletter. Por eso el
+ * tamaño lo pasa quien lo usa: dos utilidades en conflicto en el mismo
+ * className no tienen un orden fiable.
  *
  * NO reescribir ni resumir: es el consentimiento que exige la TCPA. Cuando el
  * formulario se conecte, hay que guardar la aceptación con timestamp.
@@ -11,7 +16,7 @@
 export function ConsentNotice({ className }: { className?: string }) {
   return (
     <p
-      className={`text-[12px] leading-[14px] font-extralight design:text-justify italic text-white movil:text-[10px] movil:leading-[12px] movil:font-light movil:text-justify ${className ?? ""}`}
+      className={`text-[12px] leading-[14px] font-extralight design:text-justify italic text-white movil:leading-[12px] movil:text-justify ${className ?? ""}`}
     >
       Al enviar este formulario aceptas recibir mensajes transaccionales por SMS o
       WhatsApp de The Law Office Of{" "}

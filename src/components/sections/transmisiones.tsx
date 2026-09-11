@@ -18,43 +18,46 @@ import { ButtonLink } from "@/components/ui/button";
  *   play    69:25   x1230 y297 96×96
  *   barra   83:29   x1036.5 y473.5 471×119  degradado azul al 73%
  *   badge   83:33   x1398.5 y439.5 141×55   degradado gris oscuro
+ *
+ * Lienzo móvil (y=8644..9634, 990 de alto): todo en una columna. El vídeo es el
+ * de escritorio escalado ×0.4843 (355×206 en x24 y678), con sombra 8/36 al 84%.
+ * La marca "LIVE", la barra "aclara tus dudas" y el badge vienen en el archivo
+ * como vectores sueltos, no como texto, y con otro dibujo que en escritorio
+ * (borde cian en la barra, borde oscuro en el badge). Se sacan tal cual del
+ * export a /images/movil/transmision-rotulos.svg, con su filtro y degradados.
  */
 export function Transmisiones() {
   return (
-    <section className="bg-vernal-navy relative overflow-hidden design:h-[688px]">
+    <section className="bg-vernal-navy relative overflow-hidden movil:h-[990px] design:h-[688px]">
       <Image
         src="/images/live/fondo.webp"
         alt=""
         aria-hidden
         width={1923}
         height={1632}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.41] mix-blend-soft-light design:inset-auto design:top-[-316px] design:left-0 design:h-[1632px] design:w-[1923px]"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.41] mix-blend-soft-light movil:inset-auto movil:top-[-39px] movil:left-[-83px] movil:h-[913px] movil:w-[1076px] movil:max-w-none movil:object-fill design:inset-auto design:top-[-316px] design:left-0 design:h-[1632px] design:w-[1923px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(98.13deg, rgb(5 126 188 / 0) 35.12%, #171717 69.50%)",
-        }}
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(98.13deg,#057EBC00_35.12%,#171717_69.50%)] movil:bg-[linear-gradient(158.36deg,#057EBC00_23.18%,#171717_72.59%)]"
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[688px] design:p-0">
-        <h2 className="text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[122px] design:left-[264px] design:w-[434px] design:leading-[67px] design:text-[64px]">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[990px] movil:p-0 design:h-[688px] design:p-0">
+        <h2 className="text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[73px] movil:left-[38px] movil:w-[340px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[122px] design:left-[264px] design:w-[434px] design:leading-[67px] design:text-[64px]">
           <span className="block text-white">Somos</span>
           <span className="text-vernal-accent block">inmigrantes</span>
           <span className="text-vernal-accent block">como tú</span>
         </h2>
 
-        <p className="mt-6 text-[20px] leading-[21px] font-light uppercase design:absolute design:top-[339px] design:left-[264px] design:mt-0 design:leading-[31px] design:text-[30px]">
-          <span className="text-vernal-accent">sintonízanos</span>
-          <span className="ml-[43px] text-white">
+        <p className="mt-6 text-[20px] leading-[21px] font-light uppercase movil:absolute movil:top-[237px] movil:left-[38px] movil:mt-0 movil:leading-[31px] movil:text-[30px] design:absolute design:top-[339px] design:left-[264px] design:mt-0 design:leading-[31px] design:text-[30px]">
+          <span className="text-vernal-accent movil:block">sintonízanos</span>
+          <span className="ml-[43px] text-white movil:ml-0 movil:block">
             martes <span className="text-white/50">|</span>{" "}
             <span className="text-vernal-accent">5p.m.</span>
           </span>
         </p>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] font-light design:text-justify italic design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] font-light design:text-justify italic movil:absolute movil:top-[341px] movil:left-[38px] movil:mt-0 movil:w-[313px] movil:max-w-none movil:text-justify design:absolute design:top-[407px] design:left-[264px] design:mt-0 design:w-[580px]">
           {/* La frase en cian NO es itálica y va en peso 400; el resto sí es
               itálica en 300. Ponerlo todo en itálica cambiaba el corte de línea. */}
           <span className="text-vernal-accent font-normal not-italic">
@@ -69,17 +72,17 @@ export function Transmisiones() {
         <ButtonLink
           href="/transmisiones"
           variant="green"
-          className="mt-8 w-full sm:w-[277px] design:absolute design:top-[534px] design:left-[264px] design:mt-0"
+          className="mt-8 w-full sm:w-[277px] movil:absolute movil:top-[573px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[534px] design:left-[264px] design:mt-0"
         >
           Ver retransmisiones
         </ButtonLink>
 
         {/* Vídeo de la transmisión */}
-        <div className="relative mt-12 aspect-[733/425] w-full design:absolute design:top-[122px] design:left-[914px] design:mt-0 design:aspect-auto design:h-[425px] design:w-[733px]">
+        <div className="relative mt-12 aspect-[733/425] w-full movil:absolute movil:top-[678px] movil:left-[24px] movil:mt-0 movil:aspect-auto movil:h-[206px] movil:w-[355px] movil:shadow-[8px_36px_37.1px_rgb(0_0_0/0.84)] design:absolute design:top-[122px] design:left-[914px] design:mt-0 design:aspect-auto design:h-[425px] design:w-[733px]">
           {/* Borde cian de 2px alrededor del vídeo (rect x915 y5537, stroke #08B6FF). */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 border-2 border-vernal-accent design:top-[1px] design:left-[1px] design:h-[423px] design:w-[731px]"
+            className="pointer-events-none absolute inset-0 border-2 border-vernal-accent movil:z-10 design:top-[1px] design:left-[1px] design:h-[423px] design:w-[731px]"
           />
           <div className="absolute inset-0 overflow-hidden">
             <Image
@@ -87,7 +90,7 @@ export function Transmisiones() {
               alt="Transmisión en vivo del Abogado Vernal"
               width={857}
               height={644}
-              className="absolute top-[-109px] left-[-73px] h-[644px] w-[857px] max-w-none object-cover"
+              className="absolute top-[-109px] left-[-73px] h-[644px] w-[857px] max-w-none object-cover movil:top-[-53px] movil:left-[-35px] movil:h-[312px] movil:w-[415px]"
             />
             {/* Marca de agua "LIVE" (nodo 83:28, x999 y5721, caja 564×287 → 277px).
                 Va dentro del vídeo, que la recorta por abajo igual que el archivo. */}
@@ -108,14 +111,24 @@ export function Transmisiones() {
             />
           </div>
 
+          {/* Rótulos del móvil: marca "LIVE", barra y badge, del export. */}
+          <Image
+            src="/images/movil/transmision-rotulos.svg"
+            alt="Aclara tus dudas migratorias"
+            width={329}
+            height={167}
+            unoptimized
+            className="pointer-events-none absolute hidden max-w-none movil:z-20 movil:top-[92.9px] movil:left-[19.9px] movil:block movil:h-[167.2px] movil:w-[329.2px]"
+          />
+
           <button
             type="button"
             aria-label="Ver la transmisión"
-            className="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 transition-transform hover:scale-105 design:top-[175px] design:left-[316px] design:translate-x-0 design:translate-y-0"
+            className="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 transition-transform hover:scale-105 movil:top-[85px] movil:left-[155px] movil:h-[42px] movil:w-[42px] movil:translate-x-0 movil:translate-y-0 design:top-[175px] design:left-[316px] design:translate-x-0 design:translate-y-0"
           >
             <span
               aria-hidden
-              className="ml-[6px] border-t-[17px] border-b-[17px] border-l-[29px] border-t-transparent border-b-transparent border-l-[#172339]"
+              className="ml-[6px] border-t-[17px] border-b-[17px] border-l-[29px] border-t-transparent border-b-transparent border-l-[#172339] movil:ml-[3px] movil:border-t-[7.5px] movil:border-b-[7.5px] movil:border-l-[12.7px]"
             />
           </button>
         </div>
@@ -124,7 +137,7 @@ export function Transmisiones() {
             rx 29.5 (redondeada), opacidad 0.73. Los textos van en x1160, con
             líneas base en y5931.8 y y5976.1 del archivo. */}
         <div
-          className="relative mt-6 flex items-center gap-x-4 overflow-hidden rounded-[30px] px-6 py-4 design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[29.5px] design:p-0"
+          className="relative mt-6 flex items-center gap-x-4 overflow-hidden rounded-[30px] px-6 py-4 movil:hidden design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[29.5px] design:p-0"
         >
           {/* La opacidad 0.73 del archivo es del RECTÁNGULO, no del contenido.
               Aplicada al contenedor oscurecía también el texto y los iconos. */}
