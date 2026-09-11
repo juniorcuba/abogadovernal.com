@@ -26,42 +26,46 @@ import { ButtonLink } from "@/components/ui/button";
  *
  * El fondo es una foto a 34% de opacidad, dibujada a 1122×1682 con desplazamiento
  * (+882, −173) dentro del rect de la sección. Sale del export SVG de la frame.
+ *
+ * Lienzo móvil (y=6104..7103, 999 de alto): la misma foto, dibujada 619×929 en
+ * (−9, +500), con un degradado que oscurece la mitad de arriba en vez del lado
+ * izquierdo. Título x38 y65, cuerpo x38 y194 en caja de 325, botón x40 y498,
+ * play de 96 en x153 y728 y el claim centrado en y848. Sin barra cian.
+ *
+ * El botón dice "Agenda una consulta" en escritorio y "Agenda tu consulta" en
+ * móvil. Es una incoherencia del archivo, pero se respeta: cada lienzo el suyo.
  */
 export function Servicios() {
   return (
-    <section className="relative overflow-hidden bg-vernal-ink design:mt-px design:h-[668px]">
+    <section className="relative overflow-hidden bg-vernal-ink movil:h-[999px] design:mt-px design:h-[668px]">
       <Image
         src="/images/servicios/fondo.webp"
         alt=""
         aria-hidden
         width={1122}
         height={1682}
-        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-[0.34] design:top-[-173px] design:right-auto design:left-[882px] design:h-[1682px] design:w-[1122px]"
+        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-[0.34] movil:top-[500px] movil:right-auto movil:left-[-9px] movil:h-[929px] movil:w-[619px] movil:max-w-none movil:object-fill design:top-[-173px] design:right-auto design:left-[882px] design:h-[1682px] design:w-[1122px]"
       />
       {/* Sin esto se ve el canto vertical de la foto a x882, como si el video
           estuviera pegado encima en vez de fundido con el panel oscuro. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(77.74deg, #171717 48.45%, rgb(23 23 23 / 0) 61.05%)",
-        }}
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(77.74deg,#171717_48.45%,#17171700_61.05%)] movil:bg-[linear-gradient(182.44deg,#171717_50.42%,#00000000_58.17%)]"
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[668px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[999px] movil:p-0 design:h-[668px] design:p-0">
         <div
           aria-hidden
           className="bg-vernal-accent hidden design:absolute design:top-[96px] design:left-[215px] design:block design:h-[443px] design:w-[12px]"
         />
 
-        <h2 className="text-vernal-accent text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] design:absolute design:top-[106px] design:left-[290px] design:w-[348px] design:leading-[67px] design:text-[64px]">
+        <h2 className="text-vernal-accent text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[65px] movil:left-[38px] movil:w-[300px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[106px] design:left-[290px] design:w-[348px] design:leading-[67px] design:text-[64px]">
           Nuestros
           <br />
           servicios
         </h2>
 
-        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
+        <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[194px] movil:left-[38px] movil:mt-0 movil:w-[325px] movil:max-w-none movil:text-justify design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
           {"Como firma de inmigración en Texas, "}
           <span className="text-vernal-accent">
             podemos ayudarte a través de distintas áreas de práctica, adaptadas a las
@@ -72,24 +76,25 @@ export function Servicios() {
 
         <ButtonLink
           href="/contacto"
-          className="mt-8 w-full sm:w-[277px] design:absolute design:top-[479px] design:left-[290px] design:mt-0"
+          className="mt-8 w-full sm:w-[277px] movil:absolute movil:top-[498px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[479px] design:left-[290px] design:mt-0"
         >
-          Agenda una consulta
+          <span className="movil:hidden">Agenda una consulta</span>
+          <span className="hidden movil:inline">Agenda tu consulta</span>
         </ButtonLink>
 
         {/* Botón de play (nodo 129:1293): círculo blanco de 96 con triángulo oscuro. */}
         <button
           type="button"
           aria-label="Ver vídeo"
-          className="mt-10 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-white transition-transform hover:scale-105 design:absolute design:top-[256px] design:left-[1262px] design:mt-0 design:h-[96px] design:w-[96px]"
+          className="mt-10 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-white transition-transform hover:scale-105 movil:absolute movil:top-[728px] movil:left-[153px] movil:mt-0 movil:h-[96px] movil:w-[96px] design:absolute design:top-[256px] design:left-[1262px] design:mt-0 design:h-[96px] design:w-[96px]"
         >
           <span
             aria-hidden
-            className="ml-[6px] border-t-[13px] border-b-[13px] border-l-[22px] border-t-transparent border-b-transparent border-l-[#161616] design:border-t-[17px] design:border-b-[17px] design:border-l-[29px]"
+            className="ml-[6px] border-t-[13px] border-b-[13px] border-l-[22px] border-t-transparent border-b-transparent border-l-[#161616] movil:border-t-[17px] movil:border-b-[17px] movil:border-l-[29px] design:border-t-[17px] design:border-b-[17px] design:border-l-[29px]"
           />
         </button>
 
-        <p className="mt-8 max-w-[556px] text-center text-[24px] leading-[25px] font-light text-white design:absolute design:top-[400px] design:left-[1032px] design:mt-0 design:w-[556px] design:leading-[37px] design:text-[36px]">
+        <p className="mt-8 max-w-[556px] text-center text-[24px] leading-[25px] font-light text-white movil:absolute movil:top-[848px] movil:left-[16px] movil:mt-0 movil:w-[370px] movil:max-w-none design:absolute design:top-[400px] design:left-[1032px] design:mt-0 design:w-[556px] design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent">Nos adaptamos a tu caso y</span>{" "}
           luchamos por ofrecerte la mejor opción.
         </p>

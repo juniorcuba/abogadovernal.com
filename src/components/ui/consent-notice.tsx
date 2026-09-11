@@ -2,6 +2,8 @@
  * Aviso de consentimiento SMS/WhatsApp — texto literal de los nodos 6:87
  * (formulario del hero) y 83:69 (newsletter).
  * Poppins ExtraLight Italic 12px, leading 1.17, justificado, blanco.
+ * En el lienzo móvil baja a 10px con interlineado de 12 y peso 275, que sin
+ * fuente variable se queda en Light.
  *
  * NO reescribir ni resumir: es el consentimiento que exige la TCPA. Cuando el
  * formulario se conecte, hay que guardar la aceptación con timestamp.
@@ -9,7 +11,7 @@
 export function ConsentNotice({ className }: { className?: string }) {
   return (
     <p
-      className={`text-[12px] leading-[14px] font-extralight design:text-justify italic text-white ${className ?? ""}`}
+      className={`text-[12px] leading-[14px] font-extralight design:text-justify italic text-white movil:text-[10px] movil:leading-[12px] movil:font-light movil:text-justify ${className ?? ""}`}
     >
       Al enviar este formulario aceptas recibir mensajes transaccionales por SMS o
       WhatsApp de The Law Office Of{" "}

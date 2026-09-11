@@ -24,13 +24,28 @@ export function Hero() {
   return (
     <section className="relative -mt-[128px] overflow-hidden movil:-mt-[106px] movil:h-[1308px] design:h-[1142px]">
       <div className="absolute inset-0 movil:inset-auto movil:top-[-2px] movil:left-0 movil:h-[700px] movil:w-[402px] design:top-[9px] design:left-[-3px] design:h-[1231px] design:w-[1920px]">
+        {/* Son dos archivos de la MISMA foto y no uno solo colocado de dos
+            maneras: hero-vernal.jpg viene ya recortado 1917×1231 para el encuadre
+            de escritorio, y al móvil le falta justo lo que ese recorte quitó. El
+            de móvil es el original entero, 1920×2477.
+
+            Ninguno lleva `priority`: con carga diferida, el que queda en
+            display:none no se llega a pedir, así que cada lienzo baja una sola
+            foto. Con `priority` el navegador se baja las dos. */}
         <Image
           src="/images/hero-vernal.jpg"
           alt=""
           fill
-          priority
           sizes="100vw"
-          className="object-cover object-[62%_center] movil:!static movil:!ml-[-381px] movil:!mt-[27px] movil:!h-[1413px] movil:!w-[1095px] movil:!max-w-none movil:!object-fill"
+          className="object-cover object-[62%_center] movil:hidden"
+        />
+        <Image
+          src="/images/movil/hero-fondo.webp"
+          alt=""
+          width={1920}
+          height={2477}
+          sizes="1095px"
+          className="hidden movil:!static movil:!ml-[-381px] movil:!mt-[27px] movil:!block movil:!h-[1413px] movil:!w-[1095px] movil:!max-w-none movil:!object-fill"
         />
         {/* Degradado del archivo móvil; en escritorio no lo lleva. */}
         <div
