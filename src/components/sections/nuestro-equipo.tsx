@@ -12,7 +12,8 @@ import { Carrusel } from "@/components/ui/carrusel";
  *
  * El fondo son CINCO capas apiladas, todas del export SVG de la frame:
  *   1. linear-gradient(80.23deg, #172339 28.78%, #0F0F0F 43.26%)
- *   2. textura 1800×982 en (−247, +120), opacidad 0.12
+ *   2. textura al 12%, GIRADA −20.6°: el patrón del archivo lleva una matriz
+ *      de rotación, que se aplica tal cual sobre la imagen a 2816×1536
  *   3. Estatua de la Libertad 1426×2535 en (+100, −587), opacidad 0.31, hard-light
  *   4. linear-gradient(264.10deg, #0F0F10 29.89%, #172339 transparente 70.20%)
  *   5. linear-gradient(80.13deg, #172339 11.03%, negro transparente 33.61%)
@@ -101,7 +102,7 @@ export function NuestroEquipo() {
         aria-hidden
         width={1800}
         height={982}
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.12] movil:inset-auto movil:top-[777px] movil:left-[-207px] movil:h-[601px] movil:w-[914px] movil:max-w-none movil:object-fill movil:opacity-[0.26] movil:mix-blend-soft-light design:inset-auto design:top-[120px] design:left-[-247px] design:h-[982px] design:w-[1800px]"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.12] movil:inset-auto movil:top-[777px] movil:left-[-207px] movil:h-[601px] movil:w-[914px] movil:max-w-none movil:object-fill movil:opacity-[0.26] movil:mix-blend-soft-light design:inset-auto design:top-0 design:left-0 design:h-[1536px] design:w-[2816px] design:max-w-none design:origin-top-left design:[transform:matrix(0.639059,-0.240696,0.240696,0.639058,-246.523,120.133)]"
       />
       <Image
         src="/images/equipo/fondo-libertad.webp"

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IconoEnlaceExterno } from "@/components/ui/iconos";
 import { anclaSede } from "@/lib/anclas";
+import { sedePorSlug, slugDeCiudad } from "@/lib/sedes";
 
 /**
  * "Abogado de Inmigración en Dallas, TX" + acordeón de las cinco sedes.
@@ -30,15 +31,21 @@ import { anclaSede } from "@/lib/anclas";
  * real lo lógico sería abrir Dallas, que es de quien habla el título. Pendiente
  * de decidir con el cliente.
  *
- * El texto de las sedes es PROVISIONAL: ver `parrafoProvisional`.
+ * El párrafo de cada sede es la introducción del hero de su página
+ * (/areas-de-servicio/<sede>): en el archivo solo estaba el de San Antonio, que
+ * resultó ser palabra por palabra el de su página.
  */
 
-/** Las cuatro áreas, tal como están en el archivo. */
+/**
+ * Las cuatro áreas del acordeón y la tarjeta de la página de sede a la que llevan.
+ * El archivo escribe "en Dallas" en las cinco sedes; aquí va la ciudad de cada fila,
+ * porque cada enlace lleva a la página de esa ciudad.
+ */
 const AREAS = [
-  { texto: "Peticiones familiares", lineas: 1 },
-  { texto: "Defensa Contra la\nDeportación en Dallas", lineas: 2 },
-  { texto: "Visa K1 (Prometidos)\nen Dallas", lineas: 2 },
-  { texto: "Visas Humanitarias\nen Dallas", lineas: 2 },
+  { texto: "Peticiones familiares", conCiudad: false, lineas: 1, ancla: "peticion-familiar" },
+  { texto: "Defensa Contra la\nDeportación en", conCiudad: true, lineas: 2, ancla: "deportacion" },
+  { texto: "Visa K1 (Prometidos)\nen", conCiudad: true, lineas: 2, ancla: "visa-k1" },
+  { texto: "Visas Humanitarias\nen", conCiudad: true, lineas: 2, ancla: "visas-humanitarias" },
 ];
 
 /**
@@ -55,42 +62,32 @@ const SEDES = [
   { ciudad: "San Antonio", n: "05", linea: 1997, bNum: 2064, bCiudad: 2067, bExp: 2060.5, bMas: 2065.85, xNum: 243 },
 ];
 
-/**
- * TEXTO PROVISIONAL. En el archivo solo existe el párrafo de San Antonio; aquí se
- * reutiliza cambiando el nombre de la ciudad para que las cinco sedes se vean
- * llenas mientras llega el texto real del cliente.
- *
- * Con "San Antonio" sale palabra por palabra el del archivo, así que la página
- * se puede seguir comparando contra el render.
- *
- * NO PUBLICAR ASÍ: son cinco párrafos idénticos hablando de ciudades distintas.
- */
-function parrafoProvisional(ciudad: string) {
-  return (
-    `${ciudad} es una de las ciudades con mayor crecimiento de comunidad ` +
-    `inmigrante en Texas, y nuestra oficina está aquí para acompañarte en cada ` +
-    `etapa de tu proceso migratorio. Desde nuestra sede en ${ciudad}, ofrecemos ` +
-    `representación en las siguientes áreas:`
-  );
+/** Introducción de la sede, la misma que abre su página. */
+function introDeSede(ciudad: string) {
+  const slug = slugDeCiudad(ciudad);
+  return (slug && sedePorSlug(slug)?.intro) ?? "";
 }
 
 /** Alto de la fila cerrada y de la abierta, del archivo. */
 const ALTO_FILA = 109;
 
-function Areas({ columna }: { columna: 0 | 1 }) {
+function Areas({ columna, ciudad }: { columna: 0 | 1; ciudad: string }) {
+  const slug = slugDeCiudad(ciudad);
   // Las dos columnas del archivo tienen exactamente los mismos cuatro enlaces.
   return (
     <ul className="w-full design:w-[401px]">
       {AREAS.map((a) => (
         <li key={`${columna}-${a.texto}`} className="border-t-2 border-white/50">
           <a
-            href="/areas-de-practica"
+            href={slug ? `/areas-de-servicio/${slug}#${a.ancla}` : "/areas-de-practica"}
             className="flex items-start justify-between gap-x-4 py-[18px] text-[20px] leading-[25px] font-light text-white transition-opacity hover:opacity-80 design:h-[var(--alto)] design:py-0 design:pt-[21px] design:text-[24px]"
             style={
               { "--alto": `${a.lineas === 1 ? 75 : 92}px` } as React.CSSProperties
             }
           >
-            <span className="whitespace-pre-line">{a.texto}</span>
+            <span className="whitespace-pre-line">
+              {a.conCiudad ? `${a.texto} ${ciudad}` : a.texto}
+            </span>
             <IconoEnlaceExterno className="mt-[6px] shrink-0" />
           </a>
         </li>
@@ -238,15 +235,15 @@ export function AreasCiudades() {
                      primera columna en x766. Entre columnas sí son 71. */
                   className="pb-8 md:flex md:gap-x-10 design:flex design:h-[378px] design:gap-x-[86px] design:pb-0 design:pl-[128px]">
                     <p className="text-[16px] leading-[21px] text-white md:w-[38%] md:shrink-0 design:w-[315px] design:pt-[7px] design:leading-[17px]">
-                      {parrafoProvisional(s.ciudad)}
+                      {introDeSede(s.ciudad)}
                     </p>
                     {/* En el archivo la segunda columna es un duplicado exacto
                         de la primera. A 1920 se respeta, pero por debajo serían
                         ocho enlaces con cuatro repetidos: se deja una sola. */}
                     <div className="mt-6 flex-1 md:mt-0 design:mt-0 design:flex design:flex-none">
-                      <Areas columna={0} />
+                      <Areas columna={0} ciudad={s.ciudad} />
                       <div className="hidden design:ml-[71px] design:block">
-                        <Areas columna={1} />
+                        <Areas columna={1} ciudad={s.ciudad} />
                       </div>
                     </div>
                   </div>

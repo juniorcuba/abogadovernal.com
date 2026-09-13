@@ -1,9 +1,6 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Field, FieldArea, FieldSelect } from "@/components/ui/field";
-import { ConsentNotice } from "@/components/ui/consent-notice";
+import { CamposConsulta } from "@/components/ui/campos-consulta";
 import { FloatingCta } from "@/components/layout/floating-cta";
-import { offices } from "@/lib/site";
 
 /**
  * Hero de la homepage — nodos del rango y=0..1142 de la frame 1:2.
@@ -76,20 +73,7 @@ export function Hero() {
         </p>
 
         <form className="bg-vernal-card w-full max-w-[648px] p-[38px] movil:absolute movil:top-[698px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:px-[38px] movil:pt-[39px] movil:pb-0 design:absolute design:top-[583px] design:left-[223px] design:h-[559px] design:w-[648px] design:max-w-none design:pt-[32px] design:pr-[45px] design:pb-0 design:pl-[38px]">
-          <div className="grid grid-cols-1 gap-[23px] sm:grid-cols-2 movil:grid-cols-1 movil:gap-[18px]">
-            <Field name="nombre" label="Nombre" icon="/icons/form/user.svg" iconWidth={17} iconHeight={19} required />
-            <Field name="telefono" label="Teléfono" type="tel" icon="/icons/form/phone.svg" iconWidth={22} iconHeight={22} required />
-            <Field name="correo" label="Correo" type="email" icon="/icons/form/mail.svg" iconWidth={18} iconHeight={14} required />
-            {/* Las opciones son las 5 sedes; falta confirmar si hay modalidades
-                no presenciales (virtual, telefónica) que el Figma no lista. */}
-            <FieldSelect name="oficina" label="Oficina o modalidad de atención:" icon="/icons/form/office.svg" iconWidth={21} iconHeight={22} options={offices.map((o) => o.city)} />
-            <FieldArea name="comentarios" label="Comentarios" icon="/icons/form/comment.svg" iconWidth={20} iconHeight={20} className="sm:col-span-2" />
-          </div>
-
-          <Button className="mt-[21px] w-full sm:w-[224px] movil:mt-[18px] movil:w-[224px]">Enviar</Button>
-
-          {/* El aviso va 7px más adentro que los campos (x268 vs x261). */}
-          <ConsentNotice className="mt-[20px] movil:mt-[21px] movil:ml-0 movil:text-[10px] design:ml-[7px]" />
+          <CamposConsulta />
         </form>
 
         <FloatingCta className="movil:top-[672px] movil:block design:top-[883px] design:right-[3px]" />
