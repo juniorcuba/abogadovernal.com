@@ -2,45 +2,42 @@ import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { MenuMovil } from "@/components/layout/menu-movil";
+import { AvisoCookies } from "@/components/layout/aviso-cookies";
 import { navItems, site, socials } from "@/lib/site";
 
 /**
- * Header del sitio — nodo Figma 6:92 ("Group 1"), 1920×128.
+ * Header del sitio — frame 1:2, 1920×128. Medidas del export SVG del 2026-09-13.
  *
- * Geometría exacta del artboard:
- *   grupo izq.  x201..819    Nosotros / Áreas de servicio / Áreas de practica /
- *                            Testimoniales, separación uniforme de 52px
- *   logo        x905  y25    111×78, centrado exacto (centro 960.5 = centro del lienzo)
- *   grupo der.  x1125..1571  Blogs / FAQS / Contacto / teléfono, separación de 48px
- *   redes       x1597..1754  30×30 (Instagram 29×30), separación de 12px,
- *                            a 26px del teléfono
+ *   enlaces   Inicio x242 · Nosotros x336 · Áreas de práctica x454 ·
+ *             Testimoniales x644 · Blogs x802 | logo | FAQS x1083 ·
+ *             Contacto x1169 · "Llamanós" x1289 · teléfono x1366.8
+ *             Poppins 16/400, línea base y84.1
+ *   logo      x905 y25  111×78, centrado exacto (centro 960.5)
+ *   redes     25×25 en y64, x1545 / 1581 / 1617 / 1653 (paso de 36)
  *
- * Dos detalles del archivo que no son obvios:
- *  - El logo está centrado verticalmente (y25, alto 78 → centro 64), pero los
- *    enlaces y las redes van ~16px MÁS ABAJO (centro ~80). De ahí el pt de 32
- *    sobre una caja de 128: el contenido se centra en 80 y el logo se posiciona aparte.
- *  - Los grupos izquierdo (618px) y derecho (629px) no miden lo mismo, así que
- *    `justify-between` dejaba el logo 12px descentrado. Va en absoluto.
+ * En 1920 cada pieza va en su x del archivo: los grupos no tienen separación
+ * uniforme (52, 64 y 86 px entre enlaces), así que un `gap` no los reproduce.
+ * "Llamanós" va literal, con la tilde del archivo.
  *
  * Estático, como en el archivo: el hero se mete por debajo con -mt-[128px] y se ve
- * a través del 95% de opacidad, igual que el fondo 6:88 que arranca en y=9.
+ * a través del 95% de opacidad.
  *
- * El Figma solo trae el artboard de escritorio (1920). Los cortes de aquí abajo
- * son decisiones de implementación, no del diseño:
- *   - < xl (1280): menú hamburguesa (ver menu-movil.tsx). A 1024 el nav completo
- *     desbordaba la ventana, de ahí el corte en xl. No viene del Figma:
- *     el archivo no trae diseño móvil, así que es una solución de oficio.
- *   - < 2xl (1536): se ocultan las redes; el nav completo + teléfono no caben con ellas.
+ * Por debajo de 1280 no hay diseño de cabecera de escritorio; lo de ahí es
+ * criterio propio:
+ *   - < xl (1280): menú hamburguesa (ver menu-movil.tsx).
+ *   - < 2xl (1536): se ocultan las redes; el nav completo + teléfono no caben.
  */
 
-const leftNav = navItems.slice(0, 4);
-const rightNav = navItems.slice(4);
+/** x de cada enlace en el lienzo de 1920, en el orden de `navItems`. */
+const X_DISENO = [242, 336, 454, 644, 802, 1083, 1169];
+const IZQUIERDA = 5;
 
-function NavLink({ label, href }: { label: string; href: string }) {
+function NavLink({ label, href, x }: { label: string; href: string; x: number }) {
   return (
     <Link
       href={href}
-      className="text-[16px] leading-[17px] whitespace-nowrap text-white transition-colors hover:text-vernal-accent"
+      className="text-[16px] leading-[17px] whitespace-nowrap text-white transition-colors hover:text-vernal-accent design:absolute design:top-[70px] design:left-[var(--x)]"
+      style={{ "--x": `${x}px` } as React.CSSProperties}
     >
       {label}
     </Link>
@@ -49,93 +46,100 @@ function NavLink({ label, href }: { label: string; href: string }) {
 
 export function SiteHeader() {
   return (
-    <header className="bg-vernal-grad shadow-vernal-header relative z-50 opacity-95 movil:bg-none movil:opacity-100 movil:shadow-none">
-      {/* En el lienzo móvil la cabecera son DOS filas: el degradado radial de
-          402×70 con menú, logo e idioma, y debajo una barra cian de 36 con el
-          teléfono. En escritorio es una sola de 128. */}
-      <div className="relative mx-auto flex h-[128px] max-w-[1920px] items-center justify-between gap-x-3 px-5 sm:gap-x-8 sm:px-6 lg:px-10 movil:h-[70px] movil:px-0 design:pt-[32px] design:pr-[166px] design:pl-[201px]">
-        <div
-          aria-hidden
-          className="bg-vernal-grad pointer-events-none absolute inset-0 hidden movil:block"
-        />
-        <MenuMovil />
-
-        <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:gap-x-[52px]">
-          {leftNav.map((item) => (
-            <NavLink key={item.href} {...item} />
-          ))}
-        </nav>
-
-        <Link
-          href="/"
-          aria-label={site.name}
-          className="static translate-x-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2 xl:static xl:translate-x-0 movil:absolute movil:top-[16px] movil:left-[172px] movil:translate-x-0 design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
-        >
-          <Logo className="movil:h-[40px] movil:w-[57px]" />
-        </Link>
-
-        <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 movil:hidden design:gap-x-[26px]">
-          <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:gap-x-[48px]">
-            <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:gap-x-[48px]">
-              {rightNav.map((item) => (
-                <NavLink key={item.href} {...item} />
-              ))}
-            </nav>
-
-            <a
-              href={site.phoneHref}
-              className="text-vernal-accent text-[13px] leading-[17px] font-bold whitespace-nowrap sm:text-[16px]"
-            >
-              {site.phone}
-            </a>
-          </div>
-
-          <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex design:flex">
-            {socials.map((social) => (
-              <li key={social.label} className="flex shrink-0">
-                <a
-                  href={social.href}
-                  aria-label={social.label}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Image
-                    src={social.icon}
-                    alt=""
-                    width={social.width}
-                    height={social.height}
-                    style={{ width: social.width, height: social.height }}
-                    className="max-w-none"
-                  />
-                </a>
-              </li>
+    // El aviso de cookies va FUERA del <header>: la cabecera lleva opacidad del
+    // 95% y el aviso es negro puro en el archivo.
+    <div className="relative z-50">
+      <header className="bg-vernal-grad shadow-vernal-header relative opacity-95 movil:bg-none movil:opacity-100 movil:shadow-none">
+        {/* En el lienzo móvil la cabecera son DOS filas: el degradado radial de
+            402×70 con menú, logo e idioma, y debajo una barra cian de 36 con el
+            teléfono. En escritorio es una sola de 128. */}
+        <div className="relative mx-auto flex h-[128px] max-w-[1920px] items-center justify-between gap-x-3 px-5 sm:gap-x-8 sm:px-6 lg:px-10 movil:h-[70px] movil:px-0 design:block design:p-0">
+          <div
+            aria-hidden
+            className="bg-vernal-grad pointer-events-none absolute inset-0 hidden movil:block"
+          />
+          <MenuMovil />
+  
+          <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:contents">
+            {navItems.slice(0, IZQUIERDA).map((item, i) => (
+              <NavLink key={item.href} {...item} x={X_DISENO[i]} />
             ))}
-          </ul>
+          </nav>
+  
+          <Link
+            href="/"
+            aria-label={site.name}
+            className="static translate-x-0 sm:absolute sm:left-1/2 sm:-translate-x-1/2 xl:static xl:translate-x-0 movil:absolute movil:top-[16px] movil:left-[172px] movil:translate-x-0 design:absolute design:top-[25px] design:left-1/2 design:-translate-x-1/2"
+          >
+            <Logo className="movil:h-[40px] movil:w-[57px]" />
+          </Link>
+  
+          <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 movil:hidden design:contents">
+            <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:contents">
+              <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:contents">
+                {navItems.slice(IZQUIERDA).map((item, i) => (
+                  <NavLink key={item.href} {...item} x={X_DISENO[IZQUIERDA + i]} />
+                ))}
+              </nav>
+  
+              <a
+                href={site.phoneHref}
+                className="text-[13px] leading-[17px] whitespace-nowrap sm:text-[16px] design:absolute design:top-[70px] design:left-[1289px]"
+              >
+                {/* Solo el diseño de 1920 lo trae; por debajo no cabe. */}
+                <span className="hidden text-white design:inline">Llamanós </span>
+                <span className="text-vernal-accent font-bold">{site.phone}</span>
+              </a>
+            </div>
+  
+            <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex design:absolute design:top-[64px] design:left-[1545px] design:flex design:gap-x-[11px]">
+              {socials.map((social) => (
+                <li key={social.label} className="flex shrink-0">
+                  <a
+                    href={social.href}
+                    aria-label={social.label}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image
+                      src={social.icon}
+                      alt=""
+                      width={social.width}
+                      height={social.height}
+                      style={{ width: social.width, height: social.height }}
+                      className="max-w-none design:!h-[25px] design:!w-[25px]"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+  
+          {/* Selector de idioma. SOLO está en el diseño móvil: el de escritorio no
+              lo trae. De momento es un rótulo, sin traducción detrás. */}
+          <p
+            aria-hidden
+            className="hidden text-[14px] leading-[15px] font-medium movil:absolute movil:top-[24px] movil:left-[327px] movil:flex movil:gap-x-[12px]"
+          >
+            <span className="text-white">ES</span>
+            <span className="text-[#323B4C]">EN</span>
+          </p>
         </div>
-
-        {/* Selector de idioma. SOLO está en el diseño móvil: el de escritorio no
-            lo trae. De momento es un rótulo, sin traducción detrás. */}
-        <p
-          aria-hidden
-          className="hidden text-[14px] leading-[15px] font-medium movil:absolute movil:top-[24px] movil:left-[327px] movil:flex movil:gap-x-[12px]"
+  
+        {/* Segunda fila del móvil: barra cian de 36 con el teléfono. */}
+        <a
+          href={site.phoneHref}
+          className="bg-vernal-accent hidden items-center justify-center gap-x-[9px] movil:flex movil:h-[36px]"
         >
-          <span className="text-white">ES</span>
-          <span className="text-[#323B4C]">EN</span>
-        </p>
-      </div>
-
-      {/* Segunda fila del móvil: barra cian de 36 con el teléfono. */}
-      <a
-        href={site.phoneHref}
-        className="bg-vernal-accent hidden items-center justify-center gap-x-[9px] movil:flex movil:h-[36px]"
-      >
-        <span className="text-vernal-navy text-[13px] leading-[14px]">
-          ¡Llámanos y agenda hoy!
-        </span>
-        <span className="text-[13px] leading-[14px] font-bold text-white">
-          {site.phone}
-        </span>
-      </a>
-    </header>
+          <span className="text-vernal-navy text-[13px] leading-[14px]">
+            ¡Llámanos y agenda hoy!
+          </span>
+          <span className="text-[13px] leading-[14px] font-bold text-white">
+            {site.phone}
+          </span>
+        </a>
+      </header>
+      <AvisoCookies />
+    </div>
   );
 }

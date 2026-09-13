@@ -44,10 +44,14 @@ export type NavItem = {
   href: string;
 };
 
-/** Nav del header, en el orden del diseño (nodos 6:89, 6:50, 6:51, 6:52, 6:53, 6:54, 6:55). */
+/**
+ * Nav del header, en el orden del diseño. En el export del 2026-09-13 el
+ * diseñador añadió "Inicio" y quitó "Áreas de servicio": la página
+ * /areas-de-servicio sigue existiendo, pero ya no va en el menú.
+ */
 export const navItems: NavItem[] = [
+  { label: "Inicio", href: "/" },
   { label: "Nosotros", href: "/nosotros" },
-  { label: "Áreas de servicio", href: "/areas-de-servicio" },
   { label: "Áreas de práctica", href: "/areas-de-practica" },
   { label: "Testimoniales", href: "/testimoniales" },
   { label: "Blogs", href: "/blog" },

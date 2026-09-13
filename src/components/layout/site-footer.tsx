@@ -29,8 +29,8 @@ import { offices, site, socials } from "@/lib/site";
  * puede pintar con `site.tagline` tal cual, que además es la descripción de la
  * página y tiene que seguir siendo texto plano.
  *
- * Lienzo móvil (y=11562..12765): el degradado ocupa 1060 y lo que queda hasta
- * el final del artboard es fondo liso. Todo va centrado en x201:
+ * Lienzo móvil (y=11791..12822, 1031 visibles): el degradado mide 1060 pero el
+ * artboard se corta antes, en el export del 2026-09-13. Todo va centrado en x201:
  *   claim y40 (caja de 295) · logo x145 y166 · correo y300 · CTA y teléfono en
  *   una fila en y318 · redes y375 · sedes en una columna de 223 desde y476, con
  *   paso de 83 · raya x48 y907 de 317 · legal y960
@@ -41,7 +41,7 @@ import { offices, site, socials } from "@/lib/site";
  */
 export function SiteFooter() {
   return (
-    <footer className="bg-vernal-footer relative text-white movil:h-[1203px] movil:bg-[#0F0F0F] movil:bg-[linear-gradient(180deg,#172339_5.94%,#0F0F0F_82.68%)] movil:bg-[length:100%_1060px] movil:bg-no-repeat design:h-[468px]">
+    <footer className="bg-vernal-footer relative text-white movil:h-[1031px] movil:bg-[#0F0F0F] movil:bg-[linear-gradient(180deg,#172339_5.94%,#0F0F0F_82.68%)] movil:bg-[length:100%_1060px] movil:bg-no-repeat design:h-[468px]">
       <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 pt-[84px] pb-10 lg:px-12 movil:h-full movil:p-0 design:h-full design:p-0">
         <p className="text-center text-[22px] leading-[23px] font-light movil:absolute movil:top-[40px] movil:left-[53.5px] movil:w-[295px] design:absolute design:top-[84px] design:left-[211px] design:w-[347px] design:text-left">
           <span className="text-vernal-accent">Somos inmigrantes</span> como tú y

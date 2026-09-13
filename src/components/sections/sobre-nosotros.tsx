@@ -13,8 +13,8 @@ import Image from "next/image";
  *             ventana x932 y36   982×573 (recorta)
  *             fotos   634×442 a y65, paso de 674
  *   fundidos          x902 y0 y x1729 y0, 185×609, 270deg: opaco a la derecha
- *   cifra     22:88   x1025 y358  Poppins 600 176px blanco
- *             22:89   x1265 y532  Poppins 600 45px UPPER blanco
+ *   cifra     22:88   x970 y358  Poppins 600 176px blanco
+ *             22:89   x1210 y532  Poppins 600 45px UPPER blanco
  *
  * El duotono azul no viene de imágenes tintadas. El relleno del archivo lleva tres
  * cosas encadenadas, y hacen falta las tres:
@@ -110,10 +110,10 @@ export function SobreNosotros() {
           {" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca."}
         </p>
 
-        <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase movil:absolute movil:top-[734px] movil:left-[3px] movil:mt-0 movil:text-left movil:text-[99px] movil:leading-[103px] design:absolute design:top-[358px] design:left-[1025px] design:mt-0 design:text-left design:leading-[183px] design:text-[176px]">
+        <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase movil:absolute movil:top-[734px] movil:left-[3px] movil:mt-0 movil:text-left movil:text-[99px] movil:leading-[103px] design:absolute design:top-[358px] design:left-[970px] design:mt-0 design:text-left design:leading-[183px] design:text-[176px]">
           +10,000
         </p>
-        <p className="text-center text-[24px] leading-[25px] font-semibold text-white uppercase movil:absolute movil:top-[836px] movil:left-[46px] movil:text-left movil:text-[34px] movil:leading-[36px] design:absolute design:top-[532px] design:left-[1265px] design:text-left design:leading-[47px] design:text-[45px]">
+        <p className="text-center text-[24px] leading-[25px] font-semibold text-white uppercase movil:absolute movil:top-[836px] movil:left-[46px] movil:text-left movil:text-[34px] movil:leading-[36px] design:absolute design:top-[532px] design:left-[1210px] design:text-left design:leading-[47px] design:text-[45px]">
           familias reunidas
         </p>
       </div>

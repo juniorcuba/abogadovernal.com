@@ -9,13 +9,14 @@ import { offices } from "@/lib/site";
  * Hero de la homepage — nodos del rango y=0..1142 de la frame 1:2.
  *
  * Geometría exacta del artboard (1920):
- *   fondo   6:88   x-3   y9    1920×1231  (se recorta abajo: la sección mide 1142)
+ *   fondo   6:88   x-3   y0    1920×1142  la foto más un degradado a #0F0F10 del
+ *                                         71.37% al 100% (export del 2026-09-13; antes y9 y sin degradado)
  *   h1      6:3    x223  y276  565×255    Poppins 600 82px lh1.04 UPPER
- *   claim   6:23   x1300 y412  440×109    Poppins 300 36px lh1.04
+ *   claim   6:23   x1260 y412  440×109    Poppins 300 36px lh1.04
  *   tarjeta 18:7   x223  y583  648×559    padding izq 38 / der 45 / sup 32
  *   campos         x261/555 y615/690, 271×52; comentarios 565×52; enviar 224×52
  *   aviso   6:87   x268  y910  558×56     (7px más adentro que los campos)
- *   CTA     18:25  x1571 y886  349        pegado al borde derecho
+ *   CTA     18:25  x1568 y883  349        a 3px del borde derecho (export del 2026-09-13)
  *
  * A partir de `design` (1920px) se posiciona en absoluto para clavar esas
  * coordenadas. Por debajo, los mismos elementos fluyen apilados.
@@ -23,9 +24,9 @@ import { offices } from "@/lib/site";
 export function Hero() {
   return (
     <section className="relative -mt-[128px] overflow-hidden movil:-mt-[106px] movil:h-[1308px] design:h-[1142px]">
-      <div className="absolute inset-0 movil:inset-auto movil:top-[-2px] movil:left-0 movil:h-[700px] movil:w-[402px] design:top-[9px] design:left-[-3px] design:h-[1231px] design:w-[1920px]">
+      <div className="absolute inset-0 movil:inset-auto movil:top-[-2px] movil:left-0 movil:h-[700px] movil:w-[402px] design:top-0 design:left-[-3px] design:h-[1142px] design:w-[1920px]">
         {/* Son dos archivos de la MISMA foto y no uno solo colocado de dos
-            maneras: hero-vernal.jpg viene ya recortado 1917×1231 para el encuadre
+            maneras: hero-escritorio.webp viene recortado 1920×1142 para el encuadre
             de escritorio, y al móvil le falta justo lo que ese recorte quitó. El
             de móvil es el original entero, 1920×2477.
 
@@ -33,11 +34,15 @@ export function Hero() {
             display:none no se llega a pedir, así que cada lienzo baja una sola
             foto. Con `priority` el navegador se baja las dos. */}
         <Image
-          src="/images/hero-vernal.jpg"
+          src="/images/hero-escritorio.webp"
           alt=""
           fill
           sizes="100vw"
           className="object-cover object-[62%_center] movil:hidden"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 hidden bg-[linear-gradient(180deg,#0F0F1000_71.37%,#0F0F10_100%)] design:block"
         />
         <Image
           src="/images/movil/hero-fondo.webp"
@@ -65,7 +70,7 @@ export function Hero() {
           <span className="text-vernal-accent block">en texas</span>
         </h1>
 
-        <p className="max-w-[440px] text-[26px] leading-[27px] font-light text-white movil:absolute movil:top-[563px] movil:left-[38px] movil:w-[282px] movil:max-w-none movil:text-[24px] movil:leading-[25px] design:absolute design:top-[412px] design:left-[1300px] design:w-[440px] design:max-w-none design:leading-[37px] design:text-[36px]">
+        <p className="max-w-[440px] text-[26px] leading-[27px] font-light text-white movil:absolute movil:top-[563px] movil:left-[38px] movil:w-[282px] movil:max-w-none movil:text-[24px] movil:leading-[25px] design:absolute design:top-[412px] design:left-[1260px] design:w-[440px] design:max-w-none design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent">Somos inmigrantes</span> como tú y
           defendemos tus derechos.
         </p>
@@ -87,7 +92,7 @@ export function Hero() {
           <ConsentNotice className="mt-[20px] movil:mt-[21px] movil:ml-0 movil:text-[10px] design:ml-[7px]" />
         </form>
 
-        <FloatingCta className="movil:top-[672px] movil:block design:top-[886px]" />
+        <FloatingCta className="movil:top-[672px] movil:block design:top-[883px] design:right-[3px]" />
       </div>
     </section>
   );

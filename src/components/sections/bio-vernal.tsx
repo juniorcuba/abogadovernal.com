@@ -14,9 +14,9 @@ import Link from "next/link";
  *     retrato   129:194  +8,+0    546×546 (recorte con transparencia)
  *     "texas lawyer" 129:195  +30,+496  Poppins 700 35px #0f0f10,
  *                    tracking 21px, UPPER, con Vernal Shadow 1
- *   título      11:106   x924 y138  587×134  Poppins 600 64px lh1.04
+ *   título      11:106   x1041 y138  587×134  Poppins 600 64px lh1.04
  *                        línea 1 blanca, línea 2 #08b6ff
- *   cuerpo      11:108   x924 y335  580×336  Poppins 400 16px lh1.04 justificado,
+ *   cuerpo      11:108   x1041 y335  580×336  Poppins 400 16px lh1.04 justificado,
  *                        blanco, con "Abogado Vernal" en #08b6ff
  *   enlace      129:223  x464 y683  "Conoce mi historia" + flecha
  *
@@ -24,10 +24,14 @@ import Link from "next/link";
  *
  *   fondo    la misma foto, dibujada 1056×704 en (−298, +548), más un degradado
  *            que tapa de negro la mitad de arriba
- *   retrato  ya no se compone en el navegador: el archivo trae un banner de
- *            313×313 con el degradado azul incrustado, y debajo un rect cian
- *            que solo asoma un par de píxeles. No hay "VERNAL" ni "texas lawyer"
+ *   retrato  la misma composición de escritorio reducida ×0.573: el rect pasa
+ *            de 548 a 314 y "VERNAL" de 548 a 313 de ancho. La foto es un banner
+ *            propio de 313×313 con el degradado azul incrustado.
+ *            El export SVG del móvil NO trae "VERNAL" ni "TEXAS LAWYER" (se
+ *            pierden al exportar), pero el render de Figma sí: se miden ahí
  *   enlace   "Conoce mi historia" no está en el diseño móvil
+ *   cuerpo   con -0.08px de interletra: Chrome mide Poppins un pelo más ancho
+ *            que Figma y el tercer párrafo cortaban "familia\"," y "cada caso" una línea antes
  *
  * Las dos composiciones se excluyen con `hidden`/`movil:hidden` y no con una
  * sola imagen intercambiada, para que cada lienzo descargue solo la suya: las
@@ -55,16 +59,28 @@ export function BioVernal() {
         }}
       />
       <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
-        {/* Composición del móvil: el rect cian y encima el banner ya compuesto. */}
-        <div className="hidden movil:absolute movil:top-[49px] movil:left-[43px] movil:block movil:h-[315px] movil:w-[315px]">
-          <div className="bg-vernal-accent absolute top-[84px] left-[1px] h-[230px] w-[314px]" />
+        {/* Composición del móvil: la de escritorio, a sus medidas de 1920 y
+            reducida con zoom. Con zoom, el top/left del propio elemento también
+            se escala: 85.9 y 73.5 son 49.2 y 42.1 del artboard divididos entre
+            0.573. */}
+        <div
+          aria-hidden
+          className="hidden movil:absolute movil:top-[85.9px] movil:left-[73.5px] movil:block movil:h-[547px] movil:w-[554px] movil:[zoom:0.573]"
+        >
+          <div className="bg-vernal-accent absolute top-[147px] left-[3px] h-[400px] w-[548px]" />
+          <p className="text-vernal-accent absolute top-[20px] left-0 text-[146px] leading-[152px] font-semibold uppercase">
+            VERNAL
+          </p>
           <Image
             src="/images/movil/bio-banner.webp"
-            alt="El abogado Vernal Farnum Mejía"
-            width={313}
-            height={313}
-            className="absolute top-0 left-0 h-[313px] w-[313px]"
+            alt=""
+            width={546}
+            height={546}
+            className="absolute top-0 left-[1.6px] h-[546px] w-[546px] max-w-none"
           />
+          <p className="text-shadow-vernal-1 absolute top-[496px] left-[30px] text-[35px] leading-[36px] font-bold tracking-[21px] text-[#0f0f10] uppercase">
+            texas lawyer
+          </p>
         </div>
 
         {/* Composición: rectángulo cian, "VERNAL" detrás y el retrato recortado. */}
@@ -99,12 +115,12 @@ export function BioVernal() {
           <FlechaEnlace />
         </Link>
 
-        <h2 className="mt-12 text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[424px] movil:left-[46px] movil:mt-0 movil:w-[300px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[138px] design:left-[924px] design:mt-0 design:w-[587px] design:leading-[67px] design:text-[64px]">
+        <h2 className="mt-12 text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[424px] movil:left-[46px] movil:mt-0 movil:w-[300px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[138px] design:left-[1041px] design:mt-0 design:w-[587px] design:leading-[67px] design:text-[64px]">
           <span className="block text-white">Conocé al</span>
           <span className="text-vernal-accent block">abogado Vernal</span>
         </h2>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[601px] movil:left-[41px] movil:mt-0 movil:w-[315px] movil:max-w-none movil:text-justify design:absolute design:top-[335px] design:left-[924px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[601px] movil:left-[41px] movil:mt-0 movil:w-[315px] movil:max-w-none movil:text-justify movil:tracking-[-0.08px] design:absolute design:top-[335px] design:left-[1041px] design:mt-0 design:w-[580px]">
           {"Antes de convertirse en abogado de inmigración, el "}
           <span className="text-vernal-accent">Abogado Vernal</span>
           {" ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con inmigración en Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que \"cada cliente que llega a la oficina lleva a mi familia\", no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos."}

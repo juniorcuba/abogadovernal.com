@@ -10,7 +10,7 @@ import Image from "next/image";
  *             3. linear-gradient(106.20deg, #172339 transparente 3.30% → opaco 71.02%)
  *   título  28:103  x582 y67   760×67   centrado, blanco
  *   texto   28:104  x583 y150  759×74   centrado, con el nombre en negrita
- *   tarjetas        x226/523/820/1117/1414, y240, 280×413, cada una:
+ *   tarjetas        x226/524/822/1120/1418, y240, 280×413, cada una:
  *             fondo linear-gradient(210.91deg, #40629F 7.57%, #172339 63.60%)
  *             foto propia
  *             linear-gradient(185.80deg, #08B6FF transparente 24.95% → opaco 71.30%)
@@ -45,36 +45,36 @@ const tarjetas = [
     texto: "Acompañar a las familias inmigrantes para que puedan reunirse y permanecer juntas legalmente",
     foto: "/images/compromiso/tarjeta-2.webp",
     icono: "/icons/compromiso/icono-2.svg",
-    left: 523,
+    left: 524,
     movil: { top: 539, circulo: 17, texto: 236, img: { w: 324, h: 432, x: 0, y: -65 } },
-    iconoLeft: 600.5 - 523 - 37.5,
+    iconoLeft: 601.5 - 524 - 37.5,
     img: { w: 357, h: 476, x: -39, y: -52 },
   },
   {
     texto: "Defender a quienes enfrentan procesos de deportación o situaciones de vulnerabilidad legal",
     foto: "/images/compromiso/tarjeta-3.webp",
     icono: "/icons/compromiso/icono-3.svg",
-    left: 820,
+    left: 822,
     movil: { top: 735, circulo: 23, texto: 252, img: { w: 467, h: 320, x: -71, y: -70 } },
-    iconoLeft: 896.5 - 820 - 37.5,
+    iconoLeft: 898.5 - 822 - 37.5,
     img: { w: 603, h: 413, x: -176, y: -90 },
   },
   {
     texto: "Empoderar a los inmigrantes con el conocimiento de sus derechos, dentro y fuera de la corte",
     foto: "/images/compromiso/tarjeta-4.webp",
     icono: "/icons/compromiso/icono-4.svg",
-    left: 1117,
+    left: 1120,
     movil: { top: 937, circulo: 21.6, texto: 240, img: { w: 324, h: 486, x: 0, y: -153 } },
-    iconoLeft: 1190.5 - 1117 - 37.5,
+    iconoLeft: 1193.5 - 1120 - 37.5,
     img: { w: 414, h: 621, x: -43, y: -172 },
   },
   {
     texto: "Contribuir a que más familias latinas construyan un futuro estable y seguro en este país",
     foto: "/images/compromiso/tarjeta-5.webp",
     icono: "/icons/compromiso/icono-5.svg",
-    left: 1414,
+    left: 1418,
     movil: { top: 1139, circulo: 28, texto: 228, img: { w: 324, h: 486, x: 0, y: -153 } },
-    iconoLeft: 1491.5 - 1414 - 37.5,
+    iconoLeft: 1495.5 - 1418 - 37.5,
     img: { w: 394, h: 591, x: -57, y: -107 },
   },
 ];

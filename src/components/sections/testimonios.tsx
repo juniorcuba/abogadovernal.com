@@ -8,17 +8,18 @@ import { Carrusel } from "@/components/ui/carrusel";
 import { SelloVerificado } from "@/components/ui/iconos";
 
 /**
- * Testimonios de clientes — nodos del rango y=6077..6917 de la frame 1:2.
- * Coordenadas relativas al inicio de la sección (y absoluta − 6077).
+ * Testimonios de clientes — rango y=6102..6920 de la frame 1:2.
+ * Coordenadas relativas al inicio de la sección (y absoluta − 6102).
  *
- * En el archivo esta sección SOLAPA 25px con la del live (que acaba en 6102),
- * de ahí el margen negativo. Las secciones no se apilan contiguas.
+ * Hasta el export del 2026-09-13 el fondo arrancaba en 6077 y solapaba 25px con
+ * el live. Ahora empieza justo donde acaba el live y mide 818: el contenido no se
+ * movió, así que todas las y de dentro bajan 25 respecto a las de antes.
  *
- *   fondo   1923×843  linear-gradient(351.95deg, #0F0F0F 31.23%, #172339 66.26%)
- *   fotos   x211/595/979/1363, y120, 359×415, cada una con su propio degradado
+ *   fondo   1923×818  linear-gradient(352.19deg, #0F0F0F 31.23%, #172339 66.26%)
+ *   fotos   x211/595/979/1363, y95, 359×415, cada una con su propio degradado
  *           cian por abajo (los porcentajes varían ligeramente entre tarjetas)
- *   título  69:13   x489 y588  946×109  dos líneas, la primera en #08b6ff
- *   botón   83:145  x818 y697  277×52
+ *   título  69:13   x489 y563  946×109  dos líneas, la primera en #08b6ff
+ *   botón   83:145  x822 y672  277×52
  *
  * OJO: "Nombre cliente / Ajuste de estatus" es TEXTO DE RELLENO del diseño, igual
  * en las cuatro tarjetas. Hay que pedirle al cliente los nombres y casos reales
@@ -72,21 +73,21 @@ function Flecha({
 
 export function Testimonios() {
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(351.95deg,#0F0F0F_31.23%,#172339_66.26%)] movil:h-[656px] movil:bg-none design:-mt-[25px] design:h-[843px]">
+    <section className="relative overflow-hidden bg-[linear-gradient(351.95deg,#0F0F0F_31.23%,#172339_66.26%)] movil:h-[656px] movil:bg-none design:h-[818px] design:bg-[linear-gradient(352.19deg,#0F0F0F_31.23%,#172339_66.26%)]">
       <div
         aria-hidden
         className="pointer-events-none hidden movil:absolute movil:top-0 movil:left-0 movil:block movil:h-[818px] movil:w-[398px] movil:bg-[linear-gradient(326.46deg,#0F0F0F_31.23%,#172339_66.26%)]"
       />
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[656px] movil:p-0 design:h-[843px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[656px] movil:p-0 design:h-[818px] design:p-0">
         <Carrusel
           items={testimonios}
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 movil:block design:block"
           controles={({ anterior, siguiente }) => (
             <>
-              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[24px] design:absolute design:top-[300px] design:left-[171px]">
+              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[24px] design:absolute design:top-[275px] design:left-[171px]">
                 <Flecha hacia="izquierda" onClick={anterior} />
               </div>
-              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[325px] design:absolute design:top-[300px] design:left-[1694px]">
+              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[325px] design:absolute design:top-[275px] design:left-[1694px]">
                 <Flecha hacia="derecha" onClick={siguiente} />
               </div>
             </>
@@ -97,7 +98,7 @@ export function Testimonios() {
             return (
               <li
                 key={r.left}
-                className={`relative h-[415px] overflow-hidden design:absolute design:top-[120px] design:left-[var(--x)] design:w-[359px] ${
+                className={`relative h-[415px] overflow-hidden design:absolute design:top-[95px] design:left-[var(--x)] design:w-[359px] ${
                   i === 0
                     ? "movil:absolute movil:top-[51.63px] movil:left-[60.03px] movil:w-[359px] movil:[zoom:0.8329]"
                     : "movil:hidden"
@@ -140,7 +141,7 @@ export function Testimonios() {
           }}
         </Carrusel>
 
-        <p className="mt-12 text-center text-[24px] leading-[25px] font-light movil:absolute movil:top-[432px] movil:left-[31px] movil:mt-0 movil:w-[340px] design:absolute design:top-[588px] design:left-[489px] design:mt-0 design:w-[946px] design:leading-[37px] design:text-[36px]">
+        <p className="mt-12 text-center text-[24px] leading-[25px] font-light movil:absolute movil:top-[432px] movil:left-[31px] movil:mt-0 movil:w-[340px] design:absolute design:top-[563px] design:left-[489px] design:mt-0 design:w-[946px] design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent block">
             Historias reales, nuevos comienzos.
           </span>
@@ -149,7 +150,7 @@ export function Testimonios() {
           </span>
         </p>
 
-        <div className="mt-8 flex justify-center movil:absolute movil:top-[560px] movil:left-[62px] movil:mt-0 movil:block design:absolute design:top-[697px] design:left-[818px] design:mt-0 design:block">
+        <div className="mt-8 flex justify-center movil:absolute movil:top-[560px] movil:left-[62px] movil:mt-0 movil:block design:absolute design:top-[672px] design:left-[822px] design:mt-0 design:block">
           <ButtonLink href="/testimoniales" className="w-full sm:w-[277px] movil:w-[277px]">
             Ver más testimonios
           </ButtonLink>

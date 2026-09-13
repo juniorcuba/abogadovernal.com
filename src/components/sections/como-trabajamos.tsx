@@ -7,40 +7,35 @@ import { offices } from "@/lib/site";
  * dentro de esta misma sección, no en la siguiente.
  * Coordenadas relativas al inicio de la sección (y absoluta − 4746).
  *
- *   fondo    59:41   tres capas apiladas, todas del export SVG:
- *                      1. cian plano #08B6FF
- *                      2. mapa 1437×784 en (−445, −102), opacidad 0.92, multiply
- *                      3. degradado 112.07deg de #057EBC transparente al 4.70%
- *                         hasta #023451 opaco al 46.06%  ← esto oscurece la derecha
- *   marcadores 104:78 x324 y151 · 104:75 x416 y115 · 104:72 x458 y287 ·
- *              104:69 x405 y364 · 83:111 x626 y251, todos de 36.46×36.46
- *   título   59:42   x1021 y84  657×134  Poppins 600 64px lh1.04 UPPER, blanco
- *   cuerpo   59:43   x1021 y239 580×189  Poppins 400 16px lh1.04 justificado
- *   "5 SEDES" 83:104 x172 y416 684×183   ~176px, blanco
- *   subtítulo 83:105 x189 y590 560×47    ~45px
- *             las DOS líneas llevan la "Vernal Shadow 1" como sombra de texto:
- *             un único filtro del export las cubre (x186 y5186, 660×189)
- *   sedes    97:29   x944 y462 798×108   5 columnas de 130, separadores de 3px
- *                    ciudad en #08b6ff, dirección blanca, 16px lh1.04
+ *   fondo    tres capas en un rect de 1923×668 en (−3, +2): los 2px de arriba
+ *            son el fondo de la página, que asoma entre servicios y esta sección
+ *              1. cian plano #08B6FF
+ *              2. mapa en relieve 2290×1249 en (−764, −438), opacidad 0.92, multiply
+ *              3. linear-gradient(104.29deg, #057EBC transparente 23.78% → #023451 60.35%)
+ *   marcadores caja de 27.54 (anillo r12.27 con trazo de 3, punto r7.26) en
+ *              x304 y335 · x395 y273 · x475 y111 · x536 y114 · x616 y333
+ *   título   x1021 y65   Poppins 600 64px lh1.04 UPPER, blanco
+ *   cuerpo   x1021 y220  580  Poppins 400 16px lh1.04 justificado
+ *   "5 SEDES" x303 línea base 528, ~113px
+ *   subtítulo x313 línea base 567, ~29px
+ *             Los dos vienen vectorizados en el export, así que el tamaño sale de
+ *             medir el render contra el anterior (176 → 113 y 45 → 29: el ancho y
+ *             el alto de tinta encogen igual, ×0.64). Sombra común: 8/36, σ18.55,
+ *             negro al 84%.
+ *   sedes    x896 y453 798×108, 5 columnas de 130, separadores de 3px
+ *            ciudad en #08b6ff, dirección blanca, 16px lh1.04, centradas
  *
- * Fondo, mapa y sus transformaciones salen del export SVG de la frame. Antes estaban
- * estimados y estaban mal: había deducido un degradado de 129° que no existe, y el
- * mapa a 1029×561 cuando en realidad va a 1437×784.
+ * Todo esto es del export del 2026-09-13: el diseñador cambió el mapa, movió los
+ * marcadores, achicó "5 SEDES" y subió 19 px el texto de la derecha.
  *
- *   sedes    97:29   las direcciones van CENTRADAS en su columna, no a la izquierda
- *
- * Lienzo móvil (y=7103..8644, 1541 de alto), todo apilado en una columna:
- *   mapa      el mismo archivo, 1007×549 en (−464, −55), multiply al 92%
+ * Lienzo móvil (y=7332..8873, 1541 de alto), todo apilado en una columna:
+ *   mapa      la versión en color del mismo mapa, 1304×711 en (−528, −193), multiply al 92%
  *   degradado 182.63deg, del #023451 transparente al 9.66% a opaco al 32.45%
- *   "5 SEDES" 83px centrado en y345; subtítulo 35px en y431. La sombra NO es la
- *             Vernal 1: baja 36 en vez de 18 y va al 84% de opacidad
- *   título    x48 y560, tres líneas de 48
+ *   marcadores caja de 15.45 (anillo r6.22, punto r4.07)
+ *   "5 SEDES" 83px centrado en y345; subtítulo 35px en y431, con la misma sombra
+ *   título    centrado en y560, tres líneas de 48
  *   cuerpo    x48 y724, caja de 303 justificada
  *   sedes     centradas en x201, separadas por rayas de 228×3
- *
- * El render de Figma de hoy trae otro mapa en esta franja (relieve sin
- * marcadores). El export SVG que se usa aquí es el de los marcadores, igual que
- * en escritorio: hay que confirmarlo con el diseñador.
  */
 
 /**
@@ -57,14 +52,14 @@ const sedesMovil = [
 ];
 const separadoresMovil = [1108, 1204, 1296, 1397];
 
-// `m*` son las del lienzo móvil: esquina de una caja de 27.65 (anillo de radio
-// 12.32 con trazo de 3), sacadas de los centros del export.
+// Esquina de la caja de cada marcador, sacada del centro de sus círculos en el
+// export. `m*` son las del lienzo móvil. El orden no importa: son iguales.
 const marcadores = [
-  { left: 324, top: 151, mleft: 70.0, mtop: 132.3 },
-  { left: 416, top: 115, mleft: 139.77, mtop: 105.0 },
-  { left: 458, top: 287, mleft: 171.61, mtop: 235.43 },
-  { left: 405, top: 364, mleft: 131.42, mtop: 293.82 },
-  { left: 626, top: 251, mleft: 299.0, mtop: 208.13 },
+  { left: 304, top: 335, mleft: 83.0, mtop: 246.1 },
+  { left: 395, top: 273, mleft: 134.05, mtop: 211.32 },
+  { left: 475, top: 111, mleft: 178.92, mtop: 120.45 },
+  { left: 536, top: 114, mleft: 213.14, mtop: 122.13 },
+  { left: 616, top: 333, mleft: 258.02, mtop: 244.98 },
 ];
 
 /**
@@ -83,27 +78,41 @@ const BRILLO_PUNTO = "3px -2px 19.1px 11px rgb(21 255 154)";
 
 export function ComoTrabajamos() {
   return (
-    <section className="relative overflow-hidden bg-[#023451] movil:h-[1541px] movil:bg-vernal-accent design:bg-vernal-accent design:h-[668px]">
+    <section className="relative overflow-hidden bg-[#023451] movil:h-[1541px] movil:bg-vernal-accent design:h-[668px] design:bg-[#0F0F10]">
+      {/* Fondo cian de escritorio: empieza 2px más abajo que la sección. */}
+      <div
+        aria-hidden
+        className="bg-vernal-accent pointer-events-none absolute hidden design:top-[2px] design:left-[-3px] design:block design:h-[668px] design:w-[1923px]"
+      />
       <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[1541px] movil:p-0 design:h-[668px] design:p-0">
         {/* Mapa de Texas: multiply sobre el cian. El original tiene fondo blanco y
             el multiply lo hace desaparecer dejando solo el relieve. */}
         <div
           aria-hidden
-          className="pointer-events-none relative mx-auto hidden h-[300px] w-full max-w-[560px] movil:absolute movil:top-[-55px] movil:left-[-464px] movil:mx-0 movil:block movil:h-[549px] movil:w-[1007px] movil:max-w-none design:absolute design:block design:top-[-102px] design:left-[-445px] design:mx-0 design:h-[784px] design:w-[1437px] design:max-w-none"
+          className="pointer-events-none relative mx-auto hidden h-[300px] w-full max-w-[560px] movil:absolute movil:top-[-193px] movil:left-[-528px] movil:mx-0 movil:block movil:h-[711px] movil:w-[1304px] movil:max-w-none design:absolute design:block design:top-[-436px] design:left-[-767px] design:mx-0 design:h-[1249px] design:w-[2290px] design:max-w-none"
         >
+          {/* Mismo mapa, dos versiones: en escritorio va en gris y en el móvil el
+              archivo trae la de color. Una por lienzo; la oculta no se descarga. */}
           <Image
-            src="/images/trabajo/mapa-texas.webp"
+            src="/images/trabajo/mapa-relieve.webp"
             alt=""
             fill
-            sizes="1437px"
-            className="object-contain opacity-90 mix-blend-multiply movil:opacity-[0.92]"
+            sizes="2290px"
+            className="object-fill opacity-[0.92] mix-blend-multiply movil:hidden"
+          />
+          <Image
+            src="/images/trabajo/mapa-relieve-movil.webp"
+            alt=""
+            fill
+            sizes="1304px"
+            className="hidden object-fill opacity-[0.92] mix-blend-multiply movil:block"
           />
         </div>
 
         {/* Capa 3: el degradado que apaga la mitad derecha. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(112.07deg,#057EBC00_4.70%,#023451_46.06%)] movil:block movil:bg-[linear-gradient(182.63deg,#02345100_9.66%,#023451_32.45%)] design:block"
+          className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(104.29deg,#057EBC00_23.78%,#023451_60.35%)] design:top-[2px] design:left-[-3px] design:h-[668px] design:w-[1923px] movil:block movil:bg-[linear-gradient(182.63deg,#02345100_9.66%,#023451_32.45%)] design:block"
         />
 
         {/* Marcadores: van en coordenadas exactas del archivo, relativas a la sección. */}
@@ -111,7 +120,7 @@ export function ComoTrabajamos() {
           <span
             key={`${m.left}-${m.top}`}
             aria-hidden
-            className="absolute hidden h-[36.46px] w-[36.46px] movil:top-[var(--my)] movil:left-[var(--mx)] movil:block movil:h-[27.65px] movil:w-[27.65px] design:top-[var(--y)] design:left-[var(--x)] design:block"
+            className="absolute hidden h-[27.54px] w-[27.54px] movil:top-[var(--my)] movil:left-[var(--mx)] movil:block movil:h-[15.45px] movil:w-[15.45px] design:top-[var(--y)] design:left-[var(--x)] design:block"
             style={
               {
                 "--x": `${m.left}px`,
@@ -125,23 +134,23 @@ export function ComoTrabajamos() {
                 pinta encima de lo que ya haya, así que si fuera hijo del anillo le
                 lavaría el borde y taparía el hueco entre los dos. */}
             <span
-              className="bg-vernal-green absolute inset-[8.63px] rounded-full movil:inset-[6.53px]"
+              className="bg-vernal-green absolute inset-[6.51px] rounded-full movil:inset-[3.65px]"
               style={{ boxShadow: BRILLO_PUNTO }}
             />
             <span
-              className="border-vernal-green absolute inset-0 rounded-full border-[5px] movil:border-[3px]"
+              className="border-vernal-green absolute inset-0 rounded-full border-[3px]"
               style={{ boxShadow: BRILLO_ANILLO }}
             />
           </span>
         ))}
 
-        <h2 className="mt-10 text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[560px] movil:left-[48px] movil:mt-0 movil:w-[240px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[84px] design:left-[1021px] design:mt-0 design:w-[657px] design:leading-[67px] design:text-[64px]">
+        <h2 className="mt-10 text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[560px] movil:left-0 movil:mt-0 movil:w-[396px] movil:text-center movil:leading-[48px] movil:text-[46px] design:absolute design:top-[65px] design:left-[1021px] design:mt-0 design:w-[657px] design:leading-[67px] design:text-[64px]">
           Cómo es
           <br />
           nuestro trabajo
         </h2>
 
-        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[724px] movil:left-[48px] movil:mt-0 movil:w-[303px] movil:max-w-none movil:text-justify design:absolute design:top-[239px] design:left-[1021px] design:mt-0 design:w-[580px]">
+        <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[724px] movil:left-[48px] movil:mt-0 movil:w-[303px] movil:max-w-none movil:text-justify design:absolute design:top-[220px] design:left-[1021px] design:mt-0 design:w-[580px]">
           {"El equipo de cada oficina se pondrá en contacto contigo para agendar la fecha y hora de tu cita. "}
           <span className="text-vernal-accent">
             {"Durante tu consulta, serás atendido por el equipo del "}
@@ -166,18 +175,18 @@ export function ComoTrabajamos() {
             oscuro que el archivo. En una columna donde solo influye "5 SEDES" la
             caída coincide al 1-2, así que el desajuste está en cómo suma el
             archivo la sombra del subtítulo. No se aprecia a simple vista. */}
-        <div className="drop-shadow-vernal-1 movil:absolute movil:inset-0 movil:drop-shadow-[8px_36px_18.55px_rgb(0_0_0/0.84)] design:absolute design:inset-0">
-          <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase movil:absolute movil:top-[345px] movil:left-0 movil:mt-0 movil:w-[402px] movil:leading-[86px] movil:text-[83px] design:absolute design:top-[416px] design:left-[172px] design:mt-0 design:w-[684px] design:text-left design:leading-[183px] design:text-[176px]">
+        <div className="drop-shadow-vernal-1 movil:absolute movil:inset-0 movil:drop-shadow-[8px_36px_18.55px_rgb(0_0_0/0.84)] design:absolute design:inset-0 design:drop-shadow-[8px_36px_18.55px_rgb(0_0_0/0.84)]">
+          <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase movil:absolute movil:top-[345px] movil:left-0 movil:mt-0 movil:w-[402px] movil:leading-[86px] movil:text-[83px] design:absolute design:top-[429.5px] design:left-[303px] design:mt-0 design:w-[460px] design:text-left design:leading-[118px] design:text-[113px]">
             5 sedes
           </p>
-          <p className="text-center text-[20px] leading-[21px] font-semibold text-white uppercase movil:absolute movil:top-[431px] movil:left-[66px] movil:w-[270px] movil:leading-[36px] movil:text-[35px] design:absolute design:top-[590px] design:left-[189px] design:w-[560px] design:text-left design:leading-[47px] design:text-[45px]">
+          <p className="text-center text-[20px] leading-[21px] font-semibold text-white uppercase movil:absolute movil:top-[431px] movil:left-[66px] movil:w-[270px] movil:leading-[36px] movil:text-[35px] design:absolute design:top-[542px] design:left-[313px] design:w-[380px] design:text-left design:leading-[30px] design:text-[29px]">
             operando en el estado
           </p>
         </div>
 
         {/* Cinco columnas de 130 con paso de 167; los separadores de 3px caen a
             17px del final de cada columna (x1091, 1258, 1425, 1592 en el archivo). */}
-        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 movil:absolute movil:inset-0 movil:mt-0 movil:block design:absolute design:top-[462px] design:left-[944px] design:mt-0 design:block design:h-[108px] design:w-[798px]">
+        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 movil:absolute movil:inset-0 movil:mt-0 movil:block design:absolute design:top-[453px] design:left-[896px] design:mt-0 design:block design:h-[108px] design:w-[798px]">
           {offices.map((office, i) => (
             <li
               key={office.city}

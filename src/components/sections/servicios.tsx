@@ -24,12 +24,15 @@ import { ButtonLink } from "@/components/ui/button";
  *                     líneas da 50px y es incorrecto: hay que medir el ancho de una
  *                     línea en el render (490px) y calibrarlo contra la tipografía.
  *
- * El fondo es una foto a 34% de opacidad, dibujada a 1122×1682 con desplazamiento
- * (+882, −173) dentro del rect de la sección. Sale del export SVG de la frame.
+ * El fondo es una foto a 34% de opacidad. En el export del 2026-09-13 el
+ * diseñador la cambió por otra en color (antes era una en gris): 1465×1137 en
+ * (+676, −83). El móvil sigue con la foto anterior, ahora también en color y
+ * con otro encuadre, así que son
+ * dos archivos y cada lienzo baja solo el suyo (carga diferida + display:none).
  *
  * Lienzo móvil (y=6104..7103, 999 de alto): la misma foto, dibujada 619×929 en
- * (−9, +500), con un degradado que oscurece la mitad de arriba en vez del lado
- * izquierdo. Título x38 y65, cuerpo x38 y194 en caja de 325, botón x40 y498,
+ * (−23, +483) a 574×860, con un degradado que oscurece la mitad de arriba en vez
+ * del lado izquierdo. Título centrado en y65 (en el export nuevo; antes iba en x38), cuerpo x38 y194 en caja de 325, botón x40 y498,
  * play de 96 en x153 y728 y el claim centrado en y848. Sin barra cian.
  *
  * El botón dice "Agenda una consulta" en escritorio y "Agenda tu consulta" en
@@ -39,14 +42,22 @@ export function Servicios() {
   return (
     <section className="relative overflow-hidden bg-vernal-ink movil:h-[999px] design:mt-px design:h-[668px]">
       <Image
-        src="/images/servicios/fondo.webp"
+        src="/images/servicios/fondo-escritorio.webp"
         alt=""
         aria-hidden
-        width={1122}
-        height={1682}
-        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-[0.34] movil:top-[500px] movil:right-auto movil:left-[-9px] movil:h-[929px] movil:w-[619px] movil:max-w-none movil:object-fill design:top-[-173px] design:right-auto design:left-[882px] design:h-[1682px] design:w-[1122px]"
+        width={1465}
+        height={1138}
+        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-[0.34] movil:hidden design:top-[-83px] design:right-auto design:left-[676px] design:h-[1137px] design:w-[1465px] design:max-w-none"
       />
-      {/* Sin esto se ve el canto vertical de la foto a x882, como si el video
+      <Image
+        src="/images/servicios/fondo-movil.webp"
+        alt=""
+        aria-hidden
+        width={1148}
+        height={1720}
+        className="pointer-events-none absolute hidden opacity-[0.34] movil:top-[483px] movil:left-[-23px] movil:block movil:h-[860px] movil:w-[574px] movil:max-w-none movil:object-fill"
+      />
+      {/* Sin esto se ve el canto vertical de la foto, como si el video
           estuviera pegado encima en vez de fundido con el panel oscuro. */}
       <div
         aria-hidden
@@ -59,7 +70,7 @@ export function Servicios() {
           className="bg-vernal-accent hidden design:absolute design:top-[96px] design:left-[215px] design:block design:h-[443px] design:w-[12px]"
         />
 
-        <h2 className="text-vernal-accent text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[65px] movil:left-[38px] movil:w-[300px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[106px] design:left-[290px] design:w-[348px] design:leading-[67px] design:text-[64px]">
+        <h2 className="text-vernal-accent text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[65px] movil:left-0 movil:w-[396px] movil:text-center movil:leading-[48px] movil:text-[46px] design:absolute design:top-[106px] design:left-[290px] design:w-[348px] design:leading-[67px] design:text-[64px]">
           Nuestros
           <br />
           servicios
