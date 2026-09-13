@@ -1,23 +1,22 @@
 import Image from "next/image";
 
 /**
- * "El caso que lo confirmó todo" — rango y=1391..2039 de la frame `181:2125`.
- * Coordenadas relativas al inicio de la sección (y − 1391).
+ * "El caso que lo confirmó todo" — frame `181:2125`, export del 2026-09-13,
+ * rango y=1634..2282. Coordenadas relativas a la sección.
  *
- *   fondo    x1 y1391  1923×648, dos capas:
- *              1. la foto dibujada 2903×1936 en (−490, −842)
- *              2. #08B6FF al 86% encima
- *   titular  x288 y1579  Poppins 66 peso 400 NEGRO  "EL CASO QUE"
- *            x288 y1646/1713  Poppins 64 peso 600 #172339  "LO CONFIRMO / TODO"
- *   cuerpo   x288 y1773  Poppins 16/400 #172339, siete líneas de 17
- *   tarjeta  x1089 y1470  535×492, tres capas:
- *              1. #08B6FF plano
- *              2. la foto al 51%, dibujada 1086×1628 en (−263, −260)
- *              3. linear-gradient(200.50deg, #08B6FF transp. 47.11% → opaco 92.10%)
- *            dentro, la cita CENTRADA en Poppins 36 peso 300 y la firma en 24 bold
+ *   fondo    x1, 1923×648, tres capas:
+ *              1. #08B6FF
+ *              2. bandera en hard-light al 42% (recortada a su zona visible)
+ *              3. linear-gradient(78.82deg, cian transparente 41.99% → opaco 54.56%)
+ *   barra    x243 y165  12×351  #172339
+ *   titular  x296 y186  Poppins 64/700, tracking −0.03em, #172339, dos líneas de 67
+ *   cuerpo   x296 y362  caja de 580, 16/17 justificado, #172339; la última frase en negrita
+ *   tarjeta  x1053 y79  506×492, con la Vernal Shadow 1:
+ *              1. #08B6FF   2. foto   3. linear-gradient(179.13deg, #172339
+ *              transparente 17.94% → opaco 65.48%)   4. trazo radial de 6 por dentro
+ *            cita centrada en 32/300 (la primera mitad en cian) y la firma en 24/700 cian
  *
- * El titular usa dos tamaños y dos colores distintos —66/400 en negro y 64/600 en
- * #172339—, que en el archivo son dos capas de texto separadas, no una.
+ * "Vernal Farum", sin la ene, va literal del archivo.
  */
 export function NosotrosCaso() {
   return (
@@ -27,66 +26,99 @@ export function NosotrosCaso() {
         className="pointer-events-none absolute inset-0 design:inset-auto design:top-0 design:left-[1px] design:h-[648px] design:w-[1923px]"
       >
         <Image
-          src="/images/nosotros/caso-fondo.webp"
+          src="/images/nosotros/caso-bandera.webp"
           alt=""
-          width={2903}
-          height={1936}
-          className="absolute inset-0 h-full w-full object-cover design:inset-auto design:top-[-842px] design:left-[-490px] design:h-[1936px] design:w-[2903px] design:max-w-none design:object-fill"
+          width={1314}
+          height={648}
+          className="absolute inset-0 h-full w-full object-cover object-left opacity-[0.42] mix-blend-hard-light design:right-auto design:w-[1314px]"
         />
-        <div className="absolute inset-0 bg-[#08B6FF] opacity-[0.86]" />
+        <div className="absolute inset-0 bg-[linear-gradient(78.82deg,#08B6FF00_41.99%,#08B6FF_54.56%)]" />
       </div>
 
       <div className="relative mx-auto grid max-w-[1040px] gap-x-12 gap-y-10 px-6 py-16 md:grid-cols-2 md:items-center lg:px-12 design:block design:h-[648px] design:max-w-[1920px] design:p-0">
+        <div
+          aria-hidden
+          className="bg-vernal-navy hidden design:absolute design:top-[165px] design:left-[243px] design:block design:h-[351px] design:w-[12px]"
+        />
+
         <div>
-          <h2 className="uppercase design:contents">
-            <span className="block text-[38px] leading-[42px] font-normal text-black sm:text-[48px] sm:leading-[52px] design:absolute design:top-[137px] design:left-[288px] design:leading-[69px] design:text-[66px]">
-              El caso que
-            </span>
-            <span className="text-vernal-navy mt-1 block text-[38px] leading-[42px] font-semibold sm:text-[48px] sm:leading-[52px] design:absolute design:top-[202px] design:left-[288px] design:mt-0 design:w-[560px] design:leading-[67px] design:text-[64px]">
-              Lo confirmo
-              <br />
-              todo
-            </span>
+          <h2 className="text-vernal-navy text-[38px] leading-[42px] font-bold tracking-[-0.03em] uppercase sm:text-[48px] sm:leading-[52px] design:absolute design:top-[186px] design:left-[296px] design:w-[700px] design:text-[64px] design:leading-[67px]">
+            El caso que
+            <br />
+            lo confirmo todo
           </h2>
 
-          <p className="text-vernal-navy mt-6 text-[16px] leading-[22px] design:absolute design:top-[371px] design:left-[288px] design:mt-0 design:w-[580px] design:leading-[17px] max-w-[680px] design:max-w-none">
+          <p className="text-vernal-navy mt-6 max-w-[680px] text-[16px] leading-[22px] sm:text-justify design:absolute design:top-[362px] design:left-[296px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
             Entre los casos que marcaron su carrera como abogado de inmigración en
             Texas, destaca uno que llegó casi por accidente: una familia con un menor
             que enfrentaba una situación médica delicada, y que ya había sido
-            rechazada por varios abogados antes de encontrarlo a él. Con creatividad
-            legal, su equipo encontró un camino migratorio que permitió a la familia
-            acceder a la atención médica que necesitaban en Estados Unidos.
+            rechazada por varios abogados antes de encontrarlo a él.{" "}
+            <strong className="font-bold">
+              Con creatividad legal, su equipo encontró un camino migratorio que
+              permitió a la familia acceder a la atención médica que necesitaban en
+              Estados Unidos.
+            </strong>
           </p>
         </div>
 
-        {/* Tarjeta de la cita. */}
-        <div className="relative overflow-hidden bg-[#08B6FF] px-8 py-10 design:absolute design:top-[79px] design:left-[1089px] design:h-[492px] design:w-[535px] design:px-0 design:py-0">
+        <figure className="shadow-vernal-1 relative overflow-hidden bg-[#08B6FF] px-8 py-10 design:absolute design:top-[79px] design:left-[1053px] design:h-[492px] design:w-[506px] design:px-0 design:py-0">
           <Image
-            src="/images/nosotros/caso-cita.webp"
+            src="/images/nosotros/caso-tarjeta.webp"
             alt=""
             aria-hidden
-            width={1086}
-            height={1628}
-            className="absolute inset-0 h-full w-full object-cover opacity-[0.51] design:inset-auto design:top-[-260px] design:left-[-263px] design:h-[1628px] design:w-[1086px] design:max-w-none design:object-fill"
+            width={1012}
+            height={984}
+            className="absolute inset-0 h-full w-full object-cover"
           />
           <div
             aria-hidden
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "linear-gradient(200.50deg, rgb(8 182 255 / 0) 47.11%, #08B6FF 92.10%)",
-            }}
+            className="absolute inset-0 bg-[linear-gradient(179.13deg,#17233900_17.94%,#172339_65.48%)]"
           />
+          <svg
+            aria-hidden
+            className="absolute inset-0 h-full w-full"
+            viewBox="0 0 506 492"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <radialGradient
+                id="nos-caso-trazo"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="matrix(-438.376 -325 105.348 -158.853 327.24 366.5)"
+              >
+                <stop stopColor="#172339" />
+                <stop offset="1" stopColor="#0F0F0F" />
+              </radialGradient>
+            </defs>
+            <rect
+              x="3"
+              y="3"
+              width="500"
+              height="486"
+              fill="none"
+              stroke="url(#nos-caso-trazo)"
+              strokeWidth="6"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
 
-          <p className="relative text-center text-[26px] leading-[32px] font-light text-black sm:text-[30px] sm:leading-[36px] design:absolute design:top-[105px] design:left-0 design:w-full design:leading-[37px] design:text-[36px]">
-            “No hay un hito económico que me interese más que realmente ayudar a una
-            persona que lo necesita”
-          </p>
+          <blockquote className="relative pt-40 text-center text-[24px] leading-[28px] font-light text-white sm:text-[28px] sm:leading-[32px] design:absolute design:top-[254px] design:left-0 design:w-full design:pt-0 design:text-[32px] design:leading-[33px]">
+            <span className="text-vernal-accent">
+              &quot;No hay un hito económico <br className="hidden design:inline" />
+              que me interese
+            </span>{" "}
+            más que <br className="hidden design:inline" />
+            realmente ayudar a una <br className="hidden design:inline" />
+            persona que lo necesita&quot;
+          </blockquote>
 
-          <p className="relative mt-6 text-center text-[20px] leading-[24px] font-bold text-black design:absolute design:top-[378px] design:left-0 design:mt-0 design:w-full design:leading-[25px] design:text-[24px]">
+          <figcaption className="text-vernal-accent relative mt-6 text-center text-[20px] leading-[24px] font-bold design:absolute design:top-[411px] design:left-0 design:mt-0 design:w-full design:text-[24px] design:leading-[25px]">
             Abogado Vernal Farum.
-          </p>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
