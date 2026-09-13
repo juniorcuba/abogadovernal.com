@@ -117,9 +117,9 @@ export function SiteFooter() {
         <p className="mt-6 text-center text-[12px] leading-[12px] font-light movil:absolute movil:top-[960px] movil:left-1/2 movil:mt-0 movil:w-[288px] movil:-translate-x-1/2 design:absolute design:top-[394px] design:left-1/2 design:mt-0 design:w-[288px] design:-translate-x-1/2">
           © 2026 – ABOGADO VERNAL. All right reserved.
           <br />
-          <a href={site.privacyUrl} className="underline hover:text-vernal-accent movil:no-underline">
+          <Link href={site.privacyUrl} className="underline hover:text-vernal-accent movil:no-underline">
             Políticas de privacidad.
-          </a>
+          </Link>
           {"  "}
           <a href={site.termsUrl} className="underline hover:text-vernal-accent movil:ml-[6px] movil:no-underline">
             Términos y condiciones

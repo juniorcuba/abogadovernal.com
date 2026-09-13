@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { site } from "@/lib/site";
+
 /**
  * Aviso de consentimiento SMS/WhatsApp — texto literal de los nodos 6:87
  * (formulario del hero) y 83:69 (newsletter).
@@ -23,7 +26,11 @@ export function ConsentNotice({ className }: { className?: string }) {
       <span className="font-bold italic">Vernal Farnum Mejia</span> relacionados con tu
       caso. La frecuencia de los mensajes puede variar. Pueden aplicar tarifas de
       mensajes y datos. Podrás cancelar la suscripción cuando quieras respondiendo
-      STOP. Consulta nuestras Políticas de privacidad para más información.
+      STOP. Consulta nuestras{" "}
+      <Link href={site.privacyUrl} className="underline-offset-2 hover:underline">
+        Políticas de privacidad
+      </Link>{" "}
+      para más información.
     </p>
   );
 }

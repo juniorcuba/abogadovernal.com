@@ -15,6 +15,18 @@ const nextConfig: NextConfig = {
   // (Render, o cualquier otro sitio) sin estorbar aquí.
   ...(process.env.VERCEL ? {} : { output: "standalone" as const }),
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
+
+  // URLs del sitio anterior que ya tienen página propia. Permanentes (308):
+  // así los buscadores y los enlaces viejos pasan a la nueva.
+  redirects() {
+    return [
+      {
+        source: "/politicas_privacidad.html",
+        destination: "/politicas-de-privacidad",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
