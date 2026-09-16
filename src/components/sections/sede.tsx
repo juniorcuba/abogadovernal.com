@@ -164,12 +164,18 @@ function TrazoTarjeta({
   );
 }
 
-function BotonMasInfo({ id, top }: { id: string; top: number }) {
+/**
+ * Sin `top`, el botón va en el flujo, justo debajo de lo que tenga encima (ver
+ * `Tarjeta`); con `top`, en esa y exacta de la tarjeta.
+ */
+function BotonMasInfo({ id, top }: { id: string; top?: number }) {
   return (
     <Link
       href={`/areas-de-practica#${id}`}
-      className="text-vernal-accent relative mt-8 inline-flex h-[52px] w-[223px] items-center bg-[#0F0F10] pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 design:absolute design:top-[var(--bt)] design:left-[60.5px] design:mt-0"
-      style={{ "--bt": `${top}px` } as React.CSSProperties}
+      className={`text-vernal-accent relative mt-8 inline-flex h-[52px] w-[223px] items-center bg-[#0F0F10] pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 design:mt-0 ${
+        top === undefined ? "" : "design:absolute design:top-[var(--bt)] design:left-[60.5px]"
+      }`}
+      style={top === undefined ? undefined : ({ "--bt": `${top}px` } as React.CSSProperties)}
     >
       Mas información
       <FlechaEnlace className="absolute top-[18.5px] left-[171px] h-[15px] w-[25px]" />
@@ -230,33 +236,43 @@ function Tarjeta({
         height={60}
         className="relative h-[60px] w-[60px] design:absolute design:top-[33.5px] design:left-[60.5px]"
       />
+      {/* El botón va en su y del archivo (`boton`) salvo que el texto no quepa
+          encima: los cuerpos llevan el nombre de la ciudad y en San Antonio el
+          de Deportación ocupa un renglón más que en el archivo, que dice
+          "Dallas". La caja de texto mide como mínimo hasta el botón menos un
+          margen, y el botón va detrás en el flujo. */}
       <div className="relative design:absolute design:top-[111.5px] design:left-[60.5px] design:w-[455px]">
-        <h2 className="mt-5 text-[28px] leading-[30px] font-light design:mt-0 design:text-[36px] design:leading-[37px]">
-          {partido ? (
-            <>
-              <span className="text-vernal-accent">
-                Defensa Contra la
-                <br />
-                Deportación
-              </span>{" "}
-              <span className="text-white">en {sede.nombreDiseno}</span>
-            </>
-          ) : (
-            <>
-              <span className="text-vernal-accent">{servicio.titulo}</span>
-              <br />
-              <span className="text-white">en {sede.nombreDiseno}</span>
-            </>
-          )}
-        </h2>
-        <p
-          className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify design:mt-[var(--h)] design:leading-[17px]"
-          style={{ "--h": `${servicio.hueco}px` } as React.CSSProperties}
+        <div
+          className="design:box-border design:min-h-[var(--mh)] design:pb-[16px]"
+          style={{ "--mh": `${boton - 111.5}px` } as React.CSSProperties}
         >
-          {servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
-        </p>
+          <h2 className="mt-5 text-[28px] leading-[30px] font-light design:mt-0 design:text-[36px] design:leading-[37px]">
+            {partido ? (
+              <>
+                <span className="text-vernal-accent">
+                  Defensa Contra la
+                  <br />
+                  Deportación
+                </span>{" "}
+                <span className="text-white">en {sede.nombreDiseno}</span>
+              </>
+            ) : (
+              <>
+                <span className="text-vernal-accent">{servicio.titulo}</span>
+                <br />
+                <span className="text-white">en {sede.nombreDiseno}</span>
+              </>
+            )}
+          </h2>
+          <p
+            className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify design:mt-[var(--h)] design:leading-[17px]"
+            style={{ "--h": `${servicio.hueco}px` } as React.CSSProperties}
+          >
+            {servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
+          </p>
+        </div>
+        <BotonMasInfo id={servicio.id} />
       </div>
-      <BotonMasInfo id={servicio.id} top={boton} />
     </article>
   );
 }
