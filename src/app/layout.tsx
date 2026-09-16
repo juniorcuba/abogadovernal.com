@@ -65,11 +65,11 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var w=document.documentElement.clientWidth," +
+              "(function(){try{var v=window.innerWidth,w=document.documentElement.clientWidth," +
               "e=document.currentScript.previousElementSibling;if(!e)return;" +
-              "if(w>=1280){e.className='modo-diseno';e.style.width='1920px';" +
+              "if(v>=1280){e.className='modo-diseno';e.style.width='1920px';" +
               "e.style.zoom=Math.min(1,w/1920);}" +
-              "else if(w<=560){e.className='modo-movil';e.style.width='402px';" +
+              "else if(v<=560){e.className='modo-movil';e.style.width='402px';" +
               "e.style.zoom=w/402;}}catch(_){}})();",
           }}
         />

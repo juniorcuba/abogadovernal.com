@@ -30,16 +30,26 @@ const useEfectoDeLayout =
 
 type Lienzo = { clase: string; ancho: number; escala: number } | null;
 
-/** Qué lienzo toca para un ancho de ventana dado. */
-export function lienzoPara(w: number): Lienzo {
-  if (w >= MINIMO_DISENO) {
+/**
+ * Qué lienzo toca.
+ *
+ * `ventana` (innerWidth) decide el lienzo y `util` (clientWidth) la escala. El
+ * umbral tiene que ver el MISMO ancho que los media queries, que incluyen la
+ * barra de scroll: en Windows, una ventana de 1280 deja 1263 útiles, y si el
+ * umbral mirara esos 1263 elegiría la maqueta apilada mientras las clases `xl:`
+ * (≥1280) ya se aplican. La cabecera quedaba a medio camino entre las dos, con
+ * el logo descentrado.
+ */
+export function lienzoPara(ventana: number, util: number = ventana): Lienzo {
+  const w = util;
+  if (ventana >= MINIMO_DISENO) {
     return {
       clase: "modo-diseno",
       ancho: ANCHO_DISENO,
       escala: Math.min(1, w / ANCHO_DISENO),
     };
   }
-  if (w <= MAXIMO_MOVIL) {
+  if (ventana <= MAXIMO_MOVIL) {
     return { clase: "modo-movil", ancho: ANCHO_MOVIL, escala: w / ANCHO_MOVIL };
   }
   return null;
@@ -70,10 +80,12 @@ export function LienzoDiseno({ children }: { children: ReactNode }) {
 
   useEfectoDeLayout(() => {
     const medir = () => {
-      // clientWidth y no innerWidth: descuenta la barra de scroll. Con innerWidth
-      // el lienzo quedaría unos píxeles más ancho que el hueco disponible y
-      // aparecería scroll horizontal.
-      setLienzo(lienzoPara(document.documentElement.clientWidth));
+      // La escala usa clientWidth y no innerWidth: descuenta la barra de scroll.
+      // Con innerWidth el lienzo quedaría unos píxeles más ancho que el hueco
+      // disponible y aparecería scroll horizontal.
+      setLienzo(
+        lienzoPara(window.innerWidth, document.documentElement.clientWidth),
+      );
     };
     medir();
     window.addEventListener("resize", medir);
