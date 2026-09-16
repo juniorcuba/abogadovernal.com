@@ -19,6 +19,9 @@ import { offices, site, socials } from "@/lib/site";
  *                          Poppins 300 16px centrado; la ciudad en 700 dentro
  *                          del mismo nodo de texto
  *   línea   62:80  x101  y333  1745, trazo blanco de 0.5px
+ *                 En el render se ve como 2 filas de blanco al ~4%. Un borde de
+ *                 0.5px Chrome lo redondea a 1px entero y salía en blanco pleno;
+ *                 1px al 8% da la misma intensidad.
  *   legal   59:74  y394  288×24  Poppins 300 12px centrado, dos líneas,
  *                                con los enlaces subrayados
  *
@@ -112,7 +115,7 @@ export function SiteFooter() {
           ))}
         </ul>
 
-        <hr className="mt-14 border-0 border-t-[0.5px] border-white movil:border-t movil:border-white/[0.08] movil:absolute movil:top-[907px] movil:left-[48px] movil:mt-0 movil:w-[317px] design:absolute design:top-[333px] design:left-[101px] design:mt-0 design:w-[1745px]" />
+        <hr className="mt-14 border-0 border-t border-white/[0.08] movil:absolute movil:top-[907px] movil:left-[48px] movil:mt-0 movil:w-[317px] design:absolute design:top-[333px] design:left-[101px] design:mt-0 design:w-[1745px]" />
 
         <p className="mt-6 text-center text-[12px] leading-[12px] font-light movil:absolute movil:top-[960px] movil:left-1/2 movil:mt-0 movil:w-[288px] movil:-translate-x-1/2 design:absolute design:top-[394px] design:left-1/2 design:mt-0 design:w-[288px] design:-translate-x-1/2">
           © 2026 – ABOGADO VERNAL. All right reserved.

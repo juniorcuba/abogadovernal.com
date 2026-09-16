@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FloatingCta } from "@/components/layout/floating-cta";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import {
@@ -391,8 +390,6 @@ export function SedeServicios({ sede }: { sede: Sede }) {
           <Image src="/icons/sedes/edificio.svg" alt="" width={31} height={32} className="h-[32px] w-[31px] shrink-0" />
           <span className="design:pt-[5px]">{sede.direccion}</span>
         </p>
-
-        <FloatingCta className="design:top-[172px] design:right-[3px]" />
       </div>
     </section>
   );

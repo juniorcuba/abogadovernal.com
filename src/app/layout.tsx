@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { LienzoDiseno } from "@/components/layout/lienzo-diseno";
+import { FloatingCta } from "@/components/layout/floating-cta";
 
 /**
  * Poppins es la única familia del diseño. Pesos y estilos en uso confirmados:
@@ -53,7 +54,13 @@ export default function RootLayout({
   return (
     <html lang="es" className={poppins.variable}>
       <body className="antialiased">
-        <LienzoDiseno>{children}</LienzoDiseno>
+        <LienzoDiseno>
+          {children}
+          <FloatingCta />
+          {/* En móvil el CTA es una barra fija de 99px: este hueco evita que
+              tape el final del footer. */}
+          <div aria-hidden className="hidden h-[99px] bg-[#0F0F0F] movil:block" />
+        </LienzoDiseno>
         {/*
           El lienzo se maqueta a 1920 y se escala para caber en la ventana. Esa
           escala se calcula en un efecto, o sea despues de hidratar: sin este

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { FloatingCta } from "@/components/layout/floating-cta";
 
 /**
  * Hero de /nosotros — frame `181:2125`, export del 2026-09-13, rango y=−1..1026.
@@ -129,8 +128,6 @@ export function NosotrosHero() {
             <span className="text-vernal-accent">{'lleva a\nmi familia"'}</span>
           </blockquote>
         </figure>
-
-        <FloatingCta className="design:top-[885px] design:right-[3px]" />
       </div>
     </section>
   );

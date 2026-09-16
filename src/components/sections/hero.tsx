@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
-import { FloatingCta } from "@/components/layout/floating-cta";
 
 /**
  * Hero de la homepage — nodos del rango y=0..1142 de la frame 1:2.
@@ -13,7 +12,7 @@ import { FloatingCta } from "@/components/layout/floating-cta";
  *   tarjeta 18:7   x223  y583  648×559    padding izq 38 / der 45 / sup 32
  *   campos         x261/555 y615/690, 271×52; comentarios 565×52; enviar 224×52
  *   aviso   6:87   x268  y910  558×56     (7px más adentro que los campos)
- *   CTA     18:25  x1568 y883  349        a 3px del borde derecho (export del 2026-09-13)
+ *   CTA     18:25  x1568 y883  349        ahora flotante en todo el sitio (floating-cta.tsx)
  *
  * A partir de `design` (1920px) se posiciona en absoluto para clavar esas
  * coordenadas. Por debajo, los mismos elementos fluyen apilados.
@@ -75,8 +74,6 @@ export function Hero() {
         <form className="bg-vernal-card w-full max-w-[648px] p-[38px] movil:absolute movil:top-[698px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:px-[38px] movil:pt-[39px] movil:pb-0 design:absolute design:top-[583px] design:left-[223px] design:h-[559px] design:w-[648px] design:max-w-none design:pt-[32px] design:pr-[45px] design:pb-0 design:pl-[38px]">
           <CamposConsulta />
         </form>
-
-        <FloatingCta className="movil:top-[672px] movil:block design:top-[883px] design:right-[3px]" />
       </div>
     </section>
   );

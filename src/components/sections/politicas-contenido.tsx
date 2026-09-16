@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { FloatingCta } from "@/components/layout/floating-cta";
 import {
   politicaPrivacidad,
   type BloqueConHueco,
@@ -157,8 +156,6 @@ export function PoliticasContenido() {
             <span className="text-vernal-accent">honesta”</span>
           </p>
         </div>
-
-        <FloatingCta className="design:top-[846px] design:right-[3px]" />
       </div>
     </section>
   );

@@ -3,28 +3,28 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 /**
- * CTA flotante del hero — nodo 18:25 ("Group 2"), x1571 y886, 349px de ancho,
- * pegado al borde derecho (1571 + 349 = 1920).
+ * CTA flotante — nodo 18:25 ("Group 2"), 349px de ancho.
  *   barra superior 97:45  349×37   #00b567, texto 21px SemiBold #172339
  *   barra inferior 18:20  349×73   #08b6ff, texto 21px Regular #172339
  *   icono chat     18:22  41×35.279
  * Ambas barras llevan "Vernal Shadow 1".
  *
- * En el lienzo móvil deja de ser un flotante a la derecha y pasa a ocupar el
- * ancho entero: verde de 37 y cian de 62. Solo se enseña donde quien lo usa le
- * pone `movil:block` y su `top`: la home la tiene en y672 de su hero, pero en
- * las páginas sin diseño móvil esa y cae en mitad de otra sección.
+ * En el archivo está en el hero de cada página (en la home, x1568 y883, a 3px
+ * del borde derecho). Aquí es FIJO y acompaña al scroll por todo el sitio, así
+ * que se pinta una sola vez desde layout.tsx.
+ *
+ *   escritorio  a 3px del borde derecho y 60px del inferior: en una ventana de
+ *               1920×1080 cae casi donde lo pone el archivo (y≈910)
+ *   móvil       barra de ancho entero pegada abajo: verde de 37 y cian de 62,
+ *               como en el diseño de 402
+ *   intermedio  sin diseño; el de escritorio a la derecha
+ *
+ * `fixed` funciona dentro del lienzo porque `zoom` no crea bloque contenedor
+ * (un transform sí lo haría), y las distancias se escalan con él.
  */
-export function FloatingCta({ className }: { className?: string } = {}) {
+export function FloatingCta() {
   return (
-    // La `y` la pone quien lo usa: en la home cae dentro del hero y en /nosotros
-    // dentro de la sección siguiente, porque ese hero es más corto. En móvil,
-    // además, quien la quiera visible tiene que pedirla con `movil:block`.
-    <div
-      className={`absolute right-0 z-10 hidden w-[349px] movil:right-auto movil:left-[-2px] movil:w-[403px] design:block ${
-        className ?? "design:top-[886px]"
-      }`}
-    >
+    <div className="fixed right-0 bottom-6 z-40 w-[300px] movil:right-auto movil:bottom-0 movil:left-0 movil:w-[402px] design:right-[3px] design:bottom-[60px] design:w-[349px]">
       <Link
         href="/contacto"
         className="bg-vernal-green shadow-vernal-1 flex h-[37px] items-center justify-center text-[21px] leading-[22px] font-semibold text-vernal-navy transition-opacity hover:opacity-90 movil:text-[15px] movil:leading-[16px] movil:shadow-none"
