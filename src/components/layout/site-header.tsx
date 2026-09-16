@@ -26,18 +26,38 @@ import { navItems, site, socials } from "@/lib/site";
  * criterio propio:
  *   - < xl (1280): menú hamburguesa (ver menu-movil.tsx).
  *   - < 2xl (1536): se ocultan las redes; el nav completo + teléfono no caben.
+ *
+ * Tamaño mínimo: el lienzo se reduce con la ventana y a 1280 el menú se leía a
+ * 10,7px. Los dos grupos (izquierda: 242–845; derecha: 1083–1678) se amplían
+ * con `scale: var(--menu)` (ver globals.css) desde el lado del logo hacia fuera,
+ * así el texto no baja de 13px y el logo sigue centrado. A 1560 o más --menu vale
+ * 1 y todo queda en las x del archivo.
  */
 
 /** x de cada enlace en el lienzo de 1920, en el orden de `navItems`. */
 const X_DISENO = [242, 336, 454, 644, 802, 1083, 1169];
 const IZQUIERDA = 5;
 
-function NavLink({ label, href, x }: { label: string; href: string; x: number }) {
+/** Origen de cada grupo en el lienzo; los enlaces se colocan relativos a él. */
+const GRUPO_IZQ = { x: 242, y: 70 };
+const GRUPO_DER = { x: 1083, y: 64 };
+
+function NavLink({
+  label,
+  href,
+  x,
+  y,
+}: {
+  label: string;
+  href: string;
+  x: number;
+  y: number;
+}) {
   return (
     <Link
       href={href}
-      className="text-[16px] leading-[17px] whitespace-nowrap text-white transition-colors hover:text-vernal-accent design:absolute design:top-[70px] design:left-[var(--x)]"
-      style={{ "--x": `${x}px` } as React.CSSProperties}
+      className="text-[16px] leading-[17px] whitespace-nowrap text-white transition-colors hover:text-vernal-accent design:absolute design:top-[var(--y)] design:left-[var(--x)]"
+      style={{ "--x": `${x}px`, "--y": `${y}px` } as React.CSSProperties}
     >
       {label}
     </Link>
@@ -60,9 +80,14 @@ export function SiteHeader() {
           />
           <MenuMovil />
   
-          <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:contents">
+          <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:absolute design:top-[70px] design:left-[242px] design:block design:h-[17px] design:w-[603px] design:origin-right design:[scale:var(--menu)]">
             {navItems.slice(0, IZQUIERDA).map((item, i) => (
-              <NavLink key={item.href} {...item} x={X_DISENO[i]} />
+              <NavLink
+                key={item.href}
+                {...item}
+                x={X_DISENO[i] - GRUPO_IZQ.x}
+                y={0}
+              />
             ))}
           </nav>
   
@@ -74,17 +99,22 @@ export function SiteHeader() {
             <Logo className="movil:h-[40px] movil:w-[57px]" />
           </Link>
   
-          <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 movil:hidden design:contents">
+          <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 movil:hidden design:absolute design:top-[64px] design:left-[1083px] design:block design:h-[25px] design:w-[595px] design:origin-left design:[scale:var(--menu)]">
             <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:contents">
               <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:contents">
                 {navItems.slice(IZQUIERDA).map((item, i) => (
-                  <NavLink key={item.href} {...item} x={X_DISENO[IZQUIERDA + i]} />
+                  <NavLink
+                    key={item.href}
+                    {...item}
+                    x={X_DISENO[IZQUIERDA + i] - GRUPO_DER.x}
+                    y={GRUPO_IZQ.y - GRUPO_DER.y}
+                  />
                 ))}
               </nav>
   
               <a
                 href={site.phoneHref}
-                className="text-[13px] leading-[17px] whitespace-nowrap sm:text-[16px] design:absolute design:top-[70px] design:left-[1289px]"
+                className="text-[13px] leading-[17px] whitespace-nowrap sm:text-[16px] design:absolute design:top-[6px] design:left-[206px]"
               >
                 {/* Solo el diseño de 1920 lo trae; por debajo no cabe. */}
                 <span className="hidden text-white design:inline">Llamanós </span>
@@ -92,7 +122,7 @@ export function SiteHeader() {
               </a>
             </div>
   
-            <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex design:absolute design:top-[64px] design:left-[1545px] design:flex design:gap-x-[11px]">
+            <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex design:absolute design:top-0 design:left-[462px] design:flex design:gap-x-[11px]">
               {socials.map((social) => (
                 <li key={social.label} className="flex shrink-0">
                   <a

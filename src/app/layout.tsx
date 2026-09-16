@@ -68,7 +68,7 @@ export default function RootLayout({
               "(function(){try{var v=window.innerWidth,w=document.documentElement.clientWidth," +
               "e=document.currentScript.previousElementSibling;if(!e)return;" +
               "if(v>=1280){e.className='modo-diseno';e.style.width='1920px';" +
-              "e.style.zoom=Math.min(1,w/1920);}" +
+              "var z=Math.min(1,w/1920);e.style.zoom=z;e.style.setProperty('--escala',z);}" +
               "else if(v<=560){e.className='modo-movil';e.style.width='402px';" +
               "e.style.zoom=w/402;}}catch(_){}})();",
           }}

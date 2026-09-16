@@ -4,6 +4,7 @@ import {
   useEffect,
   useLayoutEffect,
   useState,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 
@@ -100,7 +101,13 @@ export function LienzoDiseno({ children }: { children: ReactNode }) {
       suppressHydrationWarning
       className={lienzo?.clase}
       style={
-        lienzo ? { width: lienzo.ancho, zoom: lienzo.escala } : undefined
+        lienzo
+          ? ({
+              width: lienzo.ancho,
+              zoom: lienzo.escala,
+              "--escala": lienzo.escala,
+            } as CSSProperties)
+          : undefined
       }
     >
       {children}

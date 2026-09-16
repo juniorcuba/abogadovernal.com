@@ -22,6 +22,16 @@
 @custom-variant movil (&:is(.modo-movil, .modo-movil *));
 
 /*
+ * Tamaño mínimo del menú de escritorio. El lienzo de 1920 se reduce con la
+ * ventana (--escala, lo pone lienzo-diseno.tsx) y el menú de 16px bajaba a 10,7
+ * a 1280. --menu es lo que hay que ampliar los grupos del menú para que el texto
+ * no se vea por debajo de 13px: 1 desde 1560 hacia arriba, 1.22 a 1280.
+ */
+.modo-diseno {
+  --menu: max(1, calc(13 / (16 * var(--escala, 1))));
+}
+
+/*
  * Design tokens — Abogado Vernal
  * Valores extraídos del archivo de Figma "ABOGADO-VERNAL-WEB" vía la API de Figma.
  * No estimar ni medir de capturas: cualquier token nuevo sale del nodo correspondiente.
