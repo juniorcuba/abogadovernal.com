@@ -8,10 +8,12 @@ import { Logo } from "@/components/ui/logo";
  *   fondo    1923×608, dos capas:
  *              1. foto al 17%, dibujada 1484×990 en (+601, −316)
  *              2. linear-gradient(77.82deg, #171717 35.65% → transparente 51.41%)
- *   vídeo    x243 y96  733×425: foto 733×489 en (0, −32); trazo de 8 por dentro
- *            con degradado lineal cian → #172339 y sombra 8/36 al 84%.
- *            Dentro, "Familia Vernal" (20/300) abajo a la izquierda y el logo a
- *            67×47 abajo a la derecha. La foto viene desenfocada en el archivo.
+ *   vídeo    x243 y96  733×425; trazo de 8 por dentro con degradado lineal
+ *            cian → #172339 y sombra 8/36 al 84%. Dentro, "Familia Vernal"
+ *            (20/300) abajo a la izquierda y el logo a 67×47 abajo a la derecha.
+ *            FOTO: la del archivo (desenfocada, 733×489 en 0,−32) la cambió el
+ *            cliente por DSC00324 (el abogado en la sala, bajo el texto de la
+ *            misión), recortada a 733×425 y exportada a 2x.
  *   titular  x1064, líneas base 170/207/244, Poppins 36/300; "familia le enseñó" en cian
  *   cuerpo   x1064 y309, caja de 580, 16/17 justificado
  */
@@ -36,11 +38,12 @@ export function NosotrosLeccion() {
         <div className="relative aspect-[733/425] w-full shadow-[8px_36px_37.1px_rgb(0_0_0/0.84)] design:absolute design:top-[96px] design:left-[243px] design:aspect-auto design:h-[425px] design:w-[733px]">
           <div className="absolute inset-0 overflow-hidden">
             <Image
-              src="/images/nosotros/leccion-video-2.webp"
-              alt="El abogado Vernal Farnum Mejía con su familia"
+              src="/images/nosotros/leccion-foto-mision.webp"
+              alt="El abogado Vernal Farnum Mejía en la sala de juntas del despacho, bajo el texto de la misión"
               width={1466}
-              height={978}
-              className="absolute top-[-7.5%] left-0 h-[115%] w-full max-w-none object-cover design:top-[-32px] design:h-[489px] design:w-[733px] design:object-fill"
+              height={850}
+              sizes="(min-width: 1280px) 733px, 100vw"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
           {/* Trazo con degradado: rect de 725×417 centrado sobre un trazo de 8,
