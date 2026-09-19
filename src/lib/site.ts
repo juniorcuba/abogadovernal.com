@@ -44,17 +44,23 @@ export const offices: Office[] = [
 export type NavItem = {
   label: string;
   href: string;
+  /** Cómo parte el texto la cabecera de escritorio, si va en dos líneas. */
+  lineas?: [string, string];
 };
 
 /**
- * Nav del header, en el orden del diseño. En el export del 2026-09-13 el
- * diseñador añadió "Inicio" y quitó "Áreas de servicio": la página
- * /areas-de-servicio sigue existiendo, pero ya no va en el menú.
+ * Nav del header, en el orden del diseño (componente "navbar - desktop",
+ * 770:3099, 2026-09-19). "Áreas de práctica & servicios" lleva a
+ * /areas-de-servicio y a sus sedes; el archivo escribe "practica" sin tilde.
  */
 export const navItems: NavItem[] = [
   { label: "Inicio", href: "/" },
   { label: "Nosotros", href: "/nosotros" },
-  { label: "Áreas de práctica", href: "/areas-de-practica" },
+  {
+    label: "Áreas de práctica & servicios",
+    href: "/areas-de-servicio",
+    lineas: ["Áreas de práctica", "& servicios"],
+  },
   { label: "Testimoniales", href: "/testimoniales" },
   { label: "Blogs", href: "/blog" },
   { label: "FAQS", href: "/faqs" },
@@ -70,10 +76,25 @@ export type SocialLink = {
   height: number;
 };
 
-/** Iconos exportados de Figma (nodos 21:82, 21:79, 21:73, 21:69). URLs pendientes de confirmar. */
+/**
+ * Iconos exportados de Figma (nodos 21:82, 21:79, 21:73, 21:69), en el orden del
+ * footer. URLs del componente "navbar - desktop" (770:3099); el archivo las trae
+ * con espacios sobrantes y la de TikTok como "https:// www…", aquí ya limpias.
+ */
 export const socials: SocialLink[] = [
-  { label: "Facebook", href: "#", icon: "/icons/social/facebook.svg", width: 30, height: 30 },
-  { label: "TikTok", href: "#", icon: "/icons/social/tiktok.svg", width: 30, height: 30 },
-  { label: "Instagram", href: "#", icon: "/icons/social/instagram.svg", width: 29, height: 30 },
-  { label: "YouTube", href: "#", icon: "/icons/social/youtube.svg", width: 30, height: 30 },
+  { label: "Facebook", href: "https://www.facebook.com/AbogadoVernal", icon: "/icons/social/facebook.svg", width: 30, height: 30 },
+  { label: "TikTok", href: "https://www.tiktok.com/@abogadovernal", icon: "/icons/social/tiktok.svg", width: 30, height: 30 },
+  { label: "Instagram", href: "https://www.instagram.com/abogadovernal", icon: "/icons/social/instagram.svg", width: 29, height: 30 },
+  { label: "YouTube", href: "https://www.youtube.com/@abogadovernal", icon: "/icons/social/youtube.svg", width: 30, height: 30 },
 ];
+
+/**
+ * La cabecera de escritorio usa otros iconos (25×25, componente 770:3099) y otro
+ * orden que el footer: Instagram antes que TikTok.
+ */
+export const socialsCabecera: SocialLink[] = ["Facebook", "Instagram", "TikTok", "YouTube"].map(
+  (nombre) => {
+    const s = socials.find((x) => x.label === nombre)!;
+    return { ...s, icon: `/icons/social/cabecera-${nombre.toLowerCase()}.svg`, width: 25, height: 25 };
+  },
+);

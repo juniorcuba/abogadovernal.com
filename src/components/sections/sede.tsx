@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CamposConsulta } from "@/components/ui/campos-consulta";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import {
   preguntasSede,
@@ -478,40 +477,6 @@ export function SedePreguntas() {
             Ver más preguntas
           </Link>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* --------------------------------------------------------------- agenda */
-
-export function SedeAgenda() {
-  return (
-    <section className="relative overflow-hidden bg-[linear-gradient(80.90deg,#172339_28.78%,#0F0F0F_43.26%)] design:-mt-[5px] design:h-[763px]">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <Image
-          src="/images/politicas/hero.webp"
-          alt=""
-          width={1035}
-          height={1552}
-          className="absolute top-0 right-0 hidden h-full w-auto opacity-[0.68] sm:block design:top-[-197px] design:right-auto design:left-[642px] design:h-[1920px] design:w-[1281px] design:max-w-none"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(83.69deg,#000000_39.56%,#00000000_72%)]" />
-      </div>
-
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 design:h-[763px] design:max-w-[1920px] design:p-0">
-        <h2 className="text-[38px] leading-[42px] font-semibold uppercase sm:text-[48px] sm:leading-[52px] design:absolute design:top-[111px] design:left-[265px] design:text-[64px] design:leading-[67px]">
-          <span className="text-white">Agenda</span>{" "}
-          <span className="text-vernal-accent">tu consulta</span>
-        </h2>
-        <p className="mt-4 text-[16px] leading-[20px] text-white design:absolute design:top-[199px] design:left-[271px] design:mt-0 design:leading-[17px]">
-          Cambios en las leyes de inmigración, consejos prácticos
-          <br className="hidden sm:inline" /> y respuestas a las dudas más comunes de nuestra comunidad.
-        </p>
-
-        <form className="mt-8 max-w-[565px] design:absolute design:top-[301px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
-          <CamposConsulta />
-        </form>
       </div>
     </section>
   );

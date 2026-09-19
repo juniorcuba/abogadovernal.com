@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { MenuMovil } from "@/components/layout/menu-movil";
 import { AvisoCookies } from "@/components/layout/aviso-cookies";
-import { navItems, site, socials } from "@/lib/site";
+import { NavLink } from "@/components/layout/nav-link";
+import { navItems, site, socialsCabecera } from "@/lib/site";
 
 /**
  * Header del sitio — frame 1:2, 1920×128. Medidas del export SVG del 2026-09-13.
@@ -13,7 +14,10 @@ import { navItems, site, socials } from "@/lib/site";
  *             Contacto x1169 · "Llamanós" x1289 · teléfono x1366.8
  *             Poppins 16/400, línea base y84.1
  *   logo      x905 y25  111×78, centrado exacto (centro 960.5)
- *   redes     25×25 en y64, x1545 / 1581 / 1617 / 1653 (paso de 36)
+ *   redes     25×25 en y64, x1542 / 1578 / 1614 / 1650 (paso de 36), en el orden
+ *             Facebook, Instagram, TikTok, YouTube (componente 770:3099)
+ *   Áreas     "Áreas de práctica & servicios" en dos líneas centradas en una
+ *             caja de 143 desde x454, y62 (ver nav-link.tsx)
  *
  * En 1920 cada pieza va en su x del archivo: los grupos no tienen separación
  * uniforme (52, 64 y 86 px entre enlaces), así que un `gap` no los reproduce.
@@ -42,28 +46,6 @@ const IZQUIERDA = 5;
 const GRUPO_IZQ = { x: 242, y: 70 };
 const GRUPO_DER = { x: 1083, y: 64 };
 
-function NavLink({
-  label,
-  href,
-  x,
-  y,
-}: {
-  label: string;
-  href: string;
-  x: number;
-  y: number;
-}) {
-  return (
-    <Link
-      href={href}
-      className="text-[16px] leading-[17px] whitespace-nowrap text-white transition-colors hover:text-vernal-accent design:absolute design:top-[var(--y)] design:left-[var(--x)]"
-      style={{ "--x": `${x}px`, "--y": `${y}px` } as React.CSSProperties}
-    >
-      {label}
-    </Link>
-  );
-}
-
 export function SiteHeader() {
   return (
     // El aviso de cookies va FUERA del <header>: la cabecera lleva opacidad del
@@ -84,7 +66,7 @@ export function SiteHeader() {
             {navItems.slice(0, IZQUIERDA).map((item, i) => (
               <NavLink
                 key={item.href}
-                {...item}
+                item={item}
                 x={X_DISENO[i] - GRUPO_IZQ.x}
                 y={0}
               />
@@ -105,7 +87,7 @@ export function SiteHeader() {
                 {navItems.slice(IZQUIERDA).map((item, i) => (
                   <NavLink
                     key={item.href}
-                    {...item}
+                    item={item}
                     x={X_DISENO[IZQUIERDA + i] - GRUPO_DER.x}
                     y={GRUPO_IZQ.y - GRUPO_DER.y}
                   />
@@ -122,8 +104,8 @@ export function SiteHeader() {
               </a>
             </div>
   
-            <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex design:absolute design:top-0 design:left-[462px] design:flex design:gap-x-[11px]">
-              {socials.map((social) => (
+            <ul className="hidden shrink-0 items-center gap-x-[12px] 2xl:flex design:absolute design:top-0 design:left-[459px] design:flex design:gap-x-[11px]">
+              {socialsCabecera.map((social) => (
                 <li key={social.label} className="flex shrink-0">
                   <a
                     href={social.href}
