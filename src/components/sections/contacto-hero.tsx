@@ -18,13 +18,55 @@ import { CamposConsulta } from "@/components/ui/campos-consulta";
  * La etiqueta "Teléfono" del archivo queda DETRÁS de la caja blanca y no se ve;
  * aquí se muestra, como en el resto de formularios.
  *
- * PENDIENTE: la foto de fondo (grupo 620:1132, el abogado sentado con la tableta
- * frente a la bandera). El MCP de Figma llegó a su límite antes de poder
- * descargarla; hasta tenerla, el fondo es el oscuro de la página.
+ * El fondo (grupo 620:1132) son tres capas sobre la caja de 1920×1142:
+ *   1. la MISMA foto del hero de la home, estirada al 201.22% de alto
+ *   2. otra vez, al 216.9% (su alto natural, 2477)
+ *   3. el abogado con la tableta, en x15.91% y0.02%, 92.75%×115.63%
+ *   4. linear-gradient(261.45deg, transparente 29.227% → negro 66.945%)
+ * Las dos primeras solo se ven en la franja izquierda, casi negra, antes de
+ * donde empieza la tercera; por eso reutilizan el archivo de la home.
  */
 export function ContactoHero() {
   return (
     <section className="relative -mt-[128px] overflow-hidden bg-[#0F0F10] design:h-[1142px]">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 design:h-[1142px] design:w-[1920px]"
+      >
+        <div className="absolute inset-0 hidden overflow-hidden design:block">
+          <Image
+            src="/images/movil/hero-fondo.webp"
+            alt=""
+            width={1920}
+            height={2477}
+            sizes="1920px"
+            className="absolute top-[0.03%] left-0 h-[201.22%] w-full max-w-none"
+          />
+        </div>
+        <div className="absolute inset-0 hidden overflow-hidden design:block">
+          <Image
+            src="/images/movil/hero-fondo.webp"
+            alt=""
+            width={1920}
+            height={2477}
+            sizes="1920px"
+            className="absolute top-[0.04%] left-0 h-[216.9%] w-full max-w-none"
+          />
+        </div>
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src="/images/contacto/hero-abogado.webp"
+            alt=""
+            width={2671}
+            height={1981}
+            priority
+            sizes="(min-width: 1280px) 1781px, 100vw"
+            className="absolute inset-0 h-full w-full object-cover object-right design:top-[0.02%] design:left-[15.91%] design:h-[115.63%] design:w-[92.75%] design:max-w-none design:object-fill"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(261.45deg,#00000000_29.227%,#000000_66.945%)]" />
+      </div>
+
       <div className="relative mx-auto flex max-w-[1040px] flex-col gap-y-8 px-6 pt-[168px] pb-20 lg:px-12 design:block design:h-[1142px] design:max-w-[1920px] design:p-0">
         <h1 className="text-[48px] leading-[50px] uppercase sm:text-[64px] sm:leading-[67px] design:absolute design:top-[217px] design:left-[237px] design:w-[914px] design:text-[82px] design:leading-[85.28px]">
           <span className="text-vernal-accent block">Contáctanos</span>
