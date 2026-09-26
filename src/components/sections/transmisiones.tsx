@@ -117,11 +117,14 @@ export function Transmisiones() {
 
         {/* Vídeo de la transmisión */}
         <div className="relative mt-12 aspect-[733/425] w-full movil:absolute movil:top-[678px] movil:left-[24px] movil:mt-0 movil:aspect-auto movil:h-[206px] movil:w-[355px] movil:shadow-[8px_36px_37.1px_rgb(0_0_0/0.84)] design:absolute design:top-[122px] design:left-[914px] design:mt-0 design:aspect-auto design:h-[425px] design:w-[733px]">
-          {/* Borde cian de 2px alrededor del vídeo (rect x915 y5537, stroke #08B6FF).
-              Va por encima de la imagen: si no, la foto lo tapa. */}
+          {/* Borde cian de 2px alrededor del vídeo (rect x915 y5537, stroke #08B6FF
+              de 2 centrado, o sea que cubre los dos primeros píxeles de la caja).
+              Va por encima de la imagen: si no, la foto lo tapa. Ocupa la caja
+              ENTERA: dibujado 1px hacia dentro asomaba una línea negra del
+              degradado entre el borde y el filo. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 z-10 border-2 border-vernal-accent design:top-[1px] design:left-[1px] design:h-[423px] design:w-[731px]"
+            className="pointer-events-none absolute inset-0 z-10 border-2 border-vernal-accent"
           />
           <div className="absolute inset-0 overflow-hidden">
             <Image
