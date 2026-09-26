@@ -22,6 +22,14 @@
 @custom-variant movil (&:is(.modo-movil, .modo-movil *));
 
 /*
+ * Nada puede provocar scroll horizontal. `clip` y no `hidden` porque no crea un
+ * contenedor de scroll: el CTA fijo y los `sticky` siguen funcionando igual.
+ */
+body {
+  overflow-x: clip;
+}
+
+/*
  * Tamaño mínimo del menú de escritorio. El lienzo de 1920 se reduce con la
  * ventana (--escala, lo pone lienzo-diseno.tsx) y el menú de 16px bajaba a 10,7
  * a 1280. --menu es lo que hay que ampliar los grupos del menú para que el texto

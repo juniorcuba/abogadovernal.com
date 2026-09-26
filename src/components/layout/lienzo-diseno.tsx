@@ -42,7 +42,11 @@ type Lienzo = { clase: string; ancho: number; escala: number } | null;
  * el logo descentrado.
  */
 export function lienzoPara(ventana: number, util: number = ventana): Lienzo {
-  const w = util;
+  // 1px de margen: el ancho que ocupa el lienzo es 1920 × escala, y ese producto
+  // puede caer en una fracción que el navegador redondea HACIA ARRIBA. Cuando se
+  // pasa del ancho útil por medio píxel aparece una barra de scroll horizontal
+  // (reportada en un portátil el 2026-09-26). Un píxel de menos no se ve.
+  const w = util - 1;
   if (ventana >= MINIMO_DISENO) {
     return {
       clase: "modo-diseno",

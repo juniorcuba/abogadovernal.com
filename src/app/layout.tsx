@@ -72,7 +72,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var v=window.innerWidth,w=document.documentElement.clientWidth," +
+              "(function(){try{var v=window.innerWidth,w=document.documentElement.clientWidth-1," +
               "e=document.currentScript.previousElementSibling;if(!e)return;" +
               "if(v>=1280){e.className='modo-diseno';e.style.width='1920px';" +
               "var z=Math.min(1,w/1920);e.style.zoom=z;e.style.setProperty('--escala',z);}" +
