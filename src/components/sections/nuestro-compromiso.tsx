@@ -95,7 +95,7 @@ export function NuestroCompromiso() {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(106.20deg,#17233900_3.30%,#172339_71.02%)] movil:bg-[linear-gradient(112.40deg,#17233900_31.70%,#172339_66.41%)]"
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[1522px] movil:p-0 design:h-[808px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[1522px] movil:p-0 design:h-[808px] design:p-0">
         <h2 className="text-center text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[53px] movil:left-[31px] movil:w-[340px] movil:text-left movil:leading-[48px] movil:text-[46px] design:absolute design:top-[67px] design:left-[582px] design:w-[760px] design:leading-[67px] design:text-[64px]">
           Nuestro compromiso
         </h2>
@@ -106,7 +106,7 @@ export function NuestroCompromiso() {
           {", nuestra misión es facilitar los sueños de nuestros clientes con honestidad, profesionalismo y amor, siempre tomando en cuenta sus mejores intereses y defendiendo lo más valioso que tiene todo ser humano: su familia."}
         </p>
 
-        <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 movil:mt-0 movil:block design:mt-0 design:block">
+        <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 apilada:grid-cols-2 apilada:[&>*:last-child]:col-span-2 apilada:[&>*:last-child]:mx-auto apilada:[&>*:last-child]:w-1/2 movil:mt-0 movil:block design:mt-0 design:block">
           {tarjetas.map((t) => (
             <li
               key={t.left}

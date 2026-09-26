@@ -158,7 +158,7 @@ export function NuestroEquipo() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[1346px] movil:p-0 design:h-[710px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[1346px] movil:p-0 design:h-[710px] design:p-0">
         <div
           aria-hidden
           className="bg-vernal-accent hidden design:absolute design:top-[79px] design:left-[215px] design:block design:h-[576px] design:w-[12px]"
@@ -180,7 +180,7 @@ export function NuestroEquipo() {
 
         <ButtonLink
           href="/nosotros"
-          className="mt-8 w-full sm:w-[277px] movil:absolute movil:top-[771px] movil:left-[41px] movil:mt-0 movil:w-[277px] design:absolute design:top-[603px] design:left-[279px] design:mt-0"
+          className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[771px] movil:left-[41px] movil:mt-0 movil:w-[277px] design:absolute design:top-[603px] design:left-[279px] design:mt-0"
         >
           Conoce al equipo completo
         </ButtonLink>
@@ -193,7 +193,7 @@ export function NuestroEquipo() {
             55×55 en (899, 3026) y (1552, 3026) absolutos → y467 de la sección. */}
         <Carrusel
           items={equipo}
-          className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:h-full movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:h-full design:w-full"
+          className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 apilada:grid-cols-2 apilada:gap-10 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:h-full movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:h-full design:w-full"
           controles={({ anterior, siguiente }) => (
             <>
               <button

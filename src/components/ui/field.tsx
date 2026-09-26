@@ -127,9 +127,11 @@ export function FieldSelect({
           </option>
         ))}
       </select>
+      {/* En la franja apilada el campo puede quedar más estrecho que
+          48 + 169 + 50, y el rótulo se metía por debajo de la flecha. */}
       <span
         aria-hidden
-        className="select-placeholder pointer-events-none absolute top-1/2 left-[48px] w-[169px] -translate-y-1/2 text-[15px] leading-[18px] text-black"
+        className="select-placeholder pointer-events-none absolute top-1/2 left-[48px] w-[169px] -translate-y-1/2 text-[15px] leading-[18px] text-black apilada:w-[calc(100%-106px)] apilada:text-[13px] apilada:leading-[15px]"
       >
         {label}
       </span>

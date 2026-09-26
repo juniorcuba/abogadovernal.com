@@ -80,7 +80,7 @@ export function Transmisiones() {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(254.53deg,#0F0F1000_65.34%,#0F0F10_79.59%)] movil:hidden"
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[990px] movil:p-0 design:h-[688px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[990px] movil:p-0 design:h-[688px] design:p-0">
         <h2 className="text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[73px] movil:left-0 movil:w-[392px] movil:text-center movil:leading-[48px] movil:text-[46px] design:absolute design:top-[122px] design:left-[264px] design:w-[434px] design:leading-[67px] design:text-[64px]">
           <span className="block text-white">Somos</span>
           <span className="text-vernal-accent block design:text-white">inmigrantes</span>
@@ -110,7 +110,7 @@ export function Transmisiones() {
         <ButtonLink
           href="/transmisiones"
           variant="green"
-          className="mt-8 w-full sm:w-[277px] movil:absolute movil:top-[573px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[534px] design:left-[264px] design:mt-0 design:bg-vernal-accent"
+          className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[573px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[534px] design:left-[264px] design:mt-0 design:bg-vernal-accent"
         >
           Ver retransmisiones
         </ButtonLink>

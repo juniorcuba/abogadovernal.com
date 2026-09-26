@@ -97,7 +97,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(84.51deg,#172339_13.52%,#00000000_72.00%)] movil:bg-[linear-gradient(174.80deg,#172339_69.00%,#101828B1_72.27%,#00000000_79.29%)]"
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[1272px] movil:p-0 design:h-[877px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[1272px] movil:p-0 design:h-[877px] design:p-0">
         <h2 className="text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[69px] movil:left-[41px] movil:w-[300px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[95px] design:left-[265px] design:w-[745px] design:leading-[67px] design:text-[64px]">
           Mantente informado
         </h2>
@@ -158,7 +158,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
 
         <Carrusel
           items={resenas}
-          className="mt-10 grid max-w-[900px] grid-cols-1 gap-8 sm:grid-cols-2 movil:mt-0 movil:block movil:max-w-none design:mt-0 design:block design:max-w-none"
+          className="mt-10 grid max-w-[900px] grid-cols-1 gap-8 apilada:grid-cols-2 sm:grid-cols-2 movil:mt-0 movil:block movil:max-w-none design:mt-0 design:block design:max-w-none"
           controles={({ anterior, siguiente }) => (
             /* Por debajo de 1280 las flechas van centradas bajo las fichas: en el
                archivo están a los lados, pero ahí no hay sitio y sin ellas el

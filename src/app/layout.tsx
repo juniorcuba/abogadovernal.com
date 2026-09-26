@@ -77,7 +77,7 @@ export default function RootLayout({
               "if(v>=1280){e.className='modo-diseno';e.style.width='1920px';" +
               "var z=Math.min(1,w/1920);e.style.zoom=z;e.style.setProperty('--escala',z);}" +
               "else if(v<=560){e.className='modo-movil';e.style.width='402px';" +
-              "e.style.zoom=w/402;}}catch(_){}})();",
+              "e.style.zoom=w/402;}else{e.className='modo-apilada';}}catch(_){}})();",
           }}
         />
       </body>

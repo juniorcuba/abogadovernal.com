@@ -22,6 +22,13 @@
 @custom-variant movil (&:is(.modo-movil, .modo-movil *));
 
 /*
+ * Y el de la franja de 561 a 1279, que no tiene diseño y se maqueta a criterio
+ * propio. Tener su propia variante deja retocarla sin que nada de lo que se
+ * escriba pueda afectar a los dos lienzos.
+ */
+@custom-variant apilada (&:is(.modo-apilada, .modo-apilada *));
+
+/*
  * Nada puede provocar scroll horizontal. `clip` y no `hidden` porque no crea un
  * contenedor de scroll: el CTA fijo y los `sticky` siguen funcionando igual.
  */

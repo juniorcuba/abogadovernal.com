@@ -62,7 +62,7 @@ export function NosotrosHoy() {
 
         <ButtonLink
           href="/contacto"
-          className="mt-8 w-full sm:w-[277px] design:absolute design:top-[452px] design:left-[797px] design:mt-0"
+          className="mt-8 w-full sm:w-[277px] apilada:w-[277px] design:absolute design:top-[452px] design:left-[797px] design:mt-0"
         >
           Agenda tu consulta
         </ButtonLink>

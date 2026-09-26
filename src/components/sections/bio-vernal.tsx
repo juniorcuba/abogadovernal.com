@@ -58,7 +58,7 @@ export function BioVernal() {
             "linear-gradient(183.14deg, #171717 49.71%, rgb(0 0 0 / 0) 61.47%)",
         }}
       />
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 design:h-[808px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 design:h-[808px] design:p-0">
         {/* Composición del móvil: la de escritorio, a sus medidas de 1920 y
             reducida con zoom. Con zoom, el top/left del propio elemento también
             se escala: 85.9 y 73.5 son 49.2 y 42.1 del artboard divididos entre

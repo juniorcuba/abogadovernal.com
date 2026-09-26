@@ -57,7 +57,9 @@ export function lienzoPara(ventana: number, util: number = ventana): Lienzo {
   if (ventana <= MAXIMO_MOVIL) {
     return { clase: "modo-movil", ancho: ANCHO_MOVIL, escala: w / ANCHO_MOVIL };
   }
-  return null;
+  // La franja intermedia no tiene diseño: se marca con su propia clase para
+  // poder maquetarla (variante `apilada:`) sin rozar los dos lienzos.
+  return { clase: "modo-apilada", ancho: 0, escala: 0 };
 }
 
 /**
@@ -105,7 +107,7 @@ export function LienzoDiseno({ children }: { children: ReactNode }) {
       suppressHydrationWarning
       className={lienzo?.clase}
       style={
-        lienzo
+        lienzo && lienzo.ancho
           ? ({
               width: lienzo.ancho,
               zoom: lienzo.escala,

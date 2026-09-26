@@ -119,7 +119,7 @@ export function AreasHero() {
 
         <ButtonLink
           href="/contacto"
-          className="mt-8 w-full sm:w-[224px] md:col-start-1 design:absolute design:top-[801px] design:left-[237px] design:mt-0"
+          className="mt-8 w-full sm:w-[224px] apilada:w-[224px] md:col-start-1 design:absolute design:top-[801px] design:left-[237px] design:mt-0"
         >
           Explora las opciones
         </ButtonLink>

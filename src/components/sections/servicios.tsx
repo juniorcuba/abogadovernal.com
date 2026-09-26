@@ -64,7 +64,7 @@ export function Servicios() {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(77.74deg,#171717_48.45%,#17171700_61.05%)] movil:bg-[linear-gradient(182.44deg,#171717_50.42%,#00000000_58.17%)]"
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[999px] movil:p-0 design:h-[668px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[999px] movil:p-0 design:h-[668px] design:p-0">
         <div
           aria-hidden
           className="bg-vernal-accent hidden design:absolute design:top-[96px] design:left-[215px] design:block design:h-[443px] design:w-[12px]"
@@ -87,7 +87,7 @@ export function Servicios() {
 
         <ButtonLink
           href="/contacto"
-          className="mt-8 w-full sm:w-[277px] movil:absolute movil:top-[498px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[479px] design:left-[290px] design:mt-0"
+          className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[498px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[479px] design:left-[290px] design:mt-0"
         >
           <span className="movil:hidden">Agenda una consulta</span>
           <span className="hidden movil:inline">Agenda tu consulta</span>

@@ -79,10 +79,10 @@ export function Testimonios() {
         aria-hidden
         className="pointer-events-none hidden movil:absolute movil:top-0 movil:left-0 movil:block movil:h-[818px] movil:w-[398px] movil:bg-[linear-gradient(326.46deg,#0F0F0F_31.23%,#172339_66.26%)]"
       />
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 movil:h-[656px] movil:p-0 design:h-[818px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[656px] movil:p-0 design:h-[818px] design:p-0">
         <Carrusel
           items={testimonios}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 movil:block design:block"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 apilada:grid-cols-2 movil:block design:block"
           controles={({ anterior, siguiente }) => (
             <>
               <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[24px] design:absolute design:top-[275px] design:left-[171px]">
@@ -147,7 +147,7 @@ export function Testimonios() {
         </p>
 
         <div className="mt-8 flex justify-center movil:absolute movil:top-[560px] movil:left-[62px] movil:mt-0 movil:block design:absolute design:top-[672px] design:left-[822px] design:mt-0 design:block">
-          <ButtonLink href="/testimoniales" className="w-full sm:w-[277px] movil:w-[277px]">
+          <ButtonLink href="/testimoniales" className="w-full sm:w-[277px] apilada:w-[277px] movil:w-[277px]">
             Ver más testimonios
           </ButtonLink>
         </div>
