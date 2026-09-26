@@ -63,6 +63,23 @@ const marcadores = [
 ];
 
 /**
+ * Etiquetas del mapa, nuevas en el export del 2026-09-26: una caja de 44 de alto
+ * con relleno radial #172339 → #0F0F0F al 87% y un trazo de 3 por dentro, con el
+ * nombre de la ciudad centrado a 24px. Solo están en el lienzo de escritorio.
+ *
+ * El archivo mezcla pesos y colores sin criterio aparente (Dallas en 300 y el
+ * resto en 400; Forth Worth y Austin en blanco y las otras tres en cian) y
+ * escribe "Forth Worth": se deja literal, pendiente de confirmar.
+ */
+const etiquetasMapa = [
+  { ciudad: "Dallas", left: 549, top: 63, ancho: 122, clase: "text-vernal-accent font-light" },
+  { ciudad: "Forth Worth", left: 307, top: 105, ancho: 161, clase: "text-white" },
+  { ciudad: "Austin", left: 404, top: 223, ancho: 122, clase: "text-white" },
+  { ciudad: "Houston", left: 628, top: 283, ancho: 137, clase: "text-vernal-accent" },
+  { ciudad: "San Antonio", left: 358, top: 329, ancho: 168, clase: "text-vernal-accent" },
+];
+
+/**
  * Resplandor de los marcadores, de los filtros del export SVG (filter2..filter11).
  * Cada marcador lleva dos capas: el anillo y el punto, cada una con su sombra.
  *
@@ -141,6 +158,23 @@ export function ComoTrabajamos() {
               className="border-vernal-green absolute inset-0 rounded-full border-[3px]"
               style={{ boxShadow: BRILLO_ANILLO }}
             />
+          </span>
+        ))}
+
+        {etiquetasMapa.map((e) => (
+          <span
+            key={e.ciudad}
+            aria-hidden
+            className={`hidden items-center justify-center border-[3px] border-[#141d2e] bg-[radial-gradient(ellipse_at_30%_50%,rgb(23_35_57/0.87)_0%,rgb(15_15_15/0.87)_100%)] text-[24px] leading-[25px] design:absolute design:top-[var(--et)] design:left-[var(--el)] design:flex design:h-[44px] design:w-[var(--ew)] ${e.clase}`}
+            style={
+              {
+                "--el": `${e.left}px`,
+                "--et": `${e.top}px`,
+                "--ew": `${e.ancho}px`,
+              } as React.CSSProperties
+            }
+          >
+            {e.ciudad}
           </span>
         ))}
 

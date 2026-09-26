@@ -21,9 +21,10 @@ import { SelloVerificado } from "@/components/ui/iconos";
  *   título  69:13   x489 y563  946×109  dos líneas, la primera en #08b6ff
  *   botón   83:145  x822 y672  277×52
  *
- * OJO: "Nombre cliente / Ajuste de estatus" es TEXTO DE RELLENO del diseño, igual
- * en las cuatro tarjetas. Hay que pedirle al cliente los nombres y casos reales
- * antes de publicar, y su consentimiento para usarlos.
+ * OJO: en el export del 2026-09-26 el diseñador quitó el relleno "Nombre
+ * cliente" y dejó solo el tipo de caso, distinto en cada tarjeta (línea base
+ * 6571.1, 16/400). Los nombres siguen sin aparecer; las fotos son de clientes
+ * reales y hace falta su consentimiento antes de publicar.
  *
  * Lienzo móvil (y=9634..10290): una sola tarjeta de 299×345 en x50 y43, que es
  * la de escritorio escalada exactamente ×0.8329 (foto, recorte, degradado y
@@ -44,12 +45,12 @@ const ranuras = [
   { left: 1363, deg: 179.14, ini: 54.43, fin: 101.52 },
 ];
 
-/** Lo que ROTA: la foto y su recorte. */
+/** Lo que ROTA: la foto, su recorte y el tipo de caso. */
 const testimonios = [
-  { foto: "/images/testimonios/cliente-1.webp", img: { w: 565, h: 423, x: -112, y: -8 } },
-  { foto: "/images/testimonios/cliente-2.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
-  { foto: "/images/testimonios/cliente-3.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
-  { foto: "/images/testimonios/cliente-4.webp", img: { w: 379, h: 415, x: -10, y: 0 } },
+  { caso: "Ajuste de estatus", foto: "/images/testimonios/cliente-1.webp", img: { w: 565, h: 423, x: -112, y: -8 } },
+  { caso: "Visa T", foto: "/images/testimonios/cliente-2.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
+  { caso: "Petición Familiar", foto: "/images/testimonios/cliente-3.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
+  { caso: "Visa VAWA", foto: "/images/testimonios/cliente-4.webp", img: { w: 359, h: 479, x: 0, y: -38 } },
 ];
 
 function Flecha({
@@ -127,13 +128,8 @@ export function Testimonios() {
                     no pegado a la izquierda. El hueco entre sello y texto es 9. */}
                 <div className="absolute bottom-[22px] left-[22px] flex items-center gap-x-[10px] movil:right-[22px] movil:bottom-[29px] movil:justify-center movil:gap-x-[9px] design:right-[22px] design:bottom-[29px] design:left-[22px] design:justify-center design:gap-x-[9px]">
                   <SelloVerificado className="shrink-0" />
-                  <span className="text-white">
-                    <span className="block text-[16px] leading-[17px] font-bold">
-                      Nombre cliente
-                    </span>
-                    <span className="block text-[16px] leading-[17px]">
-                      Ajuste de estatus
-                    </span>
+                  <span className="block text-[16px] leading-[17px] text-white">
+                    {t.caso}
                   </span>
                 </div>
               </li>

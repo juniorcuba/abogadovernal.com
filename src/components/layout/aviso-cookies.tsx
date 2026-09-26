@@ -11,7 +11,8 @@ import {
  * Aviso de cookies — export SVG del 2026-09-13, bajo la cabecera de 1920.
  *
  *   barra    x2 y128  1917×63  negro, superpuesta al hero (no empuja nada)
- *   texto    x223  Poppins 12/400 blanco, justificado, líneas base 154.2 y 168.2
+ *   texto    x223  Poppins 10/400 blanco, justificado, líneas base 152.5 y 164.5
+ *                  (en el export del 2026-09-13 era de 12 y rompía en otro sitio)
  *   Aceptar  x1358 y147  109×26  #08B6FF, texto 16/400 negro centrado
  *   Rechazar x1489 y147  109×26
  *   cerrar   X de 14×14 en x1622 y153, dos trazos de 2 en #08B6FF con punta redonda
@@ -48,7 +49,7 @@ export function AvisoCookies() {
       aria-label="Aviso de cookies"
       className="fixed inset-x-0 bottom-0 z-[90] flex flex-col gap-y-3 bg-black px-5 py-4 text-white sm:flex-row sm:items-center sm:gap-x-6 sm:px-8 design:absolute design:top-[128px] design:bottom-auto design:left-[2px] design:block design:h-[63px] design:w-[1917px] design:p-0"
     >
-      <p className="max-w-[860px] text-[12px] leading-[14px] design:absolute design:top-[15px] design:left-[221px] design:w-[857px] design:max-w-none design:text-justify">
+      <p className="max-w-[860px] text-[12px] leading-[14px] design:absolute design:top-[15px] design:left-[221px] design:w-[782px] design:max-w-none design:text-[10px] design:leading-[12px] design:text-justify">
         Usamos cookies propias y de terceros para mejorar tu experiencia de
         navegación, analizar el tráfico del sitio y mostrarte contenido
         personalizado. Puedes aceptar todas las cookies, rechazarlas o configurar

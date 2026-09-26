@@ -52,8 +52,13 @@ import { Carrusel } from "@/components/ui/carrusel";
  * margen negativo. Sin él, todo lo de debajo baja un píxel.
  */
 
-/** Ranuras del archivo; se quedan fijas y rota quién cae en cada una. */
-const ranuras = [{ left: 915 }, { left: 1255.6 }, { left: 1596.3 }];
+/**
+ * Ranuras del archivo; se quedan fijas y rota quién cae en cada una. En el
+ * export del 2026-09-26 las fotos se juntaron (paso de 340.6 a 329.9), se
+ * encogieron (325×387 → 314×374) y apareció una CUARTA ranura, que el borde del
+ * lienzo corta casi entera: de ella solo se ve la franja bajo el fundido.
+ */
+const ranuras = [{ left: 913 }, { left: 1242.8 }, { left: 1572.7 }, { left: 1902.5 }];
 
 const equipo = [
   {
@@ -64,15 +69,23 @@ const equipo = [
     cargoClase: "text-[#27ffa2]",
   },
   {
-    nombre: "Marysol Rogel",
-    cargo: "Asistente legal",
-    foto: "/images/equipo/marysol-rogel.webp",
+    nombre: "Racquel Medina",
+    cargo: "Chief Legal Strategy",
+    foto: "/images/equipo/racquel-medina.webp",
     cargoClase: "text-white",
   },
   {
-    nombre: "Katiuska Rodriguez",
-    cargo: "Asistente legal en tribunales",
-    foto: "/images/equipo/katiuska-rodriguez.webp",
+    nombre: "Alok Mohato",
+    cargo: "Abogado",
+    foto: "/images/equipo/alok-mohato.webp",
+    cargoClase: "text-white",
+  },
+  // Katiuska Rodríguez salió del archivo en el export del 2026-09-26 y Marysol
+  // Rogel pasó a la cuarta ranura, la que queda cortada.
+  {
+    nombre: "Marysol Rogel",
+    cargo: "Asistente legal",
+    foto: "/images/equipo/marysol-rogel.webp",
     cargoClase: "text-white",
   },
 ];
@@ -208,7 +221,7 @@ export function NuestroEquipo() {
               /* El móvil enseña una sola ranura. Las otras dos se ocultan en vez
                  de no renderizarse: así las flechas siguen girando los mismos
                  datos y quien esté en la ranura 0 es quien se ve. */
-              className={`design:absolute design:top-[253px] design:left-[var(--x)] design:w-[325px] ${
+              className={`design:absolute design:top-[261.5px] design:left-[var(--x)] design:w-[314px] ${
                 i === 0
                   ? "movil:absolute movil:top-0 movil:left-0 movil:h-full movil:w-full"
                   : "movil:hidden"
@@ -223,16 +236,16 @@ export function NuestroEquipo() {
                   {p.nombre}
                 </p>
                 <p
-                  className={`text-center text-[12px] leading-[12px] font-semibold uppercase movil:absolute movil:top-[926px] movil:left-0 movil:w-[402px] ${p.cargoClase}`}
+                  className={`text-center text-[12px] leading-[12px] font-semibold uppercase movil:absolute movil:top-[926px] movil:left-0 movil:w-[402px] design:mt-[14.5px] ${p.cargoClase}`}
                 >
                   {p.cargo}
                 </p>
                 <Image
                   src={p.foto}
                   alt={`${p.nombre}, ${p.cargo}`}
-                  width={325}
-                  height={387}
-                  className="mt-[47px] h-[387px] w-[325px] object-contain movil:absolute movil:top-[973px] movil:left-[45px] movil:mt-0 movil:h-[373px] movil:w-[313px]"
+                  width={314}
+                  height={374}
+                  className="mt-[47px] h-[387px] w-[325px] object-contain movil:absolute movil:top-[973px] movil:left-[45px] movil:mt-0 movil:h-[373px] movil:w-[313px] design:mt-[38.6px] design:h-[374px] design:w-[314px]"
                 />
               </div>
             </li>
