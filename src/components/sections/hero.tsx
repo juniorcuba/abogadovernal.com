@@ -26,13 +26,14 @@ export function Hero() {
   return (
     <section className="relative -mt-[128px] overflow-hidden movil:-mt-[106px] movil:h-[1308px] design:h-[1142px]">
       <div className="absolute inset-0 movil:inset-auto movil:top-[-2px] movil:left-0 movil:h-[700px] movil:w-[402px] design:top-0 design:left-[-3px] design:h-[1142px] design:w-[1920px]">
-        {/* Escritorio y móvil llevan fotos DISTINTAS: en el lienzo de 1920 la
-            del abogado sentado (export del 2026-09-26) y en el de 402 la de
-            antes. Ninguna lleva `priority`: con carga diferida, la que queda en
-            display:none no se llega a pedir, así que cada lienzo baja una sola
-            foto. Con `priority` el navegador se baja las dos. */}
+        {/* La misma foto (export del 2026-09-26) en los dos lienzos, pero
+            colocada distinto: en 1920 se dibuja 1988×2565 en (−15, +28) y en 402
+            va a 1095 de ancho desplazada a la izquierda. Ninguna lleva
+            `priority`: con carga diferida, la que queda en display:none no se
+            llega a pedir, así que cada lienzo baja una sola foto. Con `priority`
+            el navegador se baja las dos. */}
         <Image
-          src="/images/hero-escritorio-2026.webp"
+          src="/images/hero-2026.webp"
           alt=""
           width={1920}
           height={2477}
@@ -40,7 +41,7 @@ export function Hero() {
           className="absolute inset-0 h-full w-full object-cover object-[62%_top] movil:hidden design:top-[28px] design:left-[-15px] design:h-[2565px] design:w-[1988px] design:max-w-none design:object-fill"
         />
         <Image
-          src="/images/movil/hero-fondo.webp"
+          src="/images/hero-2026.webp"
           alt=""
           width={1920}
           height={2477}
