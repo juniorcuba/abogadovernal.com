@@ -27,31 +27,40 @@ import Image from "next/image";
 export function NosotrosHero() {
   return (
     // −128 para meterse debajo de la cabecera, como el resto de heros.
-    <section className="bg-vernal-ink relative -mt-[128px] overflow-hidden design:h-[1026px]">
+    <section className="bg-vernal-ink relative -mt-[128px] overflow-hidden movil:-mt-[106px] movil:h-[1349px] design:h-[1026px]">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 design:inset-auto design:top-[-1px] design:left-[-3px] design:h-[1027px] design:w-[1920px]"
+        className="pointer-events-none absolute inset-0 movil:inset-auto movil:top-0 movil:left-0 movil:h-[1349px] movil:w-[418px] design:inset-auto design:top-[-1px] design:left-[-3px] design:h-[1027px] design:w-[1920px]"
       >
-        <div className="absolute inset-0 bg-[linear-gradient(146.05deg,#172339_27.86%,#000000_86.54%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(146.05deg,#172339_27.86%,#000000_86.54%)] movil:hidden" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(103.83deg,#172339_27.86%,#000000_86.53%)] movil:block" />
         <Image
           src="/images/nosotros/hero-ciudad.webp"
           alt=""
           width={1920}
           height={1027}
           priority
-          className="absolute inset-0 h-full w-full object-cover mix-blend-overlay"
+          className="absolute inset-0 h-full w-full object-cover mix-blend-overlay movil:hidden"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(352.05deg,#0F0F10_19.13%,#0F0F1000_56.35%)]" />
+        {/* En móvil el archivo usa la foto entera, no la franja recortada. */}
+        <Image
+          src="/images/nosotros/hero-ciudad-movil.webp"
+          alt=""
+          width={1311}
+          height={1966}
+          className="absolute hidden mix-blend-overlay movil:top-[-469px] movil:left-[-371px] movil:block movil:h-[1966px] movil:w-[1311px] movil:max-w-none"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(352.05deg,#0F0F10_19.13%,#0F0F1000_56.35%)] movil:hidden" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(319.88deg,#0F0F10_19.13%,#0F0F1000_56.35%)] movil:block" />
       </div>
 
-      {/* Retrato. En 1920 va en su hueco del archivo (876, 205). Por debajo no hay
-          diseño: en la franja apilada va abajo a la derecha a escala 0.53, y en
-          móvil arriba a la derecha a 0.33, donde no lo corta la tarjeta de la cita.
-          En los dos casos lleva un degradado por delante, porque ahí el texto le
-          pasa por encima y sin él no se leería. */}
+      {/* Retrato. En 1920 va en su hueco del archivo (876, 205) y en móvil en el
+          suyo (−13, 907), debajo del texto. La franja apilada no tiene diseño:
+          ahí va abajo a la derecha a escala 0.53, con un degradado por delante
+          porque el texto le pasa por encima. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute hidden overflow-hidden apilada:right-[-30px] apilada:bottom-0 apilada:block apilada:h-[620px] apilada:w-[420px] movil:top-[120px] movil:right-[-12px] movil:bottom-auto movil:block movil:h-[390px] movil:w-[265px] design:top-[205px] design:left-[876px] design:block design:h-[821px] design:w-[793px]"
+        className="pointer-events-none absolute hidden overflow-hidden apilada:right-[-30px] apilada:bottom-0 apilada:block apilada:h-[620px] apilada:w-[420px] movil:top-[907px] movil:left-[-13px] movil:block movil:h-[447px] movil:w-[431px] design:top-[205px] design:left-[876px] design:block design:h-[821px] design:w-[793px]"
       >
         <Image
           src="/images/nosotros/hero-retrato-2.webp"
@@ -59,33 +68,56 @@ export function NosotrosHero() {
           width={859}
           height={1288}
           priority
-          className="absolute top-[-72px] left-[-53px] h-[1288px] w-[859px] max-w-none apilada:top-[-38px] apilada:left-[-28px] apilada:h-[682px] apilada:w-[455px] apilada:[mask-image:linear-gradient(180deg,#000_62%,transparent_100%)] movil:top-[-24px] movil:left-[-18px] movil:h-[430px] movil:w-[287px] movil:[mask-image:linear-gradient(180deg,#000_58%,transparent_100%)]"
+          className="absolute top-[-72px] left-[-53px] h-[1288px] w-[859px] max-w-none apilada:top-[-38px] apilada:left-[-28px] apilada:h-[682px] apilada:w-[455px] apilada:[mask-image:linear-gradient(180deg,#000_62%,transparent_100%)] movil:top-[-39px] movil:left-[-29px] movil:h-[701px] movil:w-[467px]"
         />
-        <div className="absolute inset-0 hidden bg-[linear-gradient(182.83deg,#0F0F1000_57.70%,#0F0F10_97.99%)] design:block" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(182.83deg,#0F0F1000_57.70%,#0F0F10_97.99%)] movil:block design:block" />
         {/* Solo donde el retrato convive con el texto. */}
-        <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,#0F0F10_0%,#0F0F1066_40%,#0F0F1000_100%)] apilada:block movil:block" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,#0F0F10_0%,#0F0F1066_40%,#0F0F1000_100%)] apilada:block" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pb-20 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
-        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] design:absolute design:top-[264px] design:left-[223px] design:text-[36px] design:leading-[37px]">
+      <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pb-20 movil:block movil:h-[1349px] movil:max-w-none movil:p-0 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
+        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] movil:absolute movil:top-[176.5px] movil:left-[38px] movil:text-[24px] movil:leading-[26px] design:absolute design:top-[264px] design:left-[223px] design:text-[36px] design:leading-[37px]">
           Tu defensa en Texas
         </p>
-        <h1 className="drop-shadow-vernal-1 mt-2 text-[46px] leading-[48px] font-semibold uppercase sm:text-[62px] sm:leading-[64px] design:absolute design:top-[312px] design:left-[223px] design:mt-0 design:text-[82px] design:leading-[85px]">
+        <h1 className="drop-shadow-vernal-1 mt-2 text-[46px] leading-[48px] font-semibold uppercase sm:text-[62px] sm:leading-[64px] movil:absolute movil:top-[213px] movil:left-[38px] movil:mt-0 movil:text-[46px] movil:leading-[48px] design:absolute design:top-[312px] design:left-[223px] design:mt-0 design:text-[82px] design:leading-[85px]">
           <span className="block text-white">Abogado</span>
           <span className="text-vernal-accent block">Vernal</span>
         </h1>
 
-        <p className="mt-8 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify design:absolute design:top-[531px] design:left-[223px] design:mt-0 design:w-[560px] design:max-w-none design:leading-[17px]">
+        <p className="mt-8 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:absolute movil:top-[338px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[531px] design:left-[223px] design:mt-0 design:w-[560px] design:max-w-none design:leading-[17px]">
           {"Antes de convertirse en abogado de inmigración, el "}
           <span className="text-vernal-accent">Abogado Vernal Farum</span>
           {' ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con la inmigración a Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que "cada cliente que llega a la oficina lleva a mi familia", no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda, es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos.'}
         </p>
 
         {/* Tarjeta con la cita. En móvil y medidas intermedias va en flujo, debajo del texto. */}
-        <figure className="relative mt-10 max-w-[360px] p-8 design:absolute design:top-[634px] design:left-[1264px] design:mt-0 design:h-[348px] design:w-[322px] design:max-w-none design:p-0">
+        <figure className="relative mt-10 max-w-[360px] p-8 movil:absolute movil:top-[1119px] movil:left-[184px] movil:mt-0 movil:h-[231px] movil:w-[214px] movil:max-w-none movil:p-0 design:absolute design:top-[634px] design:left-[1264px] design:mt-0 design:h-[348px] design:w-[322px] design:max-w-none design:p-0">
+          {/* El móvil tiene su propia caja: 214×231, solo relleno radial, sin el
+              trazo de 8 que lleva la de 1920. */}
           <svg
             aria-hidden
-            className="absolute inset-0 h-full w-full overflow-visible"
+            className="absolute inset-0 hidden h-full w-full movil:block"
+            viewBox="0 0 214 231"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <radialGradient
+                id="nos-hero-tarjeta-movil"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="matrix(468.412 -491.63 60.8154 72.5639 5.554 173.68)"
+              >
+                <stop stopColor="#172339" />
+                <stop offset="1" stopColor="#0F0F0F" />
+              </radialGradient>
+            </defs>
+            <rect width="214" height="231" fill="url(#nos-hero-tarjeta-movil)" fillOpacity="0.87" />
+          </svg>
+          <svg
+            aria-hidden
+            className="absolute inset-0 h-full w-full overflow-visible movil:hidden"
             viewBox="0 0 322 348"
             preserveAspectRatio="none"
           >
@@ -127,9 +159,9 @@ export function NosotrosHero() {
             alt=""
             width={73}
             height={72}
-            className="relative h-[71.87px] w-[72.97px] design:absolute design:top-[50.1px] design:left-[40.5px]"
+            className="relative h-[71.87px] w-[72.97px] movil:absolute movil:top-[33px] movil:left-[26px] movil:h-[48px] movil:w-[49px] design:absolute design:top-[50.1px] design:left-[40.5px]"
           />
-          <blockquote className="relative mt-6 text-[30px] leading-[32px] font-light whitespace-pre-line text-white design:absolute design:top-[150px] design:left-[34px] design:mt-0 design:text-[36px] design:leading-[37px]">
+          <blockquote className="relative mt-6 text-[30px] leading-[32px] font-light whitespace-pre-line text-white movil:absolute movil:top-[100px] movil:left-[22px] movil:mt-0 movil:text-[20px] movil:leading-[21px] design:absolute design:top-[150px] design:left-[34px] design:mt-0 design:text-[36px] design:leading-[37px]">
             {'"cada cliente\nque llega a la\noficina '}
             <span className="text-vernal-accent">{'lleva a\nmi familia"'}</span>
           </blockquote>
