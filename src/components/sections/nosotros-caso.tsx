@@ -4,13 +4,17 @@ import Image from "next/image";
  * "El caso que lo confirmó todo" — frame `181:2125`, export del 2026-09-13,
  * rango y=1634..2282. Coordenadas relativas a la sección.
  *
- *   fondo    x1, 1923×648, tres capas:
+ *   fondo    x1, 1923×648, cuatro capas:
  *              1. #08B6FF
  *              2. bandera en hard-light al 42% (recortada a su zona visible)
- *              3. linear-gradient(78.82deg, cian transparente 41.99% → opaco 54.56%)
- *   barra    x243 y165  12×351  #172339
- *   titular  x296 y186  Poppins 64/700, tracking −0.03em, #172339, dos líneas de 67
- *   cuerpo   x296 y362  caja de 580, 16/17 justificado, #172339; la última frase en negrita
+ *              3. degradado RADIAL girado −31.4891° centrado en (1436.5, 324) con
+ *                 radios 570.514×1693.05: cian transparente 11.04% → #0F71A3 al
+ *                 46.7% en 14.70% → #172339 al 100%. Va en un <svg> porque CSS no
+ *                 sabe girar un radial.
+ *              4. linear-gradient(241.63deg, negro 0.96% → transparente 41.42%)
+ *   barra    x243 y165  12×351  #08B6FF
+ *   titular  x296 y186  Poppins 64/700, tracking −0.03em, BLANCO, dos líneas de 67
+ *   cuerpo   x296 y362  caja de 580, 16/17 justificado, blanco; la última frase en negrita
  *   tarjeta  x1053 y79  506×492, con la Vernal Shadow 1:
  *              1. #08B6FF   2. foto   3. linear-gradient(179.13deg, #172339
  *              transparente 17.94% → opaco 65.48%)   4. trazo radial de 6 por dentro
@@ -32,23 +36,45 @@ export function NosotrosCaso() {
           height={648}
           className="absolute inset-0 h-full w-full object-cover object-left opacity-[0.42] mix-blend-hard-light design:right-auto design:w-[1314px]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(78.82deg,#08B6FF00_41.99%,#08B6FF_54.56%)]" />
+        <svg
+          aria-hidden
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 1923 648"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <radialGradient
+              id="nos-caso-radial"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(1436.5 324) rotate(-31.4891) scale(570.514 1693.05)"
+            >
+              <stop offset="0.110405" stopColor="#08B6FF" stopOpacity="0" />
+              <stop offset="0.146981" stopColor="#0F71A3" stopOpacity="0.46677" />
+              <stop offset="1" stopColor="#172339" />
+            </radialGradient>
+          </defs>
+          <rect width="1923" height="648" fill="url(#nos-caso-radial)" />
+        </svg>
+        <div className="absolute inset-0 bg-[linear-gradient(241.63deg,#000000_0.96%,#00000000_41.42%)]" />
       </div>
 
       <div className="relative mx-auto grid max-w-[1040px] gap-x-12 gap-y-10 px-6 py-16 md:grid-cols-2 md:items-center lg:px-12 design:block design:h-[648px] design:max-w-[1920px] design:p-0">
         <div
           aria-hidden
-          className="bg-vernal-navy hidden design:absolute design:top-[165px] design:left-[243px] design:block design:h-[351px] design:w-[12px]"
+          className="bg-vernal-accent hidden design:absolute design:top-[165px] design:left-[243px] design:block design:h-[351px] design:w-[12px]"
         />
 
         <div>
-          <h2 className="text-vernal-navy text-[38px] leading-[42px] font-bold tracking-[-0.03em] uppercase sm:text-[48px] sm:leading-[52px] design:absolute design:top-[186px] design:left-[296px] design:w-[700px] design:text-[64px] design:leading-[67px]">
+          <h2 className="text-white text-[38px] leading-[42px] font-bold tracking-[-0.03em] uppercase sm:text-[48px] sm:leading-[52px] design:absolute design:top-[186px] design:left-[296px] design:w-[700px] design:text-[64px] design:leading-[67px]">
             El caso que
             <br />
             lo confirmo todo
           </h2>
 
-          <p className="text-vernal-navy mt-6 max-w-[680px] text-[16px] leading-[22px] sm:text-justify design:absolute design:top-[362px] design:left-[296px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
+          <p className="text-white mt-6 max-w-[680px] text-[16px] leading-[22px] sm:text-justify design:absolute design:top-[362px] design:left-[296px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
             Entre los casos que marcaron su carrera como abogado de inmigración en
             Texas, destaca uno que llegó casi por accidente: una familia con un menor
             que enfrentaba una situación médica delicada, y que ya había sido

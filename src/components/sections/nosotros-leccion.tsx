@@ -14,8 +14,9 @@ import { Logo } from "@/components/ui/logo";
  *            FOTO: la del archivo (desenfocada, 733×489 en 0,−32) la cambió el
  *            cliente por DSC00324 (el abogado en la sala, bajo el texto de la
  *            misión), recortada a 733×425 y exportada a 2x.
- *   titular  x1064, líneas base 170/207/244, Poppins 36/300; "familia le enseñó" en cian
- *   cuerpo   x1064 y309, caja de 580, 16/17 justificado
+ *   titular  x1053, líneas base 160.9/227.9/294.9, Poppins 64/300 con interlineado
+ *            67; "familia" y "le enseñó" en cian
+ *   cuerpo   x1064 y348, caja de 580, 16/17 justificado
  */
 export function NosotrosLeccion() {
   return (
@@ -89,7 +90,7 @@ export function NosotrosLeccion() {
         </div>
 
         <div>
-          <h2 className="text-[28px] leading-[32px] font-light text-white sm:text-[32px] sm:leading-[36px] design:absolute design:top-[139px] design:left-[1064px] design:w-[420px] design:leading-[37px] design:text-[36px]">
+          <h2 className="text-[28px] leading-[32px] font-light text-white sm:text-[32px] sm:leading-[36px] design:absolute design:top-[104px] design:left-[1053px] design:w-[700px] design:leading-[67px] design:text-[64px] design:font-light">
             {"Una lección que "}
             <br className="hidden design:inline" />
             {"su propia "}
@@ -99,7 +100,7 @@ export function NosotrosLeccion() {
             </span>
           </h2>
 
-          <p className="mt-6 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify design:absolute design:top-[309px] design:left-[1064px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
+          <p className="mt-6 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify design:absolute design:top-[348px] design:left-[1064px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
             {"A lo largo de su carrera, ha visto de cerca cómo una mala asesoría legal puede cambiar por completo el rumbo de una familia, no tuvo que buscar lejos para entenderlo. Su propio hermano vivió un proceso migratorio que pudo haber terminado de forma muy distinta, de no ser porque buscó la orientación correcta a tiempo.\n\nEsa experiencia marcó cómo entiende el costo real de un mal proceso legal, no en dinero, sino en tiempo con la familia que nunca se recupera."}
           </p>
         </div>
