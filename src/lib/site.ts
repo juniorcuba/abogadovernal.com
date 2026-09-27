@@ -19,6 +19,12 @@ export const site = {
    */
   privacyUrl: "/politicas-de-privacidad",
   termsUrl: "/terminos-y-condiciones",
+  /**
+   * Canal de las transmisiones. El botón "Ver retransmisiones" del home iba a
+   * /transmisiones, una página que el archivo de diseño no trae; hasta que la
+   * haya, lleva al canal.
+   */
+  youtube: "https://www.youtube.com/@abogadovernal",
 } as const;
 
 export type Office = {

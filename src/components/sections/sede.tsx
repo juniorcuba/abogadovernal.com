@@ -132,11 +132,15 @@ const FOTOS: Record<string, { left: number; width: number }> = {
 /**
  * Sin `top`, el botón va en el flujo, justo debajo de lo que tenga encima (ver
  * `Tarjeta`); con `top`, en esa y exacta de la tarjeta.
+ *
+ * El archivo lo manda a una página de detalle por servicio que no existe en el
+ * diseño (/areas-de-practica), así que de momento lleva a /contacto. Cuando el
+ * cliente decida si habrá esas páginas, se cambia aquí.
  */
 function BotonMasInfo({ id, top }: { id: string; top?: number }) {
   return (
     <Link
-      href={`/areas-de-practica#${id}`}
+      href="/contacto"
       className={`text-vernal-accent relative mt-8 inline-flex h-[52px] w-[223px] items-center bg-[#0F0F10] pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 design:mt-0 ${
         top === undefined ? "" : "design:absolute design:top-[var(--bt)] design:left-[60.5px]"
       }`}

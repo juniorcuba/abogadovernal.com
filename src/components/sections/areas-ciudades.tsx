@@ -79,7 +79,7 @@ function Areas({ columna, ciudad }: { columna: 0 | 1; ciudad: string }) {
       {AREAS.map((a) => (
         <li key={`${columna}-${a.texto}`} className="border-t-2 border-white/50">
           <a
-            href={slug ? `/areas-de-servicio/${slug}#${a.ancla}` : "/areas-de-practica"}
+            href={slug ? `/areas-de-servicio/${slug}#${a.ancla}` : "/areas-de-servicio"}
             className="flex items-start justify-between gap-x-4 py-[18px] text-[20px] leading-[25px] font-light text-white transition-opacity hover:opacity-80 design:h-[var(--alto)] design:py-0 design:pt-[21px] design:text-[24px]"
             style={
               { "--alto": `${a.lineas === 1 ? 75 : 92}px` } as React.CSSProperties
