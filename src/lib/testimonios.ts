@@ -27,6 +27,11 @@ export type Testimonio = {
   nombreArriba: number;
   /** y del bloque de texto; también va a mano, según cuántos renglones ocupe. */
   textoArriba: number;
+  /**
+   * La foto redonda: `arriba` es la y del círculo de 166 dentro de la tarjeta y
+   * `foto` el encuadre con el que el archivo mete la imagen dentro de él.
+   */
+  avatar: { arriba: number; foto: { x: number; y: number; w: number; h: number } };
 };
 
 export const testimonios: Testimonio[] = [
@@ -37,6 +42,7 @@ export const testimonios: Testimonio[] = [
     ciudad: "Dallas, TX",
     nombreArriba: 342.75,
     textoArriba: 146,
+    avatar: { arriba: -43, foto: { x: -65.04, y: -60.97, w: 296.1, h: 370.1 } },
     lineas: [
       ["Después de más de dos años separada de "],
       ["su esposo, María llegó a Abogado Vernal "],
@@ -55,6 +61,7 @@ export const testimonios: Testimonio[] = [
     ciudad: "Houston, TX",
     nombreArriba: 342.75,
     textoArriba: 145,
+    avatar: { arriba: -43, foto: { x: -21.72, y: 0.01, w: 182.9, h: 228.6 } },
     lineas: [
       ["Carlos llegó a Estados Unidos huyendo de una "],
       ["situación que ponía en riesgo su vida. Después "],
@@ -74,6 +81,7 @@ export const testimonios: Testimonio[] = [
     ciudad: "Forth Worth, TX",
     nombreArriba: 352.75,
     textoArriba: 145,
+    avatar: { arriba: -43, foto: { x: -27.24, y: -0.05, w: 222.2, h: 296.2 } },
     lineas: [
       ["Después de ser víctimas de un delito y "],
       ["colaborar con las autoridades durante la "],
@@ -94,6 +102,7 @@ export const testimonios: Testimonio[] = [
     ciudad: "Austin, TX",
     nombreArriba: 345.75,
     textoArriba: 137,
+    avatar: { arriba: -52, foto: { x: -76.69, y: -72.86, w: 345.6, h: 460.8 } },
     lineas: [
       ["Después de años como residente "],
       ["permanente, Rosa quería dar el siguiente "],
@@ -114,6 +123,7 @@ export const testimonios: Testimonio[] = [
     ciudad: "Dallas, TX",
     nombreArriba: 345.75,
     textoArriba: 133,
+    avatar: { arriba: -52, foto: { x: -36.41, y: -54.07, w: 255.2, h: 340.3 } },
     lineas: [
       ["Jorge enfrentaba un proceso de "],
       ["deportación que amenazaba con "],
@@ -134,6 +144,7 @@ export const testimonios: Testimonio[] = [
     ciudad: "Houston, TX",
     nombreArriba: 343.75,
     textoArriba: 138,
+    avatar: { arriba: -52, foto: { x: -9.64, y: -7.92, w: 185.9, h: 247.8 } },
     lineas: [
       ["Ana vivió años de violencia doméstica antes "],
       ["de encontrar el valor de buscar ayuda. En "],

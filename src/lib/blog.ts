@@ -46,8 +46,16 @@ export const entradasBlog: EntradaBlog[] = [
   },
 ];
 
-/** Las tres primeras son las que también cierran /testimoniales. */
-export const entradasBlogPortada = entradasBlog.slice(0, 3);
+/**
+ * Las tres que cierran /testimoniales. Comparten foto y encuadre con las tres
+ * primeras de /blog, pero la primera lleva otro título: el archivo de
+ * testimoniales pone "Requisitos para la Visa VAWA".
+ */
+export const entradasBlogPortada: EntradaBlog[] = [
+  { ...entradasBlog[0], titulo: "Requisitos para la\nVisa VAWA" },
+  entradasBlog[1],
+  entradasBlog[2],
+];
 
 export const entradaBlogResumen =
   "Si eres ciudadano o residente permanente en Dallas y quieres reunirte con tu cónyuge, hijos...";

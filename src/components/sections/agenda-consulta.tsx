@@ -46,7 +46,7 @@ export function AgendaConsulta({ solape = 0 }: { solape?: number }) {
         </p>
 
         <form className="mt-8 max-w-[565px] design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
-          <CamposConsulta />
+          <CamposConsulta espaciado="bloque" />
         </form>
 
         {/* Sello. El SVG sale del export de TESTIMONIALES con el giro ya

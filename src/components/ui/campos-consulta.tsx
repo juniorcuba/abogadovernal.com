@@ -6,14 +6,18 @@ import { offices } from "@/lib/site";
 /**
  * Campos de "Agenda tu consulta": los del hero de la home y los de las páginas
  * de sede, que en el archivo son idénticos al píxel (campos de 271×52 con 23 de
- * separación, comentarios de 565, "Enviar" de 224 a 21 del último campo y el
- * aviso 7px más adentro, a 20 del botón). El contenedor —fondo, relleno y
- * posición— lo pone cada sección.
+ * separación, comentarios de 565 y "Enviar" de 224; el aviso va 7px más
+ * adentro). El contenedor —fondo, relleno y posición— lo pone cada sección.
+ *
+ * Lo único que cambia entre sitios es cuánto respiran el botón y el aviso: en
+ * los heros van a 21 y 20, y en el bloque suelto de "Agenda tu consulta" a 28.6
+ * y 45.5. De ahí `espaciado`.
  *
  * Aún sin backend: cuando se conecte, el envío tiene que guardar la aceptación
  * del aviso con fecha y ser idempotente (ver ConsentNotice).
  */
-export function CamposConsulta() {
+export function CamposConsulta({ espaciado = "hero" }: { espaciado?: "hero" | "bloque" }) {
+  const suelto = espaciado === "bloque";
   return (
     <>
       <div className="grid grid-cols-1 gap-[23px] sm:grid-cols-2 apilada:grid-cols-2 movil:grid-cols-1 movil:gap-[18px]">
@@ -26,10 +30,20 @@ export function CamposConsulta() {
         <FieldArea name="comentarios" label="Comentarios" icon="/icons/form/comment.svg" iconWidth={20} iconHeight={20} className="sm:col-span-2" />
       </div>
 
-      <Button className="mt-[21px] w-full sm:w-[224px] apilada:w-[224px] movil:mt-[18px] movil:w-[224px]">Enviar</Button>
+      <Button
+        className={`mt-[21px] w-full sm:w-[224px] apilada:w-[224px] movil:mt-[18px] movil:w-[224px] ${
+          suelto ? "design:mt-[28.6px]" : ""
+        }`}
+      >
+        Enviar
+      </Button>
 
       {/* El aviso va 7px más adentro que los campos. */}
-      <ConsentNotice className="mt-[20px] movil:mt-[21px] movil:ml-0 movil:text-[10px] design:ml-[7px]" />
+      <ConsentNotice
+        className={`mt-[20px] movil:mt-[21px] movil:ml-0 movil:text-[10px] design:ml-[7px] ${
+          suelto ? "design:mt-[45.5px]" : ""
+        }`}
+      />
     </>
   );
 }

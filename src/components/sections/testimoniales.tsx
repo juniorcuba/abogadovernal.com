@@ -54,7 +54,9 @@ export function TestimonialesHero() {
         <div className="absolute inset-0 bg-[linear-gradient(181.96deg,#000000_-1.99%,#00000000_20.19%)]" />
       </div>
 
-      {/* Retrato: la foto mide 1440 de alto y la caja la recorta a 766. */}
+      {/* Retrato: la caja de 621×766 recorta la foto, que el archivo mete girada
+          1.86° con la matriz del patrón; por eso en el lienzo va a tamaño
+          natural con `transform` en vez de estirada. */}
       <div
         aria-hidden
         className="pointer-events-none absolute hidden overflow-hidden apilada:top-[150px] apilada:right-0 apilada:block apilada:h-[520px] apilada:w-[420px] movil:top-[150px] movil:right-[-20px] movil:block movil:h-[380px] movil:w-[308px] design:top-[217px] design:left-[892px] design:block design:h-[766px] design:w-[621px]"
@@ -66,7 +68,7 @@ export function TestimonialesHero() {
           height={1785}
           priority
           sizes="621px"
-          className="absolute top-[-30px] left-0 h-[1440px] w-[621px] max-w-none apilada:h-[974px] apilada:w-[420px] apilada:[mask-image:linear-gradient(180deg,#000_70%,transparent_100%)] movil:h-[714px] movil:w-[308px] movil:[mask-image:linear-gradient(180deg,#000_65%,transparent_100%)]"
+          className="absolute top-[-30px] left-0 h-[1440px] w-[621px] max-w-none apilada:h-[974px] apilada:w-[420px] apilada:[mask-image:linear-gradient(180deg,#000_70%,transparent_100%)] movil:h-[714px] movil:w-[308px] movil:[mask-image:linear-gradient(180deg,#000_65%,transparent_100%)] design:top-0 design:h-[1785px] design:w-[769px] design:[transform:matrix(0.80739,0.026186,-0.026193,0.806766,-0.3933,-29.9341)] design:[transform-origin:0_0]"
         />
       </div>
 
@@ -133,9 +135,14 @@ export function TestimonialesHero() {
             height={68}
             className="relative ml-6 h-[57px] w-[58px] pt-6 design:absolute design:top-[22px] design:left-[34px] design:m-0 design:h-[68px] design:w-[69px] design:p-0"
           />
-          <p className="relative bg-[#172339]/90 p-6 text-[26px] leading-[30px] font-light text-white sm:text-[32px] sm:leading-[34px] design:absolute design:top-[112px] design:left-[34px] design:bg-transparent design:p-0 design:text-[32px] design:leading-[33px]">
-            Cada historia aquí empezó con una duda,{" "}
-            <span className="text-vernal-accent">y terminó con una nueva vida.</span>
+          {/* En el lienzo de 1920 el archivo parte estas cinco líneas a mano;
+              por debajo fluyen como un párrafo normal. */}
+          <p className="relative bg-[#172339]/90 p-6 text-[26px] leading-[30px] font-light text-white sm:text-[32px] sm:leading-[34px] design:absolute design:top-[112px] design:left-[34px] design:w-[254px] design:bg-transparent design:p-0 design:text-[32px] design:leading-[33px]">
+            <span className="design:block">Cada historia </span>
+            <span className="design:block">aquí empezó </span>
+            <span className="design:block">con una duda, </span>
+            <span className="text-vernal-accent design:block">y terminó con </span>
+            <span className="text-vernal-accent design:block">una nueva vida.</span>
           </p>
         </div>
       </div>
@@ -188,14 +195,27 @@ function TarjetaTestimonio({
         transformacion="matrix(213.283 -3046.36 222.066 39.3579 18.983 450.89)"
       />
 
-      {/* Foto redonda montada sobre el borde superior. */}
-      <span className="absolute top-[-83px] left-1/2 block h-[166px] w-[166px] -translate-x-1/2 overflow-hidden rounded-full design:top-[-43px]">
+      {/* Foto redonda montada sobre el borde superior. El encuadre de dentro lo
+          pone el archivo a mano en cada tarjeta, así que viene con el dato. */}
+      <span
+        className="absolute top-[-83px] left-1/2 block h-[166px] w-[166px] -translate-x-1/2 overflow-hidden rounded-full design:top-[var(--av)]"
+        style={{ "--av": `${t.avatar.arriba}px` } as React.CSSProperties}
+      >
         <Image
           src={t.foto}
           alt={`${t.nombre}, ${t.caso}`}
-          width={332}
-          height={415}
-          className="h-full w-full object-cover design:absolute design:top-[-61px] design:left-[-65px] design:h-[371px] design:w-[296px] design:max-w-none design:object-fill"
+          width={720}
+          height={900}
+          sizes="(min-width: 1280px) 346px, 166px"
+          className="h-full w-full object-cover design:absolute design:top-[var(--fy)] design:left-[var(--fx)] design:h-[var(--fh)] design:w-[var(--fw)] design:max-w-none design:object-fill"
+          style={
+            {
+              "--fx": `${t.avatar.foto.x}px`,
+              "--fy": `${t.avatar.foto.y}px`,
+              "--fw": `${t.avatar.foto.w}px`,
+              "--fh": `${t.avatar.foto.h}px`,
+            } as React.CSSProperties
+          }
         />
       </span>
 
@@ -270,28 +290,35 @@ export function TestimonialesCasos() {
           </span>
         </p>
 
-        {/* Vídeo del testimonio. */}
-        <div className="relative mt-12 aspect-[1040/548] w-full overflow-hidden rounded-[31px] design:absolute design:top-[1312px] design:left-[440px] design:mt-0 design:aspect-auto design:h-[548px] design:w-[1040px]">
-          <Image
-            src="/images/testimoniales/video.webp"
-            alt="Testimonio de María G. Murillo"
-            width={1331}
-            height={749}
-            sizes="(min-width: 1280px) 1331px, 100vw"
-            className="absolute inset-0 h-full w-full object-cover design:top-[-182px] design:left-[-146px] design:h-[745px] design:w-[1331px] design:max-w-none design:object-fill"
-          />
-          <div
+        {/* Vídeo del testimonio: 1040×548 en x440 y2295, con el radio de 31 y
+            el trazo de 5 centrado en el borde. */}
+        <div className="relative mt-12 aspect-[1040/548] w-full design:absolute design:top-[1312px] design:left-[440px] design:mt-0 design:aspect-auto design:h-[548px] design:w-[1040px]">
+          <div aria-hidden className="absolute inset-0 overflow-hidden rounded-[31px] bg-[#D9D9D9]">
+            <Image
+              src="/images/testimoniales/video.webp"
+              alt=""
+              width={1331}
+              height={749}
+              sizes="(min-width: 1280px) 1331px, 100vw"
+              className="absolute inset-0 h-full w-full object-cover design:top-[-182px] design:left-[-146px] design:h-[745px] design:w-[1331px] design:max-w-none design:object-fill"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(358.73deg,#000000_14.83%,#05050500_78.16%)]" />
+          </div>
+          <svg
             aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(358.73deg,#000000_14.83%,#05050500_78.16%)]"
-          />
+            className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible design:block"
+            viewBox="0 0 1040 548"
+          >
+            <rect x="0" y="0" width="1040" height="548" rx="31" fill="none" stroke="#172339" strokeWidth="5" />
+          </svg>
           <span
             aria-hidden
-            className="pointer-events-none absolute hidden font-bold text-white/[0.14] uppercase design:top-[336px] design:left-[84px] design:block design:text-[154px] design:leading-[160px]"
+            className="pointer-events-none absolute hidden font-bold text-white/[0.14] uppercase design:top-[327px] design:left-[84px] design:block design:text-[154px] design:leading-[215.6px]"
           >
             Aprobada
           </span>
 
-          <p className="absolute bottom-[86px] left-1/2 flex w-full -translate-x-1/2 items-center justify-center gap-x-[14px] text-center text-[32px] leading-[36px] font-semibold uppercase sm:text-[44px] design:bottom-auto design:top-[359px] design:gap-x-[18px] design:text-[55px] design:leading-[57px]">
+          <p className="absolute bottom-[86px] left-1/2 flex w-full -translate-x-1/2 items-center justify-center gap-x-[14px] text-center text-[32px] leading-[36px] font-semibold uppercase sm:text-[44px] design:bottom-auto design:top-[355px] design:gap-x-[20.4px] design:text-[55px] design:leading-[57px]">
             <Image
               src="/icons/testimoniales/verificado.svg"
               alt=""
@@ -309,10 +336,10 @@ export function TestimonialesCasos() {
             <span className="text-vernal-accent">María G. Murillo </span>
             <span className="text-white">Mexicana</span>
           </p>
-          <span className="absolute hidden design:bottom-[24px] design:left-[46.7px] design:block design:h-[58px] design:w-[83px] [&>div]:!h-full [&>div]:!w-full">
+          <span className="absolute hidden design:top-[453.7px] design:left-[46.7px] design:block design:h-[58px] design:w-[83px] [&>div]:!h-full [&>div]:!w-full">
             <Logo />
           </span>
-          <span className="text-vernal-accent absolute hidden text-[20px] leading-[21px] font-light design:top-[480px] design:left-[856px] design:block">
+          <span className="text-vernal-accent absolute hidden text-[20px] leading-[21px] font-light design:top-[482.5px] design:left-[856px] design:block">
             Canal Oficial
           </span>
 
@@ -356,7 +383,9 @@ export function TestimonialesCasos() {
           ))}
         </ul>
 
-        <p className="text-vernal-navy mt-12 text-center design:absolute design:top-[2225.5px] design:left-0 design:mt-0 design:w-full">
+        {/* En el archivo el bloque no está centrado en la página: su eje cae
+            73px a la izquierda del medio. */}
+        <p className="text-vernal-navy mt-12 text-center design:absolute design:top-[2225.5px] design:left-0 design:mt-0 design:w-full design:-translate-x-[73px]">
           <span className="block text-[72px] leading-[76px] font-semibold sm:text-[110px] sm:leading-[114px] design:text-[176px] design:leading-[184px]">
             +15,000
           </span>
