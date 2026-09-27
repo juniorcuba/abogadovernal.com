@@ -13,13 +13,12 @@ export const site = {
   email: "info@farnumlawfirm.com",
   tagline: "Somos inmigrantes como tú y defendemos tus derechos.",
   /**
-   * Enlaces legales. La política de privacidad ya es una ruta propia; la URL
-   * antigua (/politicas_privacidad.html) redirige a ella desde next.config.ts.
-   * Términos y condiciones sigue apuntando al sitio actual hasta que llegue su
-   * diseño.
+   * Enlaces legales. Los dos son ya rutas propias; las URL antiguas
+   * (/politicas_privacidad.html y /terminos_condiciones.html) redirigen a ellas
+   * desde next.config.ts.
    */
   privacyUrl: "/politicas-de-privacidad",
-  termsUrl: "https://abogadovernal.com/terminos_condiciones.html",
+  termsUrl: "/terminos-y-condiciones",
 } as const;
 
 export type Office = {

@@ -124,9 +124,9 @@ export function SiteFooter() {
             Políticas de privacidad.
           </Link>
           {"  "}
-          <a href={site.termsUrl} className="underline hover:text-vernal-accent movil:ml-[6px] movil:no-underline">
+          <Link href={site.termsUrl} className="underline hover:text-vernal-accent movil:ml-[6px] movil:no-underline">
             Términos y condiciones
-          </a>
+          </Link>
         </p>
       </div>
     </footer>

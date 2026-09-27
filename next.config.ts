@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         destination: "/politicas-de-privacidad",
         permanent: true,
       },
+      {
+        source: "/terminos_condiciones.html",
+        destination: "/terminos-y-condiciones",
+        permanent: true,
+      },
     ];
   },
 };
