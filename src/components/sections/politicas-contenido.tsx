@@ -99,10 +99,12 @@ function BloqueLegal({ bloque, primero }: { bloque: BloqueConHueco; primero: boo
 export function PoliticasContenido() {
   return (
     <section className="relative -mt-[128px] overflow-hidden bg-[#0F0F10] design:h-[3188px]">
-      {/* Fondo: foto a la derecha fundida a negro. */}
+      {/* Fondo: foto a la derecha fundida a negro. Fuera del lienzo de 1920 la
+          foto NO se recorta a lo ancho: es vertical y con object-cover la franja
+          le cortaba la cabeza. Se alinea a la derecha con su alto completo. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] overflow-hidden design:top-[9px] design:left-[8px] design:h-[1231px] design:w-[1920px]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] overflow-hidden apilada:h-[600px] movil:h-[500px] design:top-[9px] design:left-[8px] design:h-[1231px] design:w-[1920px]"
       >
         <Image
           src="/images/politicas/hero.webp"
@@ -111,9 +113,9 @@ export function PoliticasContenido() {
           height={1552}
           priority
           sizes="(min-width: 1280px) 1035px, 100vw"
-          className="absolute top-0 right-0 h-full w-full object-cover object-[60%_20%] opacity-40 design:right-auto design:left-[885px] design:h-[1552px] design:w-[1035px] design:max-w-none design:object-fill design:opacity-100"
+          className="absolute top-0 right-0 h-full w-full object-cover object-[60%_20%] opacity-40 apilada:top-[104px] apilada:h-[470px] apilada:w-auto apilada:max-w-none apilada:object-contain apilada:object-right-top apilada:opacity-55 movil:top-[112px] movil:h-[360px] movil:w-auto movil:max-w-none movil:object-contain movil:object-right-top movil:opacity-45 design:right-auto design:left-[885px] design:h-[1552px] design:w-[1035px] design:max-w-none design:object-fill design:opacity-100"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,#0F0F0F66_0%,#0F0F0F_100%)] design:bg-[linear-gradient(245.74deg,#0F0F0F00_0.90%,#0F0F0F_46.16%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,#0F0F0F66_0%,#0F0F0F_100%)] apilada:bg-[linear-gradient(90deg,#0F0F10_20%,#0F0F1000_95%),linear-gradient(180deg,#0F0F0F00_55%,#0F0F0F_100%)] movil:bg-[linear-gradient(90deg,#0F0F10_10%,#0F0F1066_60%,#0F0F1000_100%),linear-gradient(180deg,#0F0F0F00_50%,#0F0F0F_100%)] design:bg-[linear-gradient(245.74deg,#0F0F0F00_0.90%,#0F0F0F_46.16%)]" />
         <div className="absolute inset-0 hidden design:block design:bg-[linear-gradient(357.15deg,#0F0F0F_2.18%,#0F0F0F00_27.19%)]" />
       </div>
 
