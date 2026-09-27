@@ -47,7 +47,7 @@ export function NosotrosCifras() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 design:h-[793px] design:max-w-[1920px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 design:h-[793px] design:max-w-[1920px] design:p-0">
         <div className="drop-shadow-[7px_6px_29.2px_#000] design:absolute design:inset-0">
           <p className="text-center text-[76px] leading-[80px] font-semibold text-white sm:text-[110px] sm:leading-[114px] design:absolute design:top-[-88px] design:left-[618px] design:text-left design:text-[176px] design:leading-[183px]">
             +15,000

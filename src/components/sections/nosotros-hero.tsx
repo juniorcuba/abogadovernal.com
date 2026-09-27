@@ -60,7 +60,7 @@ export function NosotrosHero() {
         <div className="absolute inset-0 bg-[linear-gradient(182.83deg,#0F0F1000_57.70%,#0F0F10_97.99%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pb-20 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] design:absolute design:top-[264px] design:left-[223px] design:text-[36px] design:leading-[37px]">
           Tu defensa en Texas
         </p>

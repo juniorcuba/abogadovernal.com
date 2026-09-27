@@ -47,7 +47,7 @@ export function NosotrosHoy() {
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(276.29deg,#171717_9.22%,#17171700_68.95%)] design:inset-auto design:top-0 design:left-0 design:h-[883px] design:w-[1923px]"
       />
 
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 design:h-[883px] design:max-w-[1920px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 design:h-[883px] design:max-w-[1920px] design:p-0">
         <h2 className="text-[34px] leading-[40px] font-light sm:text-[44px] sm:leading-[52px] design:absolute design:top-[91px] design:left-0 design:w-[1920px] design:text-center design:text-[64px] design:leading-[67px]">
           <span className="text-vernal-accent">Hoy, al frente de un</span>{" "}
           <span className="text-white">

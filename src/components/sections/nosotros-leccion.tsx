@@ -35,7 +35,7 @@ export function NosotrosLeccion() {
         <div className="absolute inset-0 bg-[linear-gradient(77.82deg,#171717_35.65%,#00000000_51.41%)]" />
       </div>
 
-      <div className="relative mx-auto grid max-w-[1040px] gap-x-12 gap-y-10 px-6 py-16 md:grid-cols-2 md:items-center lg:px-12 design:block design:h-[608px] design:max-w-[1920px] design:p-0">
+      <div className="relative mx-auto grid max-w-[1040px] gap-x-12 gap-y-10 px-6 py-16 md:grid-cols-2 md:items-center lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 design:block design:h-[608px] design:max-w-[1920px] design:p-0">
         <div className="relative aspect-[733/425] w-full shadow-[8px_36px_37.1px_rgb(0_0_0/0.84)] design:absolute design:top-[96px] design:left-[243px] design:aspect-auto design:h-[425px] design:w-[733px]">
           <div className="absolute inset-0 overflow-hidden">
             <Image

@@ -61,7 +61,7 @@ export function NosotrosCaso() {
         <div className="absolute inset-0 bg-[linear-gradient(241.63deg,#000000_0.96%,#00000000_41.42%)]" />
       </div>
 
-      <div className="relative mx-auto grid max-w-[1040px] gap-x-12 gap-y-10 px-6 py-16 md:grid-cols-2 md:items-center lg:px-12 design:block design:h-[648px] design:max-w-[1920px] design:p-0">
+      <div className="relative mx-auto grid max-w-[1040px] gap-x-12 gap-y-10 px-6 py-16 md:grid-cols-2 md:items-center lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 design:block design:h-[648px] design:max-w-[1920px] design:p-0">
         <div
           aria-hidden
           className="bg-vernal-accent hidden design:absolute design:top-[165px] design:left-[243px] design:block design:h-[351px] design:w-[12px]"
