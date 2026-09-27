@@ -227,14 +227,9 @@ export const visasHumanitarias = [
 ];
 
 /**
- * Preguntas frecuentes de la plantilla. El archivo NO trae las respuestas, solo
- * el botón "Ver respuesta": hasta que el cliente las escriba, cada una lleva a
- * la página de preguntas frecuentes.
+ * Las cinco preguntas que la plantilla de sede repite. Salen de la lista de
+ * /faqs, que es donde están las diez: así no hay dos copias del mismo texto.
+ * El archivo NO trae las respuestas, solo el botón "Ver respuesta": hasta que
+ * el cliente las escriba, cada una lleva a la página de preguntas frecuentes.
  */
-export const preguntasSede = [
-  "¿Cuál es el horario de atención al cliente en la Oficina del Abogado Vernal?",
-  "¿Cómo puedo hacer una consulta?",
-  "¿Necesito hacer una cita para ser atendido por un abogado?",
-  "¿Quién me atenderá en mi primera consulta?",
-  "¿Qué idioma habla el personal en la oficina del abogado Vernal?",
-];
+export { preguntasSede } from "@/lib/preguntas";
