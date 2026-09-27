@@ -179,7 +179,7 @@ export function NuestroEquipo() {
         </p>
 
         <ButtonLink
-          href="/nosotros"
+          href="/nuestro-equipo"
           className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[771px] movil:left-[41px] movil:mt-0 movil:w-[277px] design:absolute design:top-[603px] design:left-[279px] design:mt-0"
         >
           Conoce al equipo completo
