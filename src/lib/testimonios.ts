@@ -25,6 +25,8 @@ export type Testimonio = {
   ciudad: string;
   /** y del nombre dentro de la tarjeta; el archivo la coloca a mano. */
   nombreArriba: number;
+  /** y del bloque de texto; también va a mano, según cuántos renglones ocupe. */
+  textoArriba: number;
 };
 
 export const testimonios: Testimonio[] = [
@@ -34,6 +36,7 @@ export const testimonios: Testimonio[] = [
     caso: "Petición Familiar",
     ciudad: "Dallas, TX",
     nombreArriba: 342.75,
+    textoArriba: 146,
     lineas: [
       ["Después de más de dos años separada de "],
       ["su esposo, María llegó a Abogado Vernal "],
@@ -51,6 +54,7 @@ export const testimonios: Testimonio[] = [
     caso: "Asilo Político",
     ciudad: "Houston, TX",
     nombreArriba: 342.75,
+    textoArriba: 145,
     lineas: [
       ["Carlos llegó a Estados Unidos huyendo de una "],
       ["situación que ponía en riesgo su vida. Después "],
@@ -69,6 +73,7 @@ export const testimonios: Testimonio[] = [
     caso: "Visa U",
     ciudad: "Forth Worth, TX",
     nombreArriba: 352.75,
+    textoArriba: 145,
     lineas: [
       ["Después de ser víctimas de un delito y "],
       ["colaborar con las autoridades durante la "],
@@ -88,6 +93,7 @@ export const testimonios: Testimonio[] = [
     caso: "Naturalización",
     ciudad: "Austin, TX",
     nombreArriba: 345.75,
+    textoArriba: 137,
     lineas: [
       ["Después de años como residente "],
       ["permanente, Rosa quería dar el siguiente "],
@@ -107,6 +113,7 @@ export const testimonios: Testimonio[] = [
     caso: "Defensa contra la deportación",
     ciudad: "Dallas, TX",
     nombreArriba: 345.75,
+    textoArriba: 133,
     lineas: [
       ["Jorge enfrentaba un proceso de "],
       ["deportación que amenazaba con "],
@@ -126,6 +133,7 @@ export const testimonios: Testimonio[] = [
     caso: "Visa VAWA",
     ciudad: "Houston, TX",
     nombreArriba: 343.75,
+    textoArriba: 138,
     lineas: [
       ["Ana vivió años de violencia doméstica antes "],
       ["de encontrar el valor de buscar ayuda. En "],

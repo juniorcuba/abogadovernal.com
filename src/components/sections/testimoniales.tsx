@@ -201,7 +201,10 @@ function TarjetaTestimonio({
 
       {/* Cada línea es un <span>: suelto fluye como párrafo y en el lienzo de
           1920 se fuerza a renglón, que es como lo parte el archivo. */}
-      <p className="relative text-center text-[16px] leading-[22px] text-white design:absolute design:top-[145px] design:left-[25px] design:w-[404px] design:leading-[17px]">
+      <p
+        className="relative text-center text-[16px] leading-[22px] text-white design:absolute design:top-[var(--tt)] design:left-[25px] design:w-[404px] design:leading-[17px]"
+        style={{ "--tt": `${t.textoArriba}px` } as React.CSSProperties}
+      >
         {t.lineas.map((linea, i) => (
           <span key={i} className="design:block">
             {linea.map((trozo, j) =>
