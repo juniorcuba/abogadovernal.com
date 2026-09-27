@@ -85,7 +85,7 @@ export function BlogHero() {
           <span className="text-vernal-accent block">para mantenerte al día.</span>
         </h1>
 
-        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white design:absolute design:top-[486px] design:left-[247px] design:mt-0 design:w-[620px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
+        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white design:absolute design:top-[493px] design:left-[247px] design:mt-0 design:w-[580px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
             El proceso migratorio en Estados Unidos puede sentirse abrumador, sobre todo
             cuando la información que encuentras en internet es confusa, contradictoria, o
@@ -103,10 +103,10 @@ export function BlogHero() {
         </div>
 
         {/* Aviso legal, como el del formulario: 12 en extralight cursiva. */}
-        <p className="mt-6 max-w-[680px] text-[12px] leading-[16px] font-extralight text-white italic design:absolute design:top-[722px] design:left-[247px] design:mt-0 design:w-[700px] design:max-w-none design:leading-[14px]">
+        <p className="mt-6 max-w-[680px] text-[12px] leading-[16px] font-extralight text-white italic design:absolute design:top-[722px] design:left-[247px] design:mt-0 design:w-[558px] design:max-w-none design:leading-[14px]">
           Este contenido tiene fines informativos y no debe tomarse como asesoría legal.
-          migratorio es distinto, y la única forma de saber qué aplica a tu situación es
-          través de una consulta directa con nuestro equipo.
+          Cada caso migratorio es distinto, y la única forma de saber qué aplica a tu
+          situación específica es a través de una consulta directa con nuestro equipo.
         </p>
       </div>
     </section>
@@ -122,7 +122,7 @@ export function BlogListado() {
         </h2>
 
         {/* Buscador. Todavía no busca: no hay artículos que indexar. */}
-        <form className="relative mt-8 flex max-w-[680px] design:absolute design:top-[126px] design:left-[247.5px] design:mt-0 design:w-[792px]">
+        <form className="relative mt-8 flex max-w-[680px] design:absolute design:top-[126px] design:left-[247px] design:mt-0 design:w-[670px]">
           <label htmlFor="buscar-articulos" className="sr-only">
             Buscar artículos
           </label>
@@ -139,14 +139,14 @@ export function BlogListado() {
             name="q"
             type="search"
             placeholder="Buscar artículos"
-            className="h-[51px] w-full bg-white/97 pl-[46.5px] text-[15px] leading-[16px] text-black outline-none design:w-[668px]"
+            className="border-vernal-navy h-[52px] w-full border bg-white/97 pl-[46.5px] text-[15px] leading-[16px] text-black outline-none placeholder:text-black design:w-[545px]"
           />
           <button
             type="submit"
             aria-label="Buscar"
-            className="bg-vernal-navy relative flex h-[52px] w-[70px] shrink-0 cursor-pointer items-center justify-center transition-opacity hover:opacity-90 design:w-[124px]"
+            className="bg-vernal-navy relative flex h-[52px] w-[70px] shrink-0 cursor-pointer items-center justify-center transition-opacity hover:opacity-90 design:w-[125px]"
           >
-            <FlechaEnlace className="h-[15px] w-[25px]" />
+            <FlechaEnlace className="text-vernal-accent h-[15px] w-[25px]" />
           </button>
         </form>
 

@@ -30,31 +30,31 @@ export function TarjetaArticulo({
 }) {
   return (
     <li
-      className={`relative overflow-hidden bg-[#172339] design:absolute design:h-[575px] design:w-[438px] ${className}`}
+      className={`relative bg-[#172339] design:absolute design:h-[575px] design:w-[438px] ${className}`}
       style={estilo}
     >
-      <Image
-        src={entrada.imagen}
-        alt=""
-        aria-hidden
-        width={entrada.foto.w}
-        height={entrada.foto.h}
-        sizes="(min-width: 1280px) 438px, 100vw"
-        className="absolute inset-0 h-full w-full object-cover design:top-[var(--fy)] design:left-[var(--fx)] design:h-[var(--fh)] design:w-[var(--fw)] design:max-w-none design:object-fill"
-        style={
-          {
-            "--fx": `${entrada.foto.x}px`,
-            "--fy": `${entrada.foto.y}px`,
-            "--fw": `${entrada.foto.w}px`,
-            "--fh": `${entrada.foto.h}px`,
-          } as React.CSSProperties
-        }
-      />
-      <div aria-hidden className="absolute inset-0 bg-black/[0.34]" />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(212.75deg,#00000000_11.60%,#000000_56.09%)]"
-      />
+      {/* El recorte va aquí dentro y no en la tarjeta: el trazo de 11 sobresale
+          5.5 por fuera del borde y la tarjeta no debe cortarlo. */}
+      <div aria-hidden className="absolute inset-0 overflow-hidden">
+        <Image
+          src={entrada.imagen}
+          alt=""
+          width={entrada.foto.w}
+          height={entrada.foto.h}
+          sizes="(min-width: 1280px) 438px, 100vw"
+          className="absolute inset-0 h-full w-full object-cover design:top-[var(--fy)] design:left-[var(--fx)] design:h-[var(--fh)] design:w-[var(--fw)] design:max-w-none design:object-fill"
+          style={
+            {
+              "--fx": `${entrada.foto.x}px`,
+              "--fy": `${entrada.foto.y}px`,
+              "--fw": `${entrada.foto.w}px`,
+              "--fh": `${entrada.foto.h}px`,
+            } as React.CSSProperties
+          }
+        />
+        <div className="absolute inset-0 bg-black/[0.34]" />
+        <div className="absolute inset-0 bg-[linear-gradient(212.75deg,#00000000_11.60%,#000000_56.09%)]" />
+      </div>
       <TrazoTarjeta
         id={id}
         ancho={438}

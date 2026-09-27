@@ -137,7 +137,7 @@ const FOTOS: Record<string, { left: number; width: number }> = {
  * diseño (/areas-de-practica), así que de momento lleva a /contacto. Cuando el
  * cliente decida si habrá esas páginas, se cambia aquí.
  */
-function BotonMasInfo({ id, top }: { id: string; top?: number }) {
+function BotonMasInfo({ top }: { top?: number }) {
   return (
     <Link
       href="/contacto"
@@ -240,7 +240,7 @@ function Tarjeta({
             {servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
           </p>
         </div>
-        <BotonMasInfo id={servicio.id} />
+        <BotonMasInfo />
       </div>
     </article>
   );
@@ -340,7 +340,7 @@ function TarjetaHumanitarias({ sede }: { sede: Sede }) {
         ))}
       </ul>
 
-      <BotonMasInfo id="visas-humanitarias" top={543.5} />
+      <BotonMasInfo top={543.5} />
     </article>
   );
 }

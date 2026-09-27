@@ -49,25 +49,16 @@ export function AgendaConsulta({ solape = 0 }: { solape?: number }) {
           <CamposConsulta />
         </form>
 
-        {/* Sello: caja girada del archivo con el SVG desbordando por su sombra. */}
-        <div
+        {/* Sello. El SVG sale del export de TESTIMONIALES con el giro ya
+            aplicado, así que va como una caja cuadrada sin transformar. */}
+        <Image
+          src="/images/agenda/sello-immigration-lawyer.svg"
+          alt=""
           aria-hidden
-          className="pointer-events-none absolute hidden items-center justify-center design:top-[443.65px] design:left-[1426px] design:flex design:h-[256.213px] design:w-[257.57px]"
-        >
-          <div className="flex-none rotate-[-13.7deg] skew-x-[0.14deg]">
-            <div className="relative h-[211.941px] w-[212.937px]">
-              <div className="absolute inset-[-9.01%_-21.18%_-26%_-13.67%]">
-                <Image
-                  src="/images/agenda/sello-texas-lawyer.svg"
-                  alt=""
-                  width={287}
-                  height={286}
-                  className="block size-full max-w-none"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+          width={240}
+          height={240}
+          className="pointer-events-none absolute hidden design:top-[456px] design:left-[1433px] design:block design:h-[239.22px] design:w-[239.22px] design:max-w-none"
+        />
       </div>
     </section>
   );

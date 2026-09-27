@@ -3,7 +3,6 @@ import Link from "next/link";
 import { BloquePreguntas } from "@/components/sections/bloque-preguntas";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
 import { ButtonLink } from "@/components/ui/button";
-import { FlechaEnlace } from "@/components/ui/iconos";
 import { Logo } from "@/components/ui/logo";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
 import { preguntasSede } from "@/lib/preguntas";
@@ -81,7 +80,7 @@ export function TestimonialesHero() {
           <span className="text-vernal-accent block">casos de éxito</span>
         </h1>
 
-        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white design:absolute design:top-[550px] design:left-[243px] design:mt-0 design:w-[614px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
+        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white design:absolute design:top-[557px] design:left-[243px] design:mt-0 design:w-[578px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
             Detrás de cada caso que llevamos hay una persona que un día decidió no quedarse
             con la incertidumbre. Alguien que dejó atrás el miedo a preguntar, que se sentó
