@@ -15,14 +15,13 @@ import {
  * |------|------|---------------------------------------|--------|
  * |    0 |  128 | cabecera                              | la de siempre |
  * |    0 |  897 | hero                                  | propio |
- * |  897 | 1373 | "El equipo": once fichas en 4 + 4 + 3 | propio |
- * | 2270 |  993 | "Nuestro compromiso" y el vídeo       | propio |
+ * |  897 | 1369 | "El equipo": once fichas en 4 + 4 + 3 | propio |
+ * | 2266 | 1055 | "Nuestro compromiso" y el vídeo       | propio |
  * | 3263 |  755 | "Agenda tu consulta"                  | el compartido |
  * | 4018 |  468 | footer                                | el de siempre |
  *
- * DE ESTA PÁGINA NO HAY EXPORT SVG: el hero sale de los datos del conector de
- * Figma y el resto está medido sobre el render del artboard, con las fotos
- * recortadas de él. Hay que repasarla cuando llegue el archivo.
+ * El bloque de la agenda se mete 58 por encima del de compromiso, que llega
+ * hasta 3321.
  *
  * Nadie la enlaza todavía: el menú no la trae y el botón "Conoce al equipo
  * completo" de la home apunta aquí desde ahora.
@@ -42,7 +41,7 @@ export default function NuestroEquipoPage() {
         <EquipoHero />
         <EquipoRejilla />
         <EquipoCompromiso />
-        <AgendaConsulta />
+        <AgendaConsulta solape={58} />
       </main>
       <SiteFooter />
     </>

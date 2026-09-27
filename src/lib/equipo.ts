@@ -1,11 +1,9 @@
 /**
- * Las once fichas de /nuestro-equipo — frame `770:403` de Figma (2026-09-27).
+ * Las once fichas de /nuestro-equipo — frame `770:403` de Figma.
  *
- * OJO: de esta página NO hay export SVG todavía, solo el render del artboard.
- * Los nombres y los cargos se leyeron del render y las fotos son recortes suyos
- * (carpeta images/equipo/ficha): sirven para ver la página montada, pero hay que
- * sustituirlas por el export cuando llegue. Las medidas de la retícula también
- * están tomadas sobre el render, así que son aproximadas.
+ * Todo sale del export `VERNAL - NUESTRO EQUIPO.svg` (2026-09-27): los nombres,
+ * los cargos y los recortes con alfa de `images/equipo/ficha`. Antes estaban
+ * medidos a ojo sobre el render del artboard.
  *
  * "Yannellys M · Nombre puesto" está así en el archivo: falta su cargo.
  */
@@ -32,18 +30,19 @@ export const equipo: Ficha[] = [
 ];
 
 /**
- * Centros de columna y y de cada fila, medidos sobre el render: se localizaron
- * en él los píxeles del cian de los nombres y se tomaron su centro y su altura.
- * Las filas van de 368 en 368 y la foto empieza 27px por debajo de la mayúscula
- * del nombre.
+ * La retícula, en coordenadas de la franja (que empieza en y897 del artboard).
  *
- * Los recortes de `ficha/` salen de esas mismas cajas del render y el fondo de
- * la franja (`rejilla-fondo.webp`) es el render con esas cajas y los textos
- * borrados, así que al recolocarlos encaja sin costuras.
+ * `izquierdas` es la x de cada foto y `filas` la y de la caja del nombre, que
+ * sale de su línea base (1126.8, 1494.8 y 1862.8 en el archivo) restándole los
+ * 15.8 que van de la caja a la base con 18/19. El cargo cae 22.1 más abajo y la
+ * foto empieza 61.8 por debajo de la caja del nombre.
  */
 export const rejillaEquipo = {
-  centros: [405, 749, 1093, 1432],
-  filas: [1113, 1481, 1849],
-  /** Caja de la foto y hueco entre la mayúscula del nombre y su borde superior. */
-  foto: { ancho: 250, alto: 290, desde: 27 },
+  /** x de la foto; el texto va centrado sobre ella. */
+  izquierdas: [293, 636, 979, 1322],
+  filas: [214, 582, 950],
+  /** Caja de la foto y separación desde la caja del nombre. */
+  foto: { ancho: 226, alto: 269, desde: 61.8 },
+  /** Separación entre la caja del nombre y la del cargo. */
+  cargoDesde: 27.2,
 };

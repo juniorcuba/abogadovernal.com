@@ -4,17 +4,13 @@ import { Logo } from "@/components/ui/logo";
 import { equipo, rejillaEquipo } from "@/lib/equipo";
 
 /**
- * /nuestro-equipo — frame `770:403` de Figma (1920 × 4486).
- *
- * Del hero hay datos exactos (get_design_context del nodo 770:624); del resto
- * solo el render del artboard, así que las medidas están tomadas sobre él y son
- * aproximadas. Cuando llegue el export SVG hay que repasarlas y cambiar las
- * fotos, que hoy son recortes del propio render.
+ * /nuestro-equipo — frame `770:403` de Figma (1920 × 4486), leído del export
+ * `VERNAL - NUESTRO EQUIPO.svg`.
  *
  *   hero        0..897
- *   el equipo   897..2270: título y las once fichas en 4 + 4 + 3
- *   compromiso  2270..3263: título, tres párrafos y el vídeo
- *   agenda      3263..4018 (el bloque compartido)
+ *   el equipo   897..2266: título y las once fichas en 4 + 4 + 3
+ *   compromiso  2266..3321: título, tres párrafos y el vídeo
+ *   agenda      3263..4018 (el bloque compartido, que se mete 58 encima)
  *   footer      4018..4486
  */
 
@@ -30,10 +26,9 @@ export function EquipoHero() {
               cy="0"
               r="1"
               gradientUnits="userSpaceOnUse"
-              gradientTransform="matrix(122.39 36.025 -43.27 30.361 113.53 295.08)"
+              gradientTransform="matrix(1223.9 360.248 -432.699 303.614 113.526 295.078)"
             >
               <stop stopColor="#172339" />
-              <stop offset="0.5" stopColor="#131924" />
               <stop offset="1" stopColor="#0F0F0F" />
             </radialGradient>
           </defs>
@@ -45,24 +40,24 @@ export function EquipoHero() {
           width={1024}
           height={723}
           priority
-          sizes="100vw"
-          className="absolute inset-0 h-full w-full object-cover object-bottom opacity-[0.24] mix-blend-plus-lighter"
+          sizes="(min-width: 1280px) 1404px, 100vw"
+          className="absolute inset-0 h-full w-full object-cover object-bottom opacity-[0.24] mix-blend-plus-lighter design:top-[44px] design:left-[535px] design:h-[991px] design:w-[1404px] design:max-w-none design:object-fill"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(79.01deg,#000000_31.331%,#00000000_43.945%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(294.62deg,#000000_10.638%,#0A0A0A00_48.231%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(294.62deg,#000000_10.64%,#0A0A0A00_48.23%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(79.01deg,#000000_31.33%,#00000000_43.95%)]" />
       </div>
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[897px] design:max-w-[1920px] design:p-0">
-        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] design:absolute design:top-[216px] design:left-[243px] design:text-[36px] design:leading-[37.44px]">
+        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] design:absolute design:top-[216px] design:left-[242px] design:text-[36px] design:leading-[37.44px]">
           Tu defensa en Texas
         </p>
 
-        <h1 className="mt-3 text-[40px] leading-[44px] font-semibold uppercase sm:text-[58px] sm:leading-[62px] design:absolute design:top-[271px] design:left-[237px] design:mt-0 design:w-[752px] design:text-[82px] design:leading-[85.28px]">
+        <h1 className="mt-3 text-[40px] leading-[44px] font-semibold uppercase sm:text-[58px] sm:leading-[62px] design:absolute design:top-[271px] design:left-[237px] design:mt-0 design:w-[752px] design:text-[82px] design:leading-[85px]">
           <span className="text-white">Hoy, al frente de </span>
           <span className="text-vernal-accent">un equipo que piensa igual</span>
         </h1>
 
-        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white design:absolute design:top-[550px] design:left-[243px] design:mt-0 design:w-[580px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
+        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white design:absolute design:top-[551px] design:left-[243px] design:mt-0 design:w-[580px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
             Hoy, el <span className="text-vernal-accent">Abogado Vernal</span> lidera un equipo
             de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston,
@@ -88,32 +83,32 @@ export function EquipoHero() {
 }
 
 export function EquipoRejilla() {
-  const { centros, filas, foto } = rejillaEquipo;
+  const { izquierdas, filas, foto, cargoDesde } = rejillaEquipo;
   const posicion = (i: number) => {
     const fila = i < 4 ? 0 : i < 8 ? 1 : 2;
-    const col = i - fila * 4;
-    return { left: centros[col], top: filas[fila] };
+    return { left: izquierdas[i - fila * 4], top: filas[fila] };
   };
 
   return (
-    <section className="relative overflow-hidden bg-black design:h-[1373px]">
-      {/* La ciudad solo se ve en la parte de arriba: de la primera fila para
-          abajo el archivo es negro puro. Es el propio render con los textos y
-          los once retratos borrados. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+    <section className="relative overflow-hidden bg-black design:h-[1369px]">
+      {/* La ciudad va en soft-light al 68% sobre el degradado, y un segundo
+          degradado la apaga de la primera fila hacia abajo. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden design:w-[1920px]">
+        <div className="absolute inset-0 bg-[linear-gradient(138.09deg,#172339_27.86%,#000000_86.54%)]" />
         <Image
-          src="/images/equipo/rejilla-fondo.webp"
+          src="/images/equipo/rejilla-ciudad.webp"
           alt=""
-          width={1920}
-          height={1373}
-          sizes="100vw"
-          className="absolute inset-0 h-full w-full object-cover"
+          width={2525}
+          height={1311}
+          sizes="(min-width: 1280px) 2525px, 100vw"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.68] mix-blend-soft-light design:top-[-181px] design:left-[-357px] design:h-[1311px] design:w-[2525px] design:max-w-none design:object-fill"
         />
+        <div className="absolute inset-0 bg-[linear-gradient(1.33deg,#000000_57.22%,#0F0F1000_70.61%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[1373px] design:max-w-[1920px] design:p-0">
-        {/* En el archivo el título no está centrado: queda 40px a la izquierda. */}
-        <h2 className="text-center text-[34px] leading-[40px] font-light text-white sm:text-[44px] design:absolute design:top-[80px] design:left-[776px] design:w-auto design:text-left design:text-[64px] design:leading-[66px]">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[1369px] design:max-w-[1920px] design:p-0">
+        {/* En el archivo el título no está centrado: arranca en x776. */}
+        <h2 className="text-center text-[34px] leading-[40px] font-light text-white sm:text-[44px] design:absolute design:top-[78.5px] design:left-[776px] design:w-auto design:text-left design:text-[64px] design:leading-[66px]">
           El equipo
         </h2>
 
@@ -121,10 +116,10 @@ export function EquipoRejilla() {
           {equipo.map((f, i) => (
             <li
               key={f.nombre}
-              className="text-center design:absolute design:top-[var(--t)] design:left-[var(--l)] design:w-[var(--w)] design:-translate-x-1/2"
+              className="text-center design:absolute design:top-[var(--t)] design:left-[var(--l)] design:w-[var(--w)]"
               style={
                 {
-                  "--t": `${posicion(i).top - 897}px`,
+                  "--t": `${posicion(i).top}px`,
                   "--l": `${posicion(i).left}px`,
                   "--w": `${foto.ancho}px`,
                 } as React.CSSProperties
@@ -136,22 +131,21 @@ export function EquipoRejilla() {
                 {f.nombre}
               </p>
               <p
-                className={`relative z-[1] mt-1 text-[11px] leading-[13px] font-semibold uppercase design:mt-[5px] design:text-[12px] design:leading-[13px] ${
+                className={`relative z-[1] mt-1 text-[11px] leading-[13px] font-semibold uppercase design:mt-[var(--cd)] design:text-[12px] design:leading-[13px] ${
                   f.verde ? "text-[#27ffa2]" : "text-white"
                 }`}
+                style={{ "--cd": `${cargoDesde - 19}px` } as React.CSSProperties}
               >
                 {f.cargo}
               </p>
               <Image
                 src={f.foto}
                 alt={`${f.nombre}, ${f.cargo}`}
-                width={foto.ancho}
-                height={foto.alto}
-                sizes="(min-width: 1280px) 250px, 40vw"
+                width={500}
+                height={596}
+                sizes="(min-width: 1280px) 226px, 40vw"
                 className="mt-4 h-auto w-full object-contain design:absolute design:top-[var(--d)] design:left-0 design:mt-0 design:h-[var(--h)] design:w-full"
-                style={
-                  { "--d": `${foto.desde + 2}px`, "--h": `${foto.alto}px` } as React.CSSProperties
-                }
+                style={{ "--d": `${foto.desde}px`, "--h": `${foto.alto}px` } as React.CSSProperties}
               />
             </li>
           ))}
@@ -162,32 +156,29 @@ export function EquipoRejilla() {
 }
 
 /**
- * "Nuestro compromiso" — 1920×993 a partir de y2270 del artboard.
+ * "Nuestro compromiso" — 1055 de alto desde y2266, de los que los últimos 58
+ * quedan por debajo del bloque de "Agenda tu consulta".
  *
- * Medidas tomadas sobre el render (no hay SVG): el título a 64/66 con la
- * mayúscula en y2355, los tres párrafos a 16/18.5 en 2459, 2527 y 2561, y la
- * tarjeta del vídeo en x437 y2633, 1046×554 con un borde de 5px en #172339.
- *
- * El fondo y el fotograma son recortes del propio render a los que se les ha
- * borrado el texto (relleno por difusión, `cambios/inpaint.py`): así el texto
- * vuelve a ser texto de verdad en lugar de estar pegado en la imagen.
+ * La tarjeta del vídeo es de 1040×548 en x440 y2636, con el radio de 31 y el
+ * trazo de 5 centrado en el borde.
  */
 export function EquipoCompromiso() {
   return (
-    <section className="relative overflow-hidden bg-[#0F0F10] design:h-[993px]">
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+    <section className="relative overflow-hidden bg-black design:h-[1055px]">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden design:w-[1923px]">
         <Image
           src="/images/equipo/compromiso-fondo.webp"
           alt=""
-          width={1920}
-          height={993}
-          sizes="100vw"
-          className="absolute inset-0 h-full w-full object-cover"
+          width={1024}
+          height={726}
+          sizes="(min-width: 1280px) 1766px, 100vw"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.17] design:top-[-123px] design:left-[189px] design:h-[1178px] design:w-[1766px] design:max-w-none design:object-fill"
         />
+        <div className="absolute inset-0 bg-[linear-gradient(73.73deg,#171717_18.51%,#00000000_51.32%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[993px] design:max-w-[1920px] design:p-0">
-        <h2 className="text-center text-[34px] leading-[40px] font-light sm:text-[44px] design:absolute design:top-[74px] design:left-0 design:w-full design:text-[64px] design:leading-[66px]">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[1055px] design:max-w-[1920px] design:p-0">
+        <h2 className="text-center text-[34px] leading-[40px] font-light sm:text-[44px] design:absolute design:top-[77.5px] design:left-0 design:w-full design:text-[64px] design:leading-[66px]">
           <span className="text-white">Nuestro </span>
           <span className="text-vernal-accent">compromiso</span>
         </h2>
@@ -195,37 +186,56 @@ export function EquipoCompromiso() {
         {/* Cada párrafo tiene su propia caja en el archivo: el primero es más
             estrecho que los otros dos y por eso parte antes. */}
         <div className="mx-auto mt-8 max-w-[880px] space-y-5 text-center text-[16px] leading-[22px] text-white design:contents">
-          <p className="design:absolute design:top-[185px] design:left-1/2 design:w-[812px] design:-translate-x-1/2 design:text-center design:leading-[18.5px]">
+          <p className="design:absolute design:top-[191px] design:left-1/2 design:w-[812px] design:-translate-x-1/2 design:text-center design:leading-[17px]">
             Una visa no solo representa un documento migratorio. Representa justicia, protección
             y una segunda oportunidad. Como abogado de inmigración, estos son los momentos que le
             dan sentido a lo que hacemos cada día.
           </p>
-          <p className="design:absolute design:top-[253px] design:left-1/2 design:w-[880px] design:-translate-x-1/2 design:text-center design:leading-[18.5px]">
+          <p className="design:absolute design:top-[259px] design:left-1/2 design:w-[880px] design:-translate-x-1/2 design:text-center design:leading-[17px]">
             Si tú también has sido víctima de un crimen y estás en EE.UU., podrías calificar para
             una Visa U.
           </p>
-          <p className="design:absolute design:top-[287px] design:left-1/2 design:w-[880px] design:-translate-x-1/2 design:text-center design:leading-[18.5px]">
+          <p className="design:absolute design:top-[293px] design:left-1/2 design:w-[880px] design:-translate-x-1/2 design:text-center design:leading-[17px]">
             <span className="text-vernal-accent">Agenda tu consulta hoy.</span> Revisamos tu caso
             con total confidencialidad. No estás solo. En las oficinas del Abogado Vernal,
             caminamos contigo desde el inicio hasta el final.
           </p>
         </div>
 
-        {/* El borde de 5px va en la propia caja: las posiciones de dentro son
-            relativas a la zona de relleno, ya descontado el borde. */}
-        <div className="relative mt-12 aspect-[1046/554] w-full overflow-hidden rounded-[31px] border-[5px] border-[#172339] design:absolute design:top-[363px] design:left-[437px] design:mt-0 design:aspect-auto design:h-[554px] design:w-[1046px]">
-          <Image
-            src="/images/equipo/compromiso-video.webp"
-            alt="Testimonio de una Visa U aprobada"
-            width={1035}
-            height={543}
-            sizes="(min-width: 1280px) 1036px, 100vw"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+        <div className="relative mt-12 aspect-[1040/548] w-full design:absolute design:top-[370px] design:left-[440px] design:mt-0 design:aspect-auto design:h-[548px] design:w-[1040px]">
+          {/* El recorte va en una capa aparte para que el trazo, que sale 2.5
+              por fuera del borde, no se corte. */}
+          <div aria-hidden className="absolute inset-0 overflow-hidden rounded-[31px] bg-[#D9D9D9]">
+            <Image
+              src="/images/equipo/compromiso-video.webp"
+              alt=""
+              width={1500}
+              height={842}
+              sizes="(min-width: 1280px) 1040px, 100vw"
+              className="absolute inset-0 h-full w-full object-cover design:top-[-16px] design:left-0 design:h-[581px] design:w-[1040px] design:max-w-none design:object-fill"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(358.73deg,#000000_14.83%,#05050500_78.16%)]" />
+          </div>
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible design:block"
+            viewBox="0 0 1040 548"
+          >
+            <rect
+              x="0"
+              y="0"
+              width="1040"
+              height="548"
+              rx="31"
+              fill="none"
+              stroke="#172339"
+              strokeWidth="5"
+            />
+          </svg>
 
           <span
             aria-hidden
-            className="absolute hidden text-[143px] leading-[143px] font-semibold tracking-[0.1em] whitespace-nowrap text-white/10 uppercase design:top-[370px] design:left-1/2 design:block design:-translate-x-1/2"
+            className="absolute hidden text-[154px] leading-[215.6px] font-bold whitespace-nowrap text-white/10 uppercase design:top-[327px] design:left-[84px] design:block"
           >
             Aprobada
           </span>
@@ -236,7 +246,7 @@ export function EquipoCompromiso() {
             <button
               type="button"
               aria-label="Ver el testimonio"
-              className="flex h-[54px] w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/40 transition-transform hover:scale-105 sm:h-[76px] sm:w-[76px] design:absolute design:top-[235px] design:left-1/2 design:h-[97px] design:w-[97px] design:-translate-x-1/2 design:-translate-y-1/2"
+              className="flex h-[54px] w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/40 transition-transform hover:scale-105 sm:h-[76px] sm:w-[76px] design:absolute design:top-[237px] design:left-[516px] design:h-[97px] design:w-[97px] design:-translate-x-1/2 design:-translate-y-1/2"
             >
               <span
                 aria-hidden
@@ -244,23 +254,23 @@ export function EquipoCompromiso() {
               />
             </button>
 
-            <VistoBueno className="absolute hidden design:top-[298px] design:left-[219px] design:block design:h-[54px] design:w-[54px]" />
+            <VistoBueno className="absolute hidden design:top-[300px] design:left-[221px] design:block design:h-[55px] design:w-[55px]" />
 
-            <p className="text-center text-[22px] leading-[26px] font-semibold uppercase sm:text-[34px] sm:leading-[38px] design:absolute design:top-[297px] design:left-1/2 design:w-full design:-translate-x-1/2 design:text-[55px] design:leading-[56px]">
+            <p className="text-center text-[22px] leading-[26px] font-semibold uppercase sm:text-[34px] sm:leading-[38px] design:absolute design:top-[298px] design:left-1/2 design:w-full design:-translate-x-1/2 design:text-[55px] design:leading-[57px]">
               <span className="text-white design:block">Este momento </span>
               <span className="text-vernal-accent design:block">lo cambia todo</span>
             </p>
 
-            <p className="text-vernal-accent text-center text-[15px] leading-[19px] font-light sm:text-[18px] sm:leading-[22px] design:absolute design:top-[432px] design:left-1/2 design:w-full design:-translate-x-1/2 design:text-[30px] design:leading-[31px]">
+            <p className="text-vernal-accent text-center text-[15px] leading-[19px] font-light sm:text-[18px] sm:leading-[22px] design:absolute design:top-[435px] design:left-1/2 design:w-full design:-translate-x-1/2 design:text-[30px] design:leading-[31px]">
               Visa U Aprobada
             </p>
           </div>
 
-          <span className="absolute hidden design:top-[446px] design:left-[45px] design:block design:h-[62px] design:w-[88px] [&>div]:!h-full [&>div]:!w-full">
+          <span className="absolute hidden design:top-[453.7px] design:left-[46.7px] design:block design:h-[58px] design:w-[83px] [&>div]:!h-full [&>div]:!w-full">
             <Logo />
           </span>
 
-          <span className="text-vernal-accent absolute hidden text-[20px] leading-[21px] font-light design:top-[481px] design:left-[855px] design:block">
+          <span className="text-vernal-accent absolute hidden text-[20px] leading-[21px] font-light design:top-[482.5px] design:left-[856px] design:block">
             Canal Oficial
           </span>
         </div>
@@ -272,10 +282,10 @@ export function EquipoCompromiso() {
 /** El círculo con el visto que acompaña a "Este momento" dentro del vídeo. */
 function VistoBueno({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 54 54" fill="none" aria-hidden className={className}>
-      <circle cx="27" cy="27" r="27" fill="#ffffff" />
+    <svg viewBox="0 0 55 55" fill="none" aria-hidden className={className}>
+      <circle cx="27.5" cy="27.5" r="27.5" fill="#ffffff" />
       <path
-        d="M15.5 27.5 23.5 35 38.5 19.5"
+        d="M16 28 24 35.5 39 20"
         stroke="#0F0F10"
         strokeWidth="4.5"
         strokeLinecap="round"
