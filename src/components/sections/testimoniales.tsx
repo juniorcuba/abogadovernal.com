@@ -1,16 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BloquePreguntas } from "@/components/sections/bloque-preguntas";
+import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
 import { ButtonLink } from "@/components/ui/button";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { Logo } from "@/components/ui/logo";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
 import { preguntasSede } from "@/lib/preguntas";
-import {
-  entradaBlogEtiquetas,
-  entradaBlogResumen,
-  entradasBlog,
-  testimonios,
-} from "@/lib/testimonios";
+import { entradasBlogPortada } from "@/lib/blog";
+import { testimonios } from "@/lib/testimonios";
 
 /**
  * /testimoniales — frame `453:469` de Figma, 1920 × 6738 (2026-09-26).
@@ -371,79 +369,24 @@ export function TestimonialesCasos() {
 
 /* ------------------------------------------------------------- preguntas */
 
+/** Las cinco preguntas sobre la banda oscura; el bloque es el compartido. */
 export function TestimonialesPreguntas() {
   return (
-    <section className="relative overflow-hidden bg-black design:h-[1216px]">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden design:h-[1216px] design:w-[1920px] design:[transform:scaleX(-1)]"
-      >
-        <Image
-          src="/images/faqs/hero-fondo.webp"
-          alt=""
-          width={1024}
-          height={813}
-          sizes="(min-width: 1280px) 2585px, 100vw"
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.18] design:top-[-781px] design:left-[-662px] design:h-[2052px] design:w-[2585px] design:max-w-none design:object-fill"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(94.00deg,#000000_8.50%,#00000000_57.36%)]" />
-      </div>
-
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[1216px] design:max-w-[1920px] design:p-0">
-        <h2 className="text-center text-[34px] leading-[40px] font-light sm:text-[48px] sm:leading-[52px] design:absolute design:top-[91px] design:left-0 design:w-[1920px] design:text-[64px] design:leading-[67px]">
-          <span className="text-vernal-accent">
-            Las dudas que más <br className="hidden design:inline" />
-            escuchamos,
-          </span>{" "}
-          <span className="text-white">
-            respondidas <br className="hidden design:inline" />
-            con claridad.
-          </span>
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-[680px] text-[16px] leading-[22px] text-white sm:text-justify design:absolute design:top-[338px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
-          Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una
-          y otra vez señal de que hay información que no siempre es fácil de encontrar,
-          o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra
-          comunidad, explicadas de forma simple y directa.
-        </p>
-
-        <ul className="mt-10 border-b border-white design:absolute design:top-[449px] design:left-[239px] design:mt-0 design:w-[1441px]">
-          {preguntasSede.map((p) => (
-            <li
-              key={p}
-              className="relative flex flex-col gap-y-2 border-t border-white py-5 sm:flex-row sm:items-center sm:justify-between design:block design:h-[109px] design:py-0"
-            >
-              <span className="text-[20px] leading-[24px] font-light text-white design:absolute design:top-[44px] design:left-[38px] design:text-[24px] design:leading-[25px]">
-                {p}
-              </span>
-              {/* Sin respuestas en el archivo: rótulo, no enlace (ver /faqs). */}
-              <span
-                aria-hidden
-                className="text-vernal-accent flex shrink-0 items-center gap-x-6 text-[18px] leading-[21px] font-medium design:contents design:text-[20px]"
-              >
-                <span className="design:absolute design:top-[44px] design:left-[1207px]">
-                  Ver respuesta
-                </span>
-                <span className="text-[34px] leading-none font-light design:absolute design:top-[33.5px] design:left-[1364px] design:text-[41px] design:leading-[42px]">
-                  +
-                </span>
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-10 flex justify-center design:absolute design:top-[1067px] design:left-[821px] design:mt-0 design:block">
-          <ButtonLink href="/faqs" className="w-full sm:w-[277px] apilada:w-[277px]">
-            Ver más preguntas
-          </ButtonLink>
-        </div>
-      </div>
-    </section>
+    <BloquePreguntas
+      preguntas={preguntasSede.map((texto) => ({ texto }))}
+      alto={1216}
+      fotoArriba={-781}
+      gradiente="linear-gradient(94.00deg,#000000 8.50%,#00000000 57.36%)"
+      tops={{ titulo: 91, entrada: 338, lista: 449, boton: 1067 }}
+      boton={{ texto: "Ver más preguntas", href: "/faqs" }}
+    />
   );
 }
 
 /* ------------------------------------------------------------------ blog */
+
+/** y del título de cada una de las tres tarjetas, según el archivo. */
+const TITULOS_BLOG = [285.4, 265.4, 268.4];
 
 export function TestimonialesBlog() {
   return (
@@ -453,75 +396,17 @@ export function TestimonialesBlog() {
           No te pierdas las ultimas noticias
         </h2>
 
-        <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 design:absolute design:top-[165.5px] design:left-0 design:mt-0 design:block design:w-full">
-          {entradasBlog.map((e, i) => (
-            <li
+        <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 apilada:grid-cols-2 design:absolute design:top-[165.5px] design:left-0 design:mt-0 design:block design:w-full">
+          {entradasBlogPortada.map((e, i) => (
+            <TarjetaArticulo
               key={e.titulo}
-              className="relative overflow-hidden bg-[#172339] design:absolute design:top-0 design:left-[var(--l)] design:h-[575px] design:w-[438px]"
-              style={{ "--l": `${[252.5, 740.5, 1228.5][i]}px` } as React.CSSProperties}
-            >
-              <Image
-                src={e.imagen}
-                alt=""
-                aria-hidden
-                width={e.foto.w}
-                height={e.foto.h}
-                sizes="(min-width: 1280px) 438px, 100vw"
-                className="absolute inset-0 h-full w-full object-cover design:top-[var(--fy)] design:left-[var(--fx)] design:h-[var(--fh)] design:w-[var(--fw)] design:max-w-none design:object-fill"
-                style={
-                  {
-                    "--fx": `${e.foto.x}px`,
-                    "--fy": `${e.foto.y}px`,
-                    "--fw": `${e.foto.w}px`,
-                    "--fh": `${e.foto.h}px`,
-                  } as React.CSSProperties
-                }
-              />
-              <div aria-hidden className="absolute inset-0 bg-black/[0.34]" />
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-[linear-gradient(212.75deg,#00000000_11.60%,#000000_56.09%)]"
-              />
-              <TrazoTarjeta
-                id={`testi-blog-trazo-${i}`}
-                ancho={438}
-                alto={575}
-                transformacion="matrix(205.944 -3993.67 214.425 51.5967 18.14 592.81)"
-              />
-
-              <span className="bg-vernal-accent text-vernal-navy absolute top-[22px] right-[22px] flex items-center justify-center px-3 py-1 text-[16px] leading-[20px] font-medium design:top-[5.5px] design:right-auto design:left-[326.5px] design:h-[40px] design:w-[93px] design:p-0 design:text-[23px] design:leading-[24px]">
-                BLOG
-              </span>
-
-              <div className="relative flex h-full flex-col justify-end p-6 design:block design:p-0">
-                <h3 className="text-[26px] leading-[30px] font-light whitespace-pre-line text-white design:absolute design:top-[var(--ty)] design:left-[40.5px] design:text-[32px] design:leading-[33px]"
-                  style={{ "--ty": `${e.lineas === 2 ? 288 : 268}px` } as React.CSSProperties}
-                >
-                  {e.titulo}
-                </h3>
-                <p className="mt-3 text-[13px] leading-[16px] text-white design:absolute design:top-[394px] design:left-[40.5px] design:mt-0 design:w-[340px] design:leading-[14px]">
-                  {entradaBlogResumen}
-                </p>
-                <Link
-                  href="/blog"
-                  className="bg-vernal-accent text-vernal-navy relative mt-5 flex h-[52px] w-full items-center pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[223px] apilada:w-[223px] design:absolute design:top-[446.5px] design:left-[40.5px] design:mt-0 design:w-[223px]"
-                >
-                  Leer articulo
-                  <FlechaEnlace className="absolute top-[18.5px] left-[171px] h-[15px] w-[25px]" />
-                </Link>
-                <p className="mt-4 flex gap-x-[5px] text-[10px] leading-[12px] font-medium text-white design:absolute design:top-[527px] design:left-[40px] design:mt-0">
-                  {entradaBlogEtiquetas.map((t, k) => (
-                    <span
-                      key={t}
-                      className="flex items-center justify-center rounded-[3.5px] border border-white/40 px-2 py-[3px] design:h-[18px] design:w-[var(--w)] design:p-0"
-                      style={{ "--w": `${k === 0 ? 70 : 85}px` } as React.CSSProperties}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </p>
-              </div>
-            </li>
+              entrada={e}
+              arriba={TITULOS_BLOG[i]}
+              icono={{ left: 369.5, top: 510.5 }}
+              id={`testi-blog-trazo-${i}`}
+              className="design:top-0 design:left-[var(--l)]"
+              estilo={{ "--l": `${[252.5, 740.5, 1228.5][i]}px` } as React.CSSProperties}
+            />
           ))}
         </ul>
 
