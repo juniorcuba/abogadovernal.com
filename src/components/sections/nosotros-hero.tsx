@@ -44,10 +44,14 @@ export function NosotrosHero() {
         <div className="absolute inset-0 bg-[linear-gradient(352.05deg,#0F0F10_19.13%,#0F0F1000_56.35%)]" />
       </div>
 
-      {/* Retrato: solo en el lienzo de 1920; por debajo tapaba el texto. */}
+      {/* Retrato. En 1920 va en su hueco del archivo (876, 205). Por debajo no hay
+          diseño: en la franja apilada va abajo a la derecha a escala 0.53, y en
+          móvil arriba a la derecha a 0.33, donde no lo corta la tarjeta de la cita.
+          En los dos casos lleva un degradado por delante, porque ahí el texto le
+          pasa por encima y sin él no se leería. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute hidden overflow-hidden design:top-[205px] design:left-[876px] design:block design:h-[821px] design:w-[793px]"
+        className="pointer-events-none absolute hidden overflow-hidden apilada:right-[-30px] apilada:bottom-0 apilada:block apilada:h-[620px] apilada:w-[420px] movil:top-[120px] movil:right-[-12px] movil:bottom-auto movil:block movil:h-[390px] movil:w-[265px] design:top-[205px] design:left-[876px] design:block design:h-[821px] design:w-[793px]"
       >
         <Image
           src="/images/nosotros/hero-retrato-2.webp"
@@ -55,9 +59,11 @@ export function NosotrosHero() {
           width={859}
           height={1288}
           priority
-          className="absolute top-[-72px] left-[-53px] h-[1288px] w-[859px] max-w-none"
+          className="absolute top-[-72px] left-[-53px] h-[1288px] w-[859px] max-w-none apilada:top-[-38px] apilada:left-[-28px] apilada:h-[682px] apilada:w-[455px] apilada:[mask-image:linear-gradient(180deg,#000_62%,transparent_100%)] movil:top-[-24px] movil:left-[-18px] movil:h-[430px] movil:w-[287px] movil:[mask-image:linear-gradient(180deg,#000_58%,transparent_100%)]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(182.83deg,#0F0F1000_57.70%,#0F0F10_97.99%)]" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(182.83deg,#0F0F1000_57.70%,#0F0F10_97.99%)] design:block" />
+        {/* Solo donde el retrato convive con el texto. */}
+        <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,#0F0F10_0%,#0F0F1066_40%,#0F0F1000_100%)] apilada:block movil:block" />
       </div>
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pb-20 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
