@@ -38,9 +38,6 @@ import { navItems, site, socialsCabecera } from "@/lib/site";
  * 1 y todo queda en las x del archivo.
  */
 
-/** x de cada enlace en el lienzo de 1920, en el orden de `navItems`. */
-const X_DISENO = [242, 336, 454, 644, 802, 1083, 1169];
-const IZQUIERDA = 5;
 
 /** Origen de cada grupo en el lienzo; los enlaces se colocan relativos a él. */
 const GRUPO_IZQ = { x: 242, y: 70 };
@@ -63,14 +60,11 @@ export function SiteHeader() {
           <MenuMovil />
   
           <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:absolute design:top-[70px] design:left-[242px] design:block design:h-[17px] design:w-[603px] design:origin-right design:[scale:var(--menu)]">
-            {navItems.slice(0, IZQUIERDA).map((item, i) => (
-              <NavLink
-                key={item.href}
-                item={item}
-                x={X_DISENO[i] - GRUPO_IZQ.x}
-                y={0}
-              />
-            ))}
+            {navItems
+              .filter((item) => item.grupo === "izq")
+              .map((item) => (
+                <NavLink key={item.href} item={item} x={item.x - GRUPO_IZQ.x} y={0} />
+              ))}
           </nav>
   
           <Link
@@ -84,14 +78,16 @@ export function SiteHeader() {
           <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 movil:hidden design:absolute design:top-[64px] design:left-[1083px] design:block design:h-[25px] design:w-[595px] design:origin-left design:[scale:var(--menu)]">
             <div className="flex items-center gap-x-4 lg:gap-x-6 xl:gap-x-8 design:contents">
               <nav className="hidden items-center gap-x-6 xl:flex xl:gap-x-8 design:contents">
-                {navItems.slice(IZQUIERDA).map((item, i) => (
-                  <NavLink
-                    key={item.href}
-                    item={item}
-                    x={X_DISENO[IZQUIERDA + i] - GRUPO_DER.x}
-                    y={GRUPO_IZQ.y - GRUPO_DER.y}
-                  />
-                ))}
+                {navItems
+                  .filter((item) => item.grupo === "der")
+                  .map((item) => (
+                    <NavLink
+                      key={item.href}
+                      item={item}
+                      x={item.x - GRUPO_DER.x}
+                      y={GRUPO_IZQ.y - GRUPO_DER.y}
+                    />
+                  ))}
               </nav>
   
               <a

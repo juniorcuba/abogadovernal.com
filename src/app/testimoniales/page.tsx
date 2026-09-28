@@ -22,12 +22,18 @@ import {
  * | 6270 |  468 | footer                                   | el de siempre |
  *
  * Solo hay artboard de escritorio.
+ *
+ * TEMPORAL: la página saca nombre, ciudad, foto y vídeo de clientes reales y
+ * todavía no hay consentimiento por escrito, así que va sin indexar y fuera del
+ * menú (ver `navItems`). Cuando lleguen los permisos se quita el `robots` de
+ * aquí y se descomenta el enlace del menú.
  */
 
 export const metadata: Metadata = {
   title: "Testimonios y casos de éxito",
   description:
     "Historias reales de clientes del Abogado Vernal en Texas: peticiones familiares, asilo, visas U y VAWA, naturalización y defensa contra la deportación.",
+  robots: { index: false, follow: false },
 };
 
 export default function TestimonialesPage() {
