@@ -35,7 +35,7 @@ export default function BlogPage() {
         <BlogHero />
         <BlogListado />
         <BloquePreguntas
-          preguntas={preguntasSede.map((texto) => ({ texto }))}
+          preguntas={preguntasSede}
           alto={1271}
           fotoArriba={-781}
           gradiente="linear-gradient(93.83deg,#000000 12.27%,#00000000 61.14%)"

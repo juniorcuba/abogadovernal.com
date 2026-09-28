@@ -417,13 +417,13 @@ export function SedePreguntas() {
 
         <ul className="mt-10 border-b border-white design:absolute design:top-[449px] design:left-[239px] design:mt-0 design:w-[1441px]">
           {preguntasSede.map((p) => (
-            <li key={p} className="relative border-t border-white design:h-[109px]">
+            <li key={p.texto} className="relative border-t border-white design:h-[109px]">
               <Link
                 href="/faqs"
                 className="group flex flex-col gap-y-2 py-5 sm:flex-row sm:items-center sm:justify-between design:block design:h-full design:py-0"
               >
                 <span className="text-[20px] leading-[24px] font-light text-white design:absolute design:top-[44px] design:left-[38px] design:text-[24px] design:leading-[25px]">
-                  {p}
+                  {p.texto}
                 </span>
                 <span className="text-vernal-accent flex shrink-0 items-center gap-x-6 text-[18px] leading-[21px] font-medium group-hover:underline design:contents design:text-[20px]">
                   <span className="design:absolute design:top-[44px] design:left-[1207px]">Ver respuesta</span>

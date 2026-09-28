@@ -404,7 +404,7 @@ export function TestimonialesCasos() {
 export function TestimonialesPreguntas() {
   return (
     <BloquePreguntas
-      preguntas={preguntasSede.map((texto) => ({ texto }))}
+      preguntas={preguntasSede}
       alto={1216}
       fotoArriba={-781}
       gradiente="linear-gradient(94.00deg,#000000 8.50%,#00000000 57.36%)"

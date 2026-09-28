@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
+import type { PreguntaFrecuente } from "@/lib/preguntas";
 
 /**
  * Banda de preguntas frecuentes. Aparece en /faqs (con las diez), y al cierre de
@@ -9,8 +11,11 @@ import { ButtonLink } from "@/components/ui/button";
  *
  * Cambian de una página a otra el alto, la y de la foto, el ángulo del
  * degradado y las posiciones; por eso van por props.
+ *
+ * Aquí las filas NO se despliegan: estas bandas tienen el alto cerrado en el
+ * archivo y abrir una las descuadraría. Cada fila lleva a /faqs, que es donde
+ * está el acordeón con las respuestas.
  */
-export type FilaPregunta = { texto: string; alto?: number; arriba?: number };
 
 export function BloquePreguntas({
   preguntas,
@@ -22,7 +27,7 @@ export function BloquePreguntas({
   bandaArriba = 0,
   className = "",
 }: {
-  preguntas: FilaPregunta[];
+  preguntas: PreguntaFrecuente[];
   alto: number;
   /** y de la foto dentro de la banda (el archivo la sube para encuadrarla). */
   fotoArriba: number;
@@ -92,20 +97,21 @@ export function BloquePreguntas({
           {preguntas.map((p) => (
             <li
               key={p.texto}
-              className="relative flex flex-col gap-y-2 border-t border-white py-5 sm:flex-row sm:items-center sm:justify-between design:block design:h-[var(--alto)] design:py-0"
+              className="relative border-t border-white design:h-[var(--alto)]"
               style={{ "--alto": `${p.alto ?? 109}px` } as React.CSSProperties}
             >
+              <Link
+                href="/faqs"
+                className="group flex flex-col gap-y-2 py-5 sm:flex-row sm:items-center sm:justify-between design:block design:h-full design:py-0"
+              >
               <span
                 className="text-[20px] leading-[24px] font-light text-white design:absolute design:top-[var(--a)] design:left-[38px] design:text-[24px] design:leading-[25px]"
                 style={{ "--a": `${p.arriba ?? 44}px` } as React.CSSProperties}
               >
                 {p.texto}
               </span>
-              {/* El archivo no trae las respuestas: esto es el rótulo del diseño,
-                  no un enlace, para no ofrecer algo que no abre. */}
               <span
-                aria-hidden
-                className="text-vernal-accent flex shrink-0 items-center gap-x-6 text-[18px] leading-[21px] font-medium design:contents design:text-[20px]"
+                className="text-vernal-accent flex shrink-0 items-center gap-x-6 text-[18px] leading-[21px] font-medium group-hover:underline design:contents design:text-[20px]"
                 style={
                   {
                     "--a": `${p.arriba ?? 44}px`,
@@ -116,10 +122,14 @@ export function BloquePreguntas({
                 <span className="design:absolute design:top-[var(--a)] design:left-[1207px]">
                   Ver respuesta
                 </span>
-                <span className="text-[34px] leading-none font-light design:absolute design:top-[var(--mas)] design:left-[1364px] design:text-[41px] design:leading-[42px]">
+                <span
+                  aria-hidden
+                  className="text-[34px] leading-none font-light design:absolute design:top-[var(--mas)] design:left-[1364px] design:text-[41px] design:leading-[42px]"
+                >
                   +
                 </span>
               </span>
+              </Link>
             </li>
           ))}
         </ul>
