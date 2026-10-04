@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
+import { articulo } from "@/lib/articulo";
 import { entradaBlogEtiquetas, entradaBlogResumen, type EntradaBlog } from "@/lib/blog";
 
 /**
@@ -77,7 +78,7 @@ export function TarjetaArticulo({
           style={{ "--iy": `${icono.top}px`, "--ix": `${icono.left}px` } as React.CSSProperties}
         />
         <h3
-          className="text-[26px] leading-[30px] font-light whitespace-pre-line text-white design:absolute design:top-[var(--ty)] design:left-[40.5px] design:text-[32px] design:leading-[33.28px]"
+          className="text-[26px] leading-[30px] font-light whitespace-normal text-white design:absolute design:whitespace-pre-line design:top-[var(--ty)] design:left-[40.5px] design:text-[32px] design:leading-[33.28px]"
           style={{ "--ty": `${arriba}px` } as React.CSSProperties}
         >
           {entrada.titulo}
@@ -86,11 +87,11 @@ export function TarjetaArticulo({
           {entradaBlogResumen}
         </p>
         <Link
-          href="/blog"
-          className="bg-vernal-accent text-vernal-navy relative mt-5 flex h-[52px] w-full items-center pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[223px] apilada:w-[223px] design:absolute design:top-[446.5px] design:left-[40.5px] design:mt-0 design:w-[223px]"
+          href={`/blog/${articulo.slug}`}
+          className="bg-vernal-accent text-vernal-navy relative mt-5 flex h-[52px] w-full items-center pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[223px] design:absolute design:top-[446.5px] design:left-[40.5px] design:mt-0 design:w-[223px]"
         >
           Leer articulo
-          <FlechaEnlace className="absolute top-[18.5px] left-[171px] h-[15px] w-[25px]" />
+          <FlechaEnlace className="ml-auto mr-[25px] h-[15px] w-[25px] shrink-0 design:absolute design:top-[18.5px] design:left-[171px] design:m-0" />
         </Link>
         <p className="mt-4 flex gap-x-[5px] text-[10px] leading-[12px] font-medium text-white design:absolute design:top-[527px] design:left-[40px] design:mt-0">
           {entradaBlogEtiquetas.map((t, k) => (
