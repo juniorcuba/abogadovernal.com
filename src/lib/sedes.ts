@@ -35,6 +35,12 @@ export type Hero = {
   /** y de la caja de la foto y los degradados: 0, o 64 en Fort Worth y San Antonio. */
   top: number;
   foto: { src: string; left: number; width: number };
+  /**
+   * La foto del lienzo de 402, que NO es la misma: los artboards móviles usan
+   * la imagen sin recortar, y la de escritorio es una franja apaisada de ella.
+   * Dallas no tiene artboard móvil, así que se queda sin esto.
+   */
+  fotoMovil?: { src: string; left: number; top: number; width: number; height: number };
   /** Segundo degradado del hero; cambia de ángulo y paradas entre sedes. */
   degradado: string;
 };
@@ -94,6 +100,7 @@ export const sedes: Sede[] = [
       conMapa: true,
       top: 0,
       foto: { src: "/images/sedes/houston-foto.webp", left: 571, width: 1349 },
+      fotoMovil: { src: "/images/sedes/houston-foto-movil.webp", left: -192, top: 45, width: 752, height: 501 },
       degradado: DEGRADADO_BASE,
     },
   },
@@ -110,6 +117,7 @@ export const sedes: Sede[] = [
       conMapa: true,
       top: 0,
       foto: { src: "/images/sedes/austin-foto.webp", left: 685, width: 1235 },
+      fotoMovil: { src: "/images/sedes/austin-foto-movil.webp", left: -165, top: -26, width: 571, height: 571 },
       degradado: DEGRADADO_BASE,
     },
   },
@@ -126,6 +134,7 @@ export const sedes: Sede[] = [
       conMapa: false,
       top: 64,
       foto: { src: "/images/sedes/fort-worth-foto.webp", left: 685, width: 1235 },
+      fotoMovil: { src: "/images/sedes/fort-worth-foto-movil.webp", left: -204, top: 0, width: 809, height: 571 },
       degradado: "linear-gradient(253.51deg,#0F0F1000 42%,#0F0F10 59.79%)",
     },
   },
@@ -142,6 +151,7 @@ export const sedes: Sede[] = [
       conMapa: false,
       top: 64,
       foto: { src: "/images/sedes/san-antonio-foto.webp", left: 747, width: 1173 },
+      fotoMovil: { src: "/images/sedes/san-antonio-foto-movil.webp", left: -201, top: -104, width: 624, height: 780 },
       degradado: "linear-gradient(256.15deg,#0F0F1000 32.64%,#0F0F10 56.25%)",
     },
   },
