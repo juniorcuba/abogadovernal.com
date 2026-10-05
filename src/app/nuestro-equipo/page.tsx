@@ -41,7 +41,7 @@ export default function NuestroEquipoPage() {
         <EquipoHero />
         <EquipoRejilla />
         <EquipoCompromiso />
-        <AgendaConsulta solape={58} />
+        <AgendaConsulta solape={58} solapeMovil={34} />
       </main>
       <SiteFooter />
     </>

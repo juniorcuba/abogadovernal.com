@@ -25,11 +25,18 @@ import { CamposConsulta } from "@/components/ui/campos-consulta";
  *   sello    154.45×154.45 en (232, 290.9)
  *   campos   x39 y466, caja de 325; el aviso respira 27.5
  */
-export function AgendaConsulta({ solape = 0 }: { solape?: number }) {
+export function AgendaConsulta({
+  solape = 0,
+  solapeMovil = 0,
+}: {
+  solape?: number;
+  /** Lo que se mete sobre la sección anterior en el lienzo de 402. */
+  solapeMovil?: number;
+}) {
   return (
     <section
-      className="relative overflow-hidden bg-[#0F0F10] movil:h-[1012px] design:mt-[calc(var(--solape)*-1)] design:h-[755px] design:overflow-visible design:bg-transparent"
-      style={{ "--solape": `${solape}px` } as React.CSSProperties}
+      className="relative overflow-hidden bg-[#0F0F10] movil:mt-[calc(var(--solape-movil)*-1)] movil:h-[1012px] design:mt-[calc(var(--solape)*-1)] design:h-[755px] design:overflow-visible design:bg-transparent"
+      style={{ "--solape": `${solape}px`, "--solape-movil": `${solapeMovil}px` } as React.CSSProperties}
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <Image
