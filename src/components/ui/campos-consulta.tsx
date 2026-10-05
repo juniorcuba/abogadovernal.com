@@ -41,7 +41,7 @@ export function CamposConsulta({ espaciado = "hero" }: { espaciado?: "hero" | "b
       {/* El aviso va 7px más adentro que los campos. */}
       <ConsentNotice
         className={`mt-[20px] movil:mt-[21px] movil:ml-0 movil:text-[10px] design:ml-[7px] ${
-          suelto ? "design:mt-[45.5px]" : ""
+          suelto ? "movil:mt-[27.5px] design:mt-[45.5px]" : ""
         }`}
       />
     </>

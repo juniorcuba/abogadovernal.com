@@ -23,6 +23,20 @@ import { preguntasFrecuentes } from "@/lib/preguntas";
  *
  * Al abrirse una pregunta la fila crece de 109 a 193, así que la sección y su
  * banda de fondo crecen lo mismo: sin eso el degradado se quedaría corto.
+ *
+ * En el lienzo de 402 ("VESPER AGENCY LANDING - MOBILE (8)") la cabecera acaba
+ * en 106 y la sección arranca ahí, sin solape:
+ *
+ *   fondo    banda de 401×1841 desde y120, también volteada: la misma foto al
+ *            18% (1792×1423 en −593,+418) y
+ *            linear-gradient(158.86°, negro 11.9% → transparente 35.5%).
+ *            Acaba en 1961, 37 por debajo del bloque "Agenda".
+ *   título   x47, 32/300, interlineado 33, alineado a la izquierda
+ *   entrada  x42, 16/400, interlineado 17, caja de 320, justificada
+ *   lista    x33, 336 de ancho, desde y514
+ *
+ * Aquí la lista va en el flujo, no posicionada, para que al abrirse una
+ * pregunta la sección crezca sola.
  */
 const ALTO = 1738;
 const ALTO_BANDA = 1674;
@@ -32,12 +46,12 @@ export function FaqsPreguntas() {
 
   return (
     <section
-      className="relative -mt-[128px] overflow-hidden bg-black design:h-[var(--alto)] design:overflow-visible design:transition-[height] design:duration-300 design:ease-out"
+      className="relative -mt-[128px] overflow-hidden bg-black movil:mt-0 movil:overflow-visible design:h-[var(--alto)] design:overflow-visible design:transition-[height] design:duration-300 design:ease-out"
       style={{ "--alto": `${ALTO + crecimiento}px` } as React.CSSProperties}
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden design:top-[128px] design:h-[var(--banda)] design:w-[1920px] design:[transform:scaleX(-1)]"
+        className="pointer-events-none absolute inset-0 overflow-hidden movil:top-[14px] movil:-bottom-[37px] movil:h-auto movil:w-[402px] movil:[transform:scaleX(-1)] design:top-[128px] design:h-[var(--banda)] design:w-[1920px] design:[transform:scaleX(-1)]"
         style={{ "--banda": `${ALTO_BANDA + crecimiento}px` } as React.CSSProperties}
       >
         <Image
@@ -47,24 +61,38 @@ export function FaqsPreguntas() {
           height={813}
           priority
           sizes="(min-width: 1280px) 2585px, 100vw"
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.18] design:top-[-378px] design:left-[-662px] design:h-[2052px] design:w-[2585px] design:max-w-none design:object-fill"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.18] movil:top-[418px] movil:left-[-593px] movil:h-[1423px] movil:w-[1792px] movil:max-w-none movil:object-fill design:top-[-378px] design:left-[-662px] design:h-[2052px] design:w-[2585px] design:max-w-none design:object-fill"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(92.91deg,#000000_20.64%,#00000000_69.50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(92.91deg,#000000_20.64%,#00000000_69.50%)] movil:bg-[linear-gradient(158.86deg,#000000_11.9%,#00000000_35.5%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[var(--alto)] design:max-w-[1920px] design:p-0">
-        <h1 className="text-center text-[34px] leading-[40px] font-light sm:text-[48px] sm:leading-[52px] design:absolute design:top-[201px] design:left-0 design:w-[1920px] design:text-[64px] design:leading-[67px]">
-          <span className="text-vernal-accent">
-            Las dudas que más <br className="hidden design:inline" />
-            escuchamos,
-          </span>{" "}
-          <span className="text-white">
-            respondidas <br className="hidden design:inline" />
-            con claridad.
+      <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:max-w-none movil:px-0 movil:pt-[408px] movil:pb-[106px] design:h-[var(--alto)] design:max-w-[1920px] design:p-0">
+        {/* Los dos lienzos parten el título en sitios distintos, así que cada
+            uno lleva su propia versión. */}
+        <h1 className="text-center text-[34px] leading-[40px] font-light sm:text-[48px] sm:leading-[52px] movil:absolute movil:top-[66px] movil:left-[47px] movil:w-[320px] movil:text-left movil:text-[32px] movil:leading-[33px] design:absolute design:top-[201px] design:left-0 design:w-[1920px] design:text-[64px] design:leading-[67px]">
+          <span className="movil:hidden">
+            <span className="text-vernal-accent">
+              Las dudas que más <br className="hidden design:inline" />
+              escuchamos,
+            </span>{" "}
+            <span className="text-white">
+              respondidas <br className="hidden design:inline" />
+              con claridad.
+            </span>
+          </span>
+          <span className="hidden movil:block">
+            <span className="text-vernal-accent">
+              Las dudas que <br />
+              más escuchamos,
+            </span>{" "}
+            <span className="text-white">
+              respondidas con <br />
+              claridad.
+            </span>
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-[680px] text-[16px] leading-[22px] text-white sm:text-justify design:absolute design:top-[448px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
+        <p className="mx-auto mt-6 max-w-[680px] text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[230px] movil:left-[42px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[448px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
           Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una
           y otra vez señal de que hay información que no siempre es fácil de encontrar,
           o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra
@@ -74,7 +102,7 @@ export function FaqsPreguntas() {
         <ListaPreguntas
           preguntas={preguntasFrecuentes}
           onAlto={setCrecimiento}
-          className="mt-10 design:top-[580px] design:mt-0"
+          className="mt-10 movil:mx-[33px] movil:mt-0 design:top-[580px] design:mt-0"
         />
       </div>
     </section>

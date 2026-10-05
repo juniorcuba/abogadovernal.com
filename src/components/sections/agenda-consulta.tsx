@@ -16,11 +16,19 @@ import { CamposConsulta } from "@/components/ui/campos-consulta";
  *   sello    "Texas Lawyer" en x1426 y443.65, caja 257.57×256.21, girado −13.7°
  *
  * `solape` es cuánto se mete sobre la sección anterior (71 en las sedes).
+ *
+ * En el lienzo de 402 (artboard "VESPER AGENCY LANDING - MOBILE (8)", y1924)
+ * mide 402×1012 y se queda sin título y sin texto:
+ *
+ *   fondo    la misma foto, 1144×452 en (−560, 0), y encima
+ *            linear-gradient(354°, negro 57% → transparente 61.08%)
+ *   sello    154.45×154.45 en (232, 290.9)
+ *   campos   x39 y466, caja de 325; el aviso respira 27.5
  */
 export function AgendaConsulta({ solape = 0 }: { solape?: number }) {
   return (
     <section
-      className="relative overflow-hidden bg-[#0F0F10] design:mt-[calc(var(--solape)*-1)] design:h-[755px] design:overflow-visible design:bg-transparent"
+      className="relative overflow-hidden bg-[#0F0F10] movil:h-[1012px] design:mt-[calc(var(--solape)*-1)] design:h-[755px] design:overflow-visible design:bg-transparent"
       style={{ "--solape": `${solape}px` } as React.CSSProperties}
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -30,22 +38,22 @@ export function AgendaConsulta({ solape = 0 }: { solape?: number }) {
           width={1923}
           height={760}
           sizes="(min-width: 1280px) 1920px, 100vw"
-          className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-60 sm:opacity-100 design:w-[1920px] design:max-w-none"
+          className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-60 sm:opacity-100 movil:top-0 movil:left-[-560px] movil:h-[452px] movil:w-[1144px] movil:max-w-none movil:opacity-100 movil:object-fill design:w-[1920px] design:max-w-none"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#0F0F10_30%,#0F0F1000_75%)] design:hidden" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#0F0F10_30%,#0F0F1000_75%)] movil:bg-[linear-gradient(354deg,#000000_57%,#00000000_61.08%)] design:hidden" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 design:h-[755px] design:max-w-[1920px] design:p-0">
-        <h2 className="text-[38px] leading-[42px] font-semibold uppercase sm:text-[48px] sm:leading-[52px] design:absolute design:top-[145.23px] design:left-[265px] design:w-[722px] design:text-[64px] design:leading-[66.56px]">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 movil:h-[1012px] movil:max-w-none movil:p-0 design:h-[755px] design:max-w-[1920px] design:p-0">
+        <h2 className="text-[38px] leading-[42px] font-semibold uppercase movil:hidden sm:text-[48px] sm:leading-[52px] design:absolute design:top-[145.23px] design:left-[265px] design:w-[722px] design:text-[64px] design:leading-[66.56px]">
           <span className="text-white">Agenda</span>{" "}
           <span className="text-vernal-accent">tu consulta</span>
         </h2>
-        <p className="mt-4 max-w-[541px] text-[16px] leading-[20px] text-white sm:text-justify design:absolute design:top-[232.77px] design:left-[271px] design:mt-0 design:w-[541px] design:leading-[16.64px]">
+        <p className="mt-4 max-w-[541px] text-[16px] leading-[20px] text-white movil:hidden sm:text-justify design:absolute design:top-[232.77px] design:left-[271px] design:mt-0 design:w-[541px] design:leading-[16.64px]">
           Cambios en las leyes de inmigración, consejos prácticos
           <br className="hidden sm:inline" /> y respuestas a las dudas más comunes de nuestra comunidad.
         </p>
 
-        <form className="mt-8 max-w-[565px] design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
+        <form className="mt-8 max-w-[565px] movil:absolute movil:top-[466px] movil:left-[39px] movil:mt-0 movil:w-[325px] movil:max-w-none design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
           <CamposConsulta espaciado="bloque" />
         </form>
 
@@ -57,7 +65,7 @@ export function AgendaConsulta({ solape = 0 }: { solape?: number }) {
           aria-hidden
           width={240}
           height={240}
-          className="pointer-events-none absolute hidden design:top-[456px] design:left-[1433px] design:block design:h-[239.22px] design:w-[239.22px] design:max-w-none"
+          className="pointer-events-none absolute hidden movil:top-[290.9px] movil:left-[232px] movil:block movil:h-[154.45px] movil:w-[154.45px] movil:max-w-none design:top-[456px] design:left-[1433px] design:block design:h-[239.22px] design:w-[239.22px] design:max-w-none"
         />
       </div>
     </section>
