@@ -47,7 +47,7 @@ export default async function ArticuloPage({
       <main className="relative">
         <Articulo />
         {/* En el archivo el bloque se monta 58 sobre la banda cian. */}
-        <AgendaConsulta solape={58} />
+        <AgendaConsulta solape={58} solapeMovil={36} />
       </main>
       <SiteFooter />
     </>
