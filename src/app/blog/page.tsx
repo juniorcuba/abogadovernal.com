@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { AgendaConsulta } from "@/components/sections/agenda-consulta";
@@ -7,13 +7,13 @@ import { BlogHero, BlogListado } from "@/components/sections/blog-listado";
 import { preguntasSede } from "@/lib/preguntas";
 
 /**
- * Blog — frame `703:807` de Figma, 1920 × 4946 (2026-09-26).
+ * Blog â€” frame `703:807` de Figma, 1920 Ã— 4946 (2026-09-26).
  *
  * |    y | alto | bloque                                  | estado |
  * |------|------|-----------------------------------------|--------|
  * |    0 |  128 | cabecera                                | la de siempre |
  * |    0 |  875 | hero                                    | propio |
- * |  875 | 1636 | buscador, filtros y seis artículos      | propio |
+ * |  875 | 1636 | buscador, filtros y seis artÃ­culos      | propio |
  * | 2511 | 1271 | preguntas frecuentes (las cinco)        | el compartido |
  * | 3723 |  755 | "Agenda tu consulta"                    | el compartido |
  * | 4478 |  468 | footer                                  | el de siempre |
@@ -22,9 +22,9 @@ import { preguntasSede } from "@/lib/preguntas";
  */
 
 export const metadata: Metadata = {
-  title: "Blog de inmigración",
+  title: "Blog de inmigraciÃ³n",
   description:
-    "Artículos del equipo del Abogado Vernal sobre trámites migratorios, cambios en las leyes y las dudas más comunes de la comunidad en Texas.",
+    "ArtÃ­culos del equipo del Abogado Vernal sobre trÃ¡mites migratorios, cambios en las leyes y las dudas mÃ¡s comunes de la comunidad en Texas.",
 };
 
 export default function BlogPage() {
@@ -40,10 +40,10 @@ export default function BlogPage() {
           fotoArriba={-781}
           gradiente="linear-gradient(93.83deg,#000000 12.27%,#00000000 61.14%)"
           tops={{ titulo: 91, entrada: 338, lista: 449, boton: 1067 }}
-          boton={{ texto: "Ver más preguntas", href: "/faqs" }}
+          boton={{ texto: "Ver mÃ¡s preguntas", href: "/faqs" }}
         />
         {/* En el archivo el bloque se monta 59px sobre las preguntas. */}
-        <AgendaConsulta solape={59} />
+        <AgendaConsulta solape={59} solapeMovil={36} />
       </main>
       <SiteFooter />
     </>
