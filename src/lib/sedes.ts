@@ -38,7 +38,7 @@ export type Hero = {
   /**
    * La foto del lienzo de 402, que NO es la misma: los artboards móviles usan
    * la imagen sin recortar, y la de escritorio es una franja apaisada de ella.
-   * Dallas no tiene artboard móvil, así que se queda sin esto.
+   * Las cinco sedes lo tienen.
    */
   fotoMovil?: { src: string; left: number; top: number; width: number; height: number };
   /** Segundo degradado del hero; cambia de ángulo y paradas entre sedes. */
@@ -83,6 +83,7 @@ export const sedes: Sede[] = [
       conMapa: true,
       top: 0,
       foto: { src: "/images/sedes/dallas-foto.webp", left: 608, width: 1312 },
+      fotoMovil: { src: "/images/sedes/dallas-foto-movil.webp", left: -338, top: 17, width: 899, height: 609 },
       degradado: DEGRADADO_BASE,
     },
   },
