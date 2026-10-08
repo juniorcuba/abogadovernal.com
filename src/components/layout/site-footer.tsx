@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BotonPreferenciasCookies } from "@/components/ui/boton-preferencias-cookies";
 import { Logo } from "@/components/ui/logo";
 import { offices, site, socials } from "@/lib/site";
 
@@ -127,6 +128,10 @@ export function SiteFooter() {
           <Link href={site.termsUrl} className="underline hover:text-vernal-accent movil:ml-[6px] movil:no-underline">
             Términos y condiciones
           </Link>
+          <br />
+          {/* Tercera linea, que el archivo no trae: el aviso de cookies promete
+              poder cambiarlas cuando se quiera y esta es la puerta. */}
+          <BotonPreferenciasCookies className="underline hover:text-vernal-accent movil:no-underline" />
         </p>
       </div>
     </footer>
