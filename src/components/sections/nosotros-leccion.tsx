@@ -22,12 +22,25 @@ import { Logo } from "@/components/ui/logo";
  * apilada — vídeo arriba (28, +85, 340×197 con trazo de 5), titular a 32/33 en
  * x45 y cuerpo a 16/17 en x41, caja de 320.
  *
- * OJO: ese artboard pone aquí OTRO texto (el de la misión, "En Texas, Estados
+ * Ese artboard pone aquí OTRO texto (el de la misión, "En Texas, Estados
  * Unidos, la oficina del Abogado Vernal Farnum Mejía…") y la foto del equipo en
- * vez de la que eligió el cliente. Servir textos distintos según el ancho en la
- * misma URL no es buena idea, así que se mantiene el contenido de escritorio y
- * solo se toma la composición. Pendiente de preguntar al diseñador.
+ * vez de la que eligió el cliente. Desde el 2026-10-09 el móvil va tal cual su
+ * artboard, por decisión de Roberto: los dos textos y las dos fotos están en el
+ * HTML y se enseña uno u otro según el ancho.
  */
+
+/** El texto de la misión: en el lienzo de 402 va en esta banda y en la siguiente. */
+export function TextoMisionMovil() {
+  return (
+    <>
+      {"En Texas, Estados Unidos, la oficina del "}
+      <strong className="font-bold">Abogado Vernal Farnum Mejía</strong>
+      {
+        " se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca."
+      }
+    </>
+  );
+}
 export function NosotrosLeccion() {
   return (
     <section className="bg-vernal-ink relative overflow-hidden movil:h-[881px] movil:bg-black design:h-[608px]">
@@ -55,7 +68,17 @@ export function NosotrosLeccion() {
               width={1466}
               height={850}
               sizes="(min-width: 1280px) 733px, 100vw"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover movil:hidden"
+            />
+            {/* En el lienzo de 402 la foto es la del equipo, encuadrada como en
+                el artboard (340×197). */}
+            <Image
+              src="/images/nosotros/leccion-foto-equipo-movil.webp"
+              alt="El equipo del despacho del Abogado Vernal Farnum Mejía"
+              width={1020}
+              height={591}
+              sizes="340px"
+              className="absolute inset-0 hidden h-full w-full object-cover movil:block"
             />
           </div>
           {/* Trazo con degradado: rect de 725×417 centrado sobre un trazo de 8,
@@ -144,7 +167,12 @@ export function NosotrosLeccion() {
           </h2>
 
           <p className="mt-6 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:absolute movil:top-[470px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[348px] design:left-[1064px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
-            {"A lo largo de su carrera, ha visto de cerca cómo una mala asesoría legal puede cambiar por completo el rumbo de una familia, no tuvo que buscar lejos para entenderlo. Su propio hermano vivió un proceso migratorio que pudo haber terminado de forma muy distinta, de no ser porque buscó la orientación correcta a tiempo.\n\nEsa experiencia marcó cómo entiende el costo real de un mal proceso legal, no en dinero, sino en tiempo con la familia que nunca se recupera."}
+            <span className="movil:hidden">
+              {"A lo largo de su carrera, ha visto de cerca cómo una mala asesoría legal puede cambiar por completo el rumbo de una familia, no tuvo que buscar lejos para entenderlo. Su propio hermano vivió un proceso migratorio que pudo haber terminado de forma muy distinta, de no ser porque buscó la orientación correcta a tiempo.\n\nEsa experiencia marcó cómo entiende el costo real de un mal proceso legal, no en dinero, sino en tiempo con la familia que nunca se recupera."}
+            </span>
+            <span className="hidden movil:inline">
+              <TextoMisionMovil />
+            </span>
           </p>
         </div>
       </div>

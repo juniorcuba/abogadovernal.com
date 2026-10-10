@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TextoMisionMovil } from "@/components/sections/nosotros-leccion";
 
 /**
  * "El caso que lo confirmó todo" — frame `181:2125`, export del 2026-09-13,
@@ -27,8 +28,8 @@ import Image from "next/image";
  * la barra cian desaparece y el titular parte en tres líneas.
  *
  * Ese artboard repite en esta banda el mismo párrafo que en la anterior (el de
- * la misión). Se mantiene el texto de escritorio: la misma URL no puede servir
- * contenidos distintos según el ancho. Pendiente de preguntar al diseñador.
+ * la misión). Desde el 2026-10-09 el móvil lo enseña tal cual, por decisión de
+ * Roberto; el texto de escritorio sigue en el HTML, oculto en ese ancho.
  */
 export function NosotrosCaso() {
   return (
@@ -93,6 +94,7 @@ export function NosotrosCaso() {
           </h2>
 
           <p className="text-white mt-6 max-w-[680px] text-[16px] leading-[22px] sm:text-justify movil:absolute movil:top-[212px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[362px] design:left-[296px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
+            <span className="movil:hidden">
             Entre los casos que marcaron su carrera como abogado de inmigración en
             Texas, destaca uno que llegó casi por accidente: una familia con un menor
             que enfrentaba una situación médica delicada, y que ya había sido
@@ -102,6 +104,10 @@ export function NosotrosCaso() {
               permitió a la familia acceder a la atención médica que necesitaban en
               Estados Unidos.
             </strong>
+            </span>
+            <span className="hidden whitespace-pre-line movil:inline">
+              <TextoMisionMovil />
+            </span>
           </p>
         </div>
 

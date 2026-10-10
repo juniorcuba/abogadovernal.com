@@ -27,13 +27,13 @@ import Image from "next/image";
  * de la banda anterior): la cifra a 82 centrada y asomando 48 por arriba, el
  * subtítulo a 21 y los tres logos en (59,+105), (253,+107) y (155,+255).
  *
- * Ese artboard NO trae el párrafo de esta banda. Como la misma URL no puede
- * servir menos contenido en móvil, se mantiene y va debajo de los logos, ya
- * fuera de la franja del archivo. Pendiente de preguntar al diseñador.
+ * Ese artboard NO trae el párrafo de esta banda. Desde el 2026-10-09 el móvil
+ * va tal cual, por decisión de Roberto: el párrafo se oculta en ese ancho y la
+ * banda mide los 616 del archivo.
  */
 export function NosotrosCifras() {
   return (
-    <section className="bg-vernal-ink relative movil:mt-[19px] movil:pb-[48px] design:mt-[3px] design:h-[793px]">
+    <section className="bg-vernal-ink relative movil:mt-[19px] design:mt-[3px] design:h-[793px]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 overflow-hidden movil:inset-auto movil:top-0 movil:left-[-4px] movil:h-[616px] movil:w-[406px] design:inset-auto design:top-0 design:left-0 design:h-[793px] design:w-[1920px]"
@@ -57,7 +57,7 @@ export function NosotrosCifras() {
       </div>
 
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:max-w-none movil:p-0 design:h-[793px] design:max-w-[1920px] design:p-0">
-        {/* Reserva la franja del archivo para que el párrafo caiga por debajo. */}
+        {/* La banda del lienzo de 402 mide lo que la franja del archivo. */}
         <div aria-hidden className="hidden movil:block movil:h-[616px]" />
 
         <div className="drop-shadow-[7px_6px_29.2px_#000] movil:contents design:absolute design:inset-0">
@@ -69,7 +69,7 @@ export function NosotrosCifras() {
           </p>
         </div>
 
-        <p className="mx-auto mt-10 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:mx-0 movil:mt-[32px] movil:max-w-none movil:px-[41px] movil:text-justify movil:leading-[17px] design:absolute design:top-[224px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
+        <p className="mx-auto mt-10 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:hidden design:absolute design:top-[224px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
           {"Ese enfoque se refleja en los números. A lo largo de su trayectoria, "}
           <span className="text-vernal-accent">
             el despacho ha acompañado a más de 15,000 personas en su proceso migratorio,

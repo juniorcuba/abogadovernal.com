@@ -22,8 +22,9 @@ import { ButtonLink } from "@/components/ui/button";
  * (41, +509) y la tira en 2×2 de 199/202×151 desde +599.
  *
  * En ese artboard el botón dice "Conoce al equipo completo" y la tira son
- * cuatro fotos distintas de las cinco de escritorio; se mantiene lo de
- * escritorio para no servir contenidos distintos según el ancho.
+ * cuatro fotos distintas de las cinco de escritorio. Desde el 2026-10-09 el
+ * móvil va tal cual, por decisión de Roberto: su botón lleva a /nuestro-equipo
+ * y la tira usa las cuatro fotos del artboard, con su mismo encuadre.
  */
 
 const TIRA = [
@@ -34,7 +35,7 @@ const TIRA = [
   { left: 1538, ancho: 382 },
 ];
 
-/** La misma tira en el lienzo de 402: cuatro huecos en dos filas. */
+/** La tira del lienzo de 402: cuatro fotos propias, en dos filas. */
 const TIRA_MOVIL = [
   { left: 0, top: 599, ancho: 199 },
   { left: 200, top: 599, ancho: 202 },
@@ -91,29 +92,28 @@ export function NosotrosHoy() {
 
         <ButtonLink
           href="/contacto"
-          className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[509px] movil:left-[41px] movil:mt-0 movil:w-[277px] design:absolute design:top-[452px] design:left-[797px] design:mt-0"
+          className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:hidden design:absolute design:top-[452px] design:left-[797px] design:mt-0"
         >
           Agenda tu consulta
         </ButtonLink>
+        <ButtonLink
+          href="/nuestro-equipo"
+          className="hidden movil:absolute movil:top-[509px] movil:left-[41px] movil:flex movil:w-[277px]"
+        >
+          Conoce al equipo completo
+        </ButtonLink>
 
-        {/* Tira de cinco fotos de clientes del despacho; en el lienzo de 402 el
-            archivo deja solo cuatro huecos, en dos filas. */}
+        {/* Tira de cinco fotos de clientes del despacho; en el lienzo de 402 son
+            otras cuatro, en dos filas. */}
         <ul className="mt-12 grid grid-cols-2 gap-[3px] sm:grid-cols-5 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:h-full movil:w-full design:absolute design:top-[595px] design:left-0 design:mt-0 design:block design:h-[288px] design:w-full">
           {TIRA.map((t, i) => (
             <li
               key={t.left}
-              className={`relative aspect-[382/288] overflow-hidden last:col-span-2 last:aspect-[764/288] sm:last:col-span-1 sm:last:aspect-[382/288] design:absolute design:top-0 design:left-[var(--x)] design:aspect-auto design:h-[288px] design:w-[var(--w)] ${
-                TIRA_MOVIL[i]
-                  ? "movil:absolute movil:top-[var(--my)] movil:left-[var(--mx)] movil:aspect-auto movil:h-[151px] movil:w-[var(--mw)]"
-                  : "movil:hidden"
-              }`}
+              className={`relative aspect-[382/288] overflow-hidden last:col-span-2 last:aspect-[764/288] sm:last:col-span-1 sm:last:aspect-[382/288] design:absolute design:top-0 design:left-[var(--x)] design:aspect-auto design:h-[288px] design:w-[var(--w)] movil:hidden`}
               style={
                 {
                   "--x": `${t.left}px`,
                   "--w": `${t.ancho}px`,
-                  "--mx": `${TIRA_MOVIL[i]?.left ?? 0}px`,
-                  "--my": `${TIRA_MOVIL[i]?.top ?? 0}px`,
-                  "--mw": `${TIRA_MOVIL[i]?.ancho ?? 0}px`,
                 } as React.CSSProperties
               }
             >
@@ -122,6 +122,27 @@ export function NosotrosHoy() {
                 alt="Clientes del despacho con su documentación migratoria"
                 fill
                 sizes="(min-width: 1280px) 382px, (min-width: 640px) 20vw, 50vw"
+                className="object-cover"
+              />
+            </li>
+          ))}
+          {TIRA_MOVIL.map((t, i) => (
+            <li
+              key={`movil-${t.left}-${t.top}`}
+              className="hidden overflow-hidden movil:absolute movil:top-[var(--my)] movil:left-[var(--mx)] movil:block movil:h-[151px] movil:w-[var(--mw)]"
+              style={
+                {
+                  "--mx": `${t.left}px`,
+                  "--my": `${t.top}px`,
+                  "--mw": `${t.ancho}px`,
+                } as React.CSSProperties
+              }
+            >
+              <Image
+                src={`/images/nosotros/tira-movil-${i + 1}.webp`}
+                alt="Clientes del despacho con su documentación migratoria"
+                fill
+                sizes="202px"
                 className="object-cover"
               />
             </li>
