@@ -7,11 +7,12 @@
  *
  * PENDIENTE DE CONFIRMAR CON EL CLIENTE antes de publicar, porque no coincide
  * con los datos del resto del sitio (src/lib/site.ts):
- *   - Teléfono: aquí "+1 833-887-7273"; en el resto del sitio "+ 1-833-877-7273".
- *   - Houston: aquí "Ste 580"; en el resto "Suite 105".
  *   - Austin y Fort Worth también cambian la forma ("suite 745", sin "Suite").
  * Se deja literal porque es un documento legal: si los datos están mal, se
  * corrigen en ambos sitios a la vez, no solo en uno.
+ *
+ * Corregido por indicación del cliente el 2026-10-09: Houston es "Suite 105"
+ * (el artboard traía "Ste 580") y el teléfono bueno es el 833-887-7273.
  *
  * El diseño pone los apartados 1 a 4 (y 2.1, 2.2) en negrita y del 5 al 11 en
  * peso normal. Se respeta tal cual; `negrita` lo recoge.
@@ -271,7 +272,7 @@ export const politicaPrivacidad: BloqueConHueco[] = [
     tipo: "lineas",
     lineas: [
       "Dallas: 7929 Brookriver Dr #540, Dallas, TX 75247",
-      "Houston: 10333 Harwin Dr. Ste 580, Houston, TX 77036",
+      "Houston: 10333 Harwin Dr. Suite 105, Houston, TX 77036",
       "Austin: 13809 Research Blvd suite 745, Austin, TX 78750",
       "Fort Worth: 2001 Beach St #225, Fort Worth, TX 76103",
       "San Antonio: 1802 NE LOOP 410 Ste 120 San Antonio TX 78217",

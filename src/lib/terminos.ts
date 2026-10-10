@@ -5,8 +5,7 @@
  * Como la política de privacidad, es un documento legal: no se reescribe ni se
  * "mejora". Cualquier cambio viene del cliente.
  *
- * PENDIENTE DE CONFIRMAR: el teléfono del punto 9 es "833-887-7273", el mismo
- * que usa la política de privacidad, y no el "833-877-7273" del resto del sitio.
+ * El teléfono del punto 9, "833-887-7273", es el correcto (confirmado el 2026-10-09).
  */
 
 /** El recuadro cian de arriba: el descargo de responsabilidad. */

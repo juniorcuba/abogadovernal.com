@@ -21,8 +21,6 @@
  * rótulo pasa a "Cerrar" con un aspa de 13 en vez del "+" girado.
  *
  * OJO con el contenido, para preguntarle al cliente:
- *   - dos respuestas dan el teléfono 833-**887**-7273, como la política de
- *     privacidad; el resto del sitio usa 877
  *   - la última pregunta se queda sin cerrar ("remota/digital", sin signo)
  *   - "Si," sin tilde al principio de la última respuesta
  */
