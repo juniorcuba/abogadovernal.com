@@ -5,6 +5,7 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 import { Carrusel } from "@/components/ui/carrusel";
+import { equipo as fichas } from "@/lib/equipo";
 
 /**
  * "Nuestro equipo" — nodos del rango y=2559..3269 de la frame 1:2.
@@ -60,35 +61,16 @@ import { Carrusel } from "@/components/ui/carrusel";
  */
 const ranuras = [{ left: 913 }, { left: 1242.8 }, { left: 1572.7 }, { left: 1902.5 }];
 
-const equipo = [
-  {
-    nombre: "Vernal Farnum",
-    cargo: "Abogado fundador",
-    foto: "/images/equipo/vernal-farnum.webp",
-    // El cargo del fundador va en verde; el resto en blanco.
-    cargoClase: "text-[#27ffa2]",
-  },
-  {
-    nombre: "Racquel Medina",
-    cargo: "Chief Legal Strategy",
-    foto: "/images/equipo/racquel-medina.webp",
-    cargoClase: "text-white",
-  },
-  {
-    nombre: "Alok Mohato",
-    cargo: "Abogado",
-    foto: "/images/equipo/alok-mohato.webp",
-    cargoClase: "text-white",
-  },
-  // Katiuska Rodríguez salió del archivo en el export del 2026-09-26 y Marysol
-  // Rogel pasó a la cuarta ranura, la que queda cortada.
-  {
-    nombre: "Marysol Rogel",
-    cargo: "Asistente legal",
-    foto: "/images/equipo/marysol-rogel.webp",
-    cargoClase: "text-white",
-  },
-];
+/**
+ * Las once personas del carrusel, en el orden de `abogados carrusel FN` (export
+ * de RECURSOS del 2026-10-09). Son las mismas fichas y recortes de
+ * /nuestro-equipo; el archivo solo enseña cuatro ranuras a la vez.
+ */
+const equipo = fichas.map((f) => ({
+  ...f,
+  // El cargo del fundador va en verde; el resto en blanco.
+  cargoClase: f.verde ? "text-[#27ffa2]" : "text-white",
+}));
 
 export function NuestroEquipo() {
   return (
@@ -215,7 +197,9 @@ export function NuestroEquipo() {
             </>
           )}
         >
-          {(p, i, relevo) => (
+          {(p, i, relevo) =>
+            // Rotan las once, pero el lienzo solo tiene cuatro ranuras.
+            i >= ranuras.length ? null : (
             <li
               key={ranuras[i].left}
               /* El móvil enseña una sola ranura. Las otras dos se ocultan en vez
@@ -249,7 +233,8 @@ export function NuestroEquipo() {
                 />
               </div>
             </li>
-          )}
+            )
+          }
         </Carrusel>
 
         {/* Fundido del borde derecho del carrusel. */}
