@@ -51,7 +51,10 @@ export function lienzoPara(ventana: number, util: number = ventana): Lienzo {
     return {
       clase: "modo-diseno",
       ancho: ANCHO_DISENO,
-      escala: Math.min(1, w / ANCHO_DISENO),
+      // Sin tope en 1: por encima de 1920 el lienzo tambien crece con la
+      // ventana. Con el tope se quedaba en 1920, pegado a la izquierda y con
+      // una franja vacia a la derecha.
+      escala: w / ANCHO_DISENO,
     };
   }
   if (ventana <= MAXIMO_MOVIL) {
@@ -71,7 +74,8 @@ export function lienzoPara(ventana: number, util: number = ventana): Lienzo {
  * solo más pequeño, y a 430 el de móvil. Cero invención, porque es el diseño
  * mismo, y además se puede verificar midiendo contra el render del artboard.
  *
- *   ≥ 1280   lienzo de escritorio, 1920 escalado
+ *   ≥ 1280   lienzo de escritorio, 1920 escalado (reducido por debajo de 1920
+ *            y ampliado por encima, sin tope)
  *   561–1279 maqueta apilada, que no la cubre ningún diseño y es criterio propio
  *   ≤ 560    lienzo móvil, 402 escalado
  *
