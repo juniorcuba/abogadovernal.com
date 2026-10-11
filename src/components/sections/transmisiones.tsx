@@ -125,7 +125,19 @@ export function Transmisiones() {
               degradado entre el borde y el filo. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 z-10 border-2 border-vernal-accent"
+            className="pointer-events-none absolute inset-0 z-10 border-2 border-vernal-accent design:border-b-0"
+          />
+          {/* En el lienzo de 1920 la barra "aclara tus dudas" monta sobre el filo
+              de abajo y, como es translúcida, el borde se veía a través de ella,
+              cruzando "migratorias". El lado de abajo va en dos tramos que paran
+              en los bordes de la barra (x1036.5 y x1507.5 → 122.5 y 593.5). */}
+          <span
+            aria-hidden
+            className="bg-vernal-accent pointer-events-none absolute bottom-0 left-0 z-10 hidden h-[2px] w-[122.5px] design:block"
+          />
+          <span
+            aria-hidden
+            className="bg-vernal-accent pointer-events-none absolute right-0 bottom-0 left-[593.5px] z-10 hidden h-[2px] design:block"
           />
           <div className="absolute inset-0 overflow-hidden">
             <Image
