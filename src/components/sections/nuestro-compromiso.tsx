@@ -136,7 +136,7 @@ export function NuestroCompromiso() {
                 aria-hidden
                 width={t.img.w}
                 height={t.img.h}
-                className="absolute top-[var(--iy)] left-[var(--ix)] h-[var(--ih)] w-[var(--iw)] max-w-none movil:top-[var(--my)] movil:left-[var(--mx)] movil:h-[var(--mh)] movil:w-[var(--mw)]"
+                className="absolute top-[var(--iy)] left-[var(--ix)] h-[var(--ih)] w-[var(--iw)] max-w-none apilada:top-0 apilada:left-0 apilada:h-full apilada:w-full apilada:object-cover apilada:object-top movil:top-[var(--my)] movil:left-[var(--mx)] movil:h-[var(--mh)] movil:w-[var(--mw)]"
               />
               <div
                 aria-hidden

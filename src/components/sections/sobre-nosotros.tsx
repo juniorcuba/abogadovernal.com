@@ -45,7 +45,7 @@ export function SobreNosotros() {
       {/* Carrusel: la tira se duplica para que el bucle no tenga corte. En el
           lienzo de 402 la ventana empieza 30 antes y mide de más para que quepa
           la sombra de las fotos (8/18/37.1 al 51%), que el archivo sí dibuja. */}
-      <div className="relative h-[320px] overflow-hidden movil:absolute movil:top-[515px] movil:left-0 movil:h-[360px] movil:w-[402px] design:absolute design:top-[36px] design:left-[932px] design:h-[573px] design:w-[982px]">
+      <div className="relative h-[320px] overflow-hidden apilada:mt-14 apilada:h-[360px] movil:absolute movil:top-[515px] movil:left-0 movil:h-[360px] movil:w-[402px] design:absolute design:top-[36px] design:left-[932px] design:h-[573px] design:w-[982px]">
         {/* El desplazamiento inicial (x1080 dentro de una ventana que empieza en
             x932) va en un envoltorio estático, para no romper el bucle. */}
         <div className="movil:translate-x-[20px] design:translate-x-[148px]">

@@ -145,7 +145,7 @@ export function Transmisiones() {
               alt="Transmisión en vivo del Abogado Vernal"
               width={857}
               height={644}
-              className="absolute top-[-109px] left-[-73px] h-[644px] w-[857px] max-w-none object-cover movil:top-[-53px] movil:left-[-35px] movil:h-[312px] movil:w-[415px]"
+              className="absolute top-[-109px] left-[-73px] h-[644px] w-[857px] max-w-none object-cover apilada:top-0 apilada:left-0 apilada:h-full apilada:w-full movil:top-[-53px] movil:left-[-35px] movil:h-[312px] movil:w-[415px]"
             />
             {/* Marca de agua "LIVE" (nodo 83:28, x999 y5721, caja 564×287 → 277px).
                 Va dentro del vídeo, que la recorta por abajo igual que el archivo. */}
