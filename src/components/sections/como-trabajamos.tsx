@@ -101,7 +101,7 @@ export function ComoTrabajamos() {
         aria-hidden
         className="bg-vernal-accent pointer-events-none absolute hidden design:top-[2px] design:left-[-3px] design:block design:h-[668px] design:w-[1923px]"
       />
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[1541px] movil:p-0 design:h-[668px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 apilada:text-center apilada:[&>p]:mx-auto apilada:[&>button]:mx-auto movil:h-[1541px] movil:p-0 design:h-[668px] design:p-0">
         {/* Mapa de Texas: multiply sobre el cian. El original tiene fondo blanco y
             el multiply lo hace desaparecer dejando solo el relieve. */}
         <div

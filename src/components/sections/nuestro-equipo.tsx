@@ -140,7 +140,7 @@ export function NuestroEquipo() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[1346px] movil:p-0 design:h-[710px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 apilada:text-center apilada:[&>p]:mx-auto apilada:[&>button]:mx-auto movil:h-[1346px] movil:p-0 design:h-[710px] design:p-0">
         <div
           aria-hidden
           className="bg-vernal-accent hidden design:absolute design:top-[79px] design:left-[215px] design:block design:h-[576px] design:w-[12px]"
