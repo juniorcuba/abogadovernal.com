@@ -12,7 +12,10 @@ import Image from "next/image";
  *   carrusel  129:148 x924 y0    990×609
  *             ventana x932 y36   982×573 (recorta)
  *             fotos   634×442 a y65, paso de 674
- *   fundidos          x902 y0 y x1729 y0, 185×609, 270deg: opaco a la derecha
+ *   fundidos          x902 y0 y x1729 y0, 185×609. El archivo trae los dos a
+ *                     270deg (opaco a la derecha), pero el de la izquierda va
+ *                     aquí en espejo: con la tira en marcha, las fotos pasan por
+ *                     debajo y con el suyo se cortaban en seco a media franja
  *   cifra     22:88   x970 y358  Poppins 600 176px blanco
  *             22:89   x1210 y532  Poppins 600 45px UPPER blanco
  *
@@ -39,19 +42,21 @@ const fotos = [
 export function SobreNosotros() {
   return (
     <section className="bg-vernal-accent relative overflow-hidden movil:h-[922px] design:h-[609px]">
-      {/* Carrusel: la tira se duplica para que el bucle no tenga corte. */}
-      <div className="relative h-[320px] overflow-hidden movil:absolute movil:top-[545px] movil:left-0 movil:h-[253px] movil:w-[402px] design:absolute design:top-[36px] design:left-[932px] design:h-[573px] design:w-[982px]">
+      {/* Carrusel: la tira se duplica para que el bucle no tenga corte. En el
+          lienzo de 402 la ventana empieza 30 antes y mide de más para que quepa
+          la sombra de las fotos (8/18/37.1 al 51%), que el archivo sí dibuja. */}
+      <div className="relative h-[320px] overflow-hidden movil:absolute movil:top-[515px] movil:left-0 movil:h-[360px] movil:w-[402px] design:absolute design:top-[36px] design:left-[932px] design:h-[573px] design:w-[982px]">
         {/* El desplazamiento inicial (x1080 dentro de una ventana que empieza en
             x932) va en un envoltorio estático, para no romper el bucle. */}
         <div className="movil:translate-x-[20px] design:translate-x-[148px]">
-          <div className="animate-vernal-marquee flex w-max gap-[40px] movil:gap-[23px] movil:pt-0 design:pt-[29px]">
+          <div className="animate-vernal-marquee flex w-max gap-[40px] movil:gap-[23px] movil:pt-[30px] design:pt-[29px]">
             {[...fotos, ...fotos].map((src, i) => (
               <div
                 key={`${src}-${i}`}
                 /* El cian va aquí dentro a propósito: el transform del marquee crea
                    un contexto de apilamiento, así que mix-blend-mode no alcanza el
                    fondo de la sección. El respaldo tiene que estar en este contexto. */
-                className="bg-vernal-accent shadow-vernal-1 relative h-[280px] w-[400px] shrink-0 movil:h-[253px] movil:w-[362px] movil:shadow-none design:h-[442px] design:w-[634px]"
+                className="bg-vernal-accent shadow-vernal-1 relative h-[280px] w-[400px] shrink-0 movil:h-[253px] movil:w-[362px] design:h-[442px] design:w-[634px]"
               >
                 <Image
                   src={src}
@@ -77,7 +82,7 @@ export function SobreNosotros() {
         className="pointer-events-none hidden design:absolute design:top-0 design:left-[902px] design:block design:h-[609px] design:w-[185px]"
         style={{
           backgroundImage:
-            "linear-gradient(270deg, var(--color-vernal-accent) 0%, transparent 100%)",
+            "linear-gradient(90deg, var(--color-vernal-accent) 16%, transparent 100%)",
         }}
       />
       <div

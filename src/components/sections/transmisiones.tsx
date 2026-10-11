@@ -176,11 +176,13 @@ export function Transmisiones() {
           </button>
         </div>
 
+        {/* Va con z-20: monta sobre el filo del vídeo, y el borde cian de este
+            (z-10) se le pintaba por encima, a la altura de "migratorias". */}
         {/* Barra "aclara tus dudas migratorias": rect x1036.5 y5887.5, 471×119,
             rx 38.5 (redondeada), opacidad 0.73. Los textos van en x1160, con
             líneas base en y5931.8 y y5976.1 del archivo. */}
         <div
-          className="relative mt-6 flex items-center gap-x-4 rounded-[30px] px-6 py-4 movil:hidden design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[38.5px] design:p-0"
+          className="relative z-20 mt-6 flex items-center gap-x-4 rounded-[30px] px-6 py-4 movil:hidden design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[38.5px] design:p-0"
         >
           {/* La opacidad 0.73 del archivo es del RECTÁNGULO, no del contenido.
               Aplicada al contenedor oscurecía también el texto y los iconos. */}
@@ -217,7 +219,7 @@ export function Transmisiones() {
             El punto rojo es un círculo de r=11 centrado en (1434, 5881). */}
         <span
           aria-hidden
-          className="hidden items-center design:absolute design:top-[439.5px] design:left-[1398.5px] design:flex design:h-[55px] design:w-[141px] design:rounded-[27.5px]"
+          className="z-30 hidden items-center design:absolute design:top-[439.5px] design:left-[1398.5px] design:flex design:h-[55px] design:w-[141px] design:rounded-[27.5px]"
           style={{
             backgroundImage:
               "linear-gradient(273.17deg, #000000 -24.82%, #3A3A3A 111.58%)",

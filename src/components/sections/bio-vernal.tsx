@@ -6,8 +6,10 @@ import Link from "next/link";
  * "Conocé al abogado Vernal" — nodos del rango y=1751..2559 de la frame 1:2.
  * Coordenadas relativas al inicio de la sección (y absoluta − 1751).
  *
- *   fondo       59:38    #0F0F10 con una foto al 25%, dibujada a 1923×1283 con
- *                        desplazamiento (+446, −211). Del export SVG de la frame.
+ *   fondo       59:38    negro con una foto al 35%, dibujada a 1923×1283 con
+ *                        desplazamiento (+446, −211), y encima un degradado de
+ *                        #171717 a transparente que funde el borde izquierdo de
+ *                        la foto (de (387, +285.5) a (1265, +131)). Del export SVG.
  *   composición 129:211  x278 y108  554×547
  *     rect cian 129:192  +3,+147  548×400  #08b6ff
  *     "VERNAL"  129:193  +0,+20   Poppins 600 146px #08b6ff UPPER (detrás)
@@ -26,7 +28,8 @@ import Link from "next/link";
  *            que tapa de negro la mitad de arriba
  *   retrato  la misma composición de escritorio reducida ×0.573: el rect pasa
  *            de 548 a 314 y "VERNAL" de 548 a 313 de ancho. La foto es un banner
- *            propio de 313×313 con el degradado azul incrustado.
+ *            propio de 313×313 con el degradado azul incrustado; en el export del
+ *            2026-10-11 pasó a ser el mismo retrato con gafas del escritorio.
  *            El export SVG del móvil NO trae "VERNAL" ni "TEXAS LAWYER" (se
  *            pierden al exportar), pero el render de Figma sí: se miden ahí
  *   enlace   "Conoce mi historia" no está en el diseño móvil
@@ -40,14 +43,24 @@ import Link from "next/link";
  */
 export function BioVernal() {
   return (
-    <section className="bg-vernal-ink relative overflow-hidden movil:h-[1236px] design:h-[808px]">
+    <section className="bg-vernal-ink relative overflow-hidden movil:h-[1236px] design:h-[808px] design:bg-black">
       <Image
         src="/images/bio/fondo-bio.webp"
         alt=""
         aria-hidden
         width={1923}
         height={1283}
-        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-25 movil:top-[548px] movil:right-auto movil:left-[-298px] movil:h-[704px] movil:w-[1056px] movil:max-w-none movil:object-fill design:top-[-211px] design:right-auto design:left-[446px] design:h-[1283px] design:w-[1923px]"
+        className="pointer-events-none absolute top-0 right-0 h-full w-auto object-cover opacity-25 design:opacity-[0.35] movil:top-[548px] movil:right-auto movil:left-[-298px] movil:h-[704px] movil:w-[1056px] movil:max-w-none movil:object-fill design:top-[-211px] design:right-auto design:left-[446px] design:h-[1283px] design:w-[1923px]"
+      />
+      {/* Solo en escritorio: sin este degradado el borde izquierdo de la foto
+          se veía como un corte vertical en x446. */}
+      <div
+        aria-hidden
+        className="pointer-events-none hidden design:absolute design:inset-0 design:block"
+        style={{
+          backgroundImage:
+            "linear-gradient(80.03deg, #171717 23.19%, rgb(23 23 23 / 0) 67.03%)",
+        }}
       />
       {/* Solo en móvil: oscurece la mitad de arriba y deja ver la foto abajo. */}
       <div
@@ -72,7 +85,7 @@ export function BioVernal() {
             VERNAL
           </p>
           <Image
-            src="/images/movil/bio-banner.webp"
+            src="/images/movil/bio-banner-2.webp"
             alt=""
             width={546}
             height={546}

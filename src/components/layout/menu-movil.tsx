@@ -13,7 +13,10 @@ import { site, socialsCabecera } from "@/lib/site";
  * abiertos). Los dos son el mismo menú en dos estados: la diferencia son los
  * 85 que ocupa el desplegable de "Nosotros".
  *
- *   fondo      #0F0F10 a toda la pantalla, sin el degradado de la cabecera
+ *   fondo      #0F0F10 con el radial azul del archivo (centro en 69, 650)
+ *   líneas     0.5 en #2C4167 bajo cada renglón, de x34 a x380
+ *   flechas    blanca de 18 al final de cada renglón de un desplegable, y un
+ *              triángulo cian de 14×12 en los dos que despliegan
  *   cabecera   el aspa, el logo y ES/EN en las mismas coordenadas que la barra
  *   primer     "Inicio" con la caja en y131; de ahí para abajo, 20/21 a x43
  *   plegados   "Nosotros" y "Áreas de practica & servicios" abren a x106, y las
@@ -30,6 +33,28 @@ import { site, socialsCabecera } from "@/lib/site";
 
 const ENLACE =
   "block text-[20px] leading-[21px] font-light text-white transition-colors hover:text-vernal-accent";
+
+/** Renglón de primer nivel: texto a x43 y línea de 0.5 por debajo, de x34 a x380. */
+const FILA = "border-b-[0.5px] border-[#2C4167] pl-[9px] pt-[15px] pb-[13px]";
+/** Renglón de un desplegable: mismo trazo, más apretado y con la flecha a la derecha. */
+const SUBFILA = "border-b-[0.5px] border-[#2C4167] pt-[12px] pb-[9px]";
+const SUBENLACE =
+  "flex items-center justify-between pr-[16px] text-[20px] leading-[21px] font-light text-white transition-colors hover:text-vernal-accent";
+
+/** Flecha blanca de 18×16 que cierra cada renglón de un desplegable (x346..364). */
+function Flecha() {
+  return (
+    <svg aria-hidden width="18" height="16" viewBox="0 0 18 16" fill="none" className="shrink-0">
+      <path
+        d="M0 8H17M11 2L17 8L11 14"
+        stroke="#FFFFFF"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function MenuMovil() {
   const [abierto, setAbierto] = useState(false);
@@ -87,7 +112,7 @@ export function MenuMovil() {
           role="dialog"
           aria-modal="true"
           aria-label="Menú"
-          className="fixed inset-0 z-[100] overflow-y-auto bg-[#0F0F10]"
+          className="fixed inset-0 z-[100] overflow-y-auto bg-[#0F0F10] bg-[radial-gradient(1639px_326px_at_69px_650px,#172339_0%,#0F0F0F_100%)]"
         >
           {/* Cabecera del panel, en las coordenadas de la barra de siempre. */}
           <div className="relative h-[70px] shrink-0">
@@ -100,14 +125,14 @@ export function MenuMovil() {
               <svg aria-hidden width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                   d="M1 1L19 19M19 1L1 19"
-                  stroke="#FFFFFF"
+                  stroke="#08B6FF"
                   strokeWidth="3"
                   strokeLinecap="round"
                 />
               </svg>
             </button>
-            <Link href="/" onClick={cerrar} className="absolute top-[16px] left-[172px] block">
-              <Logo className="h-[40px] w-[57px]" />
+            <Link href="/" onClick={cerrar} className="absolute top-[18px] left-[171px] block h-[46px] w-[57px] [&>div]:!h-full [&>div]:!w-full">
+              <Logo />
             </Link>
             <div className="absolute top-[24px] left-[327px] flex gap-x-[12px] text-[14px] leading-[15px] font-medium">
               <span className="text-white">ES</span>
@@ -115,30 +140,39 @@ export function MenuMovil() {
             </div>
           </div>
 
-          <nav className="px-[43px] pt-[61px] pb-[40px]">
-            <ul className="flex flex-col gap-y-[28px]">
-              <li>
+          <nav className="pt-[61px] pb-[40px]">
+            {/* Las líneas del archivo van de x34 a x380; el texto, a x43. */}
+            <ul className="mr-[22px] ml-[34px]">
+              <li className={`${FILA} pt-0`}>
                 <Link href="/" onClick={cerrar} className={ENLACE}>
                   Inicio
                 </Link>
               </li>
 
               <li>
-                <Desplegable
-                  etiqueta="Nosotros"
-                  abierto={desplegados.nosotros}
-                  alternar={() => alternar("nosotros")}
-                />
+                <div className={FILA}>
+                  <Desplegable
+                    etiqueta="Nosotros"
+                    abierto={desplegados.nosotros}
+                    alternar={() => alternar("nosotros")}
+                  />
+                </div>
                 {desplegados.nosotros && (
-                  <ul className="mt-[26px] flex flex-col gap-y-[20px] pl-[63px]">
-                    <li>
-                      <Link href="/nosotros" onClick={cerrar} className={ENLACE}>
+                  <ul>
+                    <li className={SUBFILA}>
+                      <Link href="/nosotros" onClick={cerrar} className={`${SUBENLACE} pl-[72px]`}>
                         Abogado Vernal
+                        <Flecha />
                       </Link>
                     </li>
-                    <li>
-                      <Link href="/nuestro-equipo" onClick={cerrar} className={ENLACE}>
+                    <li className={SUBFILA}>
+                      <Link
+                        href="/nuestro-equipo"
+                        onClick={cerrar}
+                        className={`${SUBENLACE} pl-[72px]`}
+                      >
                         Nuestro Equipo
+                        <Flecha />
                       </Link>
                     </li>
                   </ul>
@@ -146,29 +180,34 @@ export function MenuMovil() {
               </li>
 
               <li>
-                <Desplegable
-                  etiqueta={["Áreas de practica", "& servicios"]}
-                  abierto={desplegados.areas}
-                  alternar={() => alternar("areas")}
-                />
+                <div className={`${FILA} pb-[9px]`}>
+                  <Desplegable
+                    etiqueta={["Áreas de practica", "& servicios"]}
+                    abierto={desplegados.areas}
+                    alternar={() => alternar("areas")}
+                  />
+                </div>
                 {desplegados.areas && (
-                  <ul className="mt-[28px] flex flex-col gap-y-[20px]">
+                  <ul>
                     {sedes.map((s) => (
-                      <li key={s.slug} className="flex items-center gap-x-[16px] pl-[27px]">
-                        <Image
-                          src="/icons/menu/edificio.svg"
-                          alt=""
-                          aria-hidden
-                          width={17}
-                          height={18}
-                          className="h-[18px] w-[17px] shrink-0"
-                        />
+                      <li key={s.slug} className={`${SUBFILA} first:pt-[19px]`}>
                         <Link
                           href={`/areas-de-servicio/${s.slug}`}
                           onClick={cerrar}
-                          className={ENLACE}
+                          className={`${SUBENLACE} pl-[36px]`}
                         >
-                          {s.rotulo}
+                          <span className="flex items-center gap-x-[19px]">
+                            <Image
+                              src="/icons/menu/edificio.svg"
+                              alt=""
+                              aria-hidden
+                              width={17}
+                              height={18}
+                              className="h-[18px] w-[17px] shrink-0"
+                            />
+                            {s.rotulo}
+                          </span>
+                          <Flecha />
                         </Link>
                       </li>
                     ))}
@@ -176,29 +215,29 @@ export function MenuMovil() {
                 )}
               </li>
 
-              <li>
+              <li className={FILA}>
                 <Link href="/testimoniales" onClick={cerrar} className={ENLACE}>
                   Testimoniales
                 </Link>
               </li>
-              <li>
+              <li className={FILA}>
                 <Link href="/blog" onClick={cerrar} className={ENLACE}>
                   Blogs
                 </Link>
               </li>
-              <li>
+              <li className={FILA}>
                 <Link href="/faqs" onClick={cerrar} className={`${ENLACE} font-normal`}>
                   FAQS
                 </Link>
               </li>
-              <li>
+              <li className={FILA}>
                 <Link href="/contacto" onClick={cerrar} className={`${ENLACE} font-normal`}>
                   Contacto
                 </Link>
               </li>
             </ul>
 
-            <p className="mt-[51px] text-center text-[16px] leading-[17px] text-white">
+            <p className="mt-[36px] text-center text-[16px] leading-[17px] text-white">
               Llamanós{" "}
               <a href={site.phoneHref} className="text-vernal-accent font-bold">
                 {site.phone}
@@ -238,7 +277,7 @@ export function MenuMovil() {
   );
 }
 
-/** Fila que abre un submenú. El archivo no dibuja flecha; la añadimos nosotros. */
+/** Fila que abre un submenú. El triángulo mira abajo abierto y cerrado, como en el archivo. */
 function Desplegable({
   etiqueta,
   abierto,
@@ -263,15 +302,15 @@ function Desplegable({
           </span>
         ))}
       </span>
+      {/* Triángulo relleno de 14×12, como en el archivo (x352..366). */}
       <svg
         aria-hidden
         width="14"
-        height="9"
-        viewBox="0 0 14 9"
-        fill="none"
-        className={`mt-[7px] shrink-0 transition-transform duration-200 ${abierto ? "rotate-180" : ""}`}
+        height="12"
+        viewBox="0 0 14 12"
+        className="mt-[6px] mr-[14px] shrink-0"
       >
-        <path d="M1 1L7 7L13 1" stroke="#08B6FF" strokeWidth="2" strokeLinecap="round" />
+        <path d="M7 12L0.072 0H13.928L7 12Z" fill="#08B6FF" />
       </svg>
     </button>
   );
