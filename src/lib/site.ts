@@ -62,10 +62,10 @@ export type NavItem = {
  * 770:3099, 2026-09-19). "Áreas de práctica & servicios" lleva a
  * /areas-de-servicio y a sus sedes; el archivo escribe "practica" sin tilde.
  *
- * TEMPORAL: "Testimoniales" (x644) está fuera hasta que lleguen los permisos
- * por escrito de los clientes que salen en esa página. Basta con descomentar la
- * línea para devolverla a su sitio; por eso la x va con cada enlace y no en una
- * lista aparte, para que quitar uno no descoloque a los demás.
+ * "Testimoniales" (x644) estuvo fuera hasta el 2026-10-11, a la espera de los
+ * permisos por escrito de los clientes que salen en esa página; Roberto pidió
+ * devolverla. La x va con cada enlace y no en una lista aparte, para que quitar
+ * uno no descoloque a los demás.
  */
 export const navItems: NavItem[] = [
   { label: "Inicio", href: "/", x: 242, grupo: "izq" },
@@ -77,7 +77,7 @@ export const navItems: NavItem[] = [
     grupo: "izq",
     lineas: ["Áreas de práctica", "& servicios"],
   },
-  // { label: "Testimoniales", href: "/testimoniales", x: 644, grupo: "izq" },
+  { label: "Testimoniales", href: "/testimoniales", x: 644, grupo: "izq" },
   { label: "Blogs", href: "/blog", x: 802, grupo: "izq" },
   { label: "FAQS", href: "/faqs", x: 1083, grupo: "der" },
   { label: "Contacto", href: "/contacto", x: 1169, grupo: "der" },

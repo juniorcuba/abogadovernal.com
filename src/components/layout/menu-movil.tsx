@@ -24,8 +24,8 @@ import { site, socialsCabecera } from "@/lib/site";
  * El archivo coloca cada renglón a mano y los huecos bailan entre 19 y 29; aquí
  * van 28 arriba y 20 dentro de los desplegables, que es lo que más se repite.
  *
- * OJO: el artboard trae "Testimoniales" en el menú. Se deja fuera, como en el
- * de escritorio, hasta que haya consentimiento firmado de los clientes.
+ * "Testimoniales" va entre las sedes y "Blogs", como en el artboard. Estuvo
+ * fuera hasta el 2026-10-11, igual que en el menú de escritorio.
  */
 
 const ENLACE =
@@ -176,6 +176,11 @@ export function MenuMovil() {
                 )}
               </li>
 
+              <li>
+                <Link href="/testimoniales" onClick={cerrar} className={ENLACE}>
+                  Testimoniales
+                </Link>
+              </li>
               <li>
                 <Link href="/blog" onClick={cerrar} className={ENLACE}>
                   Blogs
