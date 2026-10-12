@@ -16,7 +16,9 @@ import { SelloVerificado } from "@/components/ui/iconos";
  * movió, así que todas las y de dentro bajan 25 respecto a las de antes.
  *
  *   fondo   1923×818  linear-gradient(352.19deg, #0F0F0F 31.23%, #172339 66.26%)
- *   fotos   x211/595/979/1363, y95, 359×415, cada una con su propio degradado
+ *   fotos   x214/598/982/1366, y100, 359×415 (en el export del 2026-10-11 la
+ *           fila bajó 5 y se corrió 3 a la derecha, flechas incluidas; la
+ *           cuarta foto es otra y las etiquetas cambiaron de tarjeta), cada una con su propio degradado
  *           cian por abajo (los porcentajes varían ligeramente entre tarjetas)
  *   título  69:13   x489 y563  946×109  dos líneas, la primera en #08b6ff
  *   botón   83:145  x822 y672  277×52
@@ -39,18 +41,18 @@ import { SelloVerificado } from "@/components/ui/iconos";
 
 /** Lo que es de la RANURA: posición y degradado, fijos según el archivo. */
 const ranuras = [
-  { left: 211, deg: 180.0, ini: 61.4, fin: 106.51 },
-  { left: 595, deg: 178.22, ini: 62.38, fin: 105.57 },
-  { left: 979, deg: 177.81, ini: 56.91, fin: 106.45 },
-  { left: 1363, deg: 179.14, ini: 54.43, fin: 101.52 },
+  { left: 214, deg: 180.0, ini: 61.4, fin: 106.51 },
+  { left: 598, deg: 178.22, ini: 62.38, fin: 105.57 },
+  { left: 982, deg: 177.81, ini: 56.91, fin: 106.45 },
+  { left: 1366, deg: 179.14, ini: 54.43, fin: 101.52 },
 ];
 
 /** Lo que ROTA: la foto, su recorte y el tipo de caso. */
 const testimonios = [
   { caso: "Ajuste de estatus", foto: "/images/testimonios/cliente-1.webp", img: { w: 565, h: 423, x: -112, y: -8 } },
-  { caso: "Visa T", foto: "/images/testimonios/cliente-2.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
-  { caso: "Petición Familiar", foto: "/images/testimonios/cliente-3.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
-  { caso: "Visa VAWA", foto: "/images/testimonios/cliente-4.webp", img: { w: 359, h: 479, x: 0, y: -38 } },
+  { caso: "Petición Familiar", foto: "/images/testimonios/cliente-2.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
+  { caso: "Visa VAWA", foto: "/images/testimonios/cliente-3.webp", img: { w: 359, h: 479, x: 0, y: -32 } },
+  { caso: "Visa T", foto: "/images/testimonios/cliente-5.webp", img: { w: 578, h: 770, x: -178, y: -216 } },
 ];
 
 function Flecha({
@@ -85,10 +87,10 @@ export function Testimonios() {
           className="grid grid-cols-1 gap-6 sm:grid-cols-2 apilada:grid-cols-2 movil:block design:block"
           controles={({ anterior, siguiente }) => (
             <>
-              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[24px] design:absolute design:top-[275px] design:left-[171px]">
+              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[24px] design:absolute design:top-[280px] design:left-[174px]">
                 <Flecha hacia="izquierda" onClick={anterior} />
               </div>
-              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[325px] design:absolute design:top-[275px] design:left-[1694px]">
+              <div className="relative z-20 movil:absolute movil:top-[183px] movil:left-[325px] design:absolute design:top-[280px] design:left-[1697px]">
                 <Flecha hacia="derecha" onClick={siguiente} />
               </div>
             </>
@@ -99,7 +101,7 @@ export function Testimonios() {
             return (
               <li
                 key={r.left}
-                className={`relative h-[415px] overflow-hidden design:absolute design:top-[95px] design:left-[var(--x)] design:w-[359px] ${
+                className={`relative h-[415px] overflow-hidden design:absolute design:top-[100px] design:left-[var(--x)] design:w-[359px] ${
                   i === 0
                     ? "movil:absolute movil:top-[51.63px] movil:left-[60.03px] movil:w-[359px] movil:[zoom:0.8329]"
                     : "movil:hidden"
