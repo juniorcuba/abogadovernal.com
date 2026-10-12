@@ -91,7 +91,7 @@ function ArticuloHero() {
           {articulo.etiquetas.map((t, i) => (
             <li
               key={t}
-              className="flex items-center justify-center rounded-[3.5px] border border-white/40 px-2 py-[3px] design:absolute design:top-0 design:left-[var(--x)] design:h-[18px] design:w-[var(--w)] design:p-0"
+              className="flex items-center justify-center h-[18px] w-[var(--w)] shrink-0 rounded-[3.5px] border border-vernal-accent whitespace-nowrap design:absolute design:top-0 design:left-[var(--x)] design:h-[18px] design:w-[var(--w)] design:p-0"
               style={
                 {
                   "--x": `${i === 0 ? 0 : 75}px`,

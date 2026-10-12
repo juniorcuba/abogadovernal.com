@@ -116,7 +116,7 @@ export function TarjetaArticulo({
           {entradaBlogEtiquetas.map((t, k) => (
             <span
               key={t}
-              className="flex items-center justify-center rounded-[3.5px] border border-white/40 px-2 py-[3px] movil:h-[18px] movil:w-[var(--w)] movil:p-0 design:h-[18px] design:w-[var(--w)] design:p-0"
+              className="flex items-center justify-center h-[18px] w-[var(--w)] shrink-0 rounded-[3.5px] border border-vernal-accent whitespace-nowrap movil:h-[18px] movil:w-[var(--w)] movil:p-0 design:h-[18px] design:w-[var(--w)] design:p-0"
               style={{ "--w": `${k === 0 ? 70 : 85}px` } as React.CSSProperties}
             >
               {t}
