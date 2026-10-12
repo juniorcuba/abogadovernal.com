@@ -32,7 +32,7 @@ import { offices } from "@/lib/site";
 export type Hero = {
   /** Fondo radial #172339 → #0F0F0F y mapa en hard-light. Solo en tres sedes. */
   conMapa: boolean;
-  /** y de la caja de la foto y los degradados: 0, o 64 en Fort Worth y San Antonio. */
+  /** y de la caja de la foto y los degradados. Hoy 0 en todas las sedes. */
   top: number;
   foto: { src: string; left: number; width: number };
   /**
@@ -103,7 +103,8 @@ export const sedes: Sede[] = [
     hero: {
       conMapa: true,
       top: 0,
-      foto: { src: "/images/sedes/houston-foto.webp", left: 571, width: 1349 },
+      // Export del 2026-10-11: la misma foto, girada ~2° y 11 más a la izquierda.
+      foto: { src: "/images/sedes/houston-foto-2.webp", left: 559, width: 1361 },
       fotoMovil: { src: "/images/sedes/houston-foto-movil.webp", left: -192, top: 45, width: 752, height: 501 },
       degradado: DEGRADADO_BASE,
     },
@@ -136,8 +137,10 @@ export const sedes: Sede[] = [
     direccion: direccionDe("Fort Worth"),
     hero: {
       conMapa: false,
-      top: 64,
-      foto: { src: "/images/sedes/fort-worth-foto.webp", left: 685, width: 1235 },
+      // Hasta el export del 2026-10-11 la caja de la foto empezaba en y64; ahora
+      // arranca arriba del todo y la foto no se mueve respecto a la página.
+      top: 0,
+      foto: { src: "/images/sedes/fort-worth-foto-2.webp", left: 684, width: 1236 },
       fotoMovil: { src: "/images/sedes/fort-worth-foto-movil.webp", left: -204, top: 0, width: 809, height: 571 },
       degradado: "linear-gradient(253.51deg,#0F0F1000 42%,#0F0F10 59.79%)",
     },
@@ -153,8 +156,8 @@ export const sedes: Sede[] = [
     direccion: direccionDe("San Antonio"),
     hero: {
       conMapa: false,
-      top: 64,
-      foto: { src: "/images/sedes/san-antonio-foto.webp", left: 747, width: 1173 },
+      top: 0,
+      foto: { src: "/images/sedes/san-antonio-foto-2.webp", left: 747, width: 1173 },
       fotoMovil: { src: "/images/sedes/san-antonio-foto-movil.webp", left: -201, top: -104, width: 624, height: 780 },
       degradado: "linear-gradient(256.15deg,#0F0F1000 32.64%,#0F0F10 56.25%)",
     },

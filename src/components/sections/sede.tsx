@@ -8,6 +8,7 @@ import {
   type Sede,
   type Servicio,
 } from "@/lib/sedes";
+import { textosDeSede } from "@/lib/sedes-textos";
 
 /**
  * Página de sede — plantilla de los artboards "VERNAL - AREAS DE SERVICIO -
@@ -177,6 +178,34 @@ const CELDAS = [
   { left: 981.5, top: 1085.5, boton: 387.5 },
 ];
 
+/**
+ * Lo que cada ciudad se aparta de la tarjeta de Dallas en el lienzo de 1920
+ * (export del 2026-10-11). Con textos propios, más cortos, el archivo baja el
+ * título para centrar el bloque: `baja` es cuánto, `hueco` el espacio entre el
+ * título y el texto cuando cambia, y `boton` cuánto se mueve el botón.
+ * En Fort Worth y San Antonio el título de Deportación ocupa tres renglones.
+ */
+const AJUSTES: Record<string, Record<string, { baja?: number; hueco?: number; boton?: number }>> = {
+  austin: {
+    "peticion-familiar": { baja: 28 },
+    naturalizacion: { baja: 28 },
+    deportacion: { baja: 28 },
+    "visas-juveniles": { baja: 28 },
+  },
+  "fort-worth": {
+    "peticion-familiar": { baja: 41 },
+    naturalizacion: { baja: 41, hueco: 28 },
+    deportacion: { baja: 19, hueco: 16, boton: 8 },
+    "visas-juveniles": { baja: 19 },
+    "visa-k1": { baja: 30 },
+    "habeas-corpus": { baja: 30 },
+  },
+  "san-antonio": {
+    deportacion: { hueco: 29 },
+    "visas-juveniles": { hueco: 66 },
+  },
+};
+
 /** Foto de cada tarjeta, ya recortada a su parte visible: x dentro de la tarjeta y ancho. */
 const FOTOS: Record<string, { left: number; width: number }> = {
   "peticion-familiar": { left: 210, width: 518 },
@@ -241,9 +270,9 @@ function Tarjeta({
 }) {
   const foto = FOTOS[servicio.id];
   const fotoMovil = FOTOS_MOVIL[servicio.id];
-  // En Fort Worth "en Forth Worth" parte el título de Deportación en tres líneas
-  // y el archivo baja el botón 12px.
-  const boton = celda.boton + (sede.slug === "fort-worth" && servicio.id === "deportacion" ? 12 : 0);
+  const ajuste = AJUSTES[sede.slug]?.[servicio.id] ?? {};
+  const baja = ajuste.baja ?? 0;
+  const boton = celda.boton + (ajuste.boton ?? 0);
   const partido = servicio.id === "deportacion";
   return (
     <article
@@ -311,10 +340,13 @@ function Tarjeta({
           de Deportación ocupa un renglón más que en el archivo, que dice
           "Dallas". La caja de texto mide como mínimo hasta el botón menos un
           margen, y el botón va detrás en el flujo. */}
-      <div className="relative movil:w-[354px] movil:px-[30.5px] movil:pt-[123.5px] movil:pb-[28.5px] design:absolute design:top-[111.5px] design:left-[60.5px] design:w-[455px]">
+      <div
+        className="relative movil:w-[354px] movil:px-[30.5px] movil:pt-[123.5px] movil:pb-[28.5px] design:absolute design:top-[var(--tt)] design:left-[60.5px] design:w-[455px]"
+        style={{ "--tt": `${111.5 + baja}px` } as React.CSSProperties}
+      >
         <div
           className="design:box-border design:min-h-[var(--mh)] design:pb-[16px]"
-          style={{ "--mh": `${boton - 111.5}px` } as React.CSSProperties}
+          style={{ "--mh": `${boton - 111.5 - baja}px` } as React.CSSProperties}
         >
           <h2 className="mt-5 text-[28px] leading-[30px] font-light movil:mt-0 movil:text-[24px] movil:leading-[25px] design:mt-0 design:text-[36px] design:leading-[37px]">
             {partido ? (
@@ -336,9 +368,10 @@ function Tarjeta({
           </h2>
           <p
             className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:mt-[32px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[var(--h)] design:leading-[17px]"
-            style={{ "--h": `${servicio.hueco}px` } as React.CSSProperties}
+            style={{ "--h": `${ajuste.hueco ?? servicio.hueco}px` } as React.CSSProperties}
           >
-            {servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
+            {textosDeSede[sede.slug]?.servicios[servicio.id] ??
+              servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
           </p>
         </div>
         <BotonMasInfo />
@@ -406,7 +439,9 @@ function TarjetaHumanitarias({ sede }: { sede: Sede }) {
       </div>
 
       <ul className="relative mt-6 grid gap-4 md:grid-cols-3 movil:mt-[17.5px] movil:ml-[32px] movil:block movil:space-y-[23px] design:static design:mt-0 design:block">
-        {visasHumanitarias.map((v, i) => (
+        {visasHumanitarias
+          .map((v) => textosDeSede[sede.slug]?.visas?.[v.titulo] ?? v)
+          .map((v, i) => (
           <li
             key={v.titulo}
             className="shadow-vernal-1 relative bg-[#172339] p-6 movil:h-[204px] movil:w-[294px] movil:p-0 design:absolute design:top-[315.5px] design:left-[var(--sl)] design:h-[192px] design:w-[418px] design:p-0"
