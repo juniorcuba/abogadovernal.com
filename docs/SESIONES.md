@@ -45,8 +45,10 @@ Las imágenes de cada vista van en su carpeta de `public/images/<vista>/`.
    `127.0.0.1`). Antes de arrancar uno comprueba si ya responde. No lo pares ni
    borres `.next/` sin avisar: tumba la vista previa de las otras sesiones. Para
    arrancarlo: `node node_modules/next/dist/bin/next dev -p 3100` en segundo plano.
-6. Si un estilo nuevo no aparece aunque el código esté bien, el servidor se quedó
-   con estilos viejos. Avisa a Roberto antes de reiniciarlo.
+6. Si un estilo nuevo no aparece aunque el código esté bien, el servidor no lo
+   recogió: pasa cuando un archivo se guarda dos veces muy seguidas. Vuelve a
+   guardar ese archivo (un cambio mínimo y deshacerlo) y recarga. Solo si eso no
+   basta, avisa a Roberto antes de reiniciar el servidor.
 
 ## Cómo está hecho el sitio
 

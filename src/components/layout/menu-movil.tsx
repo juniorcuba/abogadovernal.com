@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
@@ -107,7 +108,12 @@ export function MenuMovil() {
         </span>
       </button>
 
-      {abierto && (
+      {/* El panel se monta en el lienzo y no aqui dentro: la cabecera va al 95% de
+          opacidad y un hijo suyo no puede ser mas opaco que ella, asi que la
+          pagina (y la propia hamburguesa) se transparentaban por debajo. Va al
+          lienzo y no a <body> para conservar el zoom del artboard. */}
+      {abierto &&
+        createPortal(
         <div
           role="dialog"
           aria-modal="true"
@@ -131,10 +137,10 @@ export function MenuMovil() {
                 />
               </svg>
             </button>
-            <Link href="/" onClick={cerrar} className="absolute top-[18px] left-[171px] block h-[46px] w-[57px] [&>div]:!h-full [&>div]:!w-full">
+            <Link href="/" onClick={cerrar} className="absolute top-[18px] left-[171px] block h-[46px] w-[57px] apilada:left-1/2 apilada:-translate-x-1/2 [&>div]:!h-full [&>div]:!w-full">
               <Logo />
             </Link>
-            <div className="absolute top-[24px] left-[327px] flex gap-x-[12px] text-[14px] leading-[15px] font-medium">
+            <div className="absolute top-[24px] left-[327px] flex gap-x-[12px] text-[14px] leading-[15px] font-medium apilada:right-[28px] apilada:left-auto">
               <span className="text-white">ES</span>
               <span className="text-[#323B4C]">EN</span>
             </div>
@@ -271,8 +277,9 @@ export function MenuMovil() {
               </Link>
             </p>
           </nav>
-        </div>
-      )}
+        </div>,
+          document.querySelector('[class^="modo-"]') ?? document.body,
+        )}
     </div>
   );
 }

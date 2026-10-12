@@ -55,7 +55,7 @@ try {
       await js(`(async () => { for (let y = 0; y < document.body.scrollHeight; y += 700) { scrollTo(0, y); await new Promise(r => setTimeout(r, 120)); } scrollTo(0, 0); })()`);
       await espera(1200);
     }
-    if (accion) { await js(accion); await espera(900); }
+    if (accion) { const r = await js(accion); if (typeof r === "string") console.log("  →", r); await espera(900); }
     const sel = `[...document.querySelectorAll("main section, main > div, header")].find(e => e.textContent.toLowerCase().includes(${JSON.stringify(texto.toLowerCase())}))`;
     if (texto !== "@pantalla") {
       const hay = await js(`(() => { const s = ${sel}; if (!s) return false; scrollTo(0, s.getBoundingClientRect().top + scrollY); return true; })()`);
