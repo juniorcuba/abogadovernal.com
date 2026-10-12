@@ -19,7 +19,7 @@ de cada vista:
 | Nosotros | `src/app/nosotros/` | `src/components/sections/nosotros-*.tsx` | — |
 | Testimoniales | `src/app/testimoniales/` | `sections/testimoniales.tsx` | `src/lib/testimonios.ts` |
 | Nuestro equipo | `src/app/nuestro-equipo/` | `sections/equipo.tsx` | `src/lib/equipo.ts` |
-| Áreas y sedes | `src/app/areas-de-servicio/` | `sections/areas-*.tsx`, `sections/sede.tsx` | `src/lib/sedes.ts` |
+| Sedes | `src/app/areas-de-servicio/[sede]/` | `sections/sede.tsx` | `src/lib/sedes.ts` |
 | Blog y artículo | `src/app/blog/` | `sections/blog-listado.tsx`, `articulo.tsx`, `tarjeta-articulo.tsx` | `src/lib/blog.ts`, `articulo.ts` |
 | FAQs | `src/app/faqs/` | `sections/faqs-*.tsx`, `ui/lista-preguntas.tsx` | `src/lib/preguntas.ts` |
 | Contacto | `src/app/contacto/` | `sections/contacto-hero.tsx` | — |
@@ -122,6 +122,8 @@ no. En Git Bash, `node` necesita `export PATH="/c/Program Files/nodejs:$PATH"`.
 - Transmisiones lleva al canal de YouTube; "Mas información" de las sedes, a
   Contacto; tras enviar un formulario, la página `/gracias` (sin overlay).
 - "Testimoniales" está en el menú; la página sigue sin indexar.
+- La página índice `/areas-de-servicio` se quitó (2026-10-11): redirige a Dallas
+  y las cinco sedes cuelgan del desplegable del menú, igual que "Nosotros".
 - Pendiente de Roberto: quitar los nombres de los testimonios y dejar solo el
   proceso (nota del cliente); si entra el chat en vivo; destino de los formularios.
 - Las erratas del diseño ("Forth Worth", "Áreas de practica", "Vernal Farum"…)

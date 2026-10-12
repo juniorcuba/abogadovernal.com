@@ -55,12 +55,16 @@ export type NavItem = {
   grupo: "izq" | "der";
   /** Cómo parte el texto la cabecera de escritorio, si va en dos líneas. */
   lineas?: [string, string];
+  /** Qué despliega al pasar el ratón; las opciones están en `nav-link.tsx`. */
+  menu?: "nosotros" | "sedes";
 };
 
 /**
  * Nav del header, en el orden del diseño (componente "navbar - desktop",
- * 770:3099, 2026-09-19). "Áreas de práctica & servicios" lleva a
- * /areas-de-servicio y a sus sedes; el archivo escribe "practica" sin tilde.
+ * 770:3099, 2026-09-19). "Áreas de práctica & servicios" ya no tiene página
+ * propia (se quitó el 2026-10-11): despliega las cinco sedes. Su `href` solo
+ * sirve para marcarla como activa en ellas. El archivo escribe "practica" sin
+ * tilde.
  *
  * "Testimoniales" (x644) estuvo fuera hasta el 2026-10-11, a la espera de los
  * permisos por escrito de los clientes que salen en esa página; Roberto pidió
@@ -69,13 +73,14 @@ export type NavItem = {
  */
 export const navItems: NavItem[] = [
   { label: "Inicio", href: "/", x: 242, grupo: "izq" },
-  { label: "Nosotros", href: "/nosotros", x: 336, grupo: "izq" },
+  { label: "Nosotros", href: "/nosotros", x: 336, grupo: "izq", menu: "nosotros" },
   {
     label: "Áreas de práctica & servicios",
     href: "/areas-de-servicio",
     x: 454,
     grupo: "izq",
     lineas: ["Áreas de práctica", "& servicios"],
+    menu: "sedes",
   },
   { label: "Testimoniales", href: "/testimoniales", x: 644, grupo: "izq" },
   { label: "Blogs", href: "/blog", x: 802, grupo: "izq" },

@@ -48,7 +48,9 @@ export function SiteHeader() {
     // El aviso de cookies va FUERA del <header>: la cabecera lleva opacidad del
     // 95% y el aviso es negro puro en el archivo.
     <div className="relative z-50">
-      <header className="bg-vernal-grad shadow-vernal-header relative opacity-95 movil:bg-none movil:opacity-100 movil:shadow-none">
+      {/* z-[95]: por encima del aviso de cookies (z-90), que si no tapaba el
+          arranque de los desplegables del menú. */}
+      <header className="bg-vernal-grad shadow-vernal-header relative z-[95] opacity-95 movil:bg-none movil:opacity-100 movil:shadow-none">
         {/* En el lienzo móvil la cabecera son DOS filas: el degradado radial de
             402×70 con menú, logo e idioma, y debajo una barra cian de 36 con el
             teléfono. En escritorio es una sola de 128. */}

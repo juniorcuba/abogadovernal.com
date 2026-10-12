@@ -20,6 +20,13 @@ const nextConfig: NextConfig = {
   // así los buscadores y los enlaces viejos pasan a la nueva.
   redirects() {
     return [
+      // La página índice de áreas se quitó el 2026-10-11: las sedes cuelgan del
+      // menú. Temporal (307) por si vuelve.
+      {
+        source: "/areas-de-servicio",
+        destination: "/areas-de-servicio/dallas",
+        permanent: false,
+      },
       {
         source: "/politicas_privacidad.html",
         destination: "/politicas-de-privacidad",
