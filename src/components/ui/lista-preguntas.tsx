@@ -38,11 +38,13 @@ export function ListaPreguntas({
   preguntas,
   onAlto,
   className = "",
+  style,
 }: {
   preguntas: PreguntaFrecuente[];
   /** Cuánto crece la lista respecto a tenerlas todas cerradas. */
   onAlto?: (crecimiento: number) => void;
   className?: string;
+  style?: React.CSSProperties;
 }) {
   const [abierta, setAbierta] = useState<number | null>(null);
 
@@ -55,6 +57,7 @@ export function ListaPreguntas({
   return (
     <ul
       className={`border-b border-white movil:w-[336px] design:absolute design:left-[239px] design:w-[1441px] ${className}`}
+      style={style}
     >
       {preguntas.map((p, i) => {
         const abiertaEsta = abierta === i;
