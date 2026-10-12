@@ -123,7 +123,7 @@ export function BlogHero() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[897px] movil:max-w-none movil:p-0 design:h-[875px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] movil:absolute movil:top-[177px] movil:left-[38px] movil:w-[300px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[231px] design:left-[246px] design:text-[36px] design:leading-[37.44px]">
-          Blog de Inmigración Abogado Vernal, Texas
+          Blog de Inmigración Abogado Vernal
         </p>
 
         <h1 className="mt-3 text-[40px] leading-[44px] uppercase sm:text-[58px] sm:leading-[62px] movil:absolute movil:top-[243px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[285px] design:left-[241px] design:mt-0 design:w-[1300px] design:text-[82px] design:leading-[85px]">

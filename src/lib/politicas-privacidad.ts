@@ -14,8 +14,9 @@
  * Corregido por indicación del cliente el 2026-10-09: Houston es "Suite 105"
  * (el artboard traía "Ste 580") y el teléfono bueno es el 833-887-7273.
  *
- * El diseño pone los apartados 1 a 4 (y 2.1, 2.2) en negrita y del 5 al 11 en
- * peso normal. Se respeta tal cual; `negrita` lo recoge.
+ * Hasta el export del 2026-10-11 los apartados 1 a 4 (y 2.1, 2.2) iban en
+ * negrita y del 5 al 11 en peso normal; desde entonces van todos en peso
+ * normal. `negrita` se conserva por si el diseño vuelve a distinguirlos.
  */
 
 /** Un trozo de texto; `cian` lo pinta en #08B6FF. */
@@ -36,7 +37,7 @@ export type Bloque =
 export type BloqueConHueco = Bloque & { pegado?: true };
 
 export const politicaPrivacidad: BloqueConHueco[] = [
-  { tipo: "titulo", nivel: 2, texto: "1. Introducción", negrita: true },
+  { tipo: "titulo", nivel: 2, texto: "1. Introducción", negrita: false },
   {
     tipo: "parrafo",
     texto: [
@@ -86,12 +87,12 @@ export const politicaPrivacidad: BloqueConHueco[] = [
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "2. Información que Recopilamos", negrita: true },
+  { tipo: "titulo", nivel: 2, texto: "2. Información que Recopilamos", negrita: false },
   {
     tipo: "titulo",
     nivel: 3,
     texto: "2.1 Información Personal Proporcionada Voluntariamente",
-    negrita: true,
+    negrita: false,
   },
   {
     tipo: "parrafo",
@@ -115,7 +116,7 @@ export const politicaPrivacidad: BloqueConHueco[] = [
       },
     ],
   },
-  { tipo: "titulo", nivel: 3, texto: "2.2 Información Recopilada Automáticamente", negrita: true },
+  { tipo: "titulo", nivel: 3, texto: "2.2 Información Recopilada Automáticamente", negrita: false },
   {
     tipo: "parrafo",
     texto: [
@@ -132,7 +133,7 @@ export const politicaPrivacidad: BloqueConHueco[] = [
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "3. Uso de la Información", negrita: true },
+  { tipo: "titulo", nivel: 2, texto: "3. Uso de la Información", negrita: false },
   {
     tipo: "lista",
     items: [
@@ -148,7 +149,7 @@ export const politicaPrivacidad: BloqueConHueco[] = [
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "4. Divulgación de la Información", negrita: true },
+  { tipo: "titulo", nivel: 2, texto: "4. Divulgación de la Información", negrita: false },
   { tipo: "parrafo", texto: ["No compartimos información personal con terceros excepto:"] },
   {
     tipo: "lista",
