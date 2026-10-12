@@ -1,11 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BloquePreguntas } from "@/components/sections/bloque-preguntas";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
 import { ButtonLink } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
-import { preguntasSede } from "@/lib/preguntas";
 import { entradasBlogPortada } from "@/lib/blog";
 import { testimonios } from "@/lib/testimonios";
 
@@ -19,7 +17,14 @@ import { testimonios } from "@/lib/testimonios";
  * El lienzo de 402 sale de "VESPER AGENCY LANDING - MOBILE (6)" (402 x 9848):
  *
  *   hero    0..1236 (banda de 403×1243 desde y−7; el retrato va en una caja de 402×496
- *           desde y740, y la tarjeta de la cita a (184, 1001), 214×231)
+ *           desde y740, y la tarjeta de la cita a (184, 1001), 214×231).
+ *           OJO: Roberto pidió (2026-10-11) INVERTIR el orden en móvil: primero
+ *           la foto y luego el texto. El export de ese mismo día ya lo trae
+ *           así, y de ahí salen las medidas: retrato en y106 (402×447, la foto
+ *           a 344×798 en x19), la cita a (184, 318), el texto de y605 a y1155
+ *           y la banda sigue en 1236.
+ *           Entre 561 y 1279 va igual: foto centrada arriba y texto centrado
+ *           debajo, porque en dos columnas el texto pisaba el retrato.
  *   casos   1236..4988: las seis fichas de 354 a x25, el titular, el vídeo de
  *           387×217 y la tira, que aquí son CUATRO fotos en 2×2
  *   faqs    4988..6141 · blog 6141..7812 con tres tarjetas · agenda 7776..8788
@@ -110,7 +115,7 @@ export function TestimonialesHero() {
           natural con `transform` en vez de estirada. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute hidden overflow-hidden apilada:top-[150px] apilada:right-0 apilada:block apilada:h-[520px] apilada:w-[420px] movil:top-[740px] movil:right-0 movil:left-0 movil:block movil:h-[496px] movil:w-[402px] design:top-[217px] design:left-[892px] design:block design:h-[766px] design:w-[621px]"
+        className="pointer-events-none absolute hidden overflow-hidden apilada:top-[150px] apilada:left-1/2 apilada:block apilada:h-[520px] apilada:w-[420px] apilada:-translate-x-1/2 apilada:[mask-image:linear-gradient(180deg,#000_82%,transparent_100%)] movil:top-[106px] movil:[mask-image:linear-gradient(180deg,#000_70.2%,transparent_95.5%)] movil:right-0 movil:left-0 movil:block movil:h-[447px] movil:w-[402px] design:top-[217px] design:left-[892px] design:block design:h-[766px] design:w-[621px]"
       >
         <Image
           src="/images/testimoniales/hero-retrato.webp"
@@ -119,22 +124,22 @@ export function TestimonialesHero() {
           height={1785}
           priority
           sizes="621px"
-          className="absolute top-[-30px] left-0 h-[1440px] w-[621px] max-w-none apilada:h-[974px] apilada:w-[420px] apilada:[mask-image:linear-gradient(180deg,#000_70%,transparent_100%)] movil:top-[-19px] movil:left-0 movil:h-[932px] movil:w-[402px] design:top-0 design:h-[1785px] design:w-[769px] design:[transform:matrix(0.80739,0.026186,-0.026193,0.806766,-0.3933,-29.9341)] design:[transform-origin:0_0]"
+          className="absolute top-[-30px] left-0 h-[1440px] w-[621px] max-w-none apilada:h-[974px] apilada:w-[420px] movil:top-0 movil:left-[19px] movil:h-[798px] movil:w-[344px] design:top-0 design:h-[1785px] design:w-[769px] design:[transform:matrix(0.80739,0.026186,-0.026193,0.806766,-0.3933,-29.9341)] design:[transform-origin:0_0]"
         />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[1236px] movil:max-w-none movil:p-0 design:h-[991px] design:max-w-[1920px] design:p-0">
-        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] movil:absolute movil:top-[177px] movil:left-[38px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[295px] design:left-[242px] design:text-[36px] design:leading-[37px]">
+      <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pt-[700px] apilada:text-center movil:h-[1236px] movil:max-w-none movil:p-0 design:h-[991px] design:max-w-[1920px] design:p-0">
+        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] movil:absolute movil:top-[605px] movil:left-[38px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[295px] design:left-[242px] design:text-[36px] design:leading-[37px]">
           Abogado Vernal
         </p>
 
-        <h1 className="mt-3 text-[44px] leading-[48px] uppercase sm:text-[62px] sm:leading-[66px] movil:absolute movil:top-[213px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[349px] design:left-[237px] design:mt-0 design:w-[1000px] design:text-[82px] design:leading-[85px]">
+        <h1 className="mt-3 text-[44px] leading-[48px] uppercase sm:text-[62px] sm:leading-[66px] movil:absolute movil:top-[641px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[349px] design:left-[237px] design:mt-0 design:w-[1000px] design:text-[82px] design:leading-[85px]">
           {/* En 402 "Y" se queda con "CASOS DE" en el mismo renglón. */}
           <span className="block text-white movil:inline">Testimonios y</span>{" "}
           <span className="text-vernal-accent block movil:inline">casos de éxito</span>
         </h1>
 
-        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white movil:absolute movil:top-[381px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:space-y-0 movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[557px] design:left-[243px] design:mt-0 design:w-[578px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
+        <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white apilada:mx-auto movil:absolute movil:top-[815px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:space-y-0 movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[557px] design:left-[243px] design:mt-0 design:w-[578px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
             Detrás de cada caso que llevamos hay una persona que un día decidió no quedarse
             con la incertidumbre. Alguien que dejó atrás el miedo a preguntar, que se sentó
@@ -143,7 +148,10 @@ export function TestimonialesHero() {
             de esperar.
           </p>
           <p className="movil:mt-[16px] design:mt-[17px]">
-            Estas no son solo historias de casos ganados. Son historias de personas que
+            <span className="text-vernal-accent">
+              Estas no son solo historias de casos ganados.
+            </span>{" "}
+            Son historias de personas que
             decidieron luchar por lo que les correspondía, y que hoy quieren que tú sepas
             que también es posible para ti.
           </p>
@@ -151,13 +159,13 @@ export function TestimonialesHero() {
 
         <ButtonLink
           href="#casos"
-          className="mt-8 w-full sm:w-[224px] apilada:w-[224px] movil:absolute movil:top-[657px] movil:left-[43px] movil:mt-0 movil:h-[53px] movil:w-[210px] design:absolute design:top-[763px] design:left-[243px] design:mt-0"
+          className="mt-8 w-full sm:w-[224px] apilada:mx-auto apilada:flex apilada:w-[224px] movil:absolute movil:top-[1102px] movil:left-[43px] movil:mt-0 movil:h-[53px] movil:w-[210px] design:absolute design:top-[763px] design:left-[243px] design:mt-0"
         >
           Ver testimonios
         </ButtonLink>
 
         {/* Tarjeta de la cita, con su propio radial girado. */}
-        <div className="relative mt-10 max-w-[420px] movil:absolute movil:top-[1001px] movil:left-[184px] movil:mt-0 movil:h-[231px] movil:w-[214px] movil:max-w-none design:absolute design:top-[670px] design:left-[1348px] design:mt-0 design:h-[309px] design:w-[322px] design:max-w-none">
+        <div className="relative mt-10 max-w-[420px] apilada:mx-auto apilada:text-left movil:absolute movil:top-[318px] movil:left-[184px] movil:mt-0 movil:h-[231px] movil:w-[214px] movil:max-w-none design:absolute design:top-[670px] design:left-[1348px] design:mt-0 design:h-[309px] design:w-[322px] design:max-w-none">
           <svg
             aria-hidden
             className="absolute inset-0 hidden h-full w-full opacity-[0.87] movil:block design:block"
@@ -214,13 +222,15 @@ const TARJETAS = [
   { left: 1237.5, top: 621.5 },
 ];
 
-/** La tira de fotos bajo el vídeo: x y ancho de cada hueco. */
+/** La tira de fotos bajo el vídeo: x y ancho de cada hueco. La quinta va
+ * pegada arriba (y0, no el −17 del archivo, y `object-top` fuera del lienzo):
+ * con el encuadre del diseño se le cortaba la cabeza. */
 const TIRA = [
   { src: "/images/testimoniales/tira-1.webp", left: 0, ancho: 382, w: 516, h: 688, x: -123, y: -113 },
   { src: "/images/testimoniales/tira-2.webp", left: 385, ancho: 381, w: 641, h: 1139, x: -260, y: -461 },
   { src: "/images/testimoniales/tira-3.webp", left: 769, ancho: 382, w: 470, h: 627, x: 0, y: -115 },
   { src: "/images/testimoniales/tira-4.webp", left: 1154, ancho: 381, w: 841, h: 631, x: -230, y: -207 },
-  { src: "/images/testimoniales/tira-5.webp", left: 1538, ancho: 382, w: 443, h: 591, x: -18, y: -17 },
+  { src: "/images/testimoniales/tira-5.webp", left: 1538, ancho: 382, w: 443, h: 591, x: -18, y: 0 },
 ];
 
 function TarjetaTestimonio({
@@ -260,9 +270,10 @@ function TarjetaTestimonio({
       {/* Foto redonda montada sobre el borde superior. El encuadre de dentro lo
           pone el archivo a mano en cada tarjeta, así que viene con el dato. */}
       <span
-        className="absolute top-[-83px] left-1/2 block h-[166px] w-[166px] -translate-x-1/2 overflow-hidden rounded-full movil:top-[-55px] movil:h-[140px] movil:w-[140px] design:top-[var(--av)]"
+        className="absolute top-[-83px] left-1/2 block h-[166px] w-[166px] -translate-x-1/2 movil:top-[-55px] movil:h-[140px] movil:w-[140px] design:top-[var(--av)]"
         style={{ "--av": `${t.avatar.arriba}px` } as React.CSSProperties}
       >
+        <span className="absolute inset-0 block overflow-hidden rounded-full bg-[#D9D9D9]">
         <Image
           src={t.foto}
           alt={`${t.nombre}, ${t.caso}`}
@@ -283,6 +294,50 @@ function TarjetaTestimonio({
             } as React.CSSProperties
           }
         />
+        </span>
+        {/* Aro de 5 centrado en el borde del círculo (2.5 fuera y 2.5 dentro),
+            con el radial girado del archivo: azul arriba y abajo, casi negro a
+            los lados. En 402 el círculo es de 140 y trae su propia matriz. */}
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full overflow-visible movil:hidden"
+          viewBox="0 0 166 166"
+        >
+          <defs>
+            <radialGradient
+              id={`testi-aro-${celda.left}-${celda.top}`}
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(84.936 83.72) rotate(-90) scale(1077.01 75.4704)"
+            >
+              <stop stopColor="#172339" />
+              <stop offset="1" stopColor="#0F0F0F" />
+            </radialGradient>
+          </defs>
+          <circle cx="83" cy="83" r="83" fill="none" stroke={`url(#testi-aro-${celda.left}-${celda.top})`} strokeWidth="5" />
+        </svg>
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible movil:block"
+          viewBox="0 0 140 140"
+        >
+          <defs>
+            <radialGradient
+              id={`testi-aro-${celda.left}-${celda.top}-movil`}
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(71.642 70.61) rotate(-90) scale(913.256 63.9953)"
+            >
+              <stop stopColor="#172339" />
+              <stop offset="1" stopColor="#0F0F0F" />
+            </radialGradient>
+          </defs>
+          <circle cx="70" cy="70" r="70" fill="none" stroke={`url(#testi-aro-${celda.left}-${celda.top}-movil)`} strokeWidth="5" />
+        </svg>
       </span>
 
       {/* Cada línea es un <span>: suelto fluye como párrafo y en el lienzo de
@@ -356,9 +411,11 @@ export function TestimonialesCasos() {
           </span>
         </p>
 
-        {/* Vídeo del testimonio: 1040×548 en x440 y2295, con el radio de 31 y
-            el trazo de 5 centrado en el borde. */}
-        <div className="relative mt-12 aspect-[1040/548] w-full movil:absolute movil:top-[3013px] movil:left-[8px] movil:mt-0 movil:aspect-auto movil:h-[217px] movil:w-[387px] design:absolute design:top-[1312px] design:left-[440px] design:mt-0 design:aspect-auto design:h-[548px] design:w-[1040px]">
+        {/* Vídeo del testimonio: 1040×548 en x440 y2295, con el radio de 31, el
+            trazo de 6 y la sombra del archivo (8, 18, desenfoque 18.55 → 37px
+            en CSS, negro al 51%). El artboard de 402 no dibuja ni trazo ni
+            sombra; Roberto los pidió también ahí (2026-10-11). */}
+        <div className="relative mt-12 aspect-[1040/548] w-full rounded-[31px] shadow-[8px_18px_37px_rgba(0,0,0,0.51)] movil:absolute movil:top-[3013px] movil:shadow-[3px_7px_14px_rgba(0,0,0,0.51)] movil:left-[8px] movil:mt-0 movil:aspect-auto movil:h-[217px] movil:w-[387px] design:absolute design:top-[1312px] design:left-[440px] design:mt-0 design:aspect-auto design:h-[548px] design:w-[1040px]">
           <div aria-hidden className="absolute inset-0 overflow-hidden rounded-[31px] bg-[#D9D9D9]">
             <Image
               src="/images/testimoniales/video.webp"
@@ -370,13 +427,12 @@ export function TestimonialesCasos() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(358.73deg,#000000_14.83%,#05050500_78.16%)]" />
           </div>
-          <svg
+          {/* Trazo de 6 centrado en el borde (3 fuera y 3 dentro). En 402 la caja
+              es de 387, así que trazo y sombra bajan en proporción. */}
+          <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible design:block"
-            viewBox="0 0 1040 548"
-          >
-            <rect x="0" y="0" width="1040" height="548" rx="31" fill="none" stroke="#172339" strokeWidth="5" />
-          </svg>
+            className="pointer-events-none absolute -inset-[3px] rounded-[34px] border-[6px] border-[#172339] movil:-inset-[1.5px] movil:rounded-[32.5px] movil:border-[3px]"
+          />
           <span
             aria-hidden
             className="pointer-events-none absolute hidden font-bold text-white/[0.14] uppercase design:top-[327px] design:left-[84px] design:block design:text-[154px] design:leading-[215.6px]"
@@ -412,7 +468,7 @@ export function TestimonialesCasos() {
           <button
             type="button"
             aria-label="Ver el testimonio"
-            className="absolute top-1/2 left-1/2 flex h-[76px] w-[76px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 transition-transform hover:scale-105 movil:h-[44px] movil:w-[44px] design:h-[96px] design:w-[96px]"
+            className="absolute top-1/2 left-1/2 flex h-[76px] w-[76px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:h-[44px] movil:w-[44px] design:h-[96px] design:w-[96px]"
           >
             <span
               aria-hidden
@@ -446,7 +502,9 @@ export function TestimonialesCasos() {
                 aria-hidden
                 width={f.w}
                 height={f.h}
-                className="absolute inset-0 h-full w-full object-cover design:top-[var(--y)] design:left-[var(--x)] design:h-[var(--h)] design:w-[var(--iw)] design:max-w-none design:object-fill"
+                className={`absolute inset-0 h-full w-full object-cover design:top-[var(--y)] design:left-[var(--x)] design:h-[var(--h)] design:w-[var(--iw)] design:max-w-none design:object-fill ${
+                  i === 4 ? "object-top" : ""
+                }`}
                 style={
                   {
                     "--x": `${f.x}px`,
@@ -477,19 +535,8 @@ export function TestimonialesCasos() {
 
 /* ------------------------------------------------------------- preguntas */
 
-/** Las cinco preguntas sobre la banda oscura; el bloque es el compartido. */
-export function TestimonialesPreguntas() {
-  return (
-    <BloquePreguntas
-      preguntas={preguntasSede}
-      alto={1216}
-      fotoArriba={-781}
-      gradiente="linear-gradient(94.00deg,#000000 8.50%,#00000000 57.36%)"
-      tops={{ titulo: 91, entrada: 338, lista: 449, boton: 1067 }}
-      boton={{ texto: "Ver más preguntas", href: "/faqs" }}
-    />
-  );
-}
+/** Las cinco preguntas sobre la banda oscura: aquí se despliegan en el sitio. */
+export { TestimonialesPreguntas } from "@/components/sections/testimoniales-preguntas";
 
 /* ------------------------------------------------------------------ blog */
 
@@ -501,7 +548,7 @@ export function TestimonialesBlog() {
     <section className="bg-vernal-accent relative overflow-hidden movil:h-[1671px] design:-mt-[20px] design:h-[890px]">
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[1671px] movil:max-w-none movil:p-0 design:h-[890px] design:max-w-[1920px] design:p-0">
         <h2 className="text-vernal-navy text-center text-[26px] leading-[32px] font-light sm:text-[32px] movil:absolute movil:top-[35px] movil:left-[61px] movil:w-[280px] movil:text-[32px] movil:leading-[33px] design:absolute design:top-[78px] design:left-0 design:w-full design:text-[36px] design:leading-[37px]">
-          No te pierdas las ultimas noticias
+          No te pierdas las últimas noticias
         </h2>
 
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 apilada:grid-cols-2 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-[165.5px] design:left-0 design:mt-0 design:block design:w-full">
@@ -528,7 +575,7 @@ export function TestimonialesBlog() {
             href="/blog"
             className="bg-vernal-navy text-vernal-accent flex h-[52px] w-full items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[277px] apilada:w-[277px] movil:w-[277px]"
           >
-            Ver mas articulos
+            Ver más articulos
           </Link>
         </div>
       </div>

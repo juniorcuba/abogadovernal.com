@@ -94,11 +94,11 @@ export function SiteHeader() {
   
               <a
                 href={site.phoneHref}
-                className="text-[13px] leading-[17px] whitespace-nowrap sm:text-[16px] design:absolute design:top-[6px] design:left-[206px]"
+                className="group text-[13px] leading-[17px] whitespace-nowrap sm:text-[16px] design:absolute design:top-[6px] design:left-[206px]"
               >
                 {/* Solo el diseño de 1920 lo trae; por debajo no cabe. */}
-                <span className="hidden text-white design:inline">Llamanós </span>
-                <span className="text-vernal-accent font-bold">{site.phone}</span>
+                <span className="hidden text-white transition-colors group-hover:text-vernal-accent design:inline">Llamanós </span>
+                <span className="text-vernal-accent font-bold transition-colors group-hover:text-white">{site.phone}</span>
               </a>
             </div>
   

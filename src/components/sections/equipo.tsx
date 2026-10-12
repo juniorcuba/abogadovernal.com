@@ -14,7 +14,7 @@ const PASO_MOVIL = 371;
  * `VERNAL - NUESTRO EQUIPO.svg`.
  *
  *   hero        0..897
- *   el equipo   897..2266: título y las once fichas en 4 + 4 + 3
+ *   el equipo   897..2266: título y las doce fichas en 4 + 4 + 4
  *   compromiso  2266..3321: título, tres párrafos y el vídeo
  *   agenda      3263..4018 (el bloque compartido, que se mete 58 encima)
  *   footer      4018..4486
@@ -167,7 +167,7 @@ export function EquipoRejilla() {
           {equipo.map((f, i) => (
             <li
               key={f.nombre}
-              className={`text-center movil:absolute movil:top-[var(--tm)] movil:left-[88px] movil:w-[var(--w)] design:absolute design:top-[var(--t)] design:left-[var(--l)] design:w-[var(--w)] ${
+              className={`text-center movil:absolute movil:top-[var(--tm)] movil:left-[89px] movil:w-[var(--w)] design:absolute design:top-[var(--t)] design:left-[var(--l)] design:w-[var(--w)] ${
                 !todas && i > 3 ? "movil:hidden" : ""
               }`}
               style={
@@ -318,7 +318,7 @@ export function EquipoCompromiso() {
             <button
               type="button"
               aria-label="Ver el testimonio"
-              className="flex h-[54px] w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/40 transition-transform hover:scale-105 sm:h-[76px] sm:w-[76px] design:absolute design:top-[237px] design:left-[516px] design:h-[97px] design:w-[97px] design:-translate-x-1/2 design:-translate-y-1/2"
+              className="flex h-[54px] w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/40 shadow-vernal-1 transition-transform hover:scale-105 sm:h-[76px] sm:w-[76px] design:absolute design:top-[237px] design:left-[516px] design:h-[97px] design:w-[97px] design:-translate-x-1/2 design:-translate-y-1/2"
             >
               <span
                 aria-hidden

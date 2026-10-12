@@ -5,9 +5,13 @@ import { TextoMisionMovil } from "@/components/sections/nosotros-leccion";
  * "El caso que lo confirmó todo" — frame `181:2125`, export del 2026-09-13,
  * rango y=1634..2282. Coordenadas relativas a la sección.
  *
- *   fondo    x1, 1923×648, cuatro capas:
+ *   fondo    x1, 1923×648, cuatro capas (aquí arranca en x0: en x1 asomaba un
+ *            filo cian de 1px a la izquierda):
  *              1. #08B6FF
- *              2. bandera en hard-light al 42% (recortada a su zona visible)
+ *              2. bandera en hard-light al 42%. El archivo la dibuja a 1383×923
+ *                 en (+565, −161): el webp es su zona visible, 1358×648 desde
+ *                 x565, con las estrellas a la izquierda de la tarjeta. Hasta el
+ *                 2026-10-11 iba otro recorte pegado a x0 y cortado en 1314.
  *              3. degradado RADIAL girado −31.4891° centrado en (1436.5, 324) con
  *                 radios 570.514×1693.05: cian transparente 11.04% → #0F71A3 al
  *                 46.7% en 14.70% → #172339 al 100%. Va en un <svg> porque CSS no
@@ -36,14 +40,15 @@ export function NosotrosCaso() {
     <section className="relative overflow-hidden bg-[#08B6FF] movil:h-[998px] design:h-[648px]">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 movil:inset-auto movil:top-0 movil:left-[-4px] movil:h-[998px] movil:w-[403px] design:inset-auto design:top-0 design:left-[1px] design:h-[648px] design:w-[1923px]"
+        className="pointer-events-none absolute inset-0 movil:inset-auto movil:top-0 movil:left-[-4px] movil:h-[998px] movil:w-[403px] design:inset-auto design:top-0 design:left-0 design:h-[648px] design:w-[1923px]"
       >
         <Image
-          src="/images/nosotros/caso-bandera.webp"
+          src="/images/nosotros/caso-bandera-2.webp"
           alt=""
-          width={1314}
-          height={648}
-          className="absolute inset-0 h-full w-full object-cover object-left opacity-[0.42] mix-blend-hard-light movil:hidden design:right-auto design:w-[1314px]"
+          width={2037}
+          height={972}
+          sizes="(min-width: 1280px) 71vw, 100vw"
+          className="absolute inset-0 h-full w-full object-cover object-left opacity-[0.42] mix-blend-hard-light movil:hidden design:inset-auto design:top-0 design:left-[565px] design:h-[648px] design:w-[1358px] design:max-w-none"
         />
         <Image
           src="/images/nosotros/caso-bandera-movil.webp"

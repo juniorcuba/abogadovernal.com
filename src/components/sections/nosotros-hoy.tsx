@@ -96,12 +96,18 @@ export function NosotrosHoy() {
         >
           Agenda tu consulta
         </ButtonLink>
-        <ButtonLink
-          href="/nuestro-equipo"
-          className="hidden movil:absolute movil:top-[509px] movil:left-[41px] movil:flex movil:w-[277px]"
-        >
-          Conoce al equipo completo
-        </ButtonLink>
+        {/* Solo en el lienzo de 402. Se oculta desde un contenedor: el `hidden`
+            puesto en el botón pierde contra su `inline-flex` de base. */}
+        <div className="hidden movil:contents">
+          {/* El export del 2026-10-11 vuelve a "Agenda tu consulta"; el de antes
+              decía "Conoce al equipo completo". */}
+          <ButtonLink
+            href="/contacto"
+            className="movil:absolute movil:top-[509px] movil:left-[41px] movil:w-[277px]"
+          >
+            Agenda tu consulta
+          </ButtonLink>
+        </div>
 
         {/* Tira de cinco fotos de clientes del despacho; en el lienzo de 402 son
             otras cuatro, en dos filas. */}

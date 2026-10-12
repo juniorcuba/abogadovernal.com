@@ -1,11 +1,13 @@
 /**
- * Las once fichas de /nuestro-equipo — frame `770:403` de Figma.
+ * Las doce fichas de /nuestro-equipo — frame `770:403` de Figma.
  *
- * Todo sale del export `VERNAL - NUESTRO EQUIPO.svg` (2026-09-27): los nombres,
- * los cargos y los recortes con alfa de `images/equipo/ficha`. Antes estaban
- * medidos a ojo sobre el render del artboard.
+ * Todo sale del export `VERNAL - NUESTRO EQUIPO (1).svg` (2026-10-11): los
+ * nombres, los cargos, el orden y los recortes con alfa de
+ * `images/equipo/ficha`. Respecto al del 2026-09-27 entra Luis Escorcia, la
+ * tercera fila queda Luis · Lorena · Yannellys · Vianery, Lorena pasa a
+ * "Paralegal" y Yannellys ya trae apellido y cargo.
  *
- * "Yannellys M · Nombre puesto" está así en el archivo: falta su cargo.
+ * El archivo escribe "Receptionista"; aquí va "Recepcionista".
  */
 export type Ficha = {
   nombre: string;
@@ -24,9 +26,10 @@ export const equipo: Ficha[] = [
   { nombre: "Edna Chavez", cargo: "Gestora de casos", foto: "/images/equipo/ficha/edna-chavez.webp" },
   { nombre: "Cecilia Scaiola.", cargo: "Paralegal", foto: "/images/equipo/ficha/cecilia-scaiola.webp" },
   { nombre: "Pedro Vargas", cargo: "Paralegal", foto: "/images/equipo/ficha/pedro-vargas.webp" },
+  { nombre: "Luis Escorcia", cargo: "Paralegal", foto: "/images/equipo/ficha/luis-escorcia.webp" },
+  { nombre: "Lorena Gomez", cargo: "Paralegal", foto: "/images/equipo/ficha/lorena-gomez.webp" },
+  { nombre: "Yannellys Mendoza", cargo: "Human Resources Manager", foto: "/images/equipo/ficha/yannellys-m.webp" },
   { nombre: "Vianery Rincon", cargo: "Recepcionista", foto: "/images/equipo/ficha/vianery-rincon.webp" },
-  { nombre: "Lorena Gomez", cargo: "Atención a clientes", foto: "/images/equipo/ficha/lorena-gomez.webp" },
-  { nombre: "Yannellys M", cargo: "Nombre puesto", foto: "/images/equipo/ficha/yannellys-m.webp" },
 ];
 
 /**
@@ -39,7 +42,7 @@ export const equipo: Ficha[] = [
  */
 export const rejillaEquipo = {
   /** x de la foto; el texto va centrado sobre ella. */
-  izquierdas: [293, 636, 979, 1322],
+  izquierdas: [294, 637, 987, 1324],
   filas: [214, 582, 950],
   /** Caja de la foto y separación desde la caja del nombre. */
   foto: { ancho: 226, alto: 269, desde: 61.8 },

@@ -9,11 +9,13 @@ import { Logo } from "@/components/ui/logo";
  *              1. foto al 17%, dibujada 1484×990 en (+601, −316)
  *              2. linear-gradient(77.82deg, #171717 35.65% → transparente 51.41%)
  *   vídeo    x243 y96  733×425; trazo de 8 por dentro con degradado lineal
- *            cian → #172339 y sombra 8/36 al 84%. Dentro, "Familia Vernal"
- *            (20/300) abajo a la izquierda y el logo a 67×47 abajo a la derecha.
- *            FOTO: la del archivo (desenfocada, 733×489 en 0,−32) la cambió el
- *            cliente por DSC00324 (el abogado en la sala, bajo el texto de la
- *            misión), recortada a 733×425 y exportada a 2x.
+ *            cian → #172339 y sombra 8/36 al 84%. Dentro, el logo a 67×47 abajo
+ *            a la derecha.
+ *            FOTO: desde el 2026-10-11 el Figma lleva aquí la del equipo, la
+ *            misma del artboard móvil y con su encuadre, y ya sin el rótulo
+ *            "Familia Vernal" (visto en un render de la frame por la API; el
+ *            export de escritorio del 26-09 aún trae la anterior). Antes iba
+ *            DSC00324, el abogado bajo el texto de la misión.
  *   titular  x1053, líneas base 160.9/227.9/294.9, Poppins 64/300 con interlineado
  *            67; "familia" y "le enseñó" en cian
  *   cuerpo   x1064 y348, caja de 580, 16/17 justificado
@@ -23,10 +25,9 @@ import { Logo } from "@/components/ui/logo";
  * x45 y cuerpo a 16/17 en x41, caja de 320.
  *
  * Ese artboard pone aquí OTRO texto (el de la misión, "En Texas, Estados
- * Unidos, la oficina del Abogado Vernal Farnum Mejía…") y la foto del equipo en
- * vez de la que eligió el cliente. Desde el 2026-10-09 el móvil va tal cual su
- * artboard, por decisión de Roberto: los dos textos y las dos fotos están en el
- * HTML y se enseña uno u otro según el ancho.
+ * Unidos, la oficina del Abogado Vernal Farnum Mejía…"). Desde el 2026-10-09 el
+ * móvil va tal cual su artboard, por decisión de Roberto: los dos textos están
+ * en el HTML y se enseña uno u otro según el ancho.
  */
 
 /** El texto de la misión: en el lienzo de 402 va en esta banda y en la siguiente. */
@@ -63,22 +64,12 @@ export function NosotrosLeccion() {
         <div className="relative aspect-[733/425] w-full shadow-[8px_36px_37.1px_rgb(0_0_0/0.84)] movil:absolute movil:top-[85px] movil:left-[28px] movil:aspect-auto movil:h-[197px] movil:w-[340px] design:absolute design:top-[96px] design:left-[243px] design:aspect-auto design:h-[425px] design:w-[733px]">
           <div className="absolute inset-0 overflow-hidden">
             <Image
-              src="/images/nosotros/leccion-foto-mision.webp"
-              alt="El abogado Vernal Farnum Mejía en la sala de juntas del despacho, bajo el texto de la misión"
+              src="/images/nosotros/leccion-foto-equipo.webp"
+              alt="El equipo del despacho del Abogado Vernal Farnum Mejía"
               width={1466}
               height={850}
-              sizes="(min-width: 1280px) 733px, 100vw"
-              className="absolute inset-0 h-full w-full object-cover movil:hidden"
-            />
-            {/* En el lienzo de 402 la foto es la del equipo, encuadrada como en
-                el artboard (340×197). */}
-            <Image
-              src="/images/nosotros/leccion-foto-equipo-movil.webp"
-              alt="El equipo del despacho del Abogado Vernal Farnum Mejía"
-              width={1020}
-              height={591}
-              sizes="340px"
-              className="absolute inset-0 hidden h-full w-full object-cover movil:block"
+              sizes="(min-width: 1280px) 38vw, (min-width: 561px) 100vw, 85vw"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
           {/* Trazo con degradado: rect de 725×417 centrado sobre un trazo de 8,
@@ -144,10 +135,6 @@ export function NosotrosLeccion() {
               vectorEffect="non-scaling-stroke"
             />
           </svg>
-          {/* El artboard móvil no lleva este rótulo. */}
-          <p className="absolute bottom-[8%] left-[7%] text-[16px] leading-[18px] font-light text-white sm:text-[20px] movil:hidden design:top-[364px] design:bottom-auto design:left-[52px] design:leading-[21px]">
-            Familia Vernal
-          </p>
           {/* Logo a 67×47: el componente trae su tamaño de 111×78 en la clase base,
               así que se escala desde un contenedor en vez de pisarle las clases. */}
           <span className="absolute right-[5%] bottom-[8%] h-[34px] w-[48px] movil:top-[156.7px] movil:right-auto movil:bottom-auto movil:left-[285.2px] movil:h-[22px] movil:w-[31px] design:top-[338px] design:right-auto design:bottom-auto design:left-[615px] design:h-[47px] design:w-[67px] [&>div]:!h-full [&>div]:!w-full">

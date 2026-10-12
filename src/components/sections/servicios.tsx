@@ -97,7 +97,7 @@ export function Servicios() {
         <button
           type="button"
           aria-label="Ver vídeo"
-          className="mt-10 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-white transition-transform hover:scale-105 movil:absolute movil:top-[728px] movil:left-[153px] movil:mt-0 movil:h-[96px] movil:w-[96px] design:absolute design:top-[256px] design:left-[1262px] design:mt-0 design:h-[96px] design:w-[96px]"
+          className="mt-10 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-white shadow-vernal-1 transition-transform hover:scale-105 movil:absolute movil:top-[728px] movil:left-[153px] movil:mt-0 movil:h-[96px] movil:w-[96px] design:absolute design:top-[256px] design:left-[1262px] design:mt-0 design:h-[96px] design:w-[96px]"
         >
           <span
             aria-hidden

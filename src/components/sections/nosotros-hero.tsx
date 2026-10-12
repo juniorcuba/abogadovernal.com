@@ -23,6 +23,13 @@ import Image from "next/image";
  * exactos, cosa que con CSS no se puede.
  *
  * Texto LITERAL, incluida la errata "Vernal Farum" sin la ene.
+ *
+ * MÓVIL (artboard `924:1031`, rango y=0..1349): el artboard pone titular,
+ * cuerpo (+338), retrato (+907) y tarjeta (+1119). Desde el 2026-10-11, por
+ * decisión de Roberto, el orden se invierte, y el export de ese día ("… ABOGADO
+ * VERNAL MOBILE") ya lo trae así: retrato arriba (+116) con su tarjeta (+328),
+ * y debajo el antetítulo (+571.5), el titular (+607) y el cuerpo (+732). La
+ * banda sigue en 1349.
  */
 export function NosotrosHero() {
   return (
@@ -30,10 +37,10 @@ export function NosotrosHero() {
     <section className="bg-vernal-ink relative -mt-[128px] overflow-hidden movil:-mt-[106px] movil:h-[1349px] design:h-[1026px]">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 movil:inset-auto movil:top-0 movil:left-0 movil:h-[1349px] movil:w-[418px] design:inset-auto design:top-[-1px] design:left-[-3px] design:h-[1027px] design:w-[1920px]"
+        className="pointer-events-none absolute inset-0 movil:inset-auto movil:top-0 movil:left-[-4px] movil:h-[1349px] movil:w-[407px] design:inset-auto design:top-[-1px] design:left-[-3px] design:h-[1027px] design:w-[1920px]"
       >
         <div className="absolute inset-0 bg-[linear-gradient(146.05deg,#172339_27.86%,#000000_86.54%)] movil:hidden" />
-        <div className="absolute inset-0 hidden bg-[linear-gradient(103.83deg,#172339_27.86%,#000000_86.53%)] movil:block" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(103.48deg,#172339_27.3%,#000000_86%)] movil:block" />
         <Image
           src="/images/nosotros/hero-ciudad.webp"
           alt=""
@@ -42,25 +49,28 @@ export function NosotrosHero() {
           priority
           className="absolute inset-0 h-full w-full object-cover mix-blend-overlay movil:hidden"
         />
-        {/* En móvil el archivo usa la foto entera, no la franja recortada. */}
+        {/* En móvil el archivo usa la foto entera, no la franja recortada. Desde
+            el export del 2026-10-11 va más pequeña (895×1341) y el degradado de
+            abajo sube hasta media banda: la ciudad solo asoma tras el retrato. */}
         <Image
           src="/images/nosotros/hero-ciudad-movil.webp"
           alt=""
           width={1311}
           height={1966}
-          className="absolute hidden mix-blend-overlay movil:top-[-469px] movil:left-[-371px] movil:block movil:h-[1966px] movil:w-[1311px] movil:max-w-none"
+          className="absolute hidden mix-blend-overlay movil:top-[-390px] movil:left-[-132px] movil:block movil:h-[1341px] movil:w-[895px] movil:max-w-none"
         />
         <div className="absolute inset-0 bg-[linear-gradient(352.05deg,#0F0F10_19.13%,#0F0F1000_56.35%)] movil:hidden" />
-        <div className="absolute inset-0 hidden bg-[linear-gradient(319.88deg,#0F0F10_19.13%,#0F0F1000_56.35%)] movil:block" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(0.35deg,#0F0F10_56.4%,#0F0F1000_74.2%)] movil:block" />
       </div>
 
-      {/* Retrato. En 1920 va en su hueco del archivo (876, 205) y en móvil en el
-          suyo (−13, 907), debajo del texto. La franja apilada no tiene diseño:
-          ahí va abajo a la derecha a escala 0.53, con un degradado por delante
-          porque el texto le pasa por encima. */}
+      {/* Retrato. En 1920 va en su hueco del archivo (876, 205) y en móvil en
+          (−13, 116), arriba del todo, con el texto debajo. La franja apilada no tiene diseño:
+          ahí el texto va centrado y el retrato debajo, a escala 0.53, en la
+          franja de 582 que le reserva el margen de la tarjeta; la tarjeta queda
+          a su izquierda, sobre el hombro. Nada pasa por encima de la cara. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute hidden overflow-hidden apilada:right-[-30px] apilada:bottom-0 apilada:block apilada:h-[620px] apilada:w-[420px] movil:top-[907px] movil:left-[-13px] movil:block movil:h-[447px] movil:w-[431px] design:top-[205px] design:left-[876px] design:block design:h-[821px] design:w-[793px]"
+        className="pointer-events-none absolute hidden overflow-hidden apilada:bottom-0 apilada:left-[calc(50%-70px)] apilada:block apilada:h-[540px] apilada:w-[420px] movil:top-[116px] movil:left-[-13px] movil:block movil:h-[447px] movil:w-[431px] design:top-[205px] design:left-[876px] design:block design:h-[821px] design:w-[793px]"
       >
         <Image
           src="/images/nosotros/hero-retrato-2.webp"
@@ -71,27 +81,26 @@ export function NosotrosHero() {
           className="absolute top-[-72px] left-[-53px] h-[1288px] w-[859px] max-w-none apilada:top-[-38px] apilada:left-[-28px] apilada:h-[682px] apilada:w-[455px] apilada:[mask-image:linear-gradient(180deg,#000_62%,transparent_100%)] movil:top-[-39px] movil:left-[-29px] movil:h-[701px] movil:w-[467px]"
         />
         <div className="absolute inset-0 hidden bg-[linear-gradient(182.83deg,#0F0F1000_57.70%,#0F0F10_97.99%)] movil:block design:block" />
-        {/* Solo donde el retrato convive con el texto. */}
-        <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,#0F0F10_0%,#0F0F1066_40%,#0F0F1000_100%)] apilada:block" />
       </div>
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pb-20 movil:block movil:h-[1349px] movil:max-w-none movil:p-0 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
-        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] movil:absolute movil:top-[176.5px] movil:left-[38px] movil:text-[24px] movil:leading-[26px] design:absolute design:top-[264px] design:left-[223px] design:text-[36px] design:leading-[37px]">
+        <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] apilada:text-center movil:absolute movil:top-[571.5px] movil:left-[38px] movil:text-[24px] movil:leading-[26px] design:absolute design:top-[264px] design:left-[223px] design:text-[36px] design:leading-[37px]">
           Tu defensa en Texas
         </p>
-        <h1 className="drop-shadow-vernal-1 mt-2 text-[46px] leading-[48px] font-semibold uppercase sm:text-[62px] sm:leading-[64px] movil:absolute movil:top-[213px] movil:left-[38px] movil:mt-0 movil:text-[46px] movil:leading-[48px] design:absolute design:top-[312px] design:left-[223px] design:mt-0 design:text-[82px] design:leading-[85px]">
+        <h1 className="drop-shadow-vernal-1 mt-2 text-[46px] leading-[48px] font-semibold uppercase sm:text-[62px] sm:leading-[64px] apilada:text-center movil:absolute movil:top-[607px] movil:left-[38px] movil:mt-0 movil:text-[46px] movil:leading-[48px] design:absolute design:top-[312px] design:left-[223px] design:mt-0 design:text-[82px] design:leading-[85px]">
           <span className="block text-white">Abogado</span>
           <span className="text-vernal-accent block">Vernal</span>
         </h1>
 
-        <p className="mt-8 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:absolute movil:top-[338px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[531px] design:left-[223px] design:mt-0 design:w-[560px] design:max-w-none design:leading-[17px]">
+        <p className="mt-8 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify apilada:mx-auto apilada:text-center movil:absolute movil:top-[732px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[531px] design:left-[223px] design:mt-0 design:w-[560px] design:max-w-none design:leading-[17px]">
           {"Antes de convertirse en abogado de inmigración, el "}
           <span className="text-vernal-accent">Abogado Vernal Farum</span>
           {' ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con la inmigración a Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que "cada cliente que llega a la oficina lleva a mi familia", no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda, es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos.'}
         </p>
 
-        {/* Tarjeta con la cita. En móvil y medidas intermedias va en flujo, debajo del texto. */}
-        <figure className="relative mt-10 max-w-[360px] p-8 movil:absolute movil:top-[1119px] movil:left-[184px] movil:mt-0 movil:h-[231px] movil:w-[214px] movil:max-w-none movil:p-0 design:absolute design:top-[634px] design:left-[1264px] design:mt-0 design:h-[348px] design:w-[322px] design:max-w-none design:p-0">
+        {/* Tarjeta con la cita. En la franja apilada va en flujo, debajo del texto y
+            a la izquierda del retrato. */}
+        <figure className="relative mt-10 max-w-[360px] p-8 apilada:mt-[230px] apilada:ml-[calc(50%-270px)] apilada:w-[260px] apilada:px-7 movil:absolute movil:top-[328px] movil:left-[184px] movil:mt-0 movil:h-[231px] movil:w-[214px] movil:max-w-none movil:p-0 design:absolute design:top-[634px] design:left-[1264px] design:mt-0 design:h-[348px] design:w-[322px] design:max-w-none design:p-0">
           {/* El móvil tiene su propia caja: 214×231, solo relleno radial, sin el
               trazo de 8 que lleva la de 1920. */}
           <svg
@@ -161,7 +170,7 @@ export function NosotrosHero() {
             height={72}
             className="relative h-[71.87px] w-[72.97px] movil:absolute movil:top-[33px] movil:left-[26px] movil:h-[48px] movil:w-[49px] design:absolute design:top-[50.1px] design:left-[40.5px]"
           />
-          <blockquote className="relative mt-6 text-[30px] leading-[32px] font-light whitespace-pre-line text-white movil:absolute movil:top-[100px] movil:left-[22px] movil:mt-0 movil:text-[20px] movil:leading-[21px] design:absolute design:top-[150px] design:left-[34px] design:mt-0 design:text-[36px] design:leading-[37px]">
+          <blockquote className="relative mt-6 text-[30px] leading-[32px] font-light whitespace-pre-line text-white apilada:text-[26px] apilada:leading-[28px] movil:absolute movil:top-[100px] movil:left-[22px] movil:mt-0 movil:text-[20px] movil:leading-[21px] design:absolute design:top-[150px] design:left-[34px] design:mt-0 design:text-[36px] design:leading-[37px]">
             {'"cada cliente\nque llega a la\noficina '}
             <span className="text-vernal-accent">{'lleva a\nmi familia"'}</span>
           </blockquote>

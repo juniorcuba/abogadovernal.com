@@ -179,7 +179,7 @@ export function Transmisiones() {
           <button
             type="button"
             aria-label="Ver la transmisión"
-            className="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 transition-transform hover:scale-105 movil:top-[85px] movil:left-[155px] movil:h-[42px] movil:w-[42px] movil:translate-x-0 movil:translate-y-0 design:top-[152px] design:left-[303px] design:translate-x-0 design:translate-y-0"
+            className="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:top-[85px] movil:left-[155px] movil:h-[42px] movil:w-[42px] movil:translate-x-0 movil:translate-y-0 design:top-[152px] design:left-[303px] design:translate-x-0 design:translate-y-0"
           >
             <span
               aria-hidden

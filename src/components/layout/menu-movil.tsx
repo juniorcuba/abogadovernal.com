@@ -245,7 +245,7 @@ export function MenuMovil() {
 
             <p className="mt-[36px] text-center text-[16px] leading-[17px] text-white">
               Llamanós{" "}
-              <a href={site.phoneHref} className="text-vernal-accent font-bold">
+              <a href={site.phoneHref} className="text-vernal-accent font-bold transition-colors hover:text-white">
                 {site.phone}
               </a>
             </p>
