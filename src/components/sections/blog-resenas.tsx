@@ -199,7 +199,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
                 <p className="mt-[18px] text-center text-[16px] leading-[17px] text-white movil:mt-[22px]">
                   {r.texto}
                 </p>
-                <p className="text-vernal-accent mt-[10px] text-center text-[16px] leading-[17px] font-bold movil:mt-[15px]">
+                <p className="text-vernal-accent mt-[10px] text-center text-[16px] leading-[17px] font-bold movil:mt-[15px] design:mt-[22px]">
                   {r.autor}
                 </p>
               </div>

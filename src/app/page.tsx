@@ -25,7 +25,9 @@ export default function HomePage() {
         <ComoTrabajamos />
         <Transmisiones />
         <Testimonios />
-        <BlogResenas className="design:-mt-[3px]" />
+        {/* Hasta el export del 2026-10-11 este bloque pisaba 3 px a testimonios;
+            ahora empieza justo donde acaba (y6920 → "Mantente informado" a 7071). */}
+        <BlogResenas className="design:mt-[1px]" />
       </main>
       <SiteFooter />
     </>

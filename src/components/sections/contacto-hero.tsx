@@ -86,26 +86,19 @@ export function ContactoHero() {
 
       <div className="relative mx-auto flex max-w-[1040px] flex-col gap-y-8 px-6 pt-[168px] pb-20 lg:px-12 apilada:items-center apilada:pt-[470px] apilada:text-center movil:block movil:h-[1392px] movil:max-w-none movil:p-0 design:block design:h-[1142px] design:max-w-[1920px] design:p-0">
         <h1 className="text-[48px] leading-[50px] uppercase sm:text-[64px] sm:leading-[67px] movil:absolute movil:top-[320px] movil:left-[38px] movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[217px] design:left-[237px] design:w-[914px] design:text-[82px] design:leading-[85.28px]">
-          <span className="text-vernal-accent block movil:hidden">Contáctanos</span>
-          <span className="block text-white movil:hidden">en Texas</span>
-          {/* El artboard de 402 trae otro titular, en tres líneas. */}
-          <span className="hidden text-white movil:block">Contacto</span>
-          <span className="text-vernal-accent hidden movil:block">
-            Abogado
-            <br />
+          {/* El mismo titular en los dos artboards; el de 402 lo parte en tres
+              líneas. Hasta el 2026-10-12 el escritorio decía "Contáctanos en
+              Texas", de un nodo anterior al export. */}
+          <span className="block text-white">Contacto</span>
+          <span className="text-vernal-accent block">
+            Abogado <br className="hidden movil:inline" />
             Vernal
           </span>
         </h1>
 
         <p className="max-w-[541px] text-[28px] leading-[30px] font-light text-white movil:absolute movil:top-[475px] movil:left-[38px] movil:w-[330px] movil:max-w-none movil:text-[24px] movil:leading-[25px] design:absolute design:top-[406px] design:left-[237px] design:w-[541px] design:text-[36px] design:leading-[37.44px]">
-          <span className="movil:hidden">
-            <span className="text-vernal-accent">Estamos para ayudarte, en </span>
-            Dallas, Houston, Austin, Fort Worth y San Antonio.
-          </span>
-          <span className="hidden movil:inline">
-            <span className="block">Estamos para ayudarte,</span>
-            <span className="text-vernal-accent">sin importar dónde te encuentres.</span>
-          </span>
+          <span className="block">Estamos para ayudarte,</span>
+          <span className="text-vernal-accent">sin importar dónde te encuentres.</span>
         </p>
 
         <p className="max-w-[580px] text-[16px] leading-[20px] text-white sm:text-justify apilada:text-center movil:absolute movil:top-[575px] movil:left-[42px] movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[547px] design:left-[237px] design:w-[580px] design:leading-[16.64px]">

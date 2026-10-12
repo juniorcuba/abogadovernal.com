@@ -326,7 +326,11 @@ function Tarjeta({
   const foto = FOTOS[servicio.id];
   const fotoMovil = FOTOS_MOVIL[servicio.id];
   const ajuste = AJUSTES[sede.slug]?.[servicio.id] ?? {};
-  const baja = ajuste.baja ?? 0;
+  // En la segunda y la tercera fila el archivo pone el título 8 y 9 más abajo
+  // dentro de la tarjeta que en la primera; el texto no se mueve, así que el
+  // hueco entre los dos encoge lo mismo.
+  const deFila = [0, 0, 8, 8, 9, 9][indice] ?? 0;
+  const baja = (ajuste.baja ?? 0) + deFila;
   const boton = celda.boton + (ajuste.boton ?? 0);
   const movil = MOVIL[sede.slug] ?? MOVIL.dallas;
   const partido = servicio.id === "deportacion";
@@ -441,7 +445,7 @@ function Tarjeta({
           </h2>
           <p
             className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[var(--mpt)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[var(--h)] design:leading-[17px]"
-            style={{ "--h": `${ajuste.hueco ?? servicio.hueco}px` } as React.CSSProperties}
+            style={{ "--h": `${(ajuste.hueco ?? servicio.hueco) - deFila}px` } as React.CSSProperties}
           >
             {textosDeSede[sede.slug]?.servicios[servicio.id] ??
               servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
