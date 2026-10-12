@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
 import {
-  preguntasSede,
   servicios,
   visasHumanitarias,
   type Sede,
@@ -505,94 +504,14 @@ export function SedeServicios({ sede }: { sede: Sede }) {
         ))}
         <TarjetaHumanitarias sede={sede} />
 
-        <p className="text-vernal-navy mt-6 flex items-center justify-center gap-x-4 text-center text-[18px] leading-[22px] movil:mt-[10.5px] movil:mb-[24px] movil:block movil:text-[16px] movil:leading-[17px] design:absolute design:top-[2315px] design:left-[656px] design:mt-0 design:gap-x-[24px] design:text-[20px] design:leading-[21px]">
+        <p className="text-vernal-navy mt-6 flex items-center justify-center gap-x-4 text-center text-[18px] leading-[22px] movil:mt-[-3px] movil:mb-[22.5px] movil:block movil:text-[16px] movil:leading-[17px] design:absolute design:top-[2315px] design:left-[656px] design:mt-0 design:gap-x-[24px] design:text-[20px] design:leading-[21px]">
           <Image src="/icons/sedes/edificio.svg" alt="" width={31} height={32} className="h-[32px] w-[31px] shrink-0 movil:mx-auto movil:block" />
-          <span className="design:pt-[5px]">{sede.direccion}</span>
-        </p>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------ preguntas */
-
-export function SedePreguntas() {
-  return (
-    <section className="relative overflow-hidden bg-black movil:h-[1192px] design:h-[1211px]">
-      <div aria-hidden className="pointer-events-none absolute inset-0 movil:h-[1192px] movil:w-[402px] movil:[transform:scaleX(-1)]">
-        <Image
-          src="/images/sedes/faq-fondo.webp"
-          alt=""
-          width={1923}
-          height={1205}
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.18] movil:inset-auto movil:top-[-99px] movil:left-[-841px] movil:h-[1423px] movil:w-[1792px] movil:max-w-none movil:object-fill design:inset-auto design:top-0 design:left-0 design:h-[1205px] design:w-[1923px] design:max-w-none"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(265.98deg,#000000_20.64%,#00000000_69.50%)] movil:bg-[linear-gradient(165.95deg,#000000_11.90%,#00000000_35.49%)]" />
-      </div>
-
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 movil:h-[1192px] movil:max-w-none movil:p-0 design:h-[1211px] design:max-w-[1920px] design:p-0">
-        <h2 className="text-center text-[34px] leading-[40px] font-light movil:absolute movil:top-[52px] movil:left-[47px] movil:w-[320px] movil:text-left movil:text-[32px] movil:leading-[33px] sm:text-[48px] sm:leading-[52px] design:absolute design:top-[91px] design:left-0 design:w-[1920px] design:text-[64px] design:leading-[67px]">
-          <span className="movil:hidden">
-            <span className="text-vernal-accent">
-              Las dudas que más <br className="hidden design:inline" />
-              escuchamos,
-            </span>{" "}
-            <span className="text-white">
-              respondidas <br className="hidden design:inline" />
-              con claridad.
-            </span>
+          {/* En el lienzo de 402 la dirección parte en tres renglones: caja de 210
+              centrada, a 9.5 del icono. */}
+          <span className="movil:mx-auto movil:mt-[9.5px] movil:block movil:w-[210px] design:pt-[5px]">
+            {sede.direccion}
           </span>
-          <span className="hidden movil:block">
-            <span className="text-vernal-accent">
-              Las dudas que <br />
-              más escuchamos,
-            </span>{" "}
-            <span className="text-white">
-              respondidas con <br />
-              claridad.
-            </span>
-          </span>
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-[680px] text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[216px] movil:left-[42px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[338px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
-          Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una
-          y otra vez señal de que hay información que no siempre es fácil de encontrar,
-          o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra
-          comunidad, explicadas de forma simple y directa.
         </p>
-
-        <ul className="mt-10 border-b border-white movil:absolute movil:top-[389px] movil:left-[33px] movil:mt-0 movil:w-[336px] movil:border-b-0 design:absolute design:top-[449px] design:left-[239px] design:mt-0 design:w-[1441px]">
-          {preguntasSede.map((p) => (
-            <li key={p.texto} className="relative border-t border-white movil:h-[122px] design:h-[109px]">
-              <Link
-                href="/faqs"
-                className="group flex flex-col gap-y-2 py-5 sm:flex-row sm:items-center sm:justify-between movil:block movil:h-full movil:py-0 design:block design:h-full design:py-0"
-              >
-                <span className="text-[20px] leading-[24px] font-light text-white movil:absolute movil:top-[28px] movil:left-[9px] movil:w-[210px] movil:text-[18px] movil:leading-[19px] design:absolute design:top-[44px] design:left-[38px] design:text-[24px] design:leading-[25px]">
-                  {p.texto}
-                </span>
-                <span className="text-vernal-accent flex shrink-0 items-center gap-x-6 text-[18px] leading-[21px] font-medium group-hover:underline movil:absolute movil:top-[30px] movil:left-[234px] movil:block movil:w-[90px] movil:gap-x-0 movil:text-center movil:text-[16px] movil:leading-[17px] design:contents design:text-[20px]">
-                  <span className="movil:block design:absolute design:top-[44px] design:left-[1207px]">Ver respuesta</span>
-                  <span
-                    aria-hidden
-                    className="text-[34px] leading-none font-light movil:absolute movil:top-[38.5px] movil:left-0 movil:w-full movil:text-[32px] movil:leading-[32px] design:absolute design:top-[33.5px] design:left-[1364px] design:text-[41px] design:leading-[42px]"
-                  >
-                    +
-                  </span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-10 flex justify-center movil:absolute movil:top-[1050px] movil:left-[62px] movil:mt-0 movil:block design:absolute design:top-[1067px] design:left-[821px] design:mt-0 design:block">
-          <Link
-            href="/faqs"
-            className="bg-vernal-accent text-vernal-navy inline-flex h-[52px] w-[277px] items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90"
-          >
-            Ver más preguntas
-          </Link>
-        </div>
       </div>
     </section>
   );
