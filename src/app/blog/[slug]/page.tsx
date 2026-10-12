@@ -4,19 +4,17 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { AgendaConsulta } from "@/components/sections/agenda-consulta";
 import { Articulo } from "@/components/sections/articulo";
-import { articulo } from "@/lib/articulo";
+import { articulos, buscarArticulo } from "@/lib/articulo";
 
 /**
  * La página de un artículo — frame `802:564` de Figma, 1920 × 4346.
  *
- * Solo hay un artículo escrito, así que de momento esta ruta solo responde a su
- * slug. Las seis tarjetas del listado llevan todas aquí; cuando lleguen los
- * otros cinco textos, esto pasa a leer de una lista y `generateStaticParams`
- * devuelve todos.
+ * Ese frame es el del primer artículo; los seis de `articulos` usan la misma
+ * maqueta y cada tarjeta del listado lleva al suyo.
  */
 
 export function generateStaticParams() {
-  return [{ slug: articulo.slug }];
+  return articulos.map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({
@@ -25,11 +23,11 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  if (slug !== articulo.slug) return {};
+  const articulo = buscarArticulo(slug);
+  if (!articulo) return {};
   return {
     title: articulo.titulo.join(" ").replace(/\s+/g, " "),
-    description:
-      "Qué es la Visa VAWA, a quién protege y qué beneficios da: independencia del agresor, permiso de trabajo, residencia permanente y protección para tus hijos.",
+    description: articulo.descripcion,
   };
 }
 
@@ -39,13 +37,14 @@ export default async function ArticuloPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (slug !== articulo.slug) notFound();
+  const articulo = buscarArticulo(slug);
+  if (!articulo) notFound();
 
   return (
     <>
       <SiteHeader />
       <main className="relative">
-        <Articulo />
+        <Articulo articulo={articulo} />
         {/* En el archivo el bloque se monta 58 sobre la banda cian. */}
         <AgendaConsulta solape={58} solapeMovil={38} />
       </main>

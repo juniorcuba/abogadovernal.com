@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
-import { entradasBlog } from "@/lib/blog";
-import { articulo, type NodoArticulo, type TrozoArticulo } from "@/lib/articulo";
+import { entradasBlog, topTitulo, type EntradaBlog } from "@/lib/blog";
+import type { Articulo as DatosArticulo, NodoArticulo, TrozoArticulo } from "@/lib/articulo";
 
 /**
  * La vista de un artículo — frame `802:564` de Figma, 1920 × 4346.
@@ -30,6 +30,18 @@ import { articulo, type NodoArticulo, type TrozoArticulo } from "@/lib/articulo"
  *           y la tarjeta lateral a (33, 2469), que
  *           conserva la geometría de 1920 (297×345)
  *   cian    3597..5268 con las tres entradas · agenda 5232 · footer
+ *
+ * Esas medidas son las del artículo del archivo (el de la Visa VAWA). Desde el
+ * 2026-10-12 hay seis, de largos distintos, así que la banda blanca ya no tiene
+ * alto fijo: el cuerpo va en flujo y la banda mide lo que mida el texto, con
+ * los mismos márgenes (65 arriba y 67.5 bajo el botón en 1920; 37 arriba, la
+ * tarjeta 32.6 bajo el botón y 48 al final en 402). Con el artículo del archivo
+ * sale la misma altura de antes. En 1920 la tarjeta lateral sigue en y708 en
+ * ese artículo; en los demás, que son más cortos y no llevan foto, sube a y65,
+ * a la altura del primer párrafo, y la banda no baja de lo que ella ocupa.
+ *
+ * La cabecera usa la foto de la tarjeta del artículo. La del archivo tiene su
+ * encuadre a mano; las demás se ajustan con `object-cover` y `heroFoco`.
  */
 
 /** Posición de cada tarjeta de la banda cian, en el orden del archivo. */
@@ -39,17 +51,22 @@ const TARJETAS = [
   { left: 1228.5, titulo: 268.4 },
 ];
 
-export function Articulo() {
+/** El artículo del archivo de diseño: el único con la foto encuadrada a mano. */
+const SLUG_DISENO = "visa-vawa-camino-libertad-residencia";
+
+export function Articulo({ articulo }: { articulo: DatosArticulo }) {
+  const entrada = entradasBlog.find((e) => e.slug === articulo.slug) ?? entradasBlog[0];
   return (
     <>
-      <ArticuloHero />
-      <ArticuloCuerpo />
-      <ArticuloMas />
+      <ArticuloHero articulo={articulo} entrada={entrada} />
+      <ArticuloCuerpo articulo={articulo} />
+      <ArticuloMas slug={articulo.slug} />
     </>
   );
 }
 
-function ArticuloHero() {
+function ArticuloHero({ articulo, entrada }: { articulo: DatosArticulo; entrada: EntradaBlog }) {
+  const delDiseno = articulo.slug === SLUG_DISENO;
   return (
     <section className="relative -mt-[128px] overflow-hidden bg-[#0F0F10] movil:-mt-[106px] movil:h-[735px] design:h-[639px]">
       {/* El archivo voltea la foto y los dos degradados en horizontal. */}
@@ -58,13 +75,19 @@ function ArticuloHero() {
         className="pointer-events-none absolute inset-0 overflow-hidden [transform:scaleX(-1)] movil:h-[735px] movil:w-[402px] design:top-0 design:left-[6px] design:h-[639px] design:w-[1918px]"
       >
         <Image
-          src={entradasBlog[0].imagen}
+          src={entrada.imagen}
           alt=""
-          width={1408}
-          height={768}
+          width={delDiseno ? 1408 : entrada.foto.w}
+          height={delDiseno ? 768 : entrada.foto.h}
           priority
           sizes="(min-width: 1280px) 1918px, 100vw"
-          className="absolute inset-0 h-full w-full object-cover movil:top-0 movil:left-[-566px] movil:h-[632px] movil:w-[1158px] movil:max-w-none movil:object-fill design:top-[-47px] design:left-[-351px] design:h-[1122px] design:w-[2057px] design:max-w-none design:object-fill"
+          className={`absolute inset-0 h-full w-full object-cover ${
+            delDiseno
+              ? "movil:top-0 movil:left-[-566px] movil:h-[632px] movil:w-[1158px] movil:max-w-none movil:object-fill design:top-[-47px] design:left-[-351px] design:h-[1122px] design:w-[2057px] design:max-w-none design:object-fill"
+              : // Entre 561 y 1279 la foto empieza bajo la cabecera, que si no tapa la cara.
+                "apilada:top-[128px] apilada:h-[calc(100%-128px)]"
+          }`}
+          style={delDiseno ? undefined : { objectPosition: entrada.heroFoco ?? "50% 30%" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(81.83deg,#000000_12.36%,#0A0A0A00_25.46%)] movil:bg-[linear-gradient(156.97deg,#000000_-6.04%,#0A0A0A00_58.38%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(304.98deg,#000000_20.77%,#00000000_66.11%)] movil:bg-[linear-gradient(323.90deg,#000000_50.38%,#00000000_65.60%)]" />
@@ -79,7 +102,11 @@ function ArticuloHero() {
           Abogado Vernal
         </p>
 
-        <h1 className="mt-3 text-[30px] leading-[34px] font-light text-white sm:text-[40px] sm:leading-[44px] movil:absolute movil:top-[248px] movil:left-[38px] movil:mt-0 movil:w-[290px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[316px] design:left-[246px] design:mt-0 design:w-[1000px] design:text-[40px] design:leading-[42px]">
+        {/* En 402 las etiquetas cuelgan del titular (25.5 por debajo), no de una
+            y fija: el titular ocupa de cinco a ocho renglones según el artículo.
+            Fuera de ese lienzo el envoltorio es `contents` y no cambia nada. */}
+        <div className="contents movil:absolute movil:top-[248px] movil:left-[38px] movil:block movil:w-[290px]">
+        <h1 className="mt-3 text-[30px] leading-[34px] font-light text-white sm:text-[40px] sm:leading-[44px] movil:mt-0 movil:text-[46px] movil:leading-[48px] design:absolute design:top-[316px] design:left-[246px] design:mt-0 design:w-[1000px] design:text-[40px] design:leading-[42px]">
           {articulo.titulo.map((linea) => (
             <span key={linea} className="design:block">
               {linea}{" "}
@@ -87,34 +114,36 @@ function ArticuloHero() {
           ))}
         </h1>
 
-        <ul className="mt-6 flex gap-x-[5px] text-[10px] leading-[12px] font-medium text-white movil:absolute movil:top-[609.5px] movil:left-[38px] movil:mt-0 design:absolute design:top-[463.5px] design:left-[247.5px] design:mt-0 design:block">
-          {articulo.etiquetas.map((t, i) => (
+        <ul className="mt-6 flex gap-x-[5px] text-[10px] leading-[12px] font-medium text-white movil:mt-[25.5px] design:absolute design:top-[463.5px] design:left-[247.5px] design:mt-0">
+          {entrada.etiquetas.map((t) => (
             <li
               key={t}
-              className="flex items-center justify-center h-[18px] w-[var(--w)] shrink-0 rounded-[3.5px] border border-vernal-accent whitespace-nowrap design:absolute design:top-0 design:left-[var(--x)] design:h-[18px] design:w-[var(--w)] design:p-0"
-              style={
-                {
-                  "--x": `${i === 0 ? 0 : 75}px`,
-                  "--w": `${i === 0 ? 70 : 85}px`,
-                } as React.CSSProperties
-              }
+              className="flex h-[18px] shrink-0 items-center justify-center rounded-[3.5px] border border-vernal-accent px-[9px] whitespace-nowrap"
             >
               {t}
             </li>
           ))}
         </ul>
+        </div>
       </div>
     </section>
   );
 }
 
-function ArticuloCuerpo() {
+function ArticuloCuerpo({ articulo }: { articulo: DatosArticulo }) {
+  const delDiseno = articulo.slug === SLUG_DISENO;
   return (
-    <section className="relative bg-white movil:h-[2862px] design:h-[1813px]">
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[2862px] movil:max-w-none movil:p-0 design:h-[1813px] design:max-w-[1920px] design:p-0">
-        <div className="text-[16px] leading-[22px] text-black sm:text-justify movil:absolute movil:top-[37px] movil:left-[38px] movil:w-[325px] movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[65px] design:left-[250px] design:w-[1070px] design:text-justify design:leading-[17px]">
+    <section className="relative bg-white">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:max-w-none movil:px-0 movil:pt-0 movil:pb-[48px] design:min-h-[477.5px] design:max-w-[1920px] design:p-0">
+        <div className="text-[16px] leading-[22px] text-black sm:text-justify movil:ml-[38px] movil:w-[325px] movil:pt-[37px] movil:text-justify movil:text-[15px] movil:leading-[16px] design:ml-[250px] design:w-[1070px] design:pt-[65px] design:pb-[67.5px] design:text-justify design:leading-[17px]">
           {articulo.cuerpo.map((nodo, i) => (
-            <Nodo key={i} nodo={nodo} previo={articulo.cuerpo[i - 1]} primero={i === 0} />
+            <Nodo
+              key={i}
+              nodo={nodo}
+              previo={articulo.cuerpo[i - 1]}
+              primero={i === 0}
+              imagen={articulo.imagen}
+            />
           ))}
 
           <Link
@@ -125,16 +154,18 @@ function ArticuloCuerpo() {
           </Link>
         </div>
 
-        <TarjetaNoticias />
+        <TarjetaNoticias arriba={delDiseno ? 708 : 65} />
       </div>
     </section>
   );
 }
 
 /** La tarjeta oscura de la derecha; por debajo de 1280 va al final del cuerpo. */
-function TarjetaNoticias() {
+function TarjetaNoticias({ arriba }: { arriba: number }) {
   return (
-    <aside className="relative mt-12 overflow-hidden p-8 movil:absolute movil:top-[2469px] movil:left-[33px] movil:mt-0 movil:h-[345px] movil:w-[297px] movil:p-0 design:absolute design:top-[708px] design:left-[1381px] design:mt-0 design:h-[345px] design:w-[297px] design:p-0">
+    <aside className="relative mt-12 overflow-hidden p-8 movil:mt-[32.6px] movil:ml-[33px] movil:h-[345px] movil:w-[297px] movil:p-0 design:absolute design:top-[var(--t)] design:left-[1381px] design:mt-0 design:h-[345px] design:w-[297px] design:p-0"
+      style={{ "--t": `${arriba}px` } as React.CSSProperties}
+    >
       <svg
         aria-hidden
         className="absolute inset-0 h-full w-full"
@@ -178,22 +209,23 @@ function TarjetaNoticias() {
   );
 }
 
-function ArticuloMas() {
+function ArticuloMas({ slug }: { slug: string }) {
+  // Los tres primeros del listado que no sean el que se está leyendo.
+  const otros = entradasBlog.filter((e) => e.slug !== slug).slice(0, 3);
   return (
-    // La banda cian se monta 161 sobre el final de la banda blanca.
-    <section className="relative overflow-hidden bg-[#08B6FF] movil:h-[1671px] design:mt-[-161px] design:h-[890px]">
+    <section className="relative overflow-hidden bg-[#08B6FF] movil:h-[1671px] design:h-[890px]">
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[1671px] movil:max-w-none movil:p-0 design:h-[890px] design:max-w-[1920px] design:p-0">
         <h2 className="text-center text-[28px] leading-[32px] font-light text-black sm:text-[36px] sm:leading-[38px] movil:absolute movil:top-[35px] movil:left-[61px] movil:w-[280px] movil:text-[32px] movil:leading-[33px] design:absolute design:top-[80px] design:left-0 design:w-full design:text-[36px] design:leading-[37.44px]">
           No te pierdas las ultimas noticias
         </h2>
 
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 apilada:grid-cols-2 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:w-full">
-          {entradasBlog.slice(0, 3).map((e, i) => (
+          {otros.map((e, i) => (
             <TarjetaArticulo
-              key={e.titulo}
+              key={e.slug}
               entrada={e}
-              arriba={TARJETAS[i].titulo}
-              icono={{ left: 40.5, top: TARJETAS[i].titulo - 51 }}
+              arriba={topTitulo(e.titulo, TARJETAS[i].titulo)}
+              icono={{ left: 40.5, top: topTitulo(e.titulo, TARJETAS[i].titulo) - 51 }}
               id={`articulo-trazo-${i}`}
               className="movil:absolute movil:top-[var(--mt)] movil:left-[23px] design:top-[165.5px] design:left-[var(--l)]"
               estilo={
@@ -223,10 +255,12 @@ function Nodo({
   nodo,
   previo,
   primero,
+  imagen,
 }: {
   nodo: NodoArticulo;
   previo?: NodoArticulo;
   primero?: boolean;
+  imagen?: string;
 }) {
   if (nodo.tipo === "titulo" || nodo.tipo === "titulo2") {
     // Lo que respira por arriba depende de lo que venga antes: tras la lista
@@ -253,25 +287,30 @@ function Nodo({
   }
 
   if (nodo.tipo === "lista") {
+    // La lista del archivo no lleva viñeta; las del documento sí, o número.
+    const Lista = nodo.estilo === "numeros" ? "ol" : "ul";
+    const marca =
+      nodo.estilo === "numeros" ? "list-decimal" : nodo.estilo === "vinetas" ? "list-disc" : "";
     return (
-      <ul className="mt-4 movil:mt-[16px] design:mt-[17px]">
+      <Lista className={`mt-4 movil:mt-[16px] design:mt-[17px] ${marca}`}>
         {nodo.items.map((item, i) => (
-          <li key={i} className="movil:ml-[22px] design:ml-[24px]">
+          <li key={i} className={`movil:ml-[22px] design:ml-[24px] ${nodo.estilo ? "ml-5" : ""}`}>
             {item.map((t, j) => (
               <Trozo key={j} trozo={t} />
             ))}
           </li>
         ))}
-      </ul>
+      </Lista>
     );
   }
 
   if (nodo.tipo === "imagen") {
+    if (!imagen) return null;
     // La caja recorta a 539×304 una foto de 539×357 subida 26.
     return (
       <span className="relative mt-8 block overflow-hidden movil:mt-[35.5px] movil:ml-[-12.5px] movil:h-[198px] movil:w-[351px] movil:border-[2.5px] movil:border-[#08B6FF] design:mt-[47.5px] design:ml-[4.5px] design:h-[304px] design:w-[539px]">
         <Image
-          src={articulo.imagen}
+          src={imagen}
           alt=""
           width={539}
           height={357}

@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
-import { articulo } from "@/lib/articulo";
-import { entradaBlogEtiquetas, entradaBlogResumen, type EntradaBlog } from "@/lib/blog";
+import type { EntradaBlog } from "@/lib/blog";
 
 /**
  * Tarjeta de artículo del blog: 438×575 con la foto a sangre, el chip "BLOG",
- * el título, la entradilla, el botón y dos etiquetas. Sale igual en /blog y al
+ * el título, la entradilla, el botón y las etiquetas (de ancho libre: en el
+ * archivo eran siempre las mismas dos, de 70 y 85). Sale igual en /blog y al
  * cierre de /testimoniales, así que vive aparte.
  *
  * `arriba` es la y del título dentro de la tarjeta: el archivo la coloca a mano
@@ -103,21 +103,20 @@ export function TarjetaArticulo({
           </h3>
         </div>
         <p className="mt-3 text-[13px] leading-[16px] text-white movil:absolute movil:top-[275px] movil:left-[30px] movil:mt-0 movil:w-[270px] movil:leading-[14px] design:absolute design:top-[391.5px] design:left-[40.5px] design:mt-0 design:w-[340px] design:leading-[14px]">
-          {entradaBlogResumen}
+          {entrada.resumen}
         </p>
         <Link
-          href={`/blog/${articulo.slug}`}
+          href={`/blog/${entrada.slug}`}
           className="bg-vernal-accent text-vernal-navy relative mt-5 flex h-[52px] w-full items-center pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[223px] movil:absolute movil:top-[337px] movil:left-[30px] movil:mt-0 movil:w-[223px] design:absolute design:top-[446.5px] design:left-[40.5px] design:mt-0 design:w-[223px]"
         >
           Leer articulo
           <FlechaEnlace className="ml-auto mr-[25px] h-[15px] w-[25px] shrink-0 movil:absolute movil:top-[18.5px] movil:left-[171px] movil:m-0 design:absolute design:top-[18.5px] design:left-[171px] design:m-0" />
         </Link>
         <p className="mt-4 flex gap-x-[5px] text-[10px] leading-[12px] font-medium text-white movil:absolute movil:top-[405.5px] movil:left-[30px] movil:mt-0 design:absolute design:top-[527px] design:left-[40px] design:mt-0">
-          {entradaBlogEtiquetas.map((t, k) => (
+          {entrada.etiquetas.map((t) => (
             <span
               key={t}
-              className="flex items-center justify-center h-[18px] w-[var(--w)] shrink-0 rounded-[3.5px] border border-vernal-accent whitespace-nowrap movil:h-[18px] movil:w-[var(--w)] movil:p-0 design:h-[18px] design:w-[var(--w)] design:p-0"
-              style={{ "--w": `${k === 0 ? 70 : 85}px` } as React.CSSProperties}
+              className="flex h-[18px] shrink-0 items-center justify-center rounded-[3.5px] border border-vernal-accent px-[9px] whitespace-nowrap"
             >
               {t}
             </span>

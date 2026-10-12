@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
-import { entradasBlog, filtrosBlog } from "@/lib/blog";
+import { entradasBlog, filtrosBlog, topTitulo } from "@/lib/blog";
 
 /**
  * /blog — frame `703:807` de Figma (2026-09-26).
@@ -12,7 +12,7 @@ import { entradasBlog, filtrosBlog } from "@/lib/blog";
  *   listado  875..2511 sobre blanco: titular, buscador, filtros y seis tarjetas
  *
  * Los filtros vienen marcados a mano en el archivo (cuatro activos); aquí se
- * pintan igual, pero todavía no filtran nada: no hay artículos reales.
+ * pintan igual, pero todavía no filtran nada.
  *
  * El lienzo de 402 sale de "VESPER AGENCY LANDING - MOBILE (7)" (402 x 7426):
  *
@@ -232,10 +232,10 @@ export function BlogListado() {
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 apilada:grid-cols-2 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:w-full">
           {entradasBlog.map((e, i) => (
             <TarjetaArticulo
-              key={e.titulo}
+              key={e.slug}
               entrada={e}
-              arriba={TARJETAS[i].titulo}
-              icono={{ left: 40.5, top: TARJETAS[i].titulo - 51 }}
+              arriba={topTitulo(e.titulo, TARJETAS[i].titulo)}
+              icono={{ left: 40.5, top: topTitulo(e.titulo, TARJETAS[i].titulo) - 51 }}
               id={`blog-trazo-${i}`}
               className="movil:absolute movil:top-[var(--mt)] movil:left-[23px] design:top-[var(--t)] design:left-[var(--l)]"
               estilo={
