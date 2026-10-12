@@ -82,9 +82,12 @@ export const sedes: Sede[] = [
     hero: {
       conMapa: true,
       top: 0,
-      foto: { src: "/images/sedes/dallas-foto.webp", left: 608, width: 1312 },
+      // Export del 2026-10-11: la foto pasó a ser la Reunion Tower de día (la
+      // misma del lienzo de 402), girada ~1.6° por la matriz del patrón, y el
+      // segundo degradado cambió de ángulo. El webp ya lleva la matriz aplicada.
+      foto: { src: "/images/sedes/dallas-foto-2.webp", left: 608, width: 1312 },
       fotoMovil: { src: "/images/sedes/dallas-foto-movil.webp", left: -338, top: 17, width: 899, height: 609 },
-      degradado: DEGRADADO_BASE,
+      degradado: "linear-gradient(256.89deg,#0F0F1000 41.83%,#0F0F10 62.26%)",
     },
   },
   {
@@ -205,10 +208,22 @@ export const servicios: Servicio[] = [
   },
   { id: "deportacion", titulo: "Defensa Contra la Deportación", texto: TEXTO_DEPORTACION, hueco: 39 },
   { id: "visas-juveniles", titulo: "Visas Juveniles", texto: TEXTO_JUVENILES, hueco: 39 },
-  // PENDIENTE: el archivo repite aquí el texto de Deportación.
-  { id: "visa-k1", titulo: "Visa K1 (Prometidos)", texto: TEXTO_DEPORTACION, hueco: 31 },
-  // PENDIENTE: el archivo repite aquí el texto de Visas Juveniles.
-  { id: "habeas-corpus", titulo: "Habeas Corpus", texto: TEXTO_JUVENILES, hueco: 31 },
+  // Estas dos repetían los textos de Deportación y de Visas Juveniles; el
+  // export de Dallas del 2026-10-11 ya trae los suyos.
+  {
+    id: "visa-k1",
+    titulo: "Visa K1 (Prometidos)",
+    texto:
+      "Si eres ciudadano americano en {ciudad} y tu prometido(a) vive en el extranjero, la visa K1 te permite traerlo(a) a Estados Unidos para casarse dentro de los primeros 90 días de su llegada. Te ayudamos a preparar la petición, reunir la evidencia de la relación, y entender los siguientes pasos una vez que tu prometido(a) esté en el país.",
+    hueco: 31,
+  },
+  {
+    id: "habeas-corpus",
+    titulo: "Habeas Corpus",
+    texto:
+      "Si tú o un ser querido está detenido por inmigración de forma que consideras injusta o ilegal, un recurso de Habeas Corpus puede ser el camino para impugnar esa detención ante una corte federal. Actuamos con rapidez en estos casos, ya que el tiempo es crítico cuando alguien está detenido.",
+    hueco: 31,
+  },
 ];
 
 export const visasHumanitarias = [

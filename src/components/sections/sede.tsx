@@ -222,7 +222,7 @@ function BotonMasInfo({ top }: { top?: number }) {
       }`}
       style={top === undefined ? undefined : ({ "--bt": `${top}px` } as React.CSSProperties)}
     >
-      Mas información
+      Más información
       <FlechaEnlace className="absolute top-[18.5px] left-[171px] h-[15px] w-[25px]" />
     </Link>
   );
