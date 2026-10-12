@@ -39,7 +39,7 @@ export default async function SedePage({ params }: { params: Promise<{ sede: str
         <SedeServicios sede={sede} />
         <SedePreguntas />
         {/* En el archivo el bloque se monta 71px sobre las preguntas. */}
-        <AgendaConsulta solape={71} solapeMovil={36} />
+        <AgendaConsulta solape={71} solapeMovil={28} />
       </main>
       <SiteFooter />
     </>

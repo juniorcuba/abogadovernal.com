@@ -17,13 +17,14 @@ import { CamposConsulta } from "@/components/ui/campos-consulta";
  *
  * `solape` es cuánto se mete sobre la sección anterior (71 en las sedes).
  *
- * En el lienzo de 402 (artboard "VESPER AGENCY LANDING - MOBILE (8)", y1924)
- * mide 402×1012 y se queda sin título y sin texto:
+ * En el lienzo de 402 se queda sin título y sin texto. Desde el export del
+ * 2026-10-11 ("… FAQ MOBILE", y1926) mide 402×943 —antes 1012—, con la foto
+ * más pequeña para que se vea la cabeza entera:
  *
- *   fondo    la misma foto, 1144×452 en (−560, 0), y encima
- *            linear-gradient(354°, negro 57% → transparente 61.08%)
- *   sello    154.45×154.45 en (232, 290.9)
- *   campos   x39 y466, caja de 325; el aviso respira 27.5
+ *   fondo    la misma foto, 908×359 en (−397, 0), y encima
+ *            linear-gradient(356.51°, negro 64.47% → transparente 77.30%)
+ *   sello    125.7×125.7 en (246.3, 249.9)
+ *   campos   x38 y395, caja de 325; el aviso respira 27.5
  */
 export function AgendaConsulta({
   solape = 0,
@@ -35,7 +36,7 @@ export function AgendaConsulta({
 }) {
   return (
     <section
-      className="relative overflow-hidden bg-[#0F0F10] movil:mt-[calc(var(--solape-movil)*-1)] movil:h-[1012px] design:mt-[calc(var(--solape)*-1)] design:h-[755px] design:overflow-visible design:bg-transparent"
+      className="relative overflow-hidden bg-[#0F0F10] movil:mt-[calc(var(--solape-movil)*-1)] movil:h-[943px] design:mt-[calc(var(--solape)*-1)] design:h-[755px] design:overflow-visible design:bg-transparent"
       style={{ "--solape": `${solape}px`, "--solape-movil": `${solapeMovil}px` } as React.CSSProperties}
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -45,12 +46,12 @@ export function AgendaConsulta({
           width={1923}
           height={760}
           sizes="(min-width: 1280px) 1920px, 100vw"
-          className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-60 sm:opacity-100 movil:top-0 movil:left-[-560px] movil:h-[452px] movil:w-[1144px] movil:max-w-none movil:opacity-100 movil:object-fill design:w-[1920px] design:max-w-none"
+          className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-60 sm:opacity-100 movil:top-0 movil:left-[-397px] movil:h-[359px] movil:w-[908px] movil:max-w-none movil:opacity-100 movil:object-fill design:w-[1920px] design:max-w-none"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#0F0F10_30%,#0F0F1000_75%)] movil:bg-[linear-gradient(354deg,#000000_57%,#00000000_61.08%)] design:hidden" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#0F0F10_30%,#0F0F1000_75%)] movil:bg-[linear-gradient(356.51deg,#000000_64.47%,#00000000_77.30%)] design:hidden" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 movil:h-[1012px] movil:max-w-none movil:p-0 design:h-[755px] design:max-w-[1920px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 movil:h-[943px] movil:max-w-none movil:p-0 design:h-[755px] design:max-w-[1920px] design:p-0">
         <h2 className="text-[38px] leading-[42px] font-semibold uppercase movil:hidden sm:text-[48px] sm:leading-[52px] design:absolute design:top-[145.23px] design:left-[265px] design:w-[722px] design:text-[64px] design:leading-[66.56px]">
           <span className="text-white">Agenda</span>{" "}
           <span className="text-vernal-accent">tu consulta</span>
@@ -60,7 +61,7 @@ export function AgendaConsulta({
           <br className="hidden sm:inline" /> y respuestas a las dudas más comunes de nuestra comunidad.
         </p>
 
-        <form className="mt-8 max-w-[565px] movil:absolute movil:top-[466px] movil:left-[39px] movil:mt-0 movil:w-[325px] movil:max-w-none design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
+        <form className="mt-8 max-w-[565px] movil:absolute movil:top-[395px] movil:left-[38px] movil:mt-0 movil:w-[325px] movil:max-w-none design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
           <CamposConsulta espaciado="bloque" />
         </form>
 
@@ -72,7 +73,7 @@ export function AgendaConsulta({
           aria-hidden
           width={240}
           height={240}
-          className="pointer-events-none absolute hidden movil:top-[290.9px] movil:left-[232px] movil:block movil:h-[154.45px] movil:w-[154.45px] movil:max-w-none design:top-[456px] design:left-[1433px] design:block design:h-[239.22px] design:w-[239.22px] design:max-w-none"
+          className="pointer-events-none absolute hidden movil:top-[249.9px] movil:left-[246.3px] movil:block movil:h-[125.7px] movil:w-[125.7px] movil:max-w-none design:top-[456px] design:left-[1433px] design:block design:h-[239.22px] design:w-[239.22px] design:max-w-none"
         />
       </div>
     </section>

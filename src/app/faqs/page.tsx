@@ -29,7 +29,8 @@ export default function FaqsPage() {
       <SiteHeader />
       <main className="relative">
         <FaqsPreguntas />
-        <AgendaConsulta />
+        {/* En el lienzo de 402 la banda empieza 2 px por debajo de las preguntas. */}
+        <AgendaConsulta solapeMovil={-2} />
       </main>
       <SiteFooter />
     </>

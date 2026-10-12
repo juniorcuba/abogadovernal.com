@@ -43,7 +43,7 @@ export default function BlogPage() {
           boton={{ texto: "Ver más preguntas", href: "/faqs" }}
         />
         {/* En el archivo el bloque se monta 59px sobre las preguntas. */}
-        <AgendaConsulta solape={59} solapeMovil={36} />
+        <AgendaConsulta solape={59} solapeMovil={28} />
       </main>
       <SiteFooter />
     </>
