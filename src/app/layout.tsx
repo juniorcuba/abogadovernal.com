@@ -57,9 +57,6 @@ export default function RootLayout({
         <LienzoDiseno>
           {children}
           <FloatingCta />
-          {/* En móvil el CTA es una barra fija de 99px: este hueco evita que
-              tape el final del footer. */}
-          <div aria-hidden className="hidden h-[99px] bg-[#0F0F0F] movil:block" />
         </LienzoDiseno>
         {/*
           El lienzo se maqueta a 1920 y se escala para caber en la ventana. Esa

@@ -25,6 +25,12 @@ export const site = {
    * haya, lleva al canal.
    */
   youtube: "https://www.youtube.com/@abogadovernal",
+  /**
+   * Enlace de WhatsApp del despacho: el mismo que usa su sitio anterior
+   * (abogadovernal.com) en todos sus botones. Es un enlace de mensaje de
+   * WhatsApp Business, no un número; lo gestiona el despacho.
+   */
+  whatsappUrl: "https://wa.me/message/6F2TF2VLOWUGP1",
 } as const;
 
 export type Office = {
