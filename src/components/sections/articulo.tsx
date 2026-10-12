@@ -64,7 +64,7 @@ function ArticuloHero() {
           height={768}
           priority
           sizes="(min-width: 1280px) 1918px, 100vw"
-          className="absolute inset-0 h-full w-full object-cover movil:top-[21px] movil:left-[-528px] movil:h-[591px] movil:w-[1083px] movil:max-w-none movil:object-fill design:top-[-47px] design:left-[-351px] design:h-[1122px] design:w-[2057px] design:max-w-none design:object-fill"
+          className="absolute inset-0 h-full w-full object-cover movil:top-0 movil:left-[-566px] movil:h-[632px] movil:w-[1158px] movil:max-w-none movil:object-fill design:top-[-47px] design:left-[-351px] design:h-[1122px] design:w-[2057px] design:max-w-none design:object-fill"
         />
         <div className="absolute inset-0 bg-[linear-gradient(81.83deg,#000000_12.36%,#0A0A0A00_25.46%)] movil:bg-[linear-gradient(156.97deg,#000000_-6.04%,#0A0A0A00_58.38%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(304.98deg,#000000_20.77%,#00000000_66.11%)] movil:bg-[linear-gradient(323.90deg,#000000_50.38%,#00000000_65.60%)]" />
