@@ -206,6 +206,61 @@ const AJUSTES: Record<string, Record<string, { baja?: number; hueco?: number; bo
   },
 };
 
+/**
+ * El lienzo de 402, ciudad por ciudad (artboards "… <CIUDAD> MOBILE" del export
+ * del 2026-10-11). Las tarjetas miden lo mismo en todas (520 la primera, 500 las
+ * demás, 1081 la de visas) y lo que cambia es dónde caen el título, el texto y
+ * el botón dentro de cada una, porque el archivo centra a mano cada bloque.
+ * Todo son `top` relativos a la tarjeta. `subtitulo` es la segunda línea del
+ * título tal cual la escribe cada artboard ("en Dallas", "Austin, TX"…).
+ */
+const MOVIL: Record<
+  string,
+  {
+    subtitulo: string;
+    titulo: number[];
+    texto: number[];
+    boton: number[];
+    humanitarias: { titulo: number; texto: number };
+  }
+> = {
+  dallas: {
+    subtitulo: "en Dallas",
+    titulo: [123.5, 123.5, 123.5, 123.5, 123.5, 123.5],
+    texto: [184.5, 205.5, 212.5, 197.4, 205.4, 206.3],
+    boton: [432.5, 419.5, 419.5, 419.5, 402.5, 419.5],
+    humanitarias: { titulo: 134.5, texto: 205.4 },
+  },
+  houston: {
+    subtitulo: "en Houston, TX",
+    titulo: [123.5, 123.5, 123.5, 123.5, 123.5, 123.5],
+    texto: [200.5, 205.5, 212.5, 197.4, 205.4, 205.4],
+    boton: [432.5, 419.5, 419.5, 419.5, 402.5, 419.5],
+    humanitarias: { titulo: 134.5, texto: 205.4 },
+  },
+  austin: {
+    subtitulo: "Austin, TX",
+    titulo: [166.5, 153.5, 156.5, 155.5, 153.5, 173.5],
+    texto: [237.5, 235.5, 245.5, 229.4, 235.4, 255.4],
+    boton: [432.5, 419.5, 419.5, 419.5, 402.5, 419.5],
+    humanitarias: { titulo: 134.5, texto: 206.3 },
+  },
+  "fort-worth": {
+    subtitulo: "Forth Worth, TX",
+    titulo: [173.5, 153.5, 154.5, 153.5, 166.5, 161.5],
+    texto: [254.5, 235.5, 253.5, 227.4, 248.4, 243.4],
+    boton: [432.5, 419.5, 419.5, 419.5, 402.5, 419.5],
+    humanitarias: { titulo: 154.5, texto: 225.4 },
+  },
+  "san-antonio": {
+    subtitulo: "San Antonio, TX",
+    titulo: [173.5, 161.5, 156.5, 163.5, 183.5, 172.5],
+    texto: [244.5, 243.5, 255.5, 237.4, 265.4, 254.4],
+    boton: [392.5, 399.5, 389.5, 389.5, 382.5, 389.5],
+    humanitarias: { titulo: 163.5, texto: 234.4 },
+  },
+};
+
 /** Foto de cada tarjeta, ya recortada a su parte visible: x dentro de la tarjeta y ancho. */
 const FOTOS: Record<string, { left: number; width: number }> = {
   "peticion-familiar": { left: 210, width: 518 },
@@ -242,13 +297,13 @@ const TRAZO_MOVIL_1 = "matrix(-473.907 -415.773 55.0638 -290.172 483.719 598.78)
  * diseño (/areas-de-practica), así que de momento lleva a /contacto. Cuando el
  * cliente decida si habrá esas páginas, se cambia aquí.
  */
-function BotonMasInfo({ top }: { top?: number }) {
+function BotonMasInfo({ top, enMovil }: { top?: number; enMovil?: boolean }) {
   return (
     <Link
       href="/contacto"
-      className={`text-vernal-accent relative mt-8 inline-flex h-[52px] w-[223px] items-center bg-[#0F0F10] pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 movil:mt-[16px] movil:text-[15px] movil:leading-[16px] design:mt-0 ${
+      className={`text-vernal-accent relative mt-8 inline-flex h-[52px] w-[223px] items-center bg-[#0F0F10] pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 movil:text-[15px] movil:leading-[16px] design:mt-0 ${
         top === undefined ? "" : "design:absolute design:top-[var(--bt)] design:left-[60.5px]"
-      }`}
+      } ${enMovil ? "movil:absolute movil:top-[var(--mbt)] movil:left-[30.5px] movil:mt-0" : "movil:mt-[16px]"}`}
       style={top === undefined ? undefined : ({ "--bt": `${top}px` } as React.CSSProperties)}
     >
       Más información
@@ -273,12 +328,24 @@ function Tarjeta({
   const ajuste = AJUSTES[sede.slug]?.[servicio.id] ?? {};
   const baja = ajuste.baja ?? 0;
   const boton = celda.boton + (ajuste.boton ?? 0);
+  const movil = MOVIL[sede.slug] ?? MOVIL.dallas;
   const partido = servicio.id === "deportacion";
   return (
     <article
       id={servicio.id}
-      className="relative scroll-mt-[160px] overflow-hidden bg-[#172339] p-8 movil:mx-[24.5px] movil:w-[354px] movil:overflow-visible movil:p-0 design:absolute design:top-[var(--ct)] design:left-[var(--cl)] design:h-[489px] design:w-[728px] design:overflow-visible design:p-0"
-      style={{ "--ct": `${celda.top}px`, "--cl": `${celda.left}px` } as React.CSSProperties}
+      className="relative scroll-mt-[160px] overflow-hidden bg-[#172339] p-8 movil:mx-[24.5px] movil:mt-[var(--mmt)] movil:h-[var(--mah)] movil:w-[354px] movil:overflow-visible movil:p-0 design:absolute design:top-[var(--ct)] design:left-[var(--cl)] design:h-[489px] design:w-[728px] design:overflow-visible design:p-0"
+      style={
+        {
+          "--ct": `${celda.top}px`,
+          "--cl": `${celda.left}px`,
+          "--mah": `${indice === 0 ? 520 : 500}px`,
+          // Entre tarjetas hay 23, salvo antes de la última y de la de visas: 28.
+          "--mmt": indice === 5 ? "5px" : "0px",
+          "--mtt": `${movil.titulo[indice]}px`,
+          "--mpt": `${movil.texto[indice]}px`,
+          "--mbt": `${movil.boton[indice]}px`,
+        } as React.CSSProperties
+      }
     >
       <div aria-hidden className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
@@ -341,14 +408,14 @@ function Tarjeta({
           "Dallas". La caja de texto mide como mínimo hasta el botón menos un
           margen, y el botón va detrás en el flujo. */}
       <div
-        className="relative movil:w-[354px] movil:px-[30.5px] movil:pt-[123.5px] movil:pb-[28.5px] design:absolute design:top-[var(--tt)] design:left-[60.5px] design:w-[455px]"
+        className="relative movil:absolute movil:inset-0 design:absolute design:top-[var(--tt)] design:left-[60.5px] design:w-[455px]"
         style={{ "--tt": `${111.5 + baja}px` } as React.CSSProperties}
       >
         <div
           className="design:box-border design:min-h-[var(--mh)] design:pb-[16px]"
           style={{ "--mh": `${boton - 111.5 - baja}px` } as React.CSSProperties}
         >
-          <h2 className="mt-5 text-[28px] leading-[30px] font-light movil:mt-0 movil:text-[24px] movil:leading-[25px] design:mt-0 design:text-[36px] design:leading-[37px]">
+          <h2 className="mt-5 text-[28px] leading-[30px] font-light movil:absolute movil:top-[var(--mtt)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-[24px] movil:leading-[25px] design:mt-0 design:text-[36px] design:leading-[37px]">
             {partido ? (
               <>
                 <span className="text-vernal-accent">
@@ -356,25 +423,31 @@ function Tarjeta({
                   <br />
                   Deportación
                 </span>{" "}
-                <span className="text-white">en {sede.nombreDiseno}</span>
+                <span className="text-white">
+                  <span className="movil:hidden">en {sede.nombreDiseno}</span>
+                  <span className="hidden movil:inline">{movil.subtitulo}</span>
+                </span>
               </>
             ) : (
               <>
                 <span className="text-vernal-accent">{servicio.titulo}</span>
                 <br />
-                <span className="text-white">en {sede.nombreDiseno}</span>
+                <span className="text-white">
+                  <span className="movil:hidden">en {sede.nombreDiseno}</span>
+                  <span className="hidden movil:inline">{movil.subtitulo}</span>
+                </span>
               </>
             )}
           </h2>
           <p
-            className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:mt-[32px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[var(--h)] design:leading-[17px]"
+            className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[var(--mpt)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[var(--h)] design:leading-[17px]"
             style={{ "--h": `${ajuste.hueco ?? servicio.hueco}px` } as React.CSSProperties}
           >
             {textosDeSede[sede.slug]?.servicios[servicio.id] ??
               servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
           </p>
         </div>
-        <BotonMasInfo />
+        <BotonMasInfo enMovil />
       </div>
     </article>
   );
@@ -387,10 +460,13 @@ function TarjetaHumanitarias({ sede }: { sede: Sede }) {
   // archivo sube 10px el título y el texto de las tres subtarjetas (las cajas no
   // se mueven).
   const subida = sede.slug === "dallas" ? 0 : 10;
+  const deMovil = MOVIL[sede.slug] ?? MOVIL.dallas;
+  const movil = deMovil.humanitarias;
   return (
     <article
       id="visas-humanitarias"
-      className="relative scroll-mt-[160px] overflow-hidden bg-[#172339] p-8 movil:mx-[24.5px] movil:w-[354px] movil:overflow-visible movil:p-0 design:absolute design:top-[1613.5px] design:left-[216.5px] design:h-[630px] design:w-[1493px] design:overflow-visible design:p-0"
+      style={{ "--mbt": "995.5px" } as React.CSSProperties}
+      className="relative scroll-mt-[160px] overflow-hidden bg-[#172339] p-8 movil:mx-[24.5px] movil:mt-[5px] movil:h-[1081px] movil:w-[354px] movil:overflow-visible movil:p-0 design:absolute design:top-[1613.5px] design:left-[216.5px] design:h-[630px] design:w-[1493px] design:overflow-visible design:p-0"
     >
       <div aria-hidden className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
@@ -427,13 +503,21 @@ function TarjetaHumanitarias({ sede }: { sede: Sede }) {
         height={60}
         className="relative h-[60px] w-[60px] movil:absolute movil:top-[50.5px] movil:left-[30.5px] design:absolute design:top-[46.5px] design:left-[60.5px]"
       />
-      <div className="relative movil:w-[354px] movil:px-[30.5px] movil:pt-[134.5px] design:absolute design:top-[131.5px] design:left-[60.5px] design:w-[455px]">
-        <h2 className="mt-5 text-[28px] leading-[30px] font-light movil:mt-0 movil:text-[24px] movil:leading-[25px] design:mt-0 design:text-[36px] design:leading-[37px]">
+      {/* En el lienzo de 402 las tres subtarjetas empiezan siempre a 303 de la
+          tarjeta, mida lo que mida la introducción: de ahí el alto fijo. */}
+      <div
+        className="relative movil:h-[285.5px] movil:w-[354px] design:absolute design:top-[131.5px] design:left-[60.5px] design:w-[455px]"
+        style={{ "--mht": `${movil.titulo}px`, "--mhp": `${movil.texto}px` } as React.CSSProperties}
+      >
+        <h2 className="mt-5 text-[28px] leading-[30px] font-light movil:absolute movil:top-[var(--mht)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-[24px] movil:leading-[25px] design:mt-0 design:text-[36px] design:leading-[37px]">
           <span className="text-vernal-accent">Visas Humanitarias</span>
           <br />
-          <span className="text-white">en {sede.nombreDiseno}</span>
+          <span className="text-white">
+                  <span className="movil:hidden">en {sede.nombreDiseno}</span>
+                  <span className="hidden movil:inline">{deMovil.subtitulo}</span>
+                </span>
         </h2>
-        <p className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:mt-[21px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[18px] design:leading-[17px]">
+        <p className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[var(--mhp)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[18px] design:leading-[17px]">
           {sede.introHumanitarias}
         </p>
       </div>
@@ -507,7 +591,7 @@ function TarjetaHumanitarias({ sede }: { sede: Sede }) {
       </ul>
 
       <div className="movil:pb-[33.5px] movil:pl-[30.5px]">
-        <BotonMasInfo top={543.5} />
+        <BotonMasInfo top={543.5} enMovil />
       </div>
     </article>
   );
@@ -539,7 +623,7 @@ export function SedeServicios({ sede }: { sede: Sede }) {
         ))}
         <TarjetaHumanitarias sede={sede} />
 
-        <p className="text-vernal-navy mt-6 flex items-center justify-center gap-x-4 text-center text-[18px] leading-[22px] movil:mt-[-3px] movil:mb-[22.5px] movil:block movil:text-[16px] movil:leading-[17px] design:absolute design:top-[2315px] design:left-[656px] design:mt-0 design:gap-x-[24px] design:text-[20px] design:leading-[21px]">
+        <p className="text-vernal-navy mt-6 flex items-center justify-center gap-x-4 text-center text-[18px] leading-[22px] movil:mt-[2.5px] movil:mb-[22.5px] movil:block movil:text-[16px] movil:leading-[17px] design:absolute design:top-[2315px] design:left-[656px] design:mt-0 design:gap-x-[24px] design:text-[20px] design:leading-[21px]">
           <Image src="/icons/sedes/edificio.svg" alt="" width={31} height={32} className="h-[32px] w-[31px] shrink-0 movil:mx-auto movil:block" />
           {/* En el lienzo de 402 la dirección parte en tres renglones: caja de 210
               centrada, a 9.5 del icono. */}
