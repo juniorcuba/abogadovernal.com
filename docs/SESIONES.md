@@ -159,13 +159,15 @@ no. En Git Bash, `node` necesita `export PATH="/c/Program Files/nodejs:$PATH"`.
   entrega al CRM del despacho (LeadConnector) y lleva a `/gracias` (2026-10-13).
   La URL del webhook es un secreto: `LEAD_WEBHOOK_URL` en Render y en
   `.env.local`, nunca en el código. Los campos que recibe el CRM están en
-  `src/lib/consulta.ts`; si cambias la validación, `npm test`. El formulario de
-  correo de "Mantente informado" todavía no envía nada.
+  `src/lib/consulta.ts`; si cambias la validación, `npm test`. La oficina es obligatoria.
+- El formulario de boletín "Mantente informado" se quitó el 2026-10-13: no
+  enviaba a ningún sitio y el despacho no manda boletín. El bloque de reseñas
+  quedó solo (`sections/blog-resenas.tsx` explica cómo recuperarlo).
 - "Testimoniales" está en el menú; la página sigue sin indexar.
 - La página índice `/areas-de-servicio` se quitó (2026-10-11): redirige a Dallas
   y las cinco sedes cuelgan del desplegable del menú, igual que "Nosotros".
 - Pendiente de Roberto: quitar los nombres de los testimonios y dejar solo el
-  proceso (nota del cliente); a dónde va el formulario de correo de "Mantente informado".
+  proceso (nota del cliente).
 - Las erratas del diseño ("Forth Worth", "Áreas de practica", "Vernal Farum"…)
   se respetan hasta que el cliente diga.
 
