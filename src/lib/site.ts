@@ -8,8 +8,11 @@ export const site = {
   name: "Abogado Vernal",
   legalName: "The Law Office Of Vernal Farnum Mejía",
   url: "https://abogadovernal.com",
-  phone: "+ 1-833-887-7273", // el archivo (nodos 6:56 y 59:71) trae 877: es una errata, el cliente confirmó 887 el 2026-10-09
-  phoneHref: "tel:+18338877273",
+  // El despacho pidió el 2026-10-12 que el número para llamar sea este en todo el
+  // sitio. El 833-887-7273 de antes se queda solo en políticas de privacidad y en
+  // términos y condiciones, que llevan el suyo en sus propios archivos.
+  phone: "+1 469-809-1181",
+  phoneHref: "tel:+14698091181",
   email: "info@farnumlawfirm.com",
   tagline: "Somos inmigrantes como tú y defendemos tus derechos.",
   /**

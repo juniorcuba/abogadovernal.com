@@ -115,8 +115,10 @@ no. En Git Bash, `node` necesita `export PATH="/c/Program Files/nodejs:$PATH"`.
 
 ## Decisiones ya tomadas
 
-- Teléfono **+1-833-887-7273** y Houston **10333 Harwin Dr. Suite 105** (el 877
-  y "Ste 580" de algunos exports son erratas).
+- Teléfono para llamar **+1 469-809-1181** en todo el sitio (2026-10-12; sale
+  de `site.phone`). El **833-887-7273** de antes se queda solo en políticas de
+  privacidad y en términos y condiciones. El enlace de WhatsApp no se toca.
+- Houston **10333 Harwin Dr. Suite 105** ("Ste 580" de algunos exports es errata).
 - En móvil manda el artboard móvil, aunque su texto no coincida con escritorio.
   Excepción: `/politicas` y `/nuestro-equipo`, que se quedan como están.
 - Transmisiones lleva al canal de YouTube; "Mas información" de las sedes, a

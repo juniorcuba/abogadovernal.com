@@ -17,8 +17,8 @@
  * Ese primer artículo es el del archivo de diseño. Los otros cinco llegaron el
  * 2026-10-12 en un documento del despacho y van literales (solo sin los dobles
  * espacios), con sus subtítulos como títulos de nivel 1 y sus listas con viñeta
- * o numeradas. Todos cierran con el teléfono que trae el documento, que NO es
- * el general del sitio (`site.phone`): es el que el despacho escribió ahí.
+ * o numeradas. Todos cierran con el teléfono que trae el documento, que desde
+ * ese mismo día es también el general del sitio (`site.phone`).
  * Ninguno trae foto para el cuerpo.
  */
 export type TrozoArticulo =

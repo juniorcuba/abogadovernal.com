@@ -50,7 +50,7 @@ export const preguntasFrecuentes: PreguntaFrecuente[] = [
   },
   {
     texto: "¿Cómo puedo hacer una consulta?",
-    respuesta: ["En la oficina del Abogado Vernal puede realizar su consulta en persona o virtual. También puede solicitarla en nuestra línea de atención al cliente 833-887-7273 o a nuestro correo electrónico ", { correo: "info@farnumlawfirm.com" }],
+    respuesta: ["En la oficina del Abogado Vernal puede realizar su consulta en persona o virtual. También puede solicitarla en nuestra línea de atención al cliente 469-809-1181 o a nuestro correo electrónico ", { correo: "info@farnumlawfirm.com" }],
     respuestaArriba: 110.5,
     altoMovil: 122,
     arribaMovil: 41,
@@ -87,7 +87,7 @@ export const preguntasFrecuentes: PreguntaFrecuente[] = [
   },
   {
     texto: "¿Cuáles son las formas de pago aceptadas?",
-    respuesta: ["Aceptamos pagos en efectivo, cheques personales, tarjetas débito y crédito: Visa, Money Orders, Mastercard, Discover y American Express. Si no puedes asistir a la oficina y para tu comodidad puedes realizar pagos vía telefónica con tu tarjeta al número 833-887-7273 y en nuestra página web en la sección pagos en línea."],
+    respuesta: ["Aceptamos pagos en efectivo, cheques personales, tarjetas débito y crédito: Visa, Money Orders, Mastercard, Discover y American Express. Si no puedes asistir a la oficina y para tu comodidad puedes realizar pagos vía telefónica con tu tarjeta al número 469-809-1181 y en nuestra página web en la sección pagos en línea."],
     respuestaArriba: 97.5,
     altoMovil: 113,
     arribaMovil: 31,
