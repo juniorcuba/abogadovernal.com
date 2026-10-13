@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
 import { t } from "@/lib/i18n/servidor";
+import { FormularioConsulta } from "@/components/ui/formulario-consulta";
 
 /**
  * Hero de /contacto — frame 615:867 (2026-09-19), rango y=0..1142. Geometría
@@ -106,9 +107,9 @@ export function ContactoHero() {
           {t("Cuéntanos tu situación migratoria y te orientamos sin compromiso. Nuestro equipo de abogados de inmigración está listo para atenderte en la oficina más cercana a ti, o de forma virtual.")}
         </p>
 
-        <form className="w-full max-w-[648px] bg-[linear-gradient(212.18deg,rgb(23_35_57/0.71)_28.639%,rgb(64_98_159/0.71)_76.265%)] p-[38px] apilada:text-left movil:absolute movil:top-[782px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:bg-[linear-gradient(232.08deg,rgb(23_35_57/0.71)_28.64%,rgb(64_98_159/0.71)_76.27%)] movil:pt-[39px] movil:pr-[39px] movil:pb-0 movil:pl-[38px] design:absolute design:top-[660px] design:left-[223px] design:h-[482px] design:w-[648px] design:max-w-none design:pt-[32px] design:pr-[45px] design:pb-0 design:pl-[38px]">
+        <FormularioConsulta className="w-full max-w-[648px] bg-[linear-gradient(212.18deg,rgb(23_35_57/0.71)_28.639%,rgb(64_98_159/0.71)_76.265%)] p-[38px] apilada:text-left movil:absolute movil:top-[782px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:bg-[linear-gradient(232.08deg,rgb(23_35_57/0.71)_28.64%,rgb(64_98_159/0.71)_76.27%)] movil:pt-[39px] movil:pr-[39px] movil:pb-0 movil:pl-[38px] design:absolute design:top-[660px] design:left-[223px] design:h-[482px] design:w-[648px] design:max-w-none design:pt-[32px] design:pr-[45px] design:pb-0 design:pl-[38px]">
           <CamposConsulta />
-        </form>
+        </FormularioConsulta>
 
         {/* Sello: el mismo que en AgendaConsulta, medido sobre este archivo. */}
         <Image

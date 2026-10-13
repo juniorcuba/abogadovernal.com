@@ -280,4 +280,20 @@ export const en: Record<string, string> = {
     "They tell us which pages are visited and from where, in aggregate and without identifying you. They help us know what information needs improving.",
   "Permiten medir los anuncios y mostrarte contenido relacionado con lo que ya has visto, aquí y en otras webs.":
     "They allow us to measure ads and show you content related to what you have already seen, here and on other websites.",
+  "Nombre":
+    "Name",
+  "Teléfono":
+    "Phone",
+  "Correo":
+    "Email",
+  "Oficina o modalidad de atención:":
+    "Office or type of appointment:",
+  "Comentarios":
+    "Comments",
+  "Revisa estos datos y vuelve a enviar:":
+    "Please check these fields and send again:",
+  "Has hecho varios envíos seguidos. Espera unos minutos o llámanos al":
+    "You have sent several requests in a row. Please wait a few minutes or call us at",
+  "No pudimos enviar tu mensaje. Inténtalo de nuevo o llámanos al":
+    "We could not send your message. Please try again or call us at",
 };

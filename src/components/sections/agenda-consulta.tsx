@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
 import { t } from "@/lib/i18n/servidor";
+import { FormularioConsulta } from "@/components/ui/formulario-consulta";
 
 /**
  * "Agenda tu consulta" — grupo 612:409 de las sedes (2026-09-19), el mismo que
@@ -62,9 +63,9 @@ export function AgendaConsulta({
           <br className="hidden sm:inline" />{t(" y respuestas a las dudas más comunes de nuestra comunidad.")}
         </p>
 
-        <form className="mt-8 max-w-[565px] movil:absolute movil:top-[395px] movil:left-[38px] movil:mt-0 movil:w-[325px] movil:max-w-none design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
+        <FormularioConsulta className="mt-8 max-w-[565px] movil:absolute movil:top-[395px] movil:left-[38px] movil:mt-0 movil:w-[325px] movil:max-w-none design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
           <CamposConsulta espaciado="bloque" />
-        </form>
+        </FormularioConsulta>
 
         {/* Sello. El SVG sale del export de TESTIMONIALES con el giro ya
             aplicado, así que va como una caja cuadrada sin transformar. */}

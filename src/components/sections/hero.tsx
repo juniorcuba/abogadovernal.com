@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
 import { t } from "@/lib/i18n/servidor";
+import { FormularioConsulta } from "@/components/ui/formulario-consulta";
 
 /**
  * Hero de la homepage — nodos del rango y=0..1142 de la frame 1:2.
@@ -83,9 +84,9 @@ export function Hero() {
           <span className="text-vernal-accent">{t("Somos inmigrantes")}</span>{t(" como tú y defendemos tus derechos.")}
         </p>
 
-        <form className="bg-vernal-card w-full max-w-[648px] p-[38px] apilada:text-left movil:absolute movil:top-[698px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:px-[38px] movil:pt-[39px] movil:pb-0 design:absolute design:top-[583px] design:left-[223px] design:h-[559px] design:w-[648px] design:max-w-none design:bg-[linear-gradient(216.12deg,rgb(23_35_57/0.71)_28.64%,rgb(64_98_159/0.71)_76.27%)] design:pt-[39px] design:pr-[42px] design:pb-0 design:pl-[41px]">
+        <FormularioConsulta className="bg-vernal-card w-full max-w-[648px] p-[38px] apilada:text-left movil:absolute movil:top-[698px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:px-[38px] movil:pt-[39px] movil:pb-0 design:absolute design:top-[583px] design:left-[223px] design:h-[559px] design:w-[648px] design:max-w-none design:bg-[linear-gradient(216.12deg,rgb(23_35_57/0.71)_28.64%,rgb(64_98_159/0.71)_76.27%)] design:pt-[39px] design:pr-[42px] design:pb-0 design:pl-[41px]">
           <CamposConsulta />
-        </form>
+        </FormularioConsulta>
       </div>
     </section>
   );

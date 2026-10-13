@@ -28,7 +28,7 @@ const nextConfig: NextConfig = {
       afterFiles: [
         { source: "/", destination: "/es" },
         {
-          source: "/:primero((?!(?:en|es|_next)(?:/|$))[^/]+)/:resto*",
+          source: "/:primero((?!(?:en|es|api|_next)(?:/|$))[^/]+)/:resto*",
           destination: "/es/:primero/:resto*",
         },
       ],

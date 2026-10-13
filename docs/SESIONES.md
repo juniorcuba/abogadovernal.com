@@ -155,11 +155,17 @@ no. En Git Bash, `node` necesita `export PATH="/c/Program Files/nodejs:$PATH"`.
   testimoniales siguen, sin el botón "Ver más preguntas".
 - "Ver retransmisiones" lleva a los vídeos en vivo de Facebook; "Mas información" de las sedes, a
   Contacto; tras enviar un formulario, la página `/gracias` (sin overlay).
+- Los tres formularios de consulta envían a `POST /api/consulta`, que los
+  entrega al CRM del despacho (LeadConnector) y lleva a `/gracias` (2026-10-13).
+  La URL del webhook es un secreto: `LEAD_WEBHOOK_URL` en Render y en
+  `.env.local`, nunca en el código. Los campos que recibe el CRM están en
+  `src/lib/consulta.ts`; si cambias la validación, `npm test`. El formulario de
+  correo de "Mantente informado" todavía no envía nada.
 - "Testimoniales" está en el menú; la página sigue sin indexar.
 - La página índice `/areas-de-servicio` se quitó (2026-10-11): redirige a Dallas
   y las cinco sedes cuelgan del desplegable del menú, igual que "Nosotros".
 - Pendiente de Roberto: quitar los nombres de los testimonios y dejar solo el
-  proceso (nota del cliente); si entra el chat en vivo; destino de los formularios.
+  proceso (nota del cliente); a dónde va el formulario de correo de "Mantente informado".
 - Las erratas del diseño ("Forth Worth", "Áreas de practica", "Vernal Farum"…)
   se respetan hasta que el cliente diga.
 

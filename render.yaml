@@ -15,3 +15,8 @@ services:
       # busque al despacho. Poner a "false" solo en el despliegue definitivo.
       - key: NEXT_PUBLIC_NOINDEX
         value: "true"
+      # Webhook del CRM (LeadConnector) al que se entregan los formularios. Es
+      # un secreto: se pone en el panel de Render, no aquí. Sin ella el
+      # formulario responde con error y no se pierde nada en silencio.
+      - key: LEAD_WEBHOOK_URL
+        sync: false
