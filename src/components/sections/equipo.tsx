@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ButtonLink } from "@/components/ui/button";
+import { VideoYoutube } from "@/components/ui/video-youtube";
 import { Logo } from "@/components/ui/logo";
 import { equipo, rejillaEquipo } from "@/lib/equipo";
 
@@ -315,16 +316,18 @@ export function EquipoCompromiso() {
           {/* Fuera del lienzo de 1920 la tarjeta es mucho más baja y las
               posiciones del archivo se pisarían: ahí el contenido se apila. */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 design:block design:gap-0 design:px-0">
-            <button
-              type="button"
-              aria-label="Ver el testimonio"
-              className="flex h-[54px] w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/40 shadow-vernal-1 transition-transform hover:scale-105 sm:h-[76px] sm:w-[76px] design:absolute design:top-[237px] design:left-[516px] design:h-[97px] design:w-[97px] design:-translate-x-1/2 design:-translate-y-1/2"
+            <VideoYoutube
+              embed="zor7RwZACfk"
+              titulo="Este momento lo cambia todo: Visa U aprobada"
+              etiqueta="Ver el testimonio"
+              claseMarco="rounded-[31px]"
+              claseBoton="flex h-[54px] w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/40 shadow-vernal-1 transition-transform hover:scale-105 sm:h-[76px] sm:w-[76px] design:absolute design:top-[237px] design:left-[516px] design:h-[97px] design:w-[97px] design:-translate-x-1/2 design:-translate-y-1/2"
             >
               <span
                 aria-hidden
                 className="ml-[4px] border-t-[10px] border-b-[10px] border-l-[17px] border-t-transparent border-b-transparent border-l-[#172339]/70 sm:ml-[6px] sm:border-t-[14px] sm:border-b-[14px] sm:border-l-[24px] design:border-t-[19px] design:border-b-[19px] design:border-l-[33px]"
               />
-            </button>
+            </VideoYoutube>
 
             <VistoBueno className="absolute hidden design:top-[300px] design:left-[221px] design:block design:h-[55px] design:w-[55px]" />
 

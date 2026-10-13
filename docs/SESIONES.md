@@ -121,7 +121,11 @@ no. En Git Bash, `node` necesita `export PATH="/c/Program Files/nodejs:$PATH"`.
 - Houston **10333 Harwin Dr. Suite 105** ("Ste 580" de algunos exports es errata).
 - En móvil manda el artboard móvil, aunque su texto no coincida con escritorio.
   Excepción: `/politicas` y `/nuestro-equipo`, que se quedan como están.
-- Transmisiones lleva al canal de YouTube; "Mas información" de las sedes, a
+- Los tres plays (home, nuestro equipo, testimoniales) montan el vídeo de
+  YouTube dentro de su caja con `components/ui/video-youtube.tsx`; los enlaces
+  salen de los prototipos del Figma (2026-10-12). El play de "Nuestros
+  servicios" del home se quitó: ya no es un vídeo.
+- "Ver retransmisiones" lleva a los directos del canal; "Mas información" de las sedes, a
   Contacto; tras enviar un formulario, la página `/gracias` (sin overlay).
 - "Testimoniales" está en el menú; la página sigue sin indexar.
 - La página índice `/areas-de-servicio` se quitó (2026-10-11): redirige a Dallas

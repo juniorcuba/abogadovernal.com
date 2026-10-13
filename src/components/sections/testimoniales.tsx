@@ -3,6 +3,7 @@ import Link from "next/link";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
 import { ButtonLink } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
+import { VideoYoutube } from "@/components/ui/video-youtube";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
 import { entradasBlogPortada } from "@/lib/blog";
 import { testimonios } from "@/lib/testimonios";
@@ -465,16 +466,18 @@ export function TestimonialesCasos() {
             Canal Oficial
           </span>
 
-          <button
-            type="button"
-            aria-label="Ver el testimonio"
-            className="absolute top-1/2 left-1/2 flex h-[76px] w-[76px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:h-[44px] movil:w-[44px] design:h-[96px] design:w-[96px]"
+          <VideoYoutube
+            embed="7hdz2Xk6VEs"
+            titulo="Residencia aprobada: el testimonio de María G. Murillo"
+            etiqueta="Ver el testimonio"
+            claseMarco="rounded-[31px]"
+            claseBoton="absolute top-1/2 left-1/2 flex h-[76px] w-[76px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:h-[44px] movil:w-[44px] design:h-[96px] design:w-[96px]"
           >
             <span
               aria-hidden
               className="ml-[6px] border-t-[14px] border-b-[14px] border-l-[24px] border-t-transparent border-b-transparent border-l-[#172339] movil:ml-[3px] movil:border-t-[8px] movil:border-b-[8px] movil:border-l-[14px] design:border-t-[17px] design:border-b-[17px] design:border-l-[29px]"
             />
-          </button>
+          </VideoYoutube>
         </div>
 
         {/* Tira de fotos de clientes. */}

@@ -23,11 +23,13 @@ export const site = {
   privacyUrl: "/politicas-de-privacidad",
   termsUrl: "/terminos-y-condiciones",
   /**
-   * Canal de las transmisiones. El botón "Ver retransmisiones" del home iba a
-   * /transmisiones, una página que el archivo de diseño no trae; hasta que la
-   * haya, lleva al canal.
+   * Las transmisiones del canal. El botón "Ver retransmisiones" del home lleva a
+   * la pestaña de directos, que es el enlace de prototipo que trae el archivo
+   * (nodos 67:6 y 97:30). `youtubeDirectos` es esa misma lista para incrustarla:
+   * "UULV" + el id del canal sin su "UC" es la lista de directos de un canal.
    */
-  youtube: "https://www.youtube.com/@abogadovernal",
+  youtube: "https://www.youtube.com/@abogadovernal/streams",
+  youtubeDirectos: "videoseries?list=UULVJdRtM7Zp5XVR0kvBSxPqOA",
   /**
    * Enlace de WhatsApp del despacho: el mismo que usa su sitio anterior
    * (abogadovernal.com) en todos sus botones. Es un enlace de mensaje de

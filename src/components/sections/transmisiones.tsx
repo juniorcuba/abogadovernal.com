@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { site } from "@/lib/site";
 import { ButtonLink } from "@/components/ui/button";
+import { VideoYoutube } from "@/components/ui/video-youtube";
 
 /**
  * "Somos inmigrantes como tú" / transmisiones en vivo — nodos del rango
@@ -30,6 +31,11 @@ import { ButtonLink } from "@/components/ui/button";
  * como vectores sueltos, no como texto, y con otro dibujo que en escritorio
  * (borde cian en la barra, borde oscuro en el badge). Se sacan tal cual del
  * export a /images/movil/transmision-rotulos.svg, con su filtro y degradados.
+ *
+ * El play monta dentro de la caja la lista de directos del canal (2026-10-12).
+ * Mientras suena se esconden los rótulos que pisan la caja (barra, badge y los
+ * del móvil): taparían los controles de YouTube. Se hace por CSS, con
+ * `:has(iframe)` sobre la caja, para que la sección siga siendo de servidor.
  */
 /**
  * Trazo degradado de 3px de la barra y del badge (en el archivo, `stroke` con un
@@ -117,7 +123,7 @@ export function Transmisiones() {
         </ButtonLink>
 
         {/* Vídeo de la transmisión */}
-        <div className="relative mt-12 aspect-[733/425] w-full movil:absolute movil:top-[678px] movil:left-[24px] movil:mt-0 movil:aspect-auto movil:h-[206px] movil:w-[355px] movil:shadow-[8px_36px_37.1px_rgb(0_0_0/0.84)] design:absolute design:top-[122px] design:left-[914px] design:mt-0 design:aspect-auto design:h-[425px] design:w-[733px]">
+        <div className="group peer relative mt-12 aspect-[733/425] w-full movil:absolute movil:top-[678px] movil:left-[24px] movil:mt-0 movil:aspect-auto movil:h-[206px] movil:w-[355px] movil:shadow-[8px_36px_37.1px_rgb(0_0_0/0.84)] design:absolute design:top-[122px] design:left-[914px] design:mt-0 design:aspect-auto design:h-[425px] design:w-[733px]">
           {/* Borde cian de 2px alrededor del vídeo (rect x915 y5537, stroke #08B6FF
               de 2 centrado, o sea que cubre los dos primeros píxeles de la caja).
               Va por encima de la imagen: si no, la foto lo tapa. Ocupa la caja
@@ -173,19 +179,20 @@ export function Transmisiones() {
             width={329}
             height={167}
             unoptimized
-            className="pointer-events-none absolute hidden max-w-none movil:z-20 movil:top-[92.9px] movil:left-[19.9px] movil:block movil:h-[167.2px] movil:w-[329.2px]"
+            className="pointer-events-none absolute hidden max-w-none movil:z-20 movil:top-[92.9px] movil:left-[19.9px] movil:block movil:h-[167.2px] movil:w-[329.2px] movil:group-has-[iframe]:hidden"
           />
 
-          <button
-            type="button"
-            aria-label="Ver la transmisión"
-            className="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:top-[85px] movil:left-[155px] movil:h-[42px] movil:w-[42px] movil:translate-x-0 movil:translate-y-0 design:top-[152px] design:left-[303px] design:translate-x-0 design:translate-y-0"
+          <VideoYoutube
+            embed={site.youtubeDirectos}
+            titulo="Transmisiones en vivo del Abogado Vernal"
+            etiqueta="Ver la transmisión"
+            claseBoton="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:top-[85px] movil:left-[155px] movil:h-[42px] movil:w-[42px] movil:translate-x-0 movil:translate-y-0 design:top-[152px] design:left-[303px] design:translate-x-0 design:translate-y-0"
           >
             <span
               aria-hidden
               className="ml-[6px] border-t-[17px] border-b-[17px] border-l-[29px] border-t-transparent border-b-transparent border-l-[#172339] movil:ml-[3px] movil:border-t-[7.5px] movil:border-b-[7.5px] movil:border-l-[12.7px]"
             />
-          </button>
+          </VideoYoutube>
         </div>
 
         {/* Va con z-20: monta sobre el filo del vídeo, y el borde cian de este
@@ -194,7 +201,7 @@ export function Transmisiones() {
             rx 38.5 (redondeada), opacidad 0.73. Los textos van en x1160, con
             líneas base en y5931.8 y y5976.1 del archivo. */}
         <div
-          className="relative z-20 mt-6 flex items-center gap-x-4 rounded-[30px] px-6 py-4 movil:hidden design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[38.5px] design:p-0"
+          className="relative z-20 mt-6 flex items-center gap-x-4 rounded-[30px] px-6 py-4 movil:hidden design:absolute design:top-[473.5px] design:left-[1036.5px] design:mt-0 design:block design:h-[119px] design:w-[471px] design:rounded-[38.5px] design:p-0 design:peer-has-[iframe]:hidden"
         >
           {/* La opacidad 0.73 del archivo es del RECTÁNGULO, no del contenido.
               Aplicada al contenedor oscurecía también el texto y los iconos. */}
@@ -231,7 +238,7 @@ export function Transmisiones() {
             El punto rojo es un círculo de r=11 centrado en (1434, 5881). */}
         <span
           aria-hidden
-          className="z-30 hidden items-center design:absolute design:top-[439.5px] design:left-[1398.5px] design:flex design:h-[55px] design:w-[141px] design:rounded-[27.5px]"
+          className="z-30 hidden items-center design:absolute design:top-[439.5px] design:left-[1398.5px] design:flex design:h-[55px] design:w-[141px] design:rounded-[27.5px] design:peer-has-[iframe]:hidden"
           style={{
             backgroundImage:
               "linear-gradient(273.17deg, #000000 -24.82%, #3A3A3A 111.58%)",
