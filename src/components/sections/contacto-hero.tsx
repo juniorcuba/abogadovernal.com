@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Hero de /contacto — frame 615:867 (2026-09-19), rango y=0..1142. Geometría
@@ -89,22 +90,20 @@ export function ContactoHero() {
           {/* El mismo titular en los dos artboards; el de 402 lo parte en tres
               líneas. Hasta el 2026-10-12 el escritorio decía "Contáctanos en
               Texas", de un nodo anterior al export. */}
-          <span className="block text-white">Contacto</span>
+          <span className="block text-white">{t("Contacto")}</span>
           <span className="text-vernal-accent block">
-            Abogado <br className="hidden movil:inline" />
-            Vernal
+            {t("Abogado ")}<br className="hidden movil:inline" />
+            {t("Vernal")}
           </span>
         </h1>
 
         <p className="max-w-[541px] text-[28px] leading-[30px] font-light text-white movil:absolute movil:top-[475px] movil:left-[38px] movil:w-[330px] movil:max-w-none movil:text-[24px] movil:leading-[25px] design:absolute design:top-[406px] design:left-[237px] design:w-[541px] design:text-[36px] design:leading-[37.44px]">
-          <span className="block">Estamos para ayudarte,</span>
-          <span className="text-vernal-accent">sin importar dónde te encuentres.</span>
+          <span className="block">{t("Estamos para ayudarte,")}</span>
+          <span className="text-vernal-accent">{t("sin importar dónde te encuentres.")}</span>
         </p>
 
         <p className="max-w-[580px] text-[16px] leading-[20px] text-white sm:text-justify apilada:text-center movil:absolute movil:top-[575px] movil:left-[42px] movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[547px] design:left-[237px] design:w-[580px] design:leading-[16.64px]">
-          Cuéntanos tu situación migratoria y te orientamos sin compromiso. Nuestro equipo de
-          abogados de inmigración está listo para atenderte en la oficina más cercana a ti, o de
-          forma virtual.
+          {t("Cuéntanos tu situación migratoria y te orientamos sin compromiso. Nuestro equipo de abogados de inmigración está listo para atenderte en la oficina más cercana a ti, o de forma virtual.")}
         </p>
 
         <form className="w-full max-w-[648px] bg-[linear-gradient(212.18deg,rgb(23_35_57/0.71)_28.639%,rgb(64_98_159/0.71)_76.265%)] p-[38px] apilada:text-left movil:absolute movil:top-[782px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:bg-[linear-gradient(232.08deg,rgb(23_35_57/0.71)_28.64%,rgb(64_98_159/0.71)_76.27%)] movil:pt-[39px] movil:pr-[39px] movil:pb-0 movil:pl-[38px] design:absolute design:top-[660px] design:left-[223px] design:h-[482px] design:w-[648px] design:max-w-none design:pt-[32px] design:pr-[45px] design:pb-0 design:pl-[38px]">

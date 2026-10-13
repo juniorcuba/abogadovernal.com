@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ButtonLink } from "@/components/ui/button";
 import { ListaPreguntas } from "@/components/ui/lista-preguntas";
 import type { PreguntaFrecuente } from "@/lib/preguntas";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Banda de preguntas frecuentes. Aparece en /faqs (con las diez), y al cierre de
@@ -51,6 +52,7 @@ export function BloquePreguntas({
   bandaArriba?: number;
   className?: string;
 }) {
+  const t = useT();
   const [crecimiento, setCrecimiento] = useState(0);
   const altoAhora = alto + crecimiento;
 
@@ -96,22 +98,22 @@ export function BloquePreguntas({
         >
           <span className="movil:hidden">
             <span className="text-vernal-accent">
-              Las dudas que más <br className="hidden design:inline" />
-              escuchamos,
+              {t("Las dudas que más ")}<br className="hidden design:inline" />
+              {t("escuchamos,")}
             </span>{" "}
             <span className="text-white">
-              respondidas <br className="hidden design:inline" />
-              con claridad.
+              {t("respondidas ")}<br className="hidden design:inline" />
+              {t("con claridad.")}
             </span>
           </span>
           <span className="hidden movil:block">
             <span className="text-vernal-accent">
-              Las dudas que <br />
-              más escuchamos,
+              {t("Las dudas que ")}<br />
+              {t("más escuchamos,")}
             </span>{" "}
             <span className="text-white">
-              respondidas con <br />
-              claridad.
+              {t("respondidas con ")}<br />
+              {t("claridad.")}
             </span>
           </span>
         </h2>
@@ -125,10 +127,7 @@ export function BloquePreguntas({
             } as React.CSSProperties
           }
         >
-          Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una
-          y otra vez señal de que hay información que no siempre es fácil de encontrar,
-          o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra
-          comunidad, explicadas de forma simple y directa.
+          {t("Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una y otra vez señal de que hay información que no siempre es fácil de encontrar, o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra comunidad, explicadas de forma simple y directa.")}
         </p>
 
         <ListaPreguntas

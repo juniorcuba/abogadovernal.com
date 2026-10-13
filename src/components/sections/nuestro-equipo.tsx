@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 import { Carrusel } from "@/components/ui/carrusel";
 import { equipo as fichas } from "@/lib/equipo";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * "Nuestro equipo" — nodos del rango y=2559..3269 de la frame 1:2.
@@ -73,6 +74,7 @@ const equipo = fichas.map((f) => ({
 }));
 
 export function NuestroEquipo() {
+  const t = useT();
   return (
     <section
       className="relative overflow-hidden movil:-mt-px movil:h-[1346px] design:h-[710px]"
@@ -147,28 +149,28 @@ export function NuestroEquipo() {
         />
 
         <h2 className="text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[54px] movil:left-[41px] movil:w-[230px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[71px] design:left-[279px] design:w-[309px] design:leading-[67px] design:text-[64px]">
-          Nuestro
+          {t("Nuestro")}
           <br />
-          equipo
+          {t("equipo")}
         </h2>
 
         <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line text-white movil:absolute movil:top-[189px] movil:left-[41px] movil:mt-0 movil:w-[315px] movil:max-w-none movil:text-justify design:absolute design:top-[235px] design:left-[279px] design:mt-0 design:w-[580px]">
-          {"Detrás de cada caso en Abogado Vernal hay más que un abogado, hay un equipo completo cuidando cada detalle del proceso migratorio de cada cliente.\n\nMás de "}
+          {t("Detrás de cada caso en Abogado Vernal hay más que un abogado, hay un equipo completo cuidando cada detalle del proceso migratorio de cada cliente.\n\nMás de ")}
           <span className="text-vernal-accent">
-            50 personas conforman el equipo en Dallas, Houston, Austin y Fort Worth:
+            {t("50 personas conforman el equipo en Dallas, Houston, Austin y Fort Worth:")}
           </span>
-          {" abogados, paralegales y asistentes legales que trabajan bajo un mismo principio, que les importe la historia de la persona que tienen enfrente, no solo su expediente.\nLos asistentes legales, por ejemplo, se aseguran de que ninguna fecha importante se pase: audiencias, documentos, plazos. Un trabajo que sucede detrás de cámaras, pero del que depende que cada caso avance sin contratiempos.\n\nMuchos miembros del equipo comparten, de alguna forma, la misma experiencia migratoria que sus clientes, por eso la firma se define como \"Inmigrantes Como Tú\": no es solo el nombre de la marca, es quiénes son.\n\nLa firma busca ser, como se describe internamente, una firma \"imperfectamente honesta\"."}
+          {t(" abogados, paralegales y asistentes legales que trabajan bajo un mismo principio, que les importe la historia de la persona que tienen enfrente, no solo su expediente.\nLos asistentes legales, por ejemplo, se aseguran de que ninguna fecha importante se pase: audiencias, documentos, plazos. Un trabajo que sucede detrás de cámaras, pero del que depende que cada caso avance sin contratiempos.\n\nMuchos miembros del equipo comparten, de alguna forma, la misma experiencia migratoria que sus clientes, por eso la firma se define como \"Inmigrantes Como Tú\": no es solo el nombre de la marca, es quiénes son.\n\nLa firma busca ser, como se describe internamente, una firma \"imperfectamente honesta\".")}
         </p>
 
         <ButtonLink
           href="/nuestro-equipo"
           className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[771px] movil:left-[41px] movil:mt-0 movil:w-[277px] design:absolute design:top-[603px] design:left-[279px] design:mt-0"
         >
-          Conoce al equipo completo
+          {t("Conoce al equipo completo")}
         </ButtonLink>
 
         <p className="mt-12 text-[24px] leading-[25px] font-light text-white movil:hidden design:absolute design:top-[141px] design:left-[1041px] design:mt-0 design:w-[530px] design:leading-[37px] design:text-[36px]">
-          Latinos luchando <span className="text-vernal-accent">por Latinos...</span>
+          {t("Latinos luchando ")}<span className="text-vernal-accent">{t("por Latinos...")}</span>
         </p>
 
         {/* Carrusel del equipo. Las flechas van donde el archivo las coloca:
@@ -181,7 +183,7 @@ export function NuestroEquipo() {
               <button
                 type="button"
                 onClick={anterior}
-                aria-label="Miembro anterior del equipo"
+                aria-label={t("Miembro anterior del equipo")}
                 className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 movil:absolute movil:top-[1124px] movil:left-[18px] movil:flex movil:shadow-none design:absolute design:top-[467px] design:left-[899px] design:flex"
               >
                 ←
@@ -189,7 +191,7 @@ export function NuestroEquipo() {
               <button
                 type="button"
                 onClick={siguiente}
-                aria-label="Siguiente miembro del equipo"
+                aria-label={t("Siguiente miembro del equipo")}
                 className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 movil:absolute movil:top-[1124px] movil:left-[323px] movil:flex movil:shadow-none design:absolute design:top-[467px] design:left-[1552px] design:flex"
               >
                 →
@@ -222,7 +224,7 @@ export function NuestroEquipo() {
                 <p
                   className={`text-center text-[12px] leading-[12px] font-semibold uppercase movil:absolute movil:top-[926px] movil:left-0 movil:w-[402px] design:mt-[14.5px] ${p.cargoClase}`}
                 >
-                  {p.cargo}
+                  {t(p.cargo)}
                 </p>
                 <Image
                   src={p.foto}

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldArea, FieldSelect } from "@/components/ui/field";
 import { ConsentNotice } from "@/components/ui/consent-notice";
 import { offices } from "@/lib/site";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Campos de "Agenda tu consulta": los del hero de la home y los de las páginas
@@ -21,13 +22,13 @@ export function CamposConsulta({ espaciado = "hero" }: { espaciado?: "hero" | "b
   return (
     <>
       <div className="grid grid-cols-1 gap-[23px] sm:grid-cols-2 apilada:grid-cols-2 movil:grid-cols-1 movil:gap-[18px]">
-        <Field name="nombre" label="Nombre" icon="/icons/form/user.svg" iconWidth={17} iconHeight={19} required />
-        <Field name="telefono" label="Teléfono" type="tel" icon="/icons/form/phone.svg" iconWidth={22} iconHeight={22} required />
-        <Field name="correo" label="Correo" type="email" icon="/icons/form/mail.svg" iconWidth={18} iconHeight={14} required />
+        <Field name="nombre" label={t("Nombre")} icon="/icons/form/user.svg" iconWidth={17} iconHeight={19} required />
+        <Field name="telefono" label={t("Teléfono")} type="tel" icon="/icons/form/phone.svg" iconWidth={22} iconHeight={22} required />
+        <Field name="correo" label={t("Correo")} type="email" icon="/icons/form/mail.svg" iconWidth={18} iconHeight={14} required />
         {/* Las opciones son las 5 sedes y, desde el 2026-10-12, "Oficina
             virtual", que pidió el despacho y el Figma no lista. */}
-        <FieldSelect name="oficina" label="Oficina o modalidad de atención:" icon="/icons/form/office.svg" iconWidth={21} iconHeight={22} options={[...offices.map((o) => o.city), "Oficina virtual"]} />
-        <FieldArea name="comentarios" label="Comentarios" icon="/icons/form/comment.svg" iconWidth={20} iconHeight={20} className="sm:col-span-2" />
+        <FieldSelect name="oficina" label={t("Oficina o modalidad de atención:")} icon="/icons/form/office.svg" iconWidth={21} iconHeight={22} options={[...offices.map((o) => o.city), t("Oficina virtual")]} />
+        <FieldArea name="comentarios" label={t("Comentarios")} icon="/icons/form/comment.svg" iconWidth={20} iconHeight={20} className="sm:col-span-2" />
       </div>
 
       <Button
@@ -35,7 +36,7 @@ export function CamposConsulta({ espaciado = "hero" }: { espaciado?: "hero" | "b
           suelto ? "design:mt-[28.6px]" : ""
         }`}
       >
-        Enviar
+        {t("Enviar")}
       </Button>
 
       {/* El aviso va 7px más adentro que los campos. */}

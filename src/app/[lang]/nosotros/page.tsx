@@ -7,6 +7,7 @@ import { NosotrosHero } from "@/components/sections/nosotros-hero";
 import { NosotrosHoy } from "@/components/sections/nosotros-hoy";
 import { NosotrosLeccion } from "@/components/sections/nosotros-leccion";
 import { BlogResenas } from "@/components/sections/blog-resenas";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * "Abogado Vernal" — nodo `181:2125` de Figma, 1920 × 5309 (export del 2026-09-13).
@@ -36,13 +37,16 @@ import { BlogResenas } from "@/components/sections/blog-resenas";
  *     hace falta su consentimiento para publicarlas
  */
 
-export const metadata: Metadata = {
-  title: "Abogado Vernal",
-  description:
-    "La historia del Abogado Vernal Farnum Mejía y del equipo que hoy atiende a la comunidad inmigrante en Texas.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/nosotros", {
+    title: "Abogado Vernal",
+    description:
+      "La historia del Abogado Vernal Farnum Mejía y del equipo que hoy atiende a la comunidad inmigrante en Texas.",
+  });
+}
 
-export default function NosotrosPage() {
+export default async function NosotrosPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Hoy, al frente de un equipo que piensa igual" — frame `181:2125`, export del
@@ -76,25 +77,25 @@ export function NosotrosHoy() {
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[883px] movil:max-w-none movil:p-0 design:h-[883px] design:max-w-[1920px] design:p-0">
         <h2 className="text-[34px] leading-[40px] font-light sm:text-[44px] sm:leading-[52px] movil:absolute movil:top-[61px] movil:left-[45px] movil:w-[330px] movil:text-left movil:text-[32px] movil:leading-[33px] design:absolute design:top-[91px] design:left-0 design:w-[1920px] design:text-center design:text-[64px] design:leading-[67px]">
           {/* En el lienzo de 402 parte en tres líneas y "un" va en blanco. */}
-          <span className="text-vernal-accent">Hoy, al frente de</span>
+          <span className="text-vernal-accent">{t("Hoy, al frente de")}</span>
           <br className="hidden movil:inline" />{" "}
-          <span className="text-vernal-accent movil:text-white">un</span>{" "}
+          <span className="text-vernal-accent movil:text-white">{t("un")}</span>{" "}
           <span className="text-white">
-            equipo <br className="hidden design:inline" />
-            que <br className="hidden movil:inline" />
-            piensa igual
+            {t("equipo ")}<br className="hidden design:inline" />
+            {t("que ")}<br className="hidden movil:inline" />
+            {t("piensa igual")}
           </span>
         </h2>
 
         <p className="mt-6 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:absolute movil:top-[192px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[265px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
-          {"Hoy, el Abogado Vernal lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.\n\nDetrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente."}
+          {t("Hoy, el Abogado Vernal lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.\n\nDetrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.")}
         </p>
 
         <ButtonLink
           href="/contacto"
           className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:hidden design:absolute design:top-[452px] design:left-[797px] design:mt-0"
         >
-          Agenda tu consulta
+          {t("Agenda tu consulta")}
         </ButtonLink>
         {/* Solo en el lienzo de 402. Se oculta desde un contenedor: el `hidden`
             puesto en el botón pierde contra su `inline-flex` de base. */}
@@ -105,48 +106,48 @@ export function NosotrosHoy() {
             href="/contacto"
             className="movil:absolute movil:top-[509px] movil:left-[41px] movil:w-[277px]"
           >
-            Agenda tu consulta
+            {t("Agenda tu consulta")}
           </ButtonLink>
         </div>
 
         {/* Tira de cinco fotos de clientes del despacho; en el lienzo de 402 son
             otras cuatro, en dos filas. */}
         <ul className="mt-12 grid grid-cols-2 gap-[3px] sm:grid-cols-5 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:h-full movil:w-full design:absolute design:top-[595px] design:left-0 design:mt-0 design:block design:h-[288px] design:w-full">
-          {TIRA.map((t, i) => (
+          {TIRA.map((f, i) => (
             <li
-              key={t.left}
+              key={f.left}
               className={`relative aspect-[382/288] overflow-hidden last:col-span-2 last:aspect-[764/288] sm:last:col-span-1 sm:last:aspect-[382/288] design:absolute design:top-0 design:left-[var(--x)] design:aspect-auto design:h-[288px] design:w-[var(--w)] movil:hidden`}
               style={
                 {
-                  "--x": `${t.left}px`,
-                  "--w": `${t.ancho}px`,
+                  "--x": `${f.left}px`,
+                  "--w": `${f.ancho}px`,
                 } as React.CSSProperties
               }
             >
               <Image
                 src={`/images/nosotros/tira-${i + 1}.webp`}
-                alt="Clientes del despacho con su documentación migratoria"
+                alt={t("Clientes del despacho con su documentación migratoria")}
                 fill
                 sizes="(min-width: 1280px) 382px, (min-width: 640px) 20vw, 50vw"
                 className="object-cover"
               />
             </li>
           ))}
-          {TIRA_MOVIL.map((t, i) => (
+          {TIRA_MOVIL.map((f, i) => (
             <li
-              key={`movil-${t.left}-${t.top}`}
+              key={`movil-${f.left}-${f.top}`}
               className="hidden overflow-hidden movil:absolute movil:top-[var(--my)] movil:left-[var(--mx)] movil:block movil:h-[151px] movil:w-[var(--mw)]"
               style={
                 {
-                  "--mx": `${t.left}px`,
-                  "--my": `${t.top}px`,
-                  "--mw": `${t.ancho}px`,
+                  "--mx": `${f.left}px`,
+                  "--my": `${f.top}px`,
+                  "--mw": `${f.ancho}px`,
                 } as React.CSSProperties
               }
             >
               <Image
                 src={`/images/nosotros/tira-movil-${i + 1}.webp`}
-                alt="Clientes del despacho con su documentación migratoria"
+                alt={t("Clientes del despacho con su documentación migratoria")}
                 fill
                 sizes="202px"
                 className="object-cover"

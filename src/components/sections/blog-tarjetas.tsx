@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
 import { topTitulo, type EntradaBlog } from "@/lib/blog";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Las tarjetas de /blog y su botón "Cargar más".
@@ -34,6 +35,7 @@ const topMovil = (i: number) =>
   i < TARJETAS_MOVIL.length ? TARJETAS_MOVIL[i] : TARJETAS_MOVIL[5] + (i - 5) * 470;
 
 export function BlogTarjetas({ entradas }: { entradas: EntradaBlog[] }) {
+  const t = useT();
   const [visibles, setVisibles] = useState(PASO);
   const lista = entradas.slice(0, visibles);
   const quedan = entradas.length > visibles;
@@ -84,7 +86,7 @@ export function BlogTarjetas({ entradas }: { entradas: EntradaBlog[] }) {
             onClick={() => setVisibles((n) => n + PASO)}
             className="bg-vernal-navy text-vernal-accent flex h-[52px] w-full cursor-pointer items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[277px] apilada:w-[277px] movil:w-[277px] design:w-[277px]"
           >
-            Cargar más
+            {t("Cargar más")}
           </button>
         </div>
       )}

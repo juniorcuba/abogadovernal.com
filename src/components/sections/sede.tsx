@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
 import {
@@ -9,6 +9,7 @@ import {
   type Servicio,
 } from "@/lib/sedes";
 import { textosDeSede } from "@/lib/sedes-textos";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Página de sede — plantilla de los artboards "VERNAL - AREAS DE SERVICIO -
@@ -139,20 +140,20 @@ export function SedeHero({ sede }: { sede: Sede }) {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-16 lg:px-12 movil:absolute movil:top-[362px] movil:left-0 movil:w-full movil:max-w-none movil:-translate-y-1/2 movil:p-0 design:h-[713px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] movil:ml-[38px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[217px] design:left-[237px] design:text-[36px] design:leading-[37px]">
-          Justicia sin fronteras
+          {t("Justicia sin fronteras")}
         </p>
         <h1 className="mt-3 text-[36px] leading-[40px] font-normal uppercase sm:text-[56px] sm:leading-[60px] movil:mt-[12px] movil:ml-[38px] movil:w-[364px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[282px] design:left-[237px] design:mt-0 design:text-[82px] design:leading-[85px]">
           {/* El lienzo de 402 se queda sin el "en": con él, "INMIGRACIÓN EN"
               mide 372.9 y no cabe en los 364 que hay de margen a margen. */}
           <span className="text-vernal-accent block">
-            Abogado de
+            {t("Abogado de")}
             <br />
-            inmigración<span className="movil:hidden"> en</span>
+            {t("inmigración")}<span className="movil:hidden">{t(" en")}</span>
           </span>
-          <span className="block text-white">{sede.rotulo}</span>
+          <span className="block text-white">{t(sede.rotulo)}</span>
         </h1>
         <p className="mt-6 max-w-[580px] text-[16px] leading-[22px] text-white movil:mt-[17px] movil:ml-[41px] movil:w-[316px] movil:max-w-none movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[563px] design:left-[237px] design:mt-0 design:w-[580px] design:leading-[17px]">
-          {sede.intro}
+          {t(sede.intro)}
         </p>
       </div>
     </section>
@@ -306,7 +307,7 @@ function BotonMasInfo({ top, enMovil }: { top?: number; enMovil?: boolean }) {
       } ${enMovil ? "movil:absolute movil:top-[var(--mbt)] movil:left-[30.5px] movil:mt-0" : "movil:mt-[16px]"}`}
       style={top === undefined ? undefined : ({ "--bt": `${top}px` } as React.CSSProperties)}
     >
-      Más información
+      {t("Más información")}
       <FlechaEnlace className="absolute top-[18.5px] left-[171px] h-[15px] w-[25px]" />
     </Link>
   );
@@ -423,22 +424,22 @@ function Tarjeta({
             {partido ? (
               <>
                 <span className="text-vernal-accent">
-                  Defensa Contra la
+                  {t("Defensa Contra la")}
                   <br />
-                  Deportación
+                  {t("Deportación")}
                 </span>{" "}
                 <span className="text-white">
-                  <span className="movil:hidden">en {sede.nombreDiseno}</span>
-                  <span className="hidden movil:inline">{movil.subtitulo}</span>
+                  <span className="movil:hidden">{t("en ")}{sede.nombreDiseno}</span>
+                  <span className="hidden movil:inline">{t(movil.subtitulo)}</span>
                 </span>
               </>
             ) : (
               <>
-                <span className="text-vernal-accent">{servicio.titulo}</span>
+                <span className="text-vernal-accent">{t(servicio.titulo)}</span>
                 <br />
                 <span className="text-white">
-                  <span className="movil:hidden">en {sede.nombreDiseno}</span>
-                  <span className="hidden movil:inline">{movil.subtitulo}</span>
+                  <span className="movil:hidden">{t("en ")}{sede.nombreDiseno}</span>
+                  <span className="hidden movil:inline">{t(movil.subtitulo)}</span>
                 </span>
               </>
             )}
@@ -447,8 +448,10 @@ function Tarjeta({
             className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[var(--mpt)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[var(--h)] design:leading-[17px]"
             style={{ "--h": `${(ajuste.hueco ?? servicio.hueco) - deFila}px` } as React.CSSProperties}
           >
-            {textosDeSede[sede.slug]?.servicios[servicio.id] ??
-              servicio.texto.replaceAll("{ciudad}", sede.ciudad)}
+            {t(textosDeSede[sede.slug]?.servicios[servicio.id] ?? servicio.texto).replaceAll(
+              "{ciudad}",
+              sede.ciudad,
+            )}
           </p>
         </div>
         <BotonMasInfo enMovil />
@@ -514,15 +517,15 @@ function TarjetaHumanitarias({ sede }: { sede: Sede }) {
         style={{ "--mht": `${movil.titulo}px`, "--mhp": `${movil.texto}px` } as React.CSSProperties}
       >
         <h2 className="mt-5 text-[28px] leading-[30px] font-light movil:absolute movil:top-[var(--mht)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-[24px] movil:leading-[25px] design:mt-0 design:text-[36px] design:leading-[37px]">
-          <span className="text-vernal-accent">Visas Humanitarias</span>
+          <span className="text-vernal-accent">{t("Visas Humanitarias")}</span>
           <br />
           <span className="text-white">
-                  <span className="movil:hidden">en {sede.nombreDiseno}</span>
-                  <span className="hidden movil:inline">{deMovil.subtitulo}</span>
+                  <span className="movil:hidden">{t("en ")}{sede.nombreDiseno}</span>
+                  <span className="hidden movil:inline">{t(deMovil.subtitulo)}</span>
                 </span>
         </h2>
         <p className="mt-4 text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[var(--mhp)] movil:left-[30.5px] movil:mt-0 movil:w-[293px] movil:text-left movil:text-[15px] movil:leading-[16px] design:mt-[18px] design:leading-[17px]">
-          {sede.introHumanitarias}
+          {t(sede.introHumanitarias)}
         </p>
       </div>
 
@@ -583,12 +586,12 @@ function TarjetaHumanitarias({ sede }: { sede: Sede }) {
               <rect x="3.5" y="3.5" width="287" height="197" fill="none" stroke={`url(#sede-sub-movil-${i})`} strokeWidth="7" />
             </svg>
             <h3 className="relative text-[22px] leading-[25px] font-light text-white movil:absolute movil:top-[19.5px] movil:left-[20.5px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[var(--st)] design:left-[36px] design:text-[24px]">
-              {v.titulo}
+              {t(v.titulo)}
             </h3>
             <p className="relative mt-2 text-[16px] leading-[20px] text-white movil:absolute movil:top-[55.5px] movil:left-[20.5px] movil:mt-0 movil:w-[262px] movil:text-[15px] movil:leading-[16px] design:absolute design:top-[var(--sp)] design:left-[36px] design:mt-0 design:w-[340px] design:leading-[17px]">
-              {v.antes}
-              <span className="text-vernal-accent">{v.destacado}</span>
-              {v.despues}
+              {t(v.antes)}
+              <span className="text-vernal-accent">{t(v.destacado)}</span>
+              {t(v.despues)}
             </p>
           </li>
         ))}

@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { Logo } from "@/components/ui/logo";
 import { sedes } from "@/lib/sedes";
 import { site, socialsCabecera } from "@/lib/site";
+import { SelectorIdioma } from "@/components/layout/selector-idioma";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Menú móvil — artboards `VESPER AGENCY LANDING - MENU` (402×886, con las
@@ -58,6 +60,7 @@ function Flecha() {
 }
 
 export function MenuMovil() {
+  const t = useT();
   const [abierto, setAbierto] = useState(false);
   // Los dos pueden estar abiertos a la vez: asi los ensena el artboard FULL.
   const [desplegados, setDesplegados] = useState<Record<"nosotros" | "areas", boolean>>({
@@ -92,7 +95,7 @@ export function MenuMovil() {
       <button
         type="button"
         onClick={() => setAbierto(true)}
-        aria-label="Abrir menú"
+        aria-label={t("Abrir menú")}
         aria-expanded={abierto}
         className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center movil:absolute movil:top-[23px] movil:left-[25px] movil:h-[24px] movil:w-[36px]"
       >
@@ -117,7 +120,7 @@ export function MenuMovil() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Menú"
+          aria-label={t("Menú")}
           className="fixed inset-0 z-[100] overflow-y-auto bg-[#0F0F10] bg-[radial-gradient(1639px_326px_at_69px_650px,#172339_0%,#0F0F0F_100%)]"
         >
           {/* Cabecera del panel, en las coordenadas de la barra de siempre. */}
@@ -125,7 +128,7 @@ export function MenuMovil() {
             <button
               type="button"
               onClick={cerrar}
-              aria-label="Cerrar menú"
+              aria-label={t("Cerrar menú")}
               className="absolute top-[18px] left-[22px] flex h-[34px] w-[34px] cursor-pointer items-center justify-center"
             >
               <svg aria-hidden width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -140,10 +143,7 @@ export function MenuMovil() {
             <Link href="/" onClick={cerrar} className="absolute top-[18px] left-[171px] block h-[46px] w-[57px] apilada:left-1/2 apilada:-translate-x-1/2 [&>div]:!h-full [&>div]:!w-full">
               <Logo />
             </Link>
-            <div className="absolute top-[24px] left-[327px] flex gap-x-[12px] text-[14px] leading-[15px] font-medium apilada:right-[28px] apilada:left-auto">
-              <span className="text-white">ES</span>
-              <span className="text-[#323B4C]">EN</span>
-            </div>
+            <SelectorIdioma className="absolute top-[24px] left-[327px] flex gap-x-[12px] text-[14px] leading-[15px] font-medium apilada:right-[28px] apilada:left-auto" />
           </div>
 
           <nav className="pt-[61px] pb-[40px]">
@@ -151,14 +151,14 @@ export function MenuMovil() {
             <ul className="mr-[22px] ml-[34px]">
               <li className={`${FILA} pt-0`}>
                 <Link href="/" onClick={cerrar} className={ENLACE}>
-                  Inicio
+                  {t("Inicio")}
                 </Link>
               </li>
 
               <li>
                 <div className={FILA}>
                   <Desplegable
-                    etiqueta="Nosotros"
+                    etiqueta={t("Nosotros")}
                     abierto={desplegados.nosotros}
                     alternar={() => alternar("nosotros")}
                   />
@@ -167,7 +167,7 @@ export function MenuMovil() {
                   <ul>
                     <li className={SUBFILA}>
                       <Link href="/nosotros" onClick={cerrar} className={`${SUBENLACE} pl-[72px]`}>
-                        Abogado Vernal
+                        {t("Abogado Vernal")}
                         <Flecha />
                       </Link>
                     </li>
@@ -177,7 +177,7 @@ export function MenuMovil() {
                         onClick={cerrar}
                         className={`${SUBENLACE} pl-[72px]`}
                       >
-                        Nuestro Equipo
+                        {t("Nuestro Equipo")}
                         <Flecha />
                       </Link>
                     </li>
@@ -188,7 +188,7 @@ export function MenuMovil() {
               <li>
                 <div className={`${FILA} pb-[9px]`}>
                   <Desplegable
-                    etiqueta={["Áreas de practica", "& servicios"]}
+                    etiqueta={[t("Áreas de practica"), t("& servicios")]}
                     abierto={desplegados.areas}
                     alternar={() => alternar("areas")}
                   />
@@ -211,7 +211,7 @@ export function MenuMovil() {
                               height={18}
                               className="h-[18px] w-[17px] shrink-0"
                             />
-                            {s.rotulo}
+                            {t(s.rotulo)}
                           </span>
                           <Flecha />
                         </Link>
@@ -223,29 +223,29 @@ export function MenuMovil() {
 
               <li className={FILA}>
                 <Link href="/testimoniales" onClick={cerrar} className={ENLACE}>
-                  Testimoniales
+                  {t("Testimoniales")}
                 </Link>
               </li>
               <li className={FILA}>
                 <Link href="/blog" onClick={cerrar} className={ENLACE}>
-                  Blogs
+                  {t("Blogs")}
                 </Link>
               </li>
               <li className={FILA}>
                 {/* Era "FAQS": la página se retiró por ahora (2026-10-12). */}
                 <Link href="/contacto" onClick={cerrar} className={`${ENLACE} font-normal`}>
-                  EB1
+                  {t("EB1")}
                 </Link>
               </li>
               <li className={FILA}>
                 <Link href="/contacto" onClick={cerrar} className={`${ENLACE} font-normal`}>
-                  Contacto
+                  {t("Contacto")}
                 </Link>
               </li>
             </ul>
 
             <p className="mt-[36px] text-center text-[16px] leading-[17px] text-white">
-              Llamanós{" "}
+              {t("Llamanós")}{" "}
               <a href={site.phoneHref} className="text-vernal-accent font-bold transition-colors hover:text-white">
                 {site.phone}
               </a>
@@ -268,13 +268,13 @@ export function MenuMovil() {
             </ul>
 
             <p className="mt-[37px] text-center text-[8px] leading-[9px] font-light text-white">
-              © 2026 – ABOGADO VERNAL. All right reserved.
+              {t("© 2026 – ABOGADO VERNAL. All right reserved.")}
               <br />
               <Link href={site.privacyUrl} onClick={cerrar} className="hover:text-vernal-accent">
-                Políticas de privacidad.
+                {t("Políticas de privacidad.")}
               </Link>{" "}
               <Link href={site.termsUrl} onClick={cerrar} className="hover:text-vernal-accent">
-                Términos y condiciones
+                {t("Términos y condiciones")}
               </Link>
             </p>
           </nav>

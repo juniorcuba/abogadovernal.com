@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Hero de /nosotros — frame `181:2125`, export del 2026-09-13, rango y=−1..1026.
@@ -85,17 +86,17 @@ export function NosotrosHero() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pb-20 movil:block movil:h-[1349px] movil:max-w-none movil:p-0 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] apilada:text-center movil:absolute movil:top-[571.5px] movil:left-[38px] movil:text-[24px] movil:leading-[26px] design:absolute design:top-[264px] design:left-[223px] design:text-[36px] design:leading-[37px]">
-          Tu defensa en Texas
+          {t("Tu defensa en Texas")}
         </p>
         <h1 className="drop-shadow-vernal-1 mt-2 text-[46px] leading-[48px] font-semibold uppercase sm:text-[62px] sm:leading-[64px] apilada:text-center movil:absolute movil:top-[607px] movil:left-[38px] movil:mt-0 movil:text-[46px] movil:leading-[48px] design:absolute design:top-[312px] design:left-[223px] design:mt-0 design:text-[82px] design:leading-[85px]">
-          <span className="block text-white">Abogado</span>
-          <span className="text-vernal-accent block">Vernal</span>
+          <span className="block text-white">{t("Abogado")}</span>
+          <span className="text-vernal-accent block">{t("Vernal")}</span>
         </h1>
 
         <p className="mt-8 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify apilada:mx-auto apilada:text-center movil:absolute movil:top-[732px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[531px] design:left-[223px] design:mt-0 design:w-[560px] design:max-w-none design:leading-[17px]">
-          {"Antes de convertirse en abogado de inmigración, el "}
-          <span className="text-vernal-accent">Abogado Vernal Farum</span>
-          {' ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con la inmigración a Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que "cada cliente que llega a la oficina lleva a mi familia", no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda, es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos.'}
+          {t("Antes de convertirse en abogado de inmigración, el ")}
+          <span className="text-vernal-accent">{t("Abogado Vernal Farum")}</span>
+          {t(" ya conocía el peso de ese sistema desde adentro. Nació en Panamá, pero su historia con la inmigración a Estados Unidos comenzó mucho antes de que él mismo decidiera ejercer el derecho: comenzó viendo a sus propios hermanos cruzar esa frontera legal, y a su madre enfrentar una sanción por una falta administrativa que la ley consideró severa.\n\nNo aprendió sobre el proceso migratorio en un salón de clases. Lo aprendió en su propia casa.\n\nPor eso, cuando dice que \"cada cliente que llega a la oficina lleva a mi familia\", no es una frase hecha, es literal. Cada caso de inmigración que revisa, cada petición familiar, cada proceso de residencia, le recuerda lo que vivió su propia gente.\n\nEsa cercanía con el sistema migratorio de Estados Unidos y con lo que significa navegarlo sin ayuda, es lo que lo llevó a fundar Vernal Farnum Mejía & Associates, un despacho de inmigración en Texas donde cada caso se atiende con la misma seriedad y cuidado con la que él hubiera querido que atendieran a los suyos.")}
         </p>
 
         {/* Tarjeta con la cita. En la franja apilada va en flujo, debajo del texto y
@@ -171,8 +172,8 @@ export function NosotrosHero() {
             className="relative h-[71.87px] w-[72.97px] movil:absolute movil:top-[33px] movil:left-[26px] movil:h-[48px] movil:w-[49px] design:absolute design:top-[50.1px] design:left-[40.5px]"
           />
           <blockquote className="relative mt-6 text-[30px] leading-[32px] font-light whitespace-pre-line text-white apilada:text-[26px] apilada:leading-[28px] movil:absolute movil:top-[100px] movil:left-[22px] movil:mt-0 movil:text-[20px] movil:leading-[21px] design:absolute design:top-[150px] design:left-[34px] design:mt-0 design:text-[36px] design:leading-[37px]">
-            {'"cada cliente\nque llega a la\noficina '}
-            <span className="text-vernal-accent">{'lleva a\nmi familia"'}</span>
+            {t("\"cada cliente\nque llega a la\noficina ")}
+            <span className="text-vernal-accent">{t("lleva a\nmi familia\"")}</span>
           </blockquote>
         </figure>
       </div>

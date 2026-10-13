@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Sobre nosotros" — nodos del rango y=1142..1751 de la frame 1:2.
@@ -101,25 +102,25 @@ export function SobreNosotros() {
         />
 
         <h2 className="text-vernal-navy text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[42px] movil:left-[46px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[127px] design:left-[271px] design:w-[354px] design:leading-[67px] design:text-[64px]">
-          Sobre
+          {t("Sobre")}
           <br />
-          nosotros
+          {t("nosotros")}
         </h2>
 
         {/* Un solo bloque con salto doble, como el nodo 8:97: así la línea en
             blanco entre párrafos mide exactamente un interlineado, en vez de un
             margen aproximado entre dos <p>. */}
         <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-black movil:absolute movil:top-[166px] movil:left-[41px] movil:mt-0 movil:w-[315px] movil:max-w-none movil:text-justify design:absolute design:top-[302px] design:left-[279px] design:mt-0 design:w-[580px]">
-          {"En Texas, Estados Unidos, la oficina del "}
-          <span className="font-bold">Abogado Vernal Farnum Mejía</span>
-          {" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca."}
+          {t("En Texas, Estados Unidos, la oficina del ")}
+          <span className="font-bold">{t("Abogado Vernal Farnum Mejía")}</span>
+          {t(" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca.")}
         </p>
 
         <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase movil:absolute movil:top-[734px] movil:left-[3px] movil:mt-0 movil:text-left movil:text-[99px] movil:leading-[103px] design:absolute design:top-[358px] design:left-[970px] design:mt-0 design:text-left design:leading-[183px] design:text-[176px]">
           +10,000
         </p>
         <p className="text-center text-[24px] leading-[25px] font-semibold text-white uppercase movil:absolute movil:top-[836px] movil:left-[46px] movil:text-left movil:text-[34px] movil:leading-[36px] design:absolute design:top-[532px] design:left-[1210px] design:text-left design:leading-[47px] design:text-[45px]">
-          familias reunidas
+          {t("familias reunidas")}
         </p>
       </div>
     </section>

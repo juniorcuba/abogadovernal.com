@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { sedes } from "@/lib/sedes";
 import type { NavItem } from "@/lib/site";
+import { rutaSinIdioma } from "@/lib/i18n/idiomas";
+import { useT } from "@/lib/i18n/cliente";
 
 /** La página actual, o una hija suya (las sedes cuelgan de /areas-de-servicio). */
 export function esActivo(ruta: string, href: string) {
@@ -52,7 +54,8 @@ export function NavLink({
   x: number;
   y: number;
 }) {
-  const ruta = usePathname();
+  const t = useT();
+  const ruta = rutaSinIdioma(usePathname());
   const activo =
     !item.sinActivo &&
     (esActivo(ruta, item.href) ||
@@ -66,11 +69,11 @@ export function NavLink({
     : `text-[16px] leading-[17px] whitespace-nowrap transition-colors ${color}`;
   const contenido = item.lineas ? (
     <>
-      <span className="block">{item.lineas[0]}</span>
-      <span className="block">{item.lineas[1]}</span>
+      <span className="block">{t(item.lineas[0])}</span>
+      <span className="block">{t(item.lineas[1])}</span>
     </>
   ) : (
-    item.label
+    t(item.label)
   );
   const caja = `design:absolute design:top-[var(--y)] design:left-[var(--x)] ${item.lineas ? "design:w-[143px]" : ""}`;
   const posicion = {
@@ -145,7 +148,7 @@ export function NavLink({
                       className="h-[18px] w-[17px] shrink-0"
                     />
                   )}
-                  {o.label}
+                  {t(o.label)}
                 </span>
                 <svg
                   aria-hidden

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Nuestro compromiso" — nodos del rango y=3269..4078 de la frame 1:2.
@@ -97,45 +98,45 @@ export function NuestroCompromiso() {
 
       <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[1522px] movil:p-0 design:h-[808px] design:p-0">
         <h2 className="text-center text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[53px] movil:left-[31px] movil:w-[340px] movil:text-left movil:leading-[48px] movil:text-[46px] design:absolute design:top-[67px] design:left-[582px] design:w-[760px] design:leading-[67px] design:text-[64px]">
-          Nuestro compromiso
+          {t("Nuestro compromiso")}
         </h2>
 
         <p className="mt-6 text-center text-[16px] leading-[17px] text-white movil:absolute movil:top-[172px] movil:left-[36px] movil:mt-0 movil:w-[322px] movil:text-justify design:absolute design:top-[150px] design:left-[583px] design:mt-0 design:w-[759px]">
-          {"En la firma de "}
-          <span className="font-bold">Vernal Farnum Mejia</span>
-          {", nuestra misión es facilitar los sueños de nuestros clientes con honestidad, profesionalismo y amor, siempre tomando en cuenta sus mejores intereses y defendiendo lo más valioso que tiene todo ser humano: su familia."}
+          {t("En la firma de ")}
+          <span className="font-bold">{t("Vernal Farnum Mejia")}</span>
+          {t(", nuestra misión es facilitar los sueños de nuestros clientes con honestidad, profesionalismo y amor, siempre tomando en cuenta sus mejores intereses y defendiendo lo más valioso que tiene todo ser humano: su familia.")}
         </p>
 
         <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 apilada:grid-cols-2 apilada:[&>*:last-child]:col-span-2 apilada:[&>*:last-child]:mx-auto apilada:[&>*:last-child]:w-1/2 movil:mt-0 movil:block design:mt-0 design:block">
-          {tarjetas.map((t) => (
+          {tarjetas.map((c) => (
             <li
-              key={t.left}
+              key={c.left}
               className="relative h-[413px] overflow-hidden bg-[linear-gradient(210.91deg,#40629F_7.57%,#172339_63.60%)] movil:absolute movil:top-[var(--mt)] movil:left-[36px] movil:h-[180px] movil:w-[324px] movil:bg-[linear-gradient(192.71deg,#40629F_7.57%,#172339_63.60%)] movil:shadow-vernal-1 design:absolute design:top-[240px] design:left-[var(--x)] design:w-[280px]"
               style={
                 {
-                  "--x": `${t.left}px`,
-                  "--mt": `${t.movil.top}px`,
+                  "--x": `${c.left}px`,
+                  "--mt": `${c.movil.top}px`,
                   // Encuadre de la foto: escritorio (i*) y móvil (m*).
-                  "--ix": `${t.img.x}px`,
-                  "--iy": `${t.img.y}px`,
-                  "--iw": `${t.img.w}px`,
-                  "--ih": `${t.img.h}px`,
-                  "--mx": `${t.movil.img.x}px`,
-                  "--my": `${t.movil.img.y}px`,
-                  "--mw": `${t.movil.img.w}px`,
-                  "--mh": `${t.movil.img.h}px`,
-                  "--il": `${t.iconoLeft}px`,
-                  "--mc": `${t.movil.circulo}px`,
-                  "--tw": `${t.movil.texto}px`,
+                  "--ix": `${c.img.x}px`,
+                  "--iy": `${c.img.y}px`,
+                  "--iw": `${c.img.w}px`,
+                  "--ih": `${c.img.h}px`,
+                  "--mx": `${c.movil.img.x}px`,
+                  "--my": `${c.movil.img.y}px`,
+                  "--mw": `${c.movil.img.w}px`,
+                  "--mh": `${c.movil.img.h}px`,
+                  "--il": `${c.iconoLeft}px`,
+                  "--mc": `${c.movil.circulo}px`,
+                  "--tw": `${c.movil.texto}px`,
                 } as React.CSSProperties
               }
             >
               <Image
-                src={t.foto}
+                src={c.foto}
                 alt=""
                 aria-hidden
-                width={t.img.w}
-                height={t.img.h}
+                width={c.img.w}
+                height={c.img.h}
                 className="absolute top-[var(--iy)] left-[var(--ix)] h-[var(--ih)] w-[var(--iw)] max-w-none apilada:top-0 apilada:left-0 apilada:h-full apilada:w-full apilada:object-cover apilada:object-top movil:top-[var(--my)] movil:left-[var(--mx)] movil:h-[var(--mh)] movil:w-[var(--mw)]"
               />
               <div
@@ -147,7 +148,7 @@ export function NuestroCompromiso() {
                 className="absolute top-[194px] left-[var(--il)] flex h-[75px] w-[75px] items-center justify-center rounded-full bg-white movil:top-[var(--mc)] movil:left-[34px] movil:h-[64.8px] movil:w-[64.8px]"
               >
                 <Image
-                  src={t.icono}
+                  src={c.icono}
                   alt=""
                   width={75}
                   height={75}
@@ -161,16 +162,15 @@ export function NuestroCompromiso() {
                   archivo: por debajo de 183 la tarjeta 2 parte una línea de más, y
                   a partir de ~193 las tarjetas 1, 4 y 5 juntan dos en una. */}
               <p className="absolute right-[24px] bottom-[30px] left-[24px] text-[16px] leading-[17px] text-white movil:top-[72px] movil:right-auto movil:bottom-0 movil:left-[34px] movil:flex movil:w-[var(--tw)] movil:items-center movil:text-[14px] movil:leading-[15px] movil:text-black design:top-[283px] design:right-auto design:bottom-auto design:left-[40px] design:w-[190px] design:text-black">
-                {t.texto}
+                {t(c.texto)}
               </p>
             </li>
           ))}
         </ul>
 
         <p className="mt-10 text-center text-[22px] leading-[23px] font-light text-white movil:absolute movil:top-[1384px] movil:left-[61px] movil:mt-0 movil:w-[280px] movil:leading-[25px] movil:text-[24px] design:absolute design:top-[697px] design:left-[427px] design:mt-0 design:w-[1102px] design:leading-[37px] design:text-[36px]">
-          “nuestra misión es{" "}
-          <span className="text-vernal-accent">facilitar los sueños</span> de nuestros
-          clientes”
+          {t("“nuestra misión es")}{" "}
+          <span className="text-vernal-accent">{t("facilitar los sueños")}</span>{t(" de nuestros clientes”")}
         </p>
       </div>
     </section>

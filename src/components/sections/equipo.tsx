@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { VideoYoutube } from "@/components/ui/video-youtube";
 import { Logo } from "@/components/ui/logo";
 import { equipo, rejillaEquipo } from "@/lib/equipo";
+import { useT } from "@/lib/i18n/cliente";
 
 /** Paso entre fichas en el lienzo de 402. */
 const PASO_MOVIL = 371;
@@ -38,6 +39,7 @@ const PASO_MOVIL = 371;
  */
 
 export function EquipoHero() {
+  const t = useT();
   return (
     <section className="relative -mt-[128px] overflow-hidden bg-[#0F0F10] movil:-mt-[106px] movil:h-[821px] design:h-[897px]">
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden movil:h-[821px] movil:w-[402px] design:h-[897px] design:w-[1918px]">
@@ -89,25 +91,20 @@ export function EquipoHero() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:max-w-none movil:px-0 movil:pt-0 movil:pb-0 movil:h-[821px] design:h-[897px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] movil:absolute movil:top-[177px] movil:left-[38px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[216px] design:left-[242px] design:text-[36px] design:leading-[37.44px]">
-          Tu defensa en Texas
+          {t("Tu defensa en Texas")}
         </p>
 
         <h1 className="mt-3 text-[40px] leading-[44px] font-semibold uppercase sm:text-[58px] sm:leading-[62px] movil:absolute movil:top-[213px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[271px] design:left-[237px] design:mt-0 design:w-[752px] design:text-[82px] design:leading-[85px]">
-          <span className="text-white">Hoy, al frente de </span>
-          <span className="text-vernal-accent">un equipo que piensa igual</span>
+          <span className="text-white">{t("Hoy, al frente de ")}</span>
+          <span className="text-vernal-accent">{t("un equipo que piensa igual")}</span>
         </h1>
 
         <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white movil:absolute movil:top-[426px] movil:left-[41px] movil:mt-0 movil:w-[316px] movil:max-w-none movil:space-y-0 movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[551px] design:left-[243px] design:mt-0 design:w-[580px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
-            Hoy, el <span className="text-vernal-accent">Abogado Vernal</span> lidera un equipo
-            de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston,
-            Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta,
-            todos los días, las mismas dudas que él mismo vio enfrentar a su familia.
+            {t("Hoy, el ")}<span className="text-vernal-accent">{t("Abogado Vernal")}</span>{t(" lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.")}
           </p>
           <p className="movil:mt-[16px] design:mt-[17px]">
-            Detrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo
-            que comparten un mismo criterio al momento de contratar: que les importe la historia
-            de la persona que tienen enfrente, no solo su expediente.
+            {t("Detrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.")}
           </p>
         </div>
 
@@ -115,7 +112,7 @@ export function EquipoHero() {
           href="/contacto"
           className="mt-8 w-full sm:w-[224px] apilada:w-[224px] movil:absolute movil:top-[712px] movil:left-[43px] movil:mt-0 movil:h-[52px] movil:w-[210px] design:absolute design:top-[757px] design:left-[243px] design:mt-0"
         >
-          Agenda tu consulta
+          {t("Agenda tu consulta")}
         </ButtonLink>
       </div>
     </section>
@@ -128,6 +125,7 @@ export function EquipoHero() {
  * que se pulsa "Cargar más". De ahí que esto sea un componente de cliente.
  */
 export function EquipoRejilla() {
+  const t = useT();
   const { izquierdas, filas, foto, cargoDesde } = rejillaEquipo;
   const posicion = (i: number) => {
     const fila = i < 4 ? 0 : i < 8 ? 1 : 2;
@@ -161,7 +159,7 @@ export function EquipoRejilla() {
         {/* En el archivo el título no está centrado: arranca en x776. En el de
             402 sí: va centrado a +51 del borde de la banda. */}
         <h2 className="text-center text-[34px] leading-[40px] font-light text-white sm:text-[44px] movil:absolute movil:top-[51px] movil:left-0 movil:w-full movil:text-[32px] movil:leading-[33px] design:absolute design:top-[78.5px] design:left-[776px] design:w-auto design:text-left design:text-[64px] design:leading-[66px]">
-          El equipo
+          {t("El equipo")}
         </h2>
 
         <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 apilada:grid-cols-3 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:w-full">
@@ -191,7 +189,7 @@ export function EquipoRejilla() {
                 }`}
                 style={{ "--cd": `${cargoDesde - 19}px` } as React.CSSProperties}
               >
-                {f.cargo}
+                {t(f.cargo)}
               </p>
               <Image
                 src={f.foto}
@@ -213,7 +211,7 @@ export function EquipoRejilla() {
             onClick={() => setTodas(true)}
             className="absolute hidden cursor-pointer text-white movil:top-[1615px] movil:left-0 movil:block movil:w-full movil:text-[16px] movil:leading-[17px]"
           >
-            Cargar más
+            {t("Cargar más")}
             <svg
               aria-hidden
               viewBox="193 2466 16 22"
@@ -236,6 +234,7 @@ export function EquipoRejilla() {
  * trazo de 5 centrado en el borde.
  */
 export function EquipoCompromiso() {
+  const t = useT();
   return (
     <section className="relative overflow-hidden bg-black design:h-[1055px]">
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden movil:w-[402px] design:w-[1923px]">
@@ -252,26 +251,21 @@ export function EquipoCompromiso() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:max-w-none movil:px-0 movil:pt-[78px] movil:pb-[50px] design:h-[1055px] design:max-w-[1920px] design:p-0">
         <h2 className="text-center text-[34px] leading-[40px] font-light movil:ml-[47px] movil:w-[320px] movil:text-left movil:text-[32px] movil:leading-[33px] sm:text-[44px] design:absolute design:top-[77.5px] design:left-0 design:w-full design:text-[64px] design:leading-[66px]">
-          <span className="text-white">Nuestro </span>
-          <span className="text-vernal-accent">compromiso</span>
+          <span className="text-white">{t("Nuestro ")}</span>
+          <span className="text-vernal-accent">{t("compromiso")}</span>
         </h2>
 
         {/* Cada párrafo tiene su propia caja en el archivo: el primero es más
             estrecho que los otros dos y por eso parte antes. */}
         <div className="mx-auto mt-8 max-w-[880px] space-y-5 text-center text-[16px] leading-[22px] text-white movil:mx-0 movil:ml-[43px] movil:mt-[32px] movil:w-[320px] movil:max-w-none movil:space-y-0 movil:text-justify movil:leading-[17px] design:contents">
           <p className="design:absolute design:top-[191px] design:left-1/2 design:w-[812px] design:-translate-x-1/2 design:text-center design:leading-[17px]">
-            Una visa no solo representa un documento migratorio. Representa justicia, protección
-            y una segunda oportunidad. Como abogado de inmigración, estos son los momentos que le
-            dan sentido a lo que hacemos cada día.
+            {t("Una visa no solo representa un documento migratorio. Representa justicia, protección y una segunda oportunidad. Como abogado de inmigración, estos son los momentos que le dan sentido a lo que hacemos cada día.")}
           </p>
           <p className="movil:mt-[17px] design:absolute design:top-[259px] design:left-1/2 design:w-[880px] design:-translate-x-1/2 design:text-center design:leading-[17px]">
-            Si tú también has sido víctima de un crimen y estás en EE.UU., podrías calificar para
-            una Visa U.
+            {t("Si tú también has sido víctima de un crimen y estás en EE.UU., podrías calificar para una Visa U.")}
           </p>
           <p className="movil:mt-[17px] design:absolute design:top-[293px] design:left-1/2 design:w-[880px] design:-translate-x-1/2 design:text-center design:leading-[17px]">
-            <span className="text-vernal-accent">Agenda tu consulta hoy.</span> Revisamos tu caso
-            con total confidencialidad. No estás solo. En las oficinas del Abogado Vernal,
-            caminamos contigo desde el inicio hasta el final.
+            <span className="text-vernal-accent">{t("Agenda tu consulta hoy.")}</span>{t(" Revisamos tu caso con total confidencialidad. No estás solo. En las oficinas del Abogado Vernal, caminamos contigo desde el inicio hasta el final.")}
           </p>
         </div>
 
@@ -310,7 +304,7 @@ export function EquipoCompromiso() {
             aria-hidden
             className="absolute hidden text-[154px] leading-[215.6px] font-bold whitespace-nowrap text-white/10 uppercase design:top-[327px] design:left-[84px] design:block"
           >
-            Aprobada
+            {t("Aprobada")}
           </span>
 
           {/* Fuera del lienzo de 1920 la tarjeta es mucho más baja y las
@@ -318,8 +312,8 @@ export function EquipoCompromiso() {
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 design:block design:gap-0 design:px-0">
             <VideoYoutube
               embed="zor7RwZACfk"
-              titulo="Este momento lo cambia todo: Visa U aprobada"
-              etiqueta="Ver el testimonio"
+              titulo={t("Este momento lo cambia todo: Visa U aprobada")}
+              etiqueta={t("Ver el testimonio")}
               claseMarco="rounded-[31px]"
               claseBoton="flex h-[54px] w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/40 shadow-vernal-1 transition-transform hover:scale-105 sm:h-[76px] sm:w-[76px] design:absolute design:top-[237px] design:left-[516px] design:h-[97px] design:w-[97px] design:-translate-x-1/2 design:-translate-y-1/2"
             >
@@ -332,12 +326,12 @@ export function EquipoCompromiso() {
             <VistoBueno className="absolute hidden design:top-[300px] design:left-[221px] design:block design:h-[55px] design:w-[55px]" />
 
             <p className="text-center text-[22px] leading-[26px] font-semibold uppercase sm:text-[34px] sm:leading-[38px] design:absolute design:top-[298px] design:left-1/2 design:w-full design:-translate-x-1/2 design:text-[55px] design:leading-[57px]">
-              <span className="text-white design:block">Este momento </span>
-              <span className="text-vernal-accent design:block">lo cambia todo</span>
+              <span className="text-white design:block">{t("Este momento ")}</span>
+              <span className="text-vernal-accent design:block">{t("lo cambia todo")}</span>
             </p>
 
             <p className="text-vernal-accent text-center text-[15px] leading-[19px] font-light sm:text-[18px] sm:leading-[22px] design:absolute design:top-[435px] design:left-1/2 design:w-full design:-translate-x-1/2 design:text-[30px] design:leading-[31px]">
-              Visa U Aprobada
+              {t("Visa U Aprobada")}
             </p>
           </div>
 
@@ -346,7 +340,7 @@ export function EquipoCompromiso() {
           </span>
 
           <span className="text-vernal-accent absolute hidden text-[20px] leading-[21px] font-light design:top-[482.5px] design:left-[856px] design:block">
-            Canal Oficial
+            {t("Canal Oficial")}
           </span>
         </div>
       </div>

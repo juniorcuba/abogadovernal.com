@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
 import { entradasBlog, topTitulo, type EntradaBlog } from "@/lib/blog";
 import type { Articulo as DatosArticulo, NodoArticulo, TrozoArticulo } from "@/lib/articulo";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * La vista de un artículo — frame `802:564` de Figma, 1920 × 4346.
@@ -95,11 +96,11 @@ function ArticuloHero({ articulo, entrada }: { articulo: DatosArticulo; entrada:
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[735px] movil:max-w-none movil:p-0 design:h-[639px] design:max-w-[1920px] design:p-0">
         <span className="bg-vernal-accent text-vernal-navy inline-flex items-center justify-center px-4 py-1 text-[18px] leading-[22px] font-medium movil:absolute movil:top-[106px] movil:left-[40px] movil:h-[40px] movil:w-[93px] movil:p-0 movil:text-[23px] movil:leading-[24px] design:absolute design:top-[128px] design:left-[250px] design:h-[40px] design:w-[93px] design:p-0 design:text-[23px] design:leading-[24px]">
-          BLOG
+          {t("BLOG")}
         </span>
 
         <p className="text-vernal-accent mt-6 text-[20px] leading-[24px] font-light sm:text-[24px] movil:absolute movil:top-[211px] movil:left-[38px] movil:mt-0 movil:text-[24px] movil:leading-[25px] design:absolute design:top-[272px] design:left-[247px] design:mt-0 design:text-[24px] design:leading-[25px]">
-          Abogado Vernal
+          {t("Abogado Vernal")}
         </p>
 
         {/* En 402 las etiquetas cuelgan del titular (25.5 por debajo), no de una
@@ -109,18 +110,18 @@ function ArticuloHero({ articulo, entrada }: { articulo: DatosArticulo; entrada:
         <h1 className="mt-3 text-[30px] leading-[34px] font-light text-white sm:text-[40px] sm:leading-[44px] movil:mt-0 movil:text-[46px] movil:leading-[48px] design:absolute design:top-[316px] design:left-[246px] design:mt-0 design:w-[1000px] design:text-[40px] design:leading-[42px]">
           {articulo.titulo.map((linea) => (
             <span key={linea} className="design:block">
-              {linea}{" "}
+              {t(linea)}{" "}
             </span>
           ))}
         </h1>
 
         <ul className="mt-6 flex gap-x-[5px] text-[10px] leading-[12px] font-medium text-white movil:mt-[25.5px] design:absolute design:top-[463.5px] design:left-[247.5px] design:mt-0">
-          {entrada.etiquetas.map((t) => (
+          {entrada.etiquetas.map((et) => (
             <li
-              key={t}
+              key={et}
               className="flex h-[18px] shrink-0 items-center justify-center rounded-[3.5px] border border-vernal-accent px-[9px] whitespace-nowrap"
             >
-              {t}
+              {t(et)}
             </li>
           ))}
         </ul>
@@ -150,7 +151,7 @@ function ArticuloCuerpo({ articulo }: { articulo: DatosArticulo }) {
             href="/contacto"
             className="bg-vernal-navy text-vernal-accent mt-10 flex h-[52px] w-full items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[277px] apilada:w-[277px] movil:mt-[32px] movil:w-[277px] design:mt-[45px] design:w-[277px]"
           >
-            Agenda tu consulta
+            {t("Agenda tu consulta")}
           </Link>
         </div>
 
@@ -197,13 +198,13 @@ function TarjetaNoticias({ arriba }: { arriba: number }) {
         className="relative h-[64px] w-[71px] movil:absolute movil:top-[31px] movil:left-[34px] design:absolute design:top-[31px] design:left-[34px]"
       />
       <p className="relative mt-4 text-[26px] leading-[28px] font-light text-white sm:text-[32px] sm:leading-[33px] movil:absolute movil:top-[111px] movil:left-[34px] movil:mt-0 movil:w-[230px] movil:text-[32px] movil:leading-[33px] design:absolute design:top-[118px] design:left-[34px] design:mt-0 design:w-[240px] design:text-[32px] design:leading-[33px]">
-        No te pierdas las ultimas noticias.
+        {t("No te pierdas las ultimas noticias.")}
       </p>
       <Link
         href="/blog"
         className="bg-vernal-accent text-vernal-navy relative mt-6 flex h-[66px] w-full items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90 movil:absolute movil:top-[241px] movil:left-[32.3px] movil:mt-0 movil:w-[233px] design:absolute design:top-[241px] design:left-[32.3px] design:mt-0 design:w-[233px]"
       >
-        Leer mas articulos
+        {t("Leer mas articulos")}
       </Link>
     </aside>
   );
@@ -216,7 +217,7 @@ function ArticuloMas({ slug }: { slug: string }) {
     <section className="relative overflow-hidden bg-[#08B6FF] movil:h-[1671px] design:h-[890px]">
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[1671px] movil:max-w-none movil:p-0 design:h-[890px] design:max-w-[1920px] design:p-0">
         <h2 className="text-center text-[28px] leading-[32px] font-light text-black sm:text-[36px] sm:leading-[38px] movil:absolute movil:top-[35px] movil:left-[61px] movil:w-[280px] movil:text-[32px] movil:leading-[33px] design:absolute design:top-[80px] design:left-0 design:w-full design:text-[36px] design:leading-[37.44px]">
-          No te pierdas las ultimas noticias
+          {t("No te pierdas las ultimas noticias")}
         </h2>
 
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 apilada:grid-cols-2 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:w-full">
@@ -243,7 +244,7 @@ function ArticuloMas({ slug }: { slug: string }) {
             href="/blog"
             className="bg-vernal-navy text-vernal-accent flex h-[52px] w-full items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[277px] apilada:w-[277px] movil:w-[277px]"
           >
-            Ver mas articulos
+            {t("Ver mas articulos")}
           </Link>
         </div>
       </div>
@@ -281,7 +282,7 @@ function Nodo({
       <p
         className={`mt-8 mb-4 text-[20px] leading-[24px] sm:text-[24px] movil:mb-[16px] design:mb-[16px] design:text-[24px] design:leading-[25px] ${arriba} ${tamano}`}
       >
-        {nodo.texto}
+        {t(nodo.texto)}
       </p>
     );
   }
@@ -331,11 +332,11 @@ function Nodo({
 }
 
 function Trozo({ trozo }: { trozo: TrozoArticulo }) {
-  if (typeof trozo === "string") return <>{trozo}</>;
-  if ("fuerte" in trozo) return <strong className="font-bold">{trozo.fuerte}</strong>;
+  if (typeof trozo === "string") return <>{t(trozo)}</>;
+  if ("fuerte" in trozo) return <strong className="font-bold">{t(trozo.fuerte)}</strong>;
   return (
     <Link href={trozo.href} className="text-vernal-navy underline underline-offset-2">
-      {trozo.enlace}
+      {t(trozo.enlace)}
     </Link>
   );
 }

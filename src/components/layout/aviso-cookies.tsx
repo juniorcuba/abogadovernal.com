@@ -11,6 +11,7 @@ import {
   type Categorias,
   type Consentimiento,
 } from "@/lib/consentimiento-cookies";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Aviso de cookies — export SVG del 2026-09-13, bajo la cabecera de 1920.
@@ -35,6 +36,7 @@ import {
  * El tercer botón del aviso y el enlace del pie también son añadidos nuestros.
  */
 export function AvisoCookies() {
+  const t = useT();
   // null mientras no se ha leído el navegador: no se pinta nada todavía.
   const [decidido, setDecidido] = useState<boolean | null>(null);
   const [panel, setPanel] = useState(false);
@@ -93,14 +95,11 @@ export function AvisoCookies() {
       {!decidido && !panel && (
         <div
           role="region"
-          aria-label="Aviso de cookies"
+          aria-label={t("Aviso de cookies")}
           className="fixed inset-x-0 bottom-0 z-[90] flex flex-col gap-y-3 bg-black px-5 py-4 text-white sm:flex-row sm:items-center sm:gap-x-6 sm:px-8 design:absolute design:top-[128px] design:bottom-auto design:left-[2px] design:block design:h-[63px] design:w-[1917px] design:p-0"
         >
           <p className="max-w-[860px] text-[12px] leading-[14px] design:absolute design:top-[15px] design:left-[221px] design:w-[782px] design:max-w-none design:text-[10px] design:leading-[12px] design:text-justify">
-            Usamos cookies propias y de terceros para mejorar tu experiencia de
-            navegación, analizar el tráfico del sitio y mostrarte contenido
-            personalizado. Puedes aceptar todas las cookies, rechazarlas o configurar
-            tus preferencias en cualquier momento.
+            {t("Usamos cookies propias y de terceros para mejorar tu experiencia de navegación, analizar el tráfico del sitio y mostrarte contenido personalizado. Puedes aceptar todas las cookies, rechazarlas o configurar tus preferencias en cualquier momento.")}
           </p>
 
           <div className="flex flex-wrap items-center gap-x-[22px] gap-y-2 sm:ml-auto design:contents">
@@ -109,14 +108,14 @@ export function AvisoCookies() {
               onClick={() => decidir("aceptar", TODAS)}
               className="bg-vernal-accent flex h-[26px] w-[109px] shrink-0 cursor-pointer items-start justify-center pt-[3px] text-[16px] leading-[17px] text-black transition-opacity hover:opacity-90 design:absolute design:top-[19px] design:left-[1356px]"
             >
-              Aceptar
+              {t("Aceptar")}
             </button>
             <button
               type="button"
               onClick={() => decidir("rechazar", NINGUNA)}
               className="bg-vernal-accent flex h-[26px] w-[109px] shrink-0 cursor-pointer items-start justify-center pt-[3px] text-[16px] leading-[17px] text-black transition-opacity hover:opacity-90 design:absolute design:top-[19px] design:left-[1487px]"
             >
-              Rechazar
+              {t("Rechazar")}
             </button>
             {/* Tercer botón, que el archivo no trae: sin él la frase de arriba
                 sería mentira. Se mete entre "Rechazar" y la X. */}
@@ -125,12 +124,12 @@ export function AvisoCookies() {
               onClick={() => setPanel(true)}
               className="text-vernal-accent shrink-0 cursor-pointer text-[14px] leading-[17px] underline underline-offset-2 transition-opacity hover:opacity-90 design:absolute design:top-[23px] design:left-[1612px] design:text-[13px]"
             >
-              Configurar
+              {t("Configurar")}
             </button>
             <button
               type="button"
               onClick={() => decidir("cerrar", NINGUNA)}
-              aria-label="Cerrar el aviso de cookies (equivale a rechazar)"
+              aria-label={t("Cerrar el aviso de cookies (equivale a rechazar)")}
               className="ml-auto flex h-[30px] w-[30px] shrink-0 cursor-pointer items-center justify-center sm:ml-0 design:absolute design:top-[17px] design:left-[1712px] design:ml-0"
             >
               <svg aria-hidden width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -164,6 +163,7 @@ function PanelCookies({
   cerrar: () => void;
   titulo: React.RefObject<HTMLHeadingElement | null>;
 }) {
+  const t = useT();
   return (
     <div
       className="fixed inset-0 z-[100] flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-6"
@@ -183,12 +183,12 @@ function PanelCookies({
             tabIndex={-1}
             className="text-[24px] leading-[28px] font-light outline-none sm:text-[28px] sm:leading-[32px]"
           >
-            Preferencias de <span className="text-vernal-accent">cookies</span>
+            {t("Preferencias de ")}<span className="text-vernal-accent">{t("cookies")}</span>
           </h2>
           <button
             type="button"
             onClick={cerrar}
-            aria-label="Cerrar las preferencias"
+            aria-label={t("Cerrar las preferencias")}
             className="flex h-[30px] w-[30px] shrink-0 cursor-pointer items-center justify-center"
           >
             <svg aria-hidden width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -203,8 +203,7 @@ function PanelCookies({
         </div>
 
         <p className="mt-3 text-[14px] leading-[19px] text-white/75">
-          Elige qué quieres permitir. Puedes volver a cambiarlo cuando quieras desde
-          &laquo;Preferencias de cookies&raquo;, al final de cualquier página.
+          {t("Elige qué quieres permitir. Puedes volver a cambiarlo cuando quieras desde «Preferencias de cookies», al final de cualquier página.")}
         </p>
 
         <ul className="mt-6 flex flex-col gap-y-4">
@@ -228,15 +227,15 @@ function PanelCookies({
                   />
                   <span className="min-w-0">
                     <span className="block text-[16px] leading-[20px] font-medium">
-                      {c.titulo}
+                      {t(c.titulo)}
                       {c.fija && (
                         <span className="ml-2 align-middle text-[11px] leading-[14px] font-normal text-white/50 uppercase">
-                          Siempre activas
+                          {t("Siempre activas")}
                         </span>
                       )}
                     </span>
                     <span className="mt-1 block text-[13px] leading-[18px] text-white/70">
-                      {c.texto}
+                      {t(c.texto)}
                     </span>
                   </span>
                 </label>
@@ -251,21 +250,21 @@ function PanelCookies({
             onClick={() => decidir("guardar", marcadas)}
             className="bg-vernal-accent text-vernal-navy h-[48px] shrink-0 cursor-pointer px-2 sm:flex-[1.6] text-[16px] leading-[17px] font-medium whitespace-nowrap transition-opacity hover:opacity-90"
           >
-            Guardar preferencias
+            {t("Guardar preferencias")}
           </button>
           <button
             type="button"
             onClick={() => decidir("aceptar", TODAS)}
             className="h-[48px] shrink-0 cursor-pointer border border-white/30 text-[16px] leading-[17px] transition-colors hover:bg-white/10 sm:flex-1"
           >
-            Aceptar todas
+            {t("Aceptar todas")}
           </button>
           <button
             type="button"
             onClick={() => decidir("rechazar", NINGUNA)}
             className="h-[48px] shrink-0 cursor-pointer border border-white/30 text-[16px] leading-[17px] transition-colors hover:bg-white/10 sm:flex-1"
           >
-            Rechazar todas
+            {t("Rechazar todas")}
           </button>
         </div>
       </div>

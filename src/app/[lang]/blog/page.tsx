@@ -5,6 +5,7 @@ import { AgendaConsulta } from "@/components/sections/agenda-consulta";
 import { BloquePreguntas } from "@/components/sections/bloque-preguntas";
 import { BlogHero, BlogListado } from "@/components/sections/blog-listado";
 import { preguntasSede } from "@/lib/preguntas";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Blog — frame `703:807` de Figma, 1920 × 4946 (2026-09-26).
@@ -24,13 +25,16 @@ import { preguntasSede } from "@/lib/preguntas";
  * el 2026-10-12 con la página de preguntas, y la banda mide 90 menos (1181).
  */
 
-export const metadata: Metadata = {
-  title: "Blog de inmigración",
-  description:
-    "Artículos del equipo del Abogado Vernal sobre trámites migratorios, cambios en las leyes y las dudas más comunes de la comunidad en Texas.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/blog", {
+    title: "Blog de inmigración",
+    description:
+      "Artículos del equipo del Abogado Vernal sobre trámites migratorios, cambios en las leyes y las dudas más comunes de la comunidad en Texas.",
+  });
+}
 
-export default function BlogPage() {
+export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

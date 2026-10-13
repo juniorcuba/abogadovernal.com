@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { AgendaConsulta } from "@/components/sections/agenda-consulta";
 import { FaqsPreguntas } from "@/components/sections/faqs-preguntas";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Preguntas frecuentes — frame `770:625` de Figma, 1920 × 2961 (2026-09-26).
@@ -17,13 +18,16 @@ import { FaqsPreguntas } from "@/components/sections/faqs-preguntas";
  * Solo hay artboard de escritorio.
  */
 
-export const metadata: Metadata = {
-  title: "Preguntas frecuentes",
-  description:
-    "Las dudas que más escuchamos en las oficinas del Abogado Vernal en Texas, respondidas con claridad.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/faqs", {
+    title: "Preguntas frecuentes",
+    description:
+      "Las dudas que más escuchamos en las oficinas del Abogado Vernal en Texas, respondidas con claridad.",
+  });
+}
 
-export default function FaqsPage() {
+export default async function FaqsPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

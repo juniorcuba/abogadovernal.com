@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { BlogResenas } from "@/components/sections/blog-resenas";
 import { ContactoHero } from "@/components/sections/contacto-hero";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Contacto — frame `615:867` de Figma, 1920 × 2487 (2026-09-19).
@@ -17,13 +18,16 @@ import { ContactoHero } from "@/components/sections/contacto-hero";
  * Solo hay artboard de escritorio.
  */
 
-export const metadata: Metadata = {
-  title: "Contacto",
-  description:
-    "Contacta con el despacho del Abogado Vernal en Dallas, Houston, Austin, Fort Worth y San Antonio, o de forma virtual.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/contacto", {
+    title: "Contacto",
+    description:
+      "Contacta con el despacho del Abogado Vernal en Dallas, Houston, Austin, Fort Worth y San Antonio, o de forma virtual.",
+  });
+}
 
-export default function ContactoPage() {
+export default async function ContactoPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

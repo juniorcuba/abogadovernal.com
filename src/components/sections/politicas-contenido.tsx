@@ -4,6 +4,7 @@ import {
   type BloqueConHueco,
   type Trozo,
 } from "@/lib/politicas-privacidad";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Cuerpo de /politicas-de-privacidad — nodo 425:2203, rango y=0..3188.
@@ -137,8 +138,9 @@ export function PoliticasContenido() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 movil:max-w-none movil:px-0 movil:pt-[496px] movil:pb-[16px] design:h-[3188px] design:max-w-[1920px] design:p-0">
         <h1 className="text-[40px] leading-[42px] font-normal uppercase sm:text-[56px] sm:leading-[58px] movil:absolute movil:top-[362px] movil:left-[38px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[217px] design:left-[255px] design:text-[64px] design:leading-[67px]">
-          <span className="block text-white">Políticas de</span>
-          <span className="text-vernal-accent block">privacidad</span>
+          {/* En inglés en los dos idiomas, como todo el texto legal (2026-10-12). */}
+          <span className="block text-white">Privacy</span>
+          <span className="text-vernal-accent block">Policy</span>
         </h1>
 
         <div className="mt-10 max-w-[680px] text-[16px] leading-[22px] text-white movil:mt-0 movil:ml-[42px] movil:w-[318px] movil:max-w-none movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[411px] design:left-[255px] design:mt-0 design:w-[845px] design:max-w-none design:leading-[17px]">
@@ -172,12 +174,12 @@ export function PoliticasContenido() {
           {/* Los dos artboards parten la frase en sitios distintos, y los dos la
               cortan a mitad de palabra. Se respeta cada uno. */}
           <p className="absolute top-[125.3px] left-[34px] text-[36px] leading-[37px] font-light whitespace-pre text-white movil:hidden">
-            {'una firma\n"imperfecta\nmente\n'}
-            <span className="text-vernal-accent">honesta”</span>
+            {t("una firma\n\"imperfecta\nmente\n")}
+            <span className="text-vernal-accent">{t("honesta”")}</span>
           </p>
           <p className="absolute hidden text-white movil:top-[86px] movil:left-[23px] movil:block movil:text-[20px] movil:leading-[21px] movil:font-light movil:whitespace-pre">
-            {'una firma\n"imperfectam\nente '}
-            <span className="text-vernal-accent">honesta”</span>
+            {t("una firma\n\"imperfectam\nente ")}
+            <span className="text-vernal-accent">{t("honesta”")}</span>
           </p>
         </div>
       </div>

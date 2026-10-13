@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Hero de la homepage — nodos del rango y=0..1142 de la frame 1:2.
@@ -73,14 +74,13 @@ export function Hero() {
 
       <div className="relative mx-auto flex max-w-[1040px] flex-col gap-y-10 px-6 pt-[168px] pb-20 lg:px-12 apilada:items-center apilada:pt-[calc(128px+38vw)] apilada:text-center movil:block movil:h-[1308px] movil:max-w-none movil:p-0 design:block design:h-[1142px] design:w-[1920px] design:max-w-[1920px] design:p-0">
         <h1 className="text-[44px] leading-[46px] font-semibold uppercase sm:text-[62px] sm:leading-[66px] movil:absolute movil:top-[406px] movil:left-[38px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[276px] design:left-[223px] design:w-[565px] design:leading-[85px] design:text-[82px]">
-          <span className="block text-white">abogado de</span>
-          <span className="text-vernal-accent block">inmigración</span>
-          <span className="text-vernal-accent block">en texas</span>
+          <span className="block text-white">{t("abogado de")}</span>
+          <span className="text-vernal-accent block">{t("inmigración")}</span>
+          <span className="text-vernal-accent block">{t("en texas")}</span>
         </h1>
 
         <p className="max-w-[440px] text-[26px] leading-[27px] font-light text-white movil:absolute movil:top-[563px] movil:left-[38px] movil:w-[282px] movil:max-w-none movil:text-[24px] movil:leading-[25px] design:absolute design:top-[323px] design:left-[1260px] design:w-[440px] design:max-w-none design:leading-[37px] design:text-[36px]">
-          <span className="text-vernal-accent">Somos inmigrantes</span> como tú y
-          defendemos tus derechos.
+          <span className="text-vernal-accent">{t("Somos inmigrantes")}</span>{t(" como tú y defendemos tus derechos.")}
         </p>
 
         <form className="bg-vernal-card w-full max-w-[648px] p-[38px] apilada:text-left movil:absolute movil:top-[698px] movil:left-0 movil:h-[610px] movil:w-[402px] movil:max-w-none movil:px-[38px] movil:pt-[39px] movil:pb-0 design:absolute design:top-[583px] design:left-[223px] design:h-[559px] design:w-[648px] design:max-w-none design:bg-[linear-gradient(216.12deg,rgb(23_35_57/0.71)_28.64%,rgb(64_98_159/0.71)_76.27%)] design:pt-[39px] design:pr-[42px] design:pb-0 design:pl-[41px]">

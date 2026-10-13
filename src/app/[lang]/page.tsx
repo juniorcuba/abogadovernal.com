@@ -10,8 +10,10 @@ import { ComoTrabajamos } from "@/components/sections/como-trabajamos";
 import { Transmisiones } from "@/components/sections/transmisiones";
 import { Testimonios } from "@/components/sections/testimonios";
 import { BlogResenas } from "@/components/sections/blog-resenas";
+import { fijarIdioma } from "@/lib/i18n/servidor";
 
-export default function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

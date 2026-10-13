@@ -6,6 +6,7 @@ import {
   type PreguntaFrecuente,
   type TrozoRespuesta,
 } from "@/lib/preguntas";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * El acordeón de preguntas frecuentes, tal como lo definen los estados "FAQ 10"
@@ -46,6 +47,7 @@ export function ListaPreguntas({
   className?: string;
   style?: React.CSSProperties;
 }) {
+  const t = useT();
   const [abierta, setAbierta] = useState<number | null>(null);
 
   const alternar = (i: number) => {
@@ -95,7 +97,7 @@ export function ListaPreguntas({
                 className="text-[20px] leading-[24px] font-light text-white movil:absolute movil:top-[var(--qmov)] movil:left-[9px] movil:w-[210px] movil:text-[18px] movil:leading-[19px] design:absolute design:top-[var(--a)] design:left-[38px] design:text-[24px] design:leading-[25px]"
                 style={{ "--a": `${arriba}px` } as React.CSSProperties}
               >
-                {p.texto}
+                {t(p.texto)}
               </span>
               <span
                 className="text-vernal-accent flex shrink-0 items-center gap-x-6 text-[18px] leading-[21px] font-medium movil:absolute movil:top-[var(--rcmov)] movil:left-[234px] movil:block movil:w-[90px] movil:gap-x-0 movil:text-center movil:text-[16px] movil:leading-[17px] design:contents design:text-[20px]"
@@ -110,10 +112,10 @@ export function ListaPreguntas({
                     con la fila abierta; quien indica que se cierra es el aspa.
                     El de 402, en cambio, lo cambia por "Cerrar". */}
                 <span className="movil:hidden design:absolute design:top-[var(--a)] design:left-[1207px]">
-                  Ver respuesta
+                  {t("Ver respuesta")}
                 </span>
                 <span className="hidden movil:block">
-                  {abiertaEsta ? "Cerrar" : "Ver respuesta"}
+                  {abiertaEsta ? t("Cerrar") : t("Ver respuesta")}
                 </span>
                 <span
                   aria-hidden
@@ -167,7 +169,8 @@ export function ListaPreguntas({
 }
 
 function Trozo({ trozo }: { trozo: TrozoRespuesta }) {
-  if (typeof trozo === "string") return <>{trozo}</>;
+  const t = useT();
+  if (typeof trozo === "string") return <>{t(trozo)}</>;
   return (
     <a href={`mailto:${trozo.correo}`} className="underline underline-offset-2">
       {trozo.correo}

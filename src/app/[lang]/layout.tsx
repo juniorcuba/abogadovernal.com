@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { site } from "@/lib/site";
 import { LienzoDiseno } from "@/components/layout/lienzo-diseno";
 import { FloatingCta } from "@/components/layout/floating-cta";
+import { ProveedorIdioma } from "@/lib/i18n/cliente";
+import { idiomas } from "@/lib/i18n/idiomas";
+import { fijarIdioma, traducirServidor } from "@/lib/i18n/servidor";
 
 /**
  * Poppins es la única familia del diseño. Pesos y estilos en uso confirmados:
@@ -21,43 +24,64 @@ const poppins = Poppins({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  // El despliegue manda sobre el dominio de produccion: en un preview el
-  // canonical y las OG deben apuntar al propio preview, no a abogadovernal.com.
-  // `||` y no `??`: la variable llega como cadena vacia cuando no se define,
-  // y `new URL("")` lanza.
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || site.url),
-  title: {
-    default: "Abogado Vernal | Abogado de inmigración en Texas",
-    template: "%s | Abogado Vernal",
-  },
-  description: site.tagline,
-  openGraph: {
-    type: "website",
-    locale: "es_MX",
-    url: site.url,
-    siteName: site.name,
-  },
-  // Se bloquea la indexación salvo que alguien la habilite A PROPÓSITO con
-  // NEXT_PUBLIC_NOINDEX="false". La comparación va al reves adrede: si la
-  // variable falta —despliegue nuevo, plataforma distinta, alguien que la
-  // olvida— el resultado es no indexar. Es el sitio de un despacho real y una
-  // URL provisional suya no debe competir en Google con la definitiva.
-  ...(process.env.NEXT_PUBLIC_NOINDEX !== "false"
-    ? { robots: { index: false, follow: false } }
-    : {}),
-};
+/**
+ * El idioma es el primer segmento de la ruta. Solo existen /es y /en: la raíz
+ * (el español) llega aquí reescrita a /es desde next.config.ts.
+ */
+export const dynamicParams = false;
 
-export default function RootLayout({
+export function generateStaticParams() {
+  return idiomas.map((lang) => ({ lang }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const idioma = fijarIdioma((await params).lang);
+  return {
+    // El despliegue manda sobre el dominio de produccion: en un preview el
+    // canonical y las OG deben apuntar al propio preview, no a abogadovernal.com.
+    // `||` y no `??`: la variable llega como cadena vacia cuando no se define,
+    // y `new URL("")` lanza.
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || site.url),
+    title: {
+      default: traducirServidor(idioma, "Abogado Vernal | Abogado de inmigración en Texas"),
+      template: "%s | Abogado Vernal",
+    },
+    description: traducirServidor(idioma, site.tagline),
+    openGraph: {
+      type: "website",
+      locale: idioma === "en" ? "en_US" : "es_MX",
+      url: site.url,
+      siteName: site.name,
+    },
+    // Se bloquea la indexación salvo que alguien la habilite A PROPÓSITO con
+    // NEXT_PUBLIC_NOINDEX="false". La comparación va al reves adrede: si la
+    // variable falta —despliegue nuevo, plataforma distinta, alguien que la
+    // olvida— el resultado es no indexar. Es el sitio de un despacho real y una
+    // URL provisional suya no debe competir en Google con la definitiva.
+    ...(process.env.NEXT_PUBLIC_NOINDEX !== "false"
+      ? { robots: { index: false, follow: false } }
+      : {}),
+  };
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  params,
+}: Readonly<{ children: React.ReactNode; params: Promise<{ lang: string }> }>) {
+  const idioma = fijarIdioma((await params).lang);
   return (
-    <html lang="es" className={poppins.variable}>
+    <html lang={idioma} className={poppins.variable}>
       <body className="antialiased">
-        <LienzoDiseno>
-          {children}
-          <FloatingCta />
-        </LienzoDiseno>
+        <ProveedorIdioma idioma={idioma}>
+          <LienzoDiseno>
+            {children}
+            <FloatingCta />
+          </LienzoDiseno>
+        </ProveedorIdioma>
         {/*
           El lienzo se maqueta a 1920 y se escala para caber en la ventana. Esa
           escala se calcula en un efecto, o sea despues de hidratar: sin este

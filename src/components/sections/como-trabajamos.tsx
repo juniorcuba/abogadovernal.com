@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { offices } from "@/lib/site";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Cómo es nuestro trabajo" — nodos del rango y=4746..5414 de la frame 1:2.
@@ -179,21 +180,21 @@ export function ComoTrabajamos() {
         ))}
 
         <h2 className="mt-10 text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[560px] movil:left-0 movil:mt-0 movil:w-[396px] movil:text-center movil:leading-[48px] movil:text-[46px] design:absolute design:top-[65px] design:left-[1021px] design:mt-0 design:w-[657px] design:leading-[67px] design:text-[64px]">
-          Cómo es
+          {t("Cómo es")}
           <br />
-          nuestro trabajo
+          {t("nuestro trabajo")}
         </h2>
 
         <p className="mt-6 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[724px] movil:left-[48px] movil:mt-0 movil:w-[303px] movil:max-w-none movil:text-justify design:absolute design:top-[220px] design:left-[1021px] design:mt-0 design:w-[580px]">
-          {"El equipo de cada oficina se pondrá en contacto contigo para agendar la fecha y hora de tu cita. "}
+          {t("El equipo de cada oficina se pondrá en contacto contigo para agendar la fecha y hora de tu cita. ")}
           <span className="text-vernal-accent">
-            {"Durante tu consulta, serás atendido por el equipo del "}
-            <span className="font-bold">Abogado Vernal</span>
-            {", que puede incluir paralegales capacitados,"}
+            {t("Durante tu consulta, serás atendido por el equipo del ")}
+            <span className="font-bold">{t("Abogado Vernal")}</span>
+            {t(", que puede incluir paralegales capacitados,")}
           </span>
-          {" quienes te ayudarán a reunir toda la información necesaria sobre tu caso, o directamente por uno de los abogados de la firma.\n\nSi el "}
-          <span className="font-bold">Abogado Vernal</span>
-          {" se encuentra de visita en la oficina que corresponde, también podrás ser atendido directamente por él, con una cita previamente agendada."}
+          {t(" quienes te ayudarán a reunir toda la información necesaria sobre tu caso, o directamente por uno de los abogados de la firma.\n\nSi el ")}
+          <span className="font-bold">{t("Abogado Vernal")}</span>
+          {t(" se encuentra de visita en la oficina que corresponde, también podrás ser atendido directamente por él, con una cita previamente agendada.")}
         </p>
 
         {/* La sombra va en el envoltorio, no en cada línea: en el archivo un único
@@ -211,10 +212,10 @@ export function ComoTrabajamos() {
             archivo la sombra del subtítulo. No se aprecia a simple vista. */}
         <div className="drop-shadow-vernal-1 movil:absolute movil:inset-0 movil:drop-shadow-[8px_36px_18.55px_rgb(0_0_0/0.84)] design:absolute design:inset-0 design:drop-shadow-[8px_36px_18.55px_rgb(0_0_0/0.84)]">
           <p className="mt-10 text-center text-[72px] leading-[75px] font-semibold text-white uppercase movil:absolute movil:top-[345px] movil:left-0 movil:mt-0 movil:w-[402px] movil:leading-[86px] movil:text-[83px] design:absolute design:top-[429.5px] design:left-[303px] design:mt-0 design:w-[460px] design:text-left design:leading-[118px] design:text-[113px]">
-            5 sedes
+            {t("5 sedes")}
           </p>
           <p className="text-center text-[20px] leading-[21px] font-semibold text-white uppercase movil:absolute movil:top-[431px] movil:left-[66px] movil:w-[270px] movil:leading-[36px] movil:text-[35px] design:absolute design:top-[542px] design:left-[313px] design:w-[380px] design:text-left design:leading-[30px] design:text-[29px]">
-            operando en el estado
+            {t("operando en el estado")}
           </p>
         </div>
 

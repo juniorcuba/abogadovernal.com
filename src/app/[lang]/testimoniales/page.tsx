@@ -8,6 +8,7 @@ import {
   TestimonialesHero,
   TestimonialesPreguntas,
 } from "@/components/sections/testimoniales";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Testimonios y casos de éxito — frame `453:469` de Figma, 1920 × 6738.
@@ -29,14 +30,17 @@ import {
  * aquí y se descomenta el enlace del menú.
  */
 
-export const metadata: Metadata = {
-  title: "Testimonios y casos de éxito",
-  description:
-    "Historias reales de clientes del Abogado Vernal en Texas: peticiones familiares, asilo, visas U y VAWA, naturalización y defensa contra la deportación.",
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/testimoniales", {
+    title: "Testimonios y casos de éxito",
+    description:
+      "Historias reales de clientes del Abogado Vernal en Texas: peticiones familiares, asilo, visas U y VAWA, naturalización y defensa contra la deportación.",
+    robots: { index: false, follow: false },
+  });
+}
 
-export default function TestimonialesPage() {
+export default async function TestimonialesPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

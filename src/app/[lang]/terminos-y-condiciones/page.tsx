@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { BlogResenas } from "@/components/sections/blog-resenas";
 import { TerminosContenido } from "@/components/sections/terminos-contenido";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Términos y condiciones — frame `809:1815` de Figma, 1920 × 2835 (2026-09-26).
@@ -17,13 +18,17 @@ import { TerminosContenido } from "@/components/sections/terminos-contenido";
  * Solo hay artboard de escritorio. El pie del sitio ya enlazaba aquí.
  */
 
-export const metadata: Metadata = {
-  title: "Términos y condiciones",
-  description:
-    "Términos y condiciones de uso del sitio de The Law Office of Vernal Farnum Mejia.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/terminos-y-condiciones", {
+    // En inglés en los dos idiomas, como el texto legal.
+    title: "Terms and Conditions",
+    description:
+      "Terms and conditions of use of the website of The Law Office of Vernal Farnum Mejia.",
+  });
+}
 
-export default function TerminosPage() {
+export default async function TerminosPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

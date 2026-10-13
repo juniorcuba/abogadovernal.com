@@ -44,9 +44,10 @@ export function TerminosContenido() {
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 design:h-[1490px] design:max-w-[1920px] design:p-0">
         <h1 className="text-[40px] leading-[42px] uppercase sm:text-[56px] sm:leading-[58px] design:absolute design:top-[217px] design:left-[255px] design:text-[64px] design:leading-[67px]">
           <span className="block text-white">
-            Términos <span className="text-vernal-accent">y</span>
+            {/* En inglés en los dos idiomas, como todo el texto legal (2026-10-12). */}
+            Terms <span className="text-vernal-accent">&amp;</span>
           </span>
-          <span className="text-vernal-accent block">Condiciones</span>
+          <span className="text-vernal-accent block">Conditions</span>
         </h1>
 
         <p className="mt-4 text-[16px] leading-[20px] font-light text-white design:absolute design:top-[372px] design:left-[255px] design:mt-0 design:leading-[17px]">

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { BlogTarjetas } from "@/components/sections/blog-tarjetas";
 import { entradasBlog, filtrosBlog } from "@/lib/blog";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * /blog — frame `703:807` de Figma (2026-09-26).
@@ -112,37 +113,27 @@ export function BlogHero() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[897px] movil:max-w-none movil:p-0 design:h-[875px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] movil:absolute movil:top-[177px] movil:left-[38px] movil:w-[300px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[231px] design:left-[246px] design:text-[36px] design:leading-[37.44px]">
-          Blog de Inmigración Abogado Vernal
+          {t("Blog de Inmigración Abogado Vernal")}
         </p>
 
         <h1 className="mt-3 text-[40px] leading-[44px] uppercase sm:text-[58px] sm:leading-[62px] movil:absolute movil:top-[243px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[285px] design:left-[241px] design:mt-0 design:w-[1300px] design:text-[82px] design:leading-[85px]">
           {/* En 402 el archivo no parte por frases: "CLARA," y "PARA" van juntas. */}
-          <span className="block text-white movil:inline">Información clara,</span>{" "}
-          <span className="text-vernal-accent block movil:inline">para mantenerte al día.</span>
+          <span className="block text-white movil:inline">{t("Información clara,")}</span>{" "}
+          <span className="text-vernal-accent block movil:inline">{t("para mantenerte al día.")}</span>
         </h1>
 
         <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white movil:absolute movil:top-[460px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:space-y-0 movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[493px] design:left-[247px] design:mt-0 design:w-[580px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
-            El proceso migratorio en Estados Unidos puede sentirse abrumador, sobre todo
-            cuando la información que encuentras en internet es confusa, contradictoria, o
-            simplemente no aplica a tu situación. Por eso creamos este espacio: un blog de
-            inmigración escrito por el equipo de Abogado Vernal, pensado para mantener
-            informada a nuestra comunidad en Texas sobre los temas migratorios que más le
-            afectan.
+            {t("El proceso migratorio en Estados Unidos puede sentirse abrumador, sobre todo cuando la información que encuentras en internet es confusa, contradictoria, o simplemente no aplica a tu situación. Por eso creamos este espacio: un blog de inmigración escrito por el equipo de Abogado Vernal, pensado para mantener informada a nuestra comunidad en Texas sobre los temas migratorios que más le afectan.")}
           </p>
           <p className="movil:mt-[16px] design:mt-[17px]">
-            Aquí encontrarás artículos sobre los trámites migratorios más comunes,
-            actualizaciones sobre cambios recientes en las leyes de inmigración, y
-            respuestas a las preguntas que más escuchamos de nuestra comunidad en Dallas,
-            Houston, Austin, Fort Worth y San Antonio.
+            {t("Aquí encontrarás artículos sobre los trámites migratorios más comunes, actualizaciones sobre cambios recientes en las leyes de inmigración, y respuestas a las preguntas que más escuchamos de nuestra comunidad en Dallas, Houston, Austin, Fort Worth y San Antonio.")}
           </p>
         </div>
 
         {/* Aviso legal, como el del formulario: 12 en extralight cursiva. */}
         <p className="mt-6 max-w-[680px] text-[12px] leading-[16px] font-extralight text-white italic movil:absolute movil:top-[800px] movil:left-[41px] movil:mt-0 movil:w-[330px] movil:max-w-none movil:text-[10px] movil:leading-[12px] design:absolute design:top-[722px] design:left-[247px] design:mt-0 design:w-[558px] design:max-w-none design:leading-[14px]">
-          Este contenido tiene fines informativos y no debe tomarse como asesoría legal.
-          Cada caso migratorio es distinto, y la única forma de saber qué aplica a tu
-          situación específica es a través de una consulta directa con nuestro equipo.
+          {t("Este contenido tiene fines informativos y no debe tomarse como asesoría legal. Cada caso migratorio es distinto, y la única forma de saber qué aplica a tu situación específica es a través de una consulta directa con nuestro equipo.")}
         </p>
       </div>
     </section>
@@ -154,13 +145,13 @@ export function BlogListado() {
     <section className="relative overflow-hidden bg-white">
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:max-w-none movil:p-0 design:max-w-[1920px] design:p-0">
         <h2 className="text-vernal-navy text-[26px] leading-[32px] font-light sm:text-[32px] movil:absolute movil:top-[32px] movil:left-[34px] movil:w-[280px] movil:text-[32px] movil:leading-[33px] movil:text-black design:absolute design:top-[56.8px] design:left-[247px] design:text-[36px] design:leading-[37.44px] design:text-black">
-          No te pierdas las ultimas noticias
+          {t("No te pierdas las ultimas noticias")}
         </h2>
 
         {/* Buscador. Todavía no busca: no hay artículos que indexar. */}
         <form className="relative mt-8 flex max-w-[680px] movil:absolute movil:top-[111px] movil:left-[34.5px] movil:mt-0 movil:w-[330px] movil:max-w-none design:absolute design:top-[126px] design:left-[247px] design:mt-0 design:w-[670px]">
           <label htmlFor="buscar-articulos" className="sr-only">
-            Buscar artículos
+            {t("Buscar artículos")}
           </label>
           <Image
             src="/icons/blog/lupa.svg"
@@ -174,12 +165,12 @@ export function BlogListado() {
             id="buscar-articulos"
             name="q"
             type="search"
-            placeholder="Buscar artículos"
+            placeholder={t("Buscar artículos")}
             className="border-vernal-navy h-[52px] w-full border bg-white/97 pl-[46.5px] text-[15px] leading-[16px] text-black outline-none placeholder:text-black design:w-[545px]"
           />
           <button
             type="submit"
-            aria-label="Buscar"
+            aria-label={t("Buscar")}
             className="bg-vernal-navy relative flex h-[52px] w-[70px] shrink-0 cursor-pointer items-center justify-center transition-opacity hover:opacity-90 movil:w-[124px] design:w-[125px]"
           >
             <FlechaEnlace className="text-vernal-accent h-[15px] w-[25px]" />
@@ -212,7 +203,7 @@ export function BlogListado() {
                 }`}
                 style={{ "--h": `${f.activo ? 30 : 28}px` } as React.CSSProperties}
               >
-                {f.texto}
+                {t(f.texto)}
               </button>
             </li>
           ))}

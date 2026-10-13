@@ -1,10 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { Logo } from "@/components/ui/logo";
 import { MenuMovil } from "@/components/layout/menu-movil";
 import { AvisoCookies } from "@/components/layout/aviso-cookies";
 import { NavLink } from "@/components/layout/nav-link";
+import { SelectorIdioma } from "@/components/layout/selector-idioma";
 import { navItems, site, socialsCabecera } from "@/lib/site";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Header del sitio — frame 1:2, 1920×128. Medidas del export SVG del 2026-09-13.
@@ -97,7 +99,7 @@ export function SiteHeader() {
                 className="group text-[13px] leading-[17px] whitespace-nowrap sm:text-[16px] design:absolute design:top-[6px] design:left-[206px]"
               >
                 {/* Solo el diseño de 1920 lo trae; por debajo no cabe. */}
-                <span className="hidden text-white transition-colors group-hover:text-vernal-accent design:inline">Llamanós </span>
+                <span className="hidden text-white transition-colors group-hover:text-vernal-accent design:inline">{t("Llamanós ")}</span>
                 <span className="text-vernal-accent font-bold transition-colors group-hover:text-white">{site.phone}</span>
               </a>
             </div>
@@ -123,17 +125,15 @@ export function SiteHeader() {
                 </li>
               ))}
             </ul>
+
+            {/* El archivo de 1920 no trae selector: va tras las redes (que acaban
+                en x592 del grupo), a su misma altura. */}
+            <SelectorIdioma className="hidden text-[16px] leading-[17px] font-medium design:absolute design:top-[4px] design:left-[612px] design:flex design:gap-x-[10px]" />
           </div>
   
-          {/* Selector de idioma. SOLO está en el diseño móvil: el de escritorio no
-              lo trae. De momento es un rótulo, sin traducción detrás. */}
-          <p
-            aria-hidden
-            className="hidden text-[14px] leading-[15px] font-medium movil:absolute movil:top-[24px] movil:left-[327px] movil:flex movil:gap-x-[12px]"
-          >
-            <span className="text-white">ES</span>
-            <span className="text-[#323B4C]">EN</span>
-          </p>
+          {/* Selector de idioma del móvil (x327 y24). El de escritorio va con las
+              redes, más arriba. */}
+          <SelectorIdioma className="hidden text-[14px] leading-[15px] font-medium movil:absolute movil:top-[24px] movil:left-[327px] movil:flex movil:gap-x-[12px]" />
         </div>
   
         {/* Segunda fila del móvil: barra cian de 36 con el teléfono. */}
@@ -142,7 +142,7 @@ export function SiteHeader() {
           className="bg-vernal-accent hidden items-center justify-center gap-x-[9px] movil:flex movil:h-[36px]"
         >
           <span className="text-vernal-navy text-[13px] leading-[14px]">
-            ¡Llámanos y agenda hoy!
+            {t("¡Llámanos y agenda hoy!")}
           </span>
           <span className="text-[13px] leading-[14px] font-bold text-white">
             {site.phone}

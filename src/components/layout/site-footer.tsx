@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { BotonPreferenciasCookies } from "@/components/ui/boton-preferencias-cookies";
 import { Logo } from "@/components/ui/logo";
 import { offices, site, socials } from "@/lib/site";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Footer — nodos del rango y=7794..8262 de la frame 1:2 (fondo 41:13, alto 468).
@@ -48,8 +49,7 @@ export function SiteFooter() {
     <footer className="bg-vernal-footer relative text-white movil:h-[1031px] movil:bg-[#0F0F0F] movil:bg-[linear-gradient(180deg,#172339_5.94%,#0F0F0F_82.68%)] movil:bg-[length:100%_1060px] movil:bg-no-repeat design:h-[468px]">
       <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 pt-[84px] pb-10 lg:px-12 movil:h-full movil:p-0 design:h-full design:p-0">
         <p className="text-center text-[22px] leading-[23px] font-light movil:absolute movil:top-[40px] movil:left-[53.5px] movil:w-[295px] design:absolute design:top-[84px] design:left-[211px] design:w-[347px] design:text-left">
-          <span className="text-vernal-accent">Somos inmigrantes</span> como tú y
-          defendemos tus derechos.
+          <span className="text-vernal-accent">{t("Somos inmigrantes")}</span>{t(" como tú y defendemos tus derechos.")}
         </p>
 
         <Link
@@ -64,7 +64,7 @@ export function SiteFooter() {
           href="/contacto"
           className="mt-8 block text-center text-[14px] leading-[15px] transition-colors hover:text-vernal-accent movil:absolute movil:top-[319px] movil:left-[57px] movil:mt-0 design:absolute design:top-[103px] design:left-[1237px] design:mt-0"
         >
-          Agenda tu consulta
+          {t("Agenda tu consulta")}
         </Link>
 
         <a
@@ -119,14 +119,14 @@ export function SiteFooter() {
         <hr className="mt-14 border-0 border-t border-white/[0.08] movil:absolute movil:top-[907px] movil:left-[48px] movil:mt-0 movil:w-[317px] design:absolute design:top-[333px] design:left-[101px] design:mt-0 design:w-[1745px]" />
 
         <p className="mt-6 text-center text-[12px] leading-[12px] font-light movil:absolute movil:top-[960px] movil:left-1/2 movil:mt-0 movil:w-[288px] movil:-translate-x-1/2 design:absolute design:top-[394px] design:left-1/2 design:mt-0 design:w-[288px] design:-translate-x-1/2">
-          © 2026 – ABOGADO VERNAL. All right reserved.
+          {t("© 2026 – ABOGADO VERNAL. All right reserved.")}
           <br />
           <Link href={site.privacyUrl} className="underline hover:text-vernal-accent movil:no-underline">
-            Políticas de privacidad.
+            {t("Políticas de privacidad.")}
           </Link>
           {"  "}
           <Link href={site.termsUrl} className="underline hover:text-vernal-accent movil:ml-[6px] movil:no-underline">
-            Términos y condiciones
+            {t("Términos y condiciones")}
           </Link>
           <br />
           {/* Tercera linea, que el archivo no trae: el aviso de cookies promete

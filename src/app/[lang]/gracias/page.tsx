@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { GraciasHero } from "@/components/sections/gracias-hero";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Gracias — frame `795:454` de Figma, 1920 × 1406 (2026-09-26).
@@ -18,15 +19,18 @@ import { GraciasHero } from "@/components/sections/gracias-hero";
  * Solo hay artboard de escritorio.
  */
 
-export const metadata: Metadata = {
-  title: "Gracias por contactarnos",
-  description:
-    "Hemos recibido tu información. Un miembro del equipo del Abogado Vernal se pondrá en contacto contigo.",
-  // No tiene sentido en buscadores: es la pantalla de después de enviar.
-  robots: { index: false, follow: true },
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/gracias", {
+    title: "Gracias por contactarnos",
+    description:
+      "Hemos recibido tu información. Un miembro del equipo del Abogado Vernal se pondrá en contacto contigo.",
+    // No tiene sentido en buscadores: es la pantalla de después de enviar.
+    robots: { index: false, follow: true },
+  });
+}
 
-export default function GraciasPage() {
+export default async function GraciasPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

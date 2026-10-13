@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 import { Carrusel } from "@/components/ui/carrusel";
 import { SelloVerificado } from "@/components/ui/iconos";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Testimonios de clientes — rango y=6102..6920 de la frame 1:2.
@@ -62,11 +63,12 @@ function Flecha({
   hacia: "izquierda" | "derecha";
   onClick: () => void;
 }) {
+  const t = useT();
   return (
     <button
       type="button"
       onClick={onClick}
-      aria-label={hacia === "izquierda" ? "Testimonio anterior" : "Testimonio siguiente"}
+      aria-label={hacia === "izquierda" ? t("Testimonio anterior") : t("Testimonio siguiente")}
       className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 hidden h-[55px] w-[55px] shrink-0 cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 movil:flex movil:h-[47px] movil:w-[47px] movil:text-[19px] design:flex"
     >
       {hacia === "izquierda" ? "←" : "→"}
@@ -75,6 +77,7 @@ function Flecha({
 }
 
 export function Testimonios() {
+  const t = useT();
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(351.95deg,#0F0F0F_31.23%,#172339_66.26%)] movil:h-[656px] movil:bg-none design:h-[818px] design:bg-[linear-gradient(352.19deg,#0F0F0F_31.23%,#172339_66.26%)]">
       <div
@@ -96,7 +99,7 @@ export function Testimonios() {
             </>
           )}
         >
-          {(t, i, relevo) => {
+          {(tm, i, relevo) => {
             const r = ranuras[i];
             return (
               <li
@@ -110,13 +113,13 @@ export function Testimonios() {
               >
                 <Image
                   key={relevo}
-                  src={t.foto}
+                  src={tm.foto}
                   alt=""
                   aria-hidden
-                  width={t.img.w}
-                  height={t.img.h}
+                  width={tm.img.w}
+                  height={tm.img.h}
                   className="animate-vernal-relevo absolute max-w-none object-cover"
-                  style={{ left: t.img.x, top: t.img.y, width: t.img.w, height: t.img.h }}
+                  style={{ left: tm.img.x, top: tm.img.y, width: tm.img.w, height: tm.img.h }}
                 />
                 <div
                   aria-hidden
@@ -131,7 +134,7 @@ export function Testimonios() {
                 <div className="absolute bottom-[22px] left-[22px] flex items-center gap-x-[10px] movil:right-[22px] movil:bottom-[29px] movil:justify-center movil:gap-x-[9px] design:right-[22px] design:bottom-[29px] design:left-[22px] design:justify-center design:gap-x-[9px]">
                   <SelloVerificado className="shrink-0" />
                   <span className="block text-[16px] leading-[17px] text-white">
-                    {t.caso}
+                    {t(tm.caso)}
                   </span>
                 </div>
               </li>
@@ -141,16 +144,16 @@ export function Testimonios() {
 
         <p className="mt-12 text-center text-[24px] leading-[25px] font-light movil:absolute movil:top-[432px] movil:left-[31px] movil:mt-0 movil:w-[340px] design:absolute design:top-[563px] design:left-[489px] design:mt-0 design:w-[946px] design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent block">
-            Historias reales, nuevos comienzos.
+            {t("Historias reales, nuevos comienzos.")}
           </span>
           <span className="block text-white">
-            Conoce lo que nuestros clientes tienen que contar.
+            {t("Conoce lo que nuestros clientes tienen que contar.")}
           </span>
         </p>
 
         <div className="mt-8 flex justify-center movil:absolute movil:top-[560px] movil:left-[62px] movil:mt-0 movil:block design:absolute design:top-[672px] design:left-[822px] design:mt-0 design:block">
           <ButtonLink href="/testimoniales" className="w-full sm:w-[277px] apilada:w-[277px] movil:w-[277px]">
-            Ver más testimonios
+            {t("Ver más testimonios")}
           </ButtonLink>
         </div>
       </div>

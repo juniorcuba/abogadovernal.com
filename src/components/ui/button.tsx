@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 
 /**
  * Botón del diseño — nodos 6:47/6:48 (Enviar), 51:8/51:9, 73:37/73:38, 73:34/73:35.

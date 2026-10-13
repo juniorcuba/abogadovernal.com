@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Nuestros servicios" — nodos del rango y=4078..4746 de la frame 1:2.
@@ -72,31 +73,30 @@ export function Servicios() {
         />
 
         <h2 className="text-vernal-accent text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[65px] movil:left-0 movil:w-[396px] movil:text-center movil:leading-[48px] movil:text-[46px] design:absolute design:top-[106px] design:left-[290px] design:w-[348px] design:leading-[67px] design:text-[64px]">
-          Nuestros
+          {t("Nuestros")}
           <br />
-          servicios
+          {t("servicios")}
         </h2>
 
         <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[194px] movil:left-[38px] movil:mt-0 movil:w-[325px] movil:max-w-none movil:text-justify design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
-          {"Como firma de inmigración en Texas, "}
+          {t("Como firma de inmigración en Texas, ")}
           <span className="text-vernal-accent">
-            podemos ayudarte a través de distintas áreas de práctica, adaptadas a las
-            diferentes etapas y necesidades de tu proceso migratorio.
+            {t("podemos ayudarte a través de distintas áreas de práctica, adaptadas a las diferentes etapas y necesidades de tu proceso migratorio.")}
           </span>
-          {" Ya sea que busques reunir a tu familia, proteger tu estatus legal, obtener un permiso de trabajo o defenderte ante una situación de deportación, contamos con la experiencia necesaria para orientarte y representarte en cada paso del camino.\n\nCada caso es distinto, y por eso comenzamos por escucharte a ti, antes de definir cuál es el camino legal que mejor se ajusta a tu situación."}
+          {t(" Ya sea que busques reunir a tu familia, proteger tu estatus legal, obtener un permiso de trabajo o defenderte ante una situación de deportación, contamos con la experiencia necesaria para orientarte y representarte en cada paso del camino.\n\nCada caso es distinto, y por eso comenzamos por escucharte a ti, antes de definir cuál es el camino legal que mejor se ajusta a tu situación.")}
         </p>
 
         <ButtonLink
           href="/contacto"
           className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[498px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[479px] design:left-[290px] design:mt-0"
         >
-          <span className="movil:hidden">Agenda una consulta</span>
-          <span className="hidden movil:inline">Agenda tu consulta</span>
+          <span className="movil:hidden">{t("Agenda una consulta")}</span>
+          <span className="hidden movil:inline">{t("Agenda tu consulta")}</span>
         </ButtonLink>
 
         <p className="mt-8 max-w-[556px] text-center text-[24px] leading-[25px] font-light text-white movil:absolute movil:top-[848px] movil:left-[16px] movil:mt-0 movil:w-[370px] movil:max-w-none design:absolute design:top-[400px] design:left-[1032px] design:mt-0 design:w-[556px] design:leading-[37px] design:text-[36px]">
-          <span className="text-vernal-accent">Nos adaptamos a tu caso y</span>{" "}
-          luchamos por ofrecerte la mejor opción.
+          <span className="text-vernal-accent">{t("Nos adaptamos a tu caso y")}</span>{" "}
+          {t("luchamos por ofrecerte la mejor opción.")}
         </p>
       </div>
     </section>

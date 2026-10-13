@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { BlogResenas } from "@/components/sections/blog-resenas";
 import { PoliticasContenido } from "@/components/sections/politicas-contenido";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Políticas de privacidad — nodo `425:2203` de Figma, 1920 × 4533.
@@ -17,13 +18,17 @@ import { PoliticasContenido } from "@/components/sections/politicas-contenido";
  * Solo hay artboard de escritorio.
  */
 
-export const metadata: Metadata = {
-  title: "Políticas de privacidad",
-  description:
-    "Cómo The Law Office of Vernal Farnum Mejia recopila, utiliza, almacena y protege la información personal, y cómo usa la mensajería SMS y WhatsApp.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/politicas-de-privacidad", {
+    // En inglés en los dos idiomas, como el texto legal.
+    title: "Privacy Policy",
+    description:
+      "How The Law Office of Vernal Farnum Mejia collects, uses, stores and protects personal information, and how it uses SMS and WhatsApp messaging.",
+  });
+}
 
-export default function PoliticasPrivacidadPage() {
+export default async function PoliticasPrivacidadPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

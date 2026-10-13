@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
 import { ButtonLink } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
@@ -7,6 +7,7 @@ import { VideoYoutube } from "@/components/ui/video-youtube";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
 import { entradasBlogPortada } from "@/lib/blog";
 import { testimonios } from "@/lib/testimonios";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * /testimoniales — frame `453:469` de Figma, 1920 × 6738 (2026-09-26).
@@ -131,30 +132,24 @@ export function TestimonialesHero() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pt-[700px] apilada:text-center movil:h-[1236px] movil:max-w-none movil:p-0 design:h-[991px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] movil:absolute movil:top-[605px] movil:left-[38px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[295px] design:left-[242px] design:text-[36px] design:leading-[37px]">
-          Abogado Vernal
+          {t("Abogado Vernal")}
         </p>
 
         <h1 className="mt-3 text-[44px] leading-[48px] uppercase sm:text-[62px] sm:leading-[66px] movil:absolute movil:top-[641px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[349px] design:left-[237px] design:mt-0 design:w-[1000px] design:text-[82px] design:leading-[85px]">
           {/* En 402 "Y" se queda con "CASOS DE" en el mismo renglón. */}
-          <span className="block text-white movil:inline">Testimonios y</span>{" "}
-          <span className="text-vernal-accent block movil:inline">casos de éxito</span>
+          <span className="block text-white movil:inline">{t("Testimonios y")}</span>{" "}
+          <span className="text-vernal-accent block movil:inline">{t("casos de éxito")}</span>
         </h1>
 
         <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white apilada:mx-auto movil:absolute movil:top-[815px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:space-y-0 movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[557px] design:left-[243px] design:mt-0 design:w-[578px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
-            Detrás de cada caso que llevamos hay una persona que un día decidió no quedarse
-            con la incertidumbre. Alguien que dejó atrás el miedo a preguntar, que se sentó
-            frente a nosotros a contarnos su situación, y que hoy tiene algo que antes no
-            tenía: certeza, un documento, una familia reunida, un futuro que ya no depende
-            de esperar.
+            {t("Detrás de cada caso que llevamos hay una persona que un día decidió no quedarse con la incertidumbre. Alguien que dejó atrás el miedo a preguntar, que se sentó frente a nosotros a contarnos su situación, y que hoy tiene algo que antes no tenía: certeza, un documento, una familia reunida, un futuro que ya no depende de esperar.")}
           </p>
           <p className="movil:mt-[16px] design:mt-[17px]">
             <span className="text-vernal-accent">
-              Estas no son solo historias de casos ganados.
+              {t("Estas no son solo historias de casos ganados.")}
             </span>{" "}
-            Son historias de personas que
-            decidieron luchar por lo que les correspondía, y que hoy quieren que tú sepas
-            que también es posible para ti.
+            {t("Son historias de personas que decidieron luchar por lo que les correspondía, y que hoy quieren que tú sepas que también es posible para ti.")}
           </p>
         </div>
 
@@ -162,7 +157,7 @@ export function TestimonialesHero() {
           href="#casos"
           className="mt-8 w-full sm:w-[224px] apilada:mx-auto apilada:flex apilada:w-[224px] movil:absolute movil:top-[1102px] movil:left-[43px] movil:mt-0 movil:h-[53px] movil:w-[210px] design:absolute design:top-[763px] design:left-[243px] design:mt-0"
         >
-          Ver testimonios
+          {t("Ver testimonios")}
         </ButtonLink>
 
         {/* Tarjeta de la cita, con su propio radial girado. */}
@@ -199,11 +194,11 @@ export function TestimonialesHero() {
           {/* En el lienzo de 1920 el archivo parte estas cinco líneas a mano;
               por debajo fluyen como un párrafo normal. */}
           <p className="relative bg-[#172339]/90 p-6 text-[26px] leading-[30px] font-light text-white sm:text-[32px] sm:leading-[34px] movil:absolute movil:top-[82px] movil:left-[22px] movil:w-[150px] movil:bg-transparent movil:p-0 movil:text-[20px] movil:leading-[21px] design:absolute design:top-[112px] design:left-[34px] design:w-[254px] design:bg-transparent design:p-0 design:text-[32px] design:leading-[33px]">
-            <span className="design:block">Cada historia </span>
-            <span className="design:block">aquí empezó </span>
-            <span className="design:block">con una duda, </span>
-            <span className="text-vernal-accent design:block">y terminó con </span>
-            <span className="text-vernal-accent design:block">una nueva vida.</span>
+            <span className="design:block">{t("Cada historia ")}</span>
+            <span className="design:block">{t("aquí empezó ")}</span>
+            <span className="design:block">{t("con una duda, ")}</span>
+            <span className="text-vernal-accent design:block">{t("y terminó con ")}</span>
+            <span className="text-vernal-accent design:block">{t("una nueva vida.")}</span>
           </p>
         </div>
       </div>
@@ -235,7 +230,7 @@ const TIRA = [
 ];
 
 function TarjetaTestimonio({
-  t,
+  t: tm,
   celda,
   movil,
 }: {
@@ -272,26 +267,26 @@ function TarjetaTestimonio({
           pone el archivo a mano en cada tarjeta, así que viene con el dato. */}
       <span
         className="absolute top-[-83px] left-1/2 block h-[166px] w-[166px] -translate-x-1/2 movil:top-[-55px] movil:h-[140px] movil:w-[140px] design:top-[var(--av)]"
-        style={{ "--av": `${t.avatar.arriba}px` } as React.CSSProperties}
+        style={{ "--av": `${tm.avatar.arriba}px` } as React.CSSProperties}
       >
         <span className="absolute inset-0 block overflow-hidden rounded-full bg-[#D9D9D9]">
         <Image
-          src={t.foto}
-          alt={`${t.nombre}, ${t.caso}`}
+          src={tm.foto}
+          alt={`${tm.nombre}, ${tm.caso}`}
           width={720}
           height={900}
           sizes="(min-width: 1280px) 346px, 166px"
           className="h-full w-full object-cover movil:absolute movil:top-[var(--mfy)] movil:left-[var(--mfx)] movil:h-[var(--mfh)] movil:w-[var(--mfw)] movil:max-w-none movil:object-fill design:absolute design:top-[var(--fy)] design:left-[var(--fx)] design:h-[var(--fh)] design:w-[var(--fw)] design:max-w-none design:object-fill"
           style={
             {
-              "--fx": `${t.avatar.foto.x}px`,
-              "--fy": `${t.avatar.foto.y}px`,
-              "--fw": `${t.avatar.foto.w}px`,
-              "--fh": `${t.avatar.foto.h}px`,
-              "--mfx": `${(t.avatar.foto.x * AVATAR_MOVIL).toFixed(1)}px`,
-              "--mfy": `${(t.avatar.foto.y * AVATAR_MOVIL).toFixed(1)}px`,
-              "--mfw": `${(t.avatar.foto.w * AVATAR_MOVIL).toFixed(1)}px`,
-              "--mfh": `${(t.avatar.foto.h * AVATAR_MOVIL).toFixed(1)}px`,
+              "--fx": `${tm.avatar.foto.x}px`,
+              "--fy": `${tm.avatar.foto.y}px`,
+              "--fw": `${tm.avatar.foto.w}px`,
+              "--fh": `${tm.avatar.foto.h}px`,
+              "--mfx": `${(tm.avatar.foto.x * AVATAR_MOVIL).toFixed(1)}px`,
+              "--mfy": `${(tm.avatar.foto.y * AVATAR_MOVIL).toFixed(1)}px`,
+              "--mfw": `${(tm.avatar.foto.w * AVATAR_MOVIL).toFixed(1)}px`,
+              "--mfh": `${(tm.avatar.foto.h * AVATAR_MOVIL).toFixed(1)}px`,
             } as React.CSSProperties
           }
         />
@@ -345,16 +340,16 @@ function TarjetaTestimonio({
           1920 se fuerza a renglón, que es como lo parte el archivo. */}
       <p
         className="relative text-center text-[16px] leading-[22px] text-white movil:absolute movil:top-[97px] movil:left-[12px] movil:w-[330px] movil:text-[15px] movil:leading-[16px] design:absolute design:top-[var(--tt)] design:left-[25px] design:w-[404px] design:leading-[17px]"
-        style={{ "--tt": `${t.textoArriba}px` } as React.CSSProperties}
+        style={{ "--tt": `${tm.textoArriba}px` } as React.CSSProperties}
       >
-        {t.lineas.map((linea, i) => (
+        {tm.lineas.map((linea, i) => (
           <span key={i} className="design:block">
             {linea.map((trozo, j) =>
               typeof trozo === "string" ? (
-                <span key={j}>{trozo}</span>
+                <span key={j}>{t(trozo)}</span>
               ) : (
                 <span key={j} className="text-vernal-accent">
-                  {trozo.cian}
+                  {t(trozo.cian)}
                 </span>
               ),
             )}
@@ -364,16 +359,16 @@ function TarjetaTestimonio({
 
       <p
         className="relative mt-6 text-center movil:absolute movil:bottom-[28.75px] movil:left-0 movil:mt-0 movil:w-full design:absolute design:top-[var(--n)] design:left-0 design:mt-0 design:w-full"
-        style={{ "--n": `${t.nombreArriba - 21.75}px` } as React.CSSProperties}
+        style={{ "--n": `${tm.nombreArriba - 21.75}px` } as React.CSSProperties}
       >
         <span className="text-vernal-accent block text-[22px] leading-[26px] font-light movil:text-[20px] movil:leading-[21px] design:text-[25px] design:leading-[26px]">
-          {t.nombre}
+          {tm.nombre}
         </span>
         <span className="mt-1 block text-[15px] leading-[16px] font-light text-white movil:mt-[5.25px] design:mt-[4.5px]">
-          {t.caso}
+          {t(tm.caso)}
         </span>
         <span className="text-vernal-accent mt-1 block text-[15px] leading-[16px] font-light movil:mt-[6px] design:mt-[6px]">
-          {t.ciudad}
+          {t(tm.ciudad)}
         </span>
       </p>
     </li>
@@ -406,9 +401,9 @@ export function TestimonialesCasos() {
         </ul>
 
         <p className="text-vernal-navy mt-16 text-center text-[26px] leading-[32px] font-light sm:text-[34px] sm:leading-[40px] movil:absolute movil:top-[2764px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:text-[32px] movil:leading-[33px] design:absolute design:top-[1131px] design:left-[455px] design:mt-0 design:w-[1010px] design:text-[40px] design:leading-[42px]">
-          Aquí, cada rostro tiene un nombre. Cada nombre, un proceso distinto.{" "}
+          {t("Aquí, cada rostro tiene un nombre. Cada nombre, un proceso distinto.")}{" "}
           <span className="font-normal text-white">
-            Y cada proceso, un final que vale la pena contar.
+            {t("Y cada proceso, un final que vale la pena contar.")}
           </span>
         </p>
 
@@ -438,7 +433,7 @@ export function TestimonialesCasos() {
             aria-hidden
             className="pointer-events-none absolute hidden font-bold text-white/[0.14] uppercase design:top-[327px] design:left-[84px] design:block design:text-[154px] design:leading-[215.6px]"
           >
-            Aprobada
+            {t("Aprobada")}
           </span>
 
           <p className="absolute bottom-[86px] left-1/2 flex w-full -translate-x-1/2 items-center justify-center gap-x-[14px] text-center text-[32px] leading-[36px] font-semibold uppercase sm:text-[44px] movil:bottom-[44px] movil:gap-x-[7px] movil:text-[20px] movil:leading-[22px] design:bottom-auto design:top-[355px] design:gap-x-[20.4px] design:text-[55px] design:leading-[57px]">
@@ -451,25 +446,25 @@ export function TestimonialesCasos() {
               className="h-[38px] w-[38px] shrink-0 movil:h-[20px] movil:w-[20px] design:h-[55px] design:w-[55px]"
             />
             <span>
-              <span className="text-vernal-accent">Residencia </span>
-              <span className="text-white">aprobada</span>
+              <span className="text-vernal-accent">{t("Residencia ")}</span>
+              <span className="text-white">{t("aprobada")}</span>
             </span>
           </p>
           <p className="absolute bottom-[54px] left-1/2 w-full -translate-x-1/2 text-center text-[20px] leading-[24px] font-light movil:bottom-[22px] movil:text-[12px] movil:leading-[14px] design:bottom-auto design:top-[418px] design:text-[30px] design:leading-[31px]">
-            <span className="text-vernal-accent">María G. Murillo </span>
-            <span className="text-white">Mexicana</span>
+            <span className="text-vernal-accent">{t("María G. Murillo ")}</span>
+            <span className="text-white">{t("Mexicana")}</span>
           </p>
           <span className="absolute hidden design:top-[453.7px] design:left-[46.7px] design:block design:h-[58px] design:w-[83px] [&>div]:!h-full [&>div]:!w-full">
             <Logo />
           </span>
           <span className="text-vernal-accent absolute hidden text-[20px] leading-[21px] font-light design:top-[482.5px] design:left-[856px] design:block">
-            Canal Oficial
+            {t("Canal Oficial")}
           </span>
 
           <VideoYoutube
             embed="7hdz2Xk6VEs"
-            titulo="Residencia aprobada: el testimonio de María G. Murillo"
-            etiqueta="Ver el testimonio"
+            titulo={t("Residencia aprobada: el testimonio de María G. Murillo")}
+            etiqueta={t("Ver el testimonio")}
             claseMarco="rounded-[31px]"
             claseBoton="absolute top-1/2 left-1/2 flex h-[76px] w-[76px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:h-[44px] movil:w-[44px] design:h-[96px] design:w-[96px]"
           >
@@ -528,7 +523,7 @@ export function TestimonialesCasos() {
             +15,000
           </span>
           <span className="block text-[20px] leading-[24px] font-semibold tracking-[0.02em] uppercase sm:text-[28px] design:mt-[-9.5px] design:text-[45px] design:leading-[47px]">
-            Personas asesoradas
+            {t("Personas asesoradas")}
           </span>
         </p>
       </div>
@@ -551,7 +546,7 @@ export function TestimonialesBlog() {
     <section className="bg-vernal-accent relative overflow-hidden movil:h-[1671px] design:-mt-[20px] design:h-[890px]">
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[1671px] movil:max-w-none movil:p-0 design:h-[890px] design:max-w-[1920px] design:p-0">
         <h2 className="text-vernal-navy text-center text-[26px] leading-[32px] font-light sm:text-[32px] movil:absolute movil:top-[35px] movil:left-[61px] movil:w-[280px] movil:text-[32px] movil:leading-[33px] design:absolute design:top-[78px] design:left-0 design:w-full design:text-[36px] design:leading-[37px]">
-          No te pierdas las últimas noticias
+          {t("No te pierdas las últimas noticias")}
         </h2>
 
         <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 apilada:grid-cols-2 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-[165.5px] design:left-0 design:mt-0 design:block design:w-full">
@@ -578,7 +573,7 @@ export function TestimonialesBlog() {
             href="/blog"
             className="bg-vernal-navy text-vernal-accent flex h-[52px] w-full items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[277px] apilada:w-[277px] movil:w-[277px]"
           >
-            Ver más articulos
+            {t("Ver más articulos")}
           </Link>
         </div>
       </div>

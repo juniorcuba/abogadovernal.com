@@ -1,5 +1,8 @@
-import Link from "next/link";
+"use client";
+
+import Link from "@/components/ui/enlace";
 import { site } from "@/lib/site";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Aviso de consentimiento SMS/WhatsApp — texto literal de los nodos 6:87
@@ -17,20 +20,17 @@ import { site } from "@/lib/site";
  * formulario se conecte, hay que guardar la aceptación con timestamp.
  */
 export function ConsentNotice({ className }: { className?: string }) {
+  const t = useT();
   return (
     <p
       className={`text-[12px] leading-[14px] font-extralight design:text-justify italic text-white movil:leading-[12px] movil:text-justify ${className ?? ""}`}
     >
-      Al enviar este formulario aceptas recibir mensajes transaccionales por SMS o
-      WhatsApp de The Law Office Of{" "}
-      <span className="font-bold italic">Vernal Farnum Mejia</span> relacionados con tu
-      caso. La frecuencia de los mensajes puede variar. Pueden aplicar tarifas de
-      mensajes y datos. Podrás cancelar la suscripción cuando quieras respondiendo
-      STOP. Consulta nuestras{" "}
+      {t("Al enviar este formulario aceptas recibir mensajes transaccionales por SMS o WhatsApp de The Law Office Of")}{" "}
+      <span className="font-bold italic">{t("Vernal Farnum Mejia")}</span>{t(" relacionados con tu caso. La frecuencia de los mensajes puede variar. Pueden aplicar tarifas de mensajes y datos. Podrás cancelar la suscripción cuando quieras respondiendo STOP. Consulta nuestras")}{" "}
       <Link href={site.privacyUrl} className="underline-offset-2 hover:underline">
-        Políticas de privacidad
+        {t("Políticas de privacidad")}
       </Link>{" "}
-      para más información.
+      {t("para más información.")}
     </p>
   );
 }

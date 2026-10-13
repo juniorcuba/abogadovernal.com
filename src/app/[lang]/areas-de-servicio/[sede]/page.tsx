@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { AgendaConsulta } from "@/components/sections/agenda-consulta";
 import { SedeHero, SedeServicios } from "@/components/sections/sede";
 import { SedePreguntas } from "@/components/sections/sede-preguntas";
+import { fijarIdioma, metadatos, traducirServidor } from "@/lib/i18n/servidor";
 import { sedePorSlug, sedes } from "@/lib/sedes";
 
 /** Una página por sede, generadas en el build. Otra ciudad da 404. */
@@ -17,18 +18,26 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ sede: string }>;
+  params: Promise<{ lang: string; sede: string }>;
 }): Promise<Metadata> {
-  const sede = sedePorSlug((await params).sede);
+  const { lang, sede: slug } = await params;
+  const sede = sedePorSlug(slug);
   if (!sede) return {};
-  return {
-    title: `Abogado de inmigración en ${sede.ciudad}, TX`,
+  const idioma = fijarIdioma(lang);
+  return metadatos(lang, `/areas-de-servicio/${sede.slug}`, {
+    title: traducirServidor(idioma, "Abogado de inmigración en {ciudad}, TX").replace("{ciudad}", sede.ciudad),
     description: sede.intro,
-  };
+  });
 }
 
-export default async function SedePage({ params }: { params: Promise<{ sede: string }> }) {
-  const sede = sedePorSlug((await params).sede);
+export default async function SedePage({
+  params,
+}: {
+  params: Promise<{ lang: string; sede: string }>;
+}) {
+  const { lang, sede: slug } = await params;
+  fijarIdioma(lang);
+  const sede = sedePorSlug(slug);
   if (!sede) notFound();
 
   return (

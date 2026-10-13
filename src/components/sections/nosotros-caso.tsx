@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { TextoMisionMovil } from "@/components/sections/nosotros-leccion";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "El caso que lo confirmó todo" — frame `181:2125`, export del 2026-09-13,
@@ -92,22 +93,17 @@ export function NosotrosCaso() {
 
         <div className="movil:contents">
           <h2 className="text-white text-[38px] leading-[42px] font-bold tracking-[-0.03em] uppercase sm:text-[48px] sm:leading-[52px] movil:absolute movil:top-[49px] movil:left-[42px] movil:w-[330px] movil:text-[46px] movil:leading-[48px] movil:font-semibold movil:tracking-normal design:absolute design:top-[186px] design:left-[296px] design:w-[700px] design:text-[64px] design:leading-[67px]">
-            El caso que
+            {t("El caso que")}
             <br />
-            lo confirmo
-            <br className="hidden movil:inline" /> todo
+            {t("lo confirmo")}
+            <br className="hidden movil:inline" />{t(" todo")}
           </h2>
 
           <p className="text-white mt-6 max-w-[680px] text-[16px] leading-[22px] sm:text-justify movil:absolute movil:top-[212px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[362px] design:left-[296px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
             <span className="movil:hidden">
-            Entre los casos que marcaron su carrera como abogado de inmigración en
-            Texas, destaca uno que llegó casi por accidente: una familia con un menor
-            que enfrentaba una situación médica delicada, y que ya había sido
-            rechazada por varios abogados antes de encontrarlo a él.{" "}
+            {t("Entre los casos que marcaron su carrera como abogado de inmigración en Texas, destaca uno que llegó casi por accidente: una familia con un menor que enfrentaba una situación médica delicada, y que ya había sido rechazada por varios abogados antes de encontrarlo a él.")}{" "}
             <strong className="font-bold">
-              Con creatividad legal, su equipo encontró un camino migratorio que
-              permitió a la familia acceder a la atención médica que necesitaban en
-              Estados Unidos.
+              {t("Con creatividad legal, su equipo encontró un camino migratorio que permitió a la familia acceder a la atención médica que necesitaban en Estados Unidos.")}
             </strong>
             </span>
             <span className="hidden whitespace-pre-line movil:inline">
@@ -201,17 +197,17 @@ export function NosotrosCaso() {
 
           <blockquote className="relative pt-40 text-center text-[24px] leading-[28px] font-light text-white sm:text-[28px] sm:leading-[32px] movil:absolute movil:top-[165px] movil:left-0 movil:w-full movil:pt-0 movil:text-[20px] movil:leading-[21px] design:absolute design:top-[254px] design:left-0 design:w-full design:pt-0 design:text-[32px] design:leading-[33px]">
             <span className="text-vernal-accent">
-              &quot;No hay un hito económico{" "}
+              {t("\"No hay un hito económico")}{" "}
               <br className="hidden movil:inline design:inline" />
-              que me interese
+              {t("que me interese")}
             </span>{" "}
-            más que <br className="hidden movil:inline design:inline" />
-            realmente ayudar a una <br className="hidden movil:inline design:inline" />
-            persona que lo necesita&quot;
+            {t("más que ")}<br className="hidden movil:inline design:inline" />
+            {t("realmente ayudar a una ")}<br className="hidden movil:inline design:inline" />
+            {t("persona que lo necesita\"")}
           </blockquote>
 
           <figcaption className="text-vernal-accent relative mt-6 text-center text-[20px] leading-[24px] font-bold movil:absolute movil:top-[262px] movil:left-0 movil:mt-0 movil:w-full movil:text-[16px] movil:leading-[17px] design:absolute design:top-[411px] design:left-0 design:mt-0 design:w-full design:text-[24px] design:leading-[25px]">
-            Abogado Vernal Farum.
+            {t("Abogado Vernal Farum.")}
           </figcaption>
         </figure>
       </div>

@@ -18,8 +18,31 @@ const nextConfig: NextConfig = {
 
   // URLs del sitio anterior que ya tienen página propia. Permanentes (308):
   // así los buscadores y los enlaces viejos pasan a la nueva.
+  // El sitio vive en app/[lang]. El español no lleva prefijo: todo lo que no
+  // empiece por /en se sirve desde /es por dentro. `afterFiles` corre después de
+  // los archivos de public/ y antes de las rutas dinámicas, que es lo que hace
+  // falta: [lang] es dinámica y /nosotros no debe leerse como un idioma.
+  rewrites() {
+    return {
+      beforeFiles: [],
+      afterFiles: [
+        { source: "/", destination: "/es" },
+        {
+          source: "/:primero((?!(?:en|es|_next)(?:/|$))[^/]+)/:resto*",
+          destination: "/es/:primero/:resto*",
+        },
+      ],
+      fallback: [],
+    };
+  },
+
   redirects() {
     return [
+      // /es no es una dirección pública: el español es la raíz.
+      { source: "/es", destination: "/", permanent: false },
+      { source: "/es/:ruta*", destination: "/:ruta*", permanent: false },
+      { source: "/en/areas-de-servicio", destination: "/en/areas-de-servicio/dallas", permanent: false },
+      { source: "/en/faqs", destination: "/en/contacto", permanent: false },
       // La página índice de áreas se quitó el 2026-10-11: las sedes cuelgan del
       // menú. Temporal (307) por si vuelve.
       {

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { site } from "@/lib/site";
 import { ButtonLink } from "@/components/ui/button";
 import { VideoYoutube } from "@/components/ui/video-youtube";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Somos inmigrantes como tú" / transmisiones en vivo — nodos del rango
@@ -89,15 +90,15 @@ export function Transmisiones() {
 
       <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 apilada:text-center apilada:[&>p]:mx-auto apilada:[&>button]:mx-auto movil:h-[990px] movil:p-0 design:h-[688px] design:p-0">
         <h2 className="text-[38px] leading-[40px] font-semibold uppercase sm:text-[48px] movil:absolute movil:top-[73px] movil:left-0 movil:w-[392px] movil:text-center movil:leading-[48px] movil:text-[46px] design:absolute design:top-[122px] design:left-[264px] design:w-[434px] design:leading-[67px] design:text-[64px]">
-          <span className="block text-white">Somos</span>
-          <span className="text-vernal-accent block design:text-white">inmigrantes</span>
-          <span className="text-vernal-accent block">como tú</span>
+          <span className="block text-white">{t("Somos")}</span>
+          <span className="text-vernal-accent block design:text-white">{t("inmigrantes")}</span>
+          <span className="text-vernal-accent block">{t("como tú")}</span>
         </h2>
 
         <p className="mt-6 text-[20px] leading-[21px] font-light uppercase movil:absolute movil:top-[237px] movil:left-[38px] movil:mt-0 movil:leading-[31px] movil:text-[30px] design:absolute design:top-[339px] design:left-[264px] design:mt-0 design:leading-[31px] design:text-[30px]">
-          <span className="text-vernal-accent movil:block">sintonízanos</span>
+          <span className="text-vernal-accent movil:block">{t("sintonízanos")}</span>
           <span className="ml-[24px] text-white movil:ml-0 movil:block">
-            martes <span className="text-white/50">|</span>{" "}
+            {t("martes ")}<span className="text-white/50">|</span>{" "}
             <span className="text-vernal-accent">5p.m.</span>
           </span>
         </p>
@@ -106,11 +107,10 @@ export function Transmisiones() {
           {/* La frase en cian NO es itálica y va en peso 400; el resto sí es
               itálica en 300. Ponerlo todo en itálica cambiaba el corte de línea. */}
           <span className="text-vernal-accent font-normal not-italic">
-            No te pierdas las transmisiones en vivo del Abogado Vernal: Inmigrantes
-            Como Tú.
+            {t("No te pierdas las transmisiones en vivo del Abogado Vernal: Inmigrantes Como Tú.")}
           </span>
           <span className="text-white">
-            {" Cada martes a las 5:00 p.m., el Abogado Vernal recibe invitados especiales para hablar sobre los cambios y actualizaciones más recientes en inmigración, y compartir información relevante para el proceso migratorio de la comunidad. También responde preguntas en vivo, en tiempo real."}
+            {t(" Cada martes a las 5:00 p.m., el Abogado Vernal recibe invitados especiales para hablar sobre los cambios y actualizaciones más recientes en inmigración, y compartir información relevante para el proceso migratorio de la comunidad. También responde preguntas en vivo, en tiempo real.")}
           </span>
         </p>
 
@@ -119,7 +119,7 @@ export function Transmisiones() {
           variant="green"
           className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[573px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[534px] design:left-[264px] design:mt-0 design:bg-vernal-accent"
         >
-          Ver retransmisiones
+          {t("Ver retransmisiones")}
         </ButtonLink>
 
         {/* Vídeo de la transmisión */}
@@ -148,7 +148,7 @@ export function Transmisiones() {
           <div className="absolute inset-0 overflow-hidden">
             <Image
               src="/images/live/transmision.webp"
-              alt="Transmisión en vivo del Abogado Vernal"
+              alt={t("Transmisión en vivo del Abogado Vernal")}
               width={857}
               height={644}
               className="absolute top-[-109px] left-[-73px] h-[644px] w-[857px] max-w-none object-cover apilada:top-0 apilada:left-0 apilada:h-full apilada:w-full movil:top-[-53px] movil:left-[-35px] movil:h-[312px] movil:w-[415px]"
@@ -160,7 +160,7 @@ export function Transmisiones() {
               className="absolute hidden text-[277px] leading-[288px] font-bold text-white/25 uppercase design:block"
               style={{ left: 999 - 914, top: 5721 - 5536 }}
             >
-              live
+              {t("live")}
             </span>
             <div
               aria-hidden
@@ -175,7 +175,7 @@ export function Transmisiones() {
           {/* Rótulos del móvil: marca "LIVE", barra y badge, del export. */}
           <Image
             src="/images/movil/transmision-rotulos.svg"
-            alt="Aclara tus dudas migratorias"
+            alt={t("Aclara tus dudas migratorias")}
             width={329}
             height={167}
             unoptimized
@@ -184,8 +184,8 @@ export function Transmisiones() {
 
           <VideoYoutube
             embed={site.youtubeDirectos}
-            titulo="Transmisiones en vivo del Abogado Vernal"
-            etiqueta="Ver la transmisión"
+            titulo={t("Transmisiones en vivo del Abogado Vernal")}
+            etiqueta={t("Ver la transmisión")}
             claseBoton="absolute top-1/2 left-1/2 flex h-[96px] w-[96px] -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/95 shadow-vernal-1 transition-transform hover:scale-105 movil:top-[85px] movil:left-[155px] movil:h-[42px] movil:w-[42px] movil:translate-x-0 movil:translate-y-0 design:top-[152px] design:left-[303px] design:translate-x-0 design:translate-y-0"
           >
             <span
@@ -226,10 +226,10 @@ export function Transmisiones() {
           </span>
           <span className="relative text-white design:absolute design:top-[26px] design:left-[123.5px]">
             <span className="block text-[16px] leading-[17px] font-semibold uppercase design:text-[25px] design:leading-[26px]">
-              aclara tus dudas
+              {t("aclara tus dudas")}
             </span>
             <span className="block text-[28px] leading-[30px] font-bold uppercase design:text-[46px] design:leading-[48px]">
-              migratorias
+              {t("migratorias")}
             </span>
           </span>
         </div>
@@ -250,7 +250,7 @@ export function Transmisiones() {
           />
           <span className="absolute top-[16.5px] left-[24.5px] h-[22px] w-[22px] rounded-full bg-[#EE0303]" />
           <span className="absolute top-[12px] left-[54.5px] text-[30px] leading-[31px] font-bold text-white uppercase">
-            live
+            {t("live")}
           </span>
         </span>
 

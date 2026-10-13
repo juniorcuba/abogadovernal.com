@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/enlace";
 import { FlechaEnlace } from "@/components/ui/iconos";
 import { TrazoTarjeta } from "@/components/ui/trazo-tarjeta";
 import type { EntradaBlog } from "@/lib/blog";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Tarjeta de artículo del blog: 438×575 con la foto a sangre, el chip "BLOG",
@@ -38,6 +41,7 @@ export function TarjetaArticulo({
   estilo?: React.CSSProperties;
   className?: string;
 }) {
+  const t = useT();
   return (
     <li
       className={`relative bg-[#172339] movil:h-[447px] movil:w-[353px] design:absolute design:h-[575px] design:w-[438px] ${className}`}
@@ -78,7 +82,7 @@ export function TarjetaArticulo({
       />
 
       <span className="bg-vernal-accent text-vernal-navy absolute top-[22px] right-[22px] flex items-center justify-center px-3 py-1 text-[16px] leading-[20px] font-medium movil:top-[3px] movil:right-auto movil:left-[233px] movil:h-[40px] movil:w-[93px] movil:p-0 movil:text-[23px] movil:leading-[24px] design:top-[5.5px] design:right-auto design:left-[326.5px] design:h-[40px] design:w-[93px] design:p-0 design:text-[23px] design:leading-[24px]">
-        BLOG
+        {t("BLOG")}
       </span>
 
       <div className="relative flex h-full flex-col justify-end p-6 movil:block movil:p-0 design:block design:p-0">
@@ -99,26 +103,26 @@ export function TarjetaArticulo({
             className="text-[26px] leading-[30px] font-light whitespace-normal text-white movil:w-full movil:text-[24px] movil:leading-[25px] design:absolute design:whitespace-pre-line design:top-[var(--ty)] design:left-[40.5px] design:text-[32px] design:leading-[33.28px]"
             style={{ "--ty": `${arriba}px` } as React.CSSProperties}
           >
-            {entrada.titulo}
+            {t(entrada.titulo)}
           </h3>
         </div>
         <p className="mt-3 text-[13px] leading-[16px] text-white movil:absolute movil:top-[275px] movil:left-[30px] movil:mt-0 movil:w-[270px] movil:leading-[14px] design:absolute design:top-[391.5px] design:left-[40.5px] design:mt-0 design:w-[340px] design:leading-[14px]">
-          {entrada.resumen}
+          {t(entrada.resumen)}
         </p>
         <Link
           href={`/blog/${entrada.slug}`}
           className="bg-vernal-accent text-vernal-navy relative mt-5 flex h-[52px] w-full items-center pl-[25px] text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[223px] movil:absolute movil:top-[337px] movil:left-[30px] movil:mt-0 movil:w-[223px] design:absolute design:top-[446.5px] design:left-[40.5px] design:mt-0 design:w-[223px]"
         >
-          Leer articulo
+          {t("Leer articulo")}
           <FlechaEnlace className="ml-auto mr-[25px] h-[15px] w-[25px] shrink-0 movil:absolute movil:top-[18.5px] movil:left-[171px] movil:m-0 design:absolute design:top-[18.5px] design:left-[171px] design:m-0" />
         </Link>
         <p className="mt-4 flex gap-x-[5px] text-[10px] leading-[12px] font-medium text-white movil:absolute movil:top-[405.5px] movil:left-[30px] movil:mt-0 design:absolute design:top-[527px] design:left-[40px] design:mt-0">
-          {entrada.etiquetas.map((t) => (
+          {entrada.etiquetas.map((et) => (
             <span
-              key={t}
+              key={et}
               className="flex h-[18px] shrink-0 items-center justify-center rounded-[3.5px] border border-vernal-accent px-[9px] whitespace-nowrap"
             >
-              {t}
+              {t(et)}
             </span>
           ))}
         </p>

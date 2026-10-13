@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ListaPreguntas } from "@/components/ui/lista-preguntas";
 import { preguntasSede } from "@/lib/preguntas";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * Las cinco preguntas de /testimoniales — banda y=3487..4703 del frame
@@ -26,6 +27,7 @@ import { preguntasSede } from "@/lib/preguntas";
 const ALTO = 1126;
 
 export function TestimonialesPreguntas() {
+  const t = useT();
   const [crecimiento, setCrecimiento] = useState(0);
 
   return (
@@ -52,31 +54,28 @@ export function TestimonialesPreguntas() {
         <h2 className="text-center text-[34px] leading-[40px] font-light sm:text-[48px] sm:leading-[52px] movil:absolute movil:top-[52px] movil:left-[47px] movil:w-[320px] movil:text-left movil:text-[32px] movil:leading-[33px] design:absolute design:top-[91px] design:left-0 design:w-[1920px] design:text-[64px] design:leading-[67px]">
           <span className="movil:hidden">
             <span className="text-vernal-accent">
-              Las dudas que más <br className="hidden design:inline" />
-              escuchamos,
+              {t("Las dudas que más ")}<br className="hidden design:inline" />
+              {t("escuchamos,")}
             </span>{" "}
             <span className="text-white">
-              respondidas <br className="hidden design:inline" />
-              con claridad.
+              {t("respondidas ")}<br className="hidden design:inline" />
+              {t("con claridad.")}
             </span>
           </span>
           <span className="hidden movil:block">
             <span className="text-vernal-accent">
-              Las dudas que <br />
-              más escuchamos,
+              {t("Las dudas que ")}<br />
+              {t("más escuchamos,")}
             </span>{" "}
             <span className="text-white">
-              respondidas con <br />
-              claridad.
+              {t("respondidas con ")}<br />
+              {t("claridad.")}
             </span>
           </span>
         </h2>
 
         <p className="mx-auto mt-6 max-w-[680px] text-[16px] leading-[22px] text-white sm:text-justify movil:absolute movil:top-[216px] movil:left-[42px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[338px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
-          Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una
-          y otra vez señal de que hay información que no siempre es fácil de encontrar,
-          o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra
-          comunidad, explicadas de forma simple y directa.
+          {t("Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una y otra vez señal de que hay información que no siempre es fácil de encontrar, o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra comunidad, explicadas de forma simple y directa.")}
         </p>
 
         <ListaPreguntas

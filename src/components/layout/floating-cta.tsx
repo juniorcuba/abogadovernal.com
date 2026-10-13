@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Botón flotante de WhatsApp, abajo a la derecha en todas las páginas.
@@ -20,7 +21,7 @@ export function FloatingCta() {
       href={site.whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Escríbenos por WhatsApp"
+      aria-label={t("Escríbenos por WhatsApp")}
       className="shadow-vernal-1 fixed right-5 bottom-5 z-40 flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white transition-transform hover:scale-105 movil:right-[16px] movil:bottom-[16px] movil:h-[56px] movil:w-[56px] design:right-[32px] design:bottom-[32px] design:h-[76px] design:w-[76px]"
     >
       <svg

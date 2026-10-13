@@ -7,6 +7,7 @@ import {
   EquipoHero,
   EquipoRejilla,
 } from "@/components/sections/equipo";
+import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
 
 /**
  * Nuestro equipo — frame `770:403` de Figma, 1920 × 4486 (2026-09-27).
@@ -27,13 +28,16 @@ import {
  * completo" de la home apunta aquí desde ahora.
  */
 
-export const metadata: Metadata = {
-  title: "Nuestro equipo",
-  description:
-    "Las personas que atienden cada caso en las oficinas del Abogado Vernal en Texas: abogados, paralegales y personal de apoyo.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return metadatos((await params).lang, "/nuestro-equipo", {
+    title: "Nuestro equipo",
+    description:
+      "Las personas que atienden cada caso en las oficinas del Abogado Vernal en Texas: abogados, paralegales y personal de apoyo.",
+  });
+}
 
-export default function NuestroEquipoPage() {
+export default async function NuestroEquipoPage({ params }: { params: Promise<{ lang: string }> }) {
+  fijarIdioma((await params).lang);
   return (
     <>
       <SiteHeader />

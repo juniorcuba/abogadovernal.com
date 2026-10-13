@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Logo } from "@/components/ui/logo";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Una lección que su propia familia le enseñó" — frame `181:2125`, export del
@@ -34,10 +35,10 @@ import { Logo } from "@/components/ui/logo";
 export function TextoMisionMovil() {
   return (
     <>
-      {"En Texas, Estados Unidos, la oficina del "}
-      <strong className="font-bold">Abogado Vernal Farnum Mejía</strong>
+      {t("En Texas, Estados Unidos, la oficina del ")}
+      <strong className="font-bold">{t("Abogado Vernal Farnum Mejía")}</strong>
       {
-        " se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca."
+        t(" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca.")
       }
     </>
   );
@@ -65,7 +66,7 @@ export function NosotrosLeccion() {
           <div className="absolute inset-0 overflow-hidden">
             <Image
               src="/images/nosotros/leccion-foto-equipo.webp"
-              alt="El equipo del despacho del Abogado Vernal Farnum Mejía"
+              alt={t("El equipo del despacho del Abogado Vernal Farnum Mejía")}
               width={1466}
               height={850}
               sizes="(min-width: 1280px) 38vw, (min-width: 561px) 100vw, 85vw"
@@ -144,18 +145,18 @@ export function NosotrosLeccion() {
 
         <div className="movil:contents">
           <h2 className="text-[28px] leading-[32px] font-light text-white sm:text-[32px] sm:leading-[36px] movil:absolute movil:top-[339px] movil:left-[45px] movil:w-[330px] movil:text-[32px] movil:leading-[33px] design:absolute design:top-[104px] design:left-[1053px] design:w-[700px] design:leading-[67px] design:text-[64px] design:font-light">
-            {"Una lección que "}
+            {t("Una lección que ")}
             <br className="hidden movil:inline design:inline" />
-            {"su propia "}
+            {t("su propia ")}
             <span className="text-vernal-accent">
-              familia <br className="hidden movil:inline design:inline" />
-              le enseñó
+              {t("familia ")}<br className="hidden movil:inline design:inline" />
+              {t("le enseñó")}
             </span>
           </h2>
 
           <p className="mt-6 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:absolute movil:top-[470px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[348px] design:left-[1064px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
             <span className="movil:hidden">
-              {"A lo largo de su carrera, ha visto de cerca cómo una mala asesoría legal puede cambiar por completo el rumbo de una familia, no tuvo que buscar lejos para entenderlo. Su propio hermano vivió un proceso migratorio que pudo haber terminado de forma muy distinta, de no ser porque buscó la orientación correcta a tiempo.\n\nEsa experiencia marcó cómo entiende el costo real de un mal proceso legal, no en dinero, sino en tiempo con la familia que nunca se recupera."}
+              {t("A lo largo de su carrera, ha visto de cerca cómo una mala asesoría legal puede cambiar por completo el rumbo de una familia, no tuvo que buscar lejos para entenderlo. Su propio hermano vivió un proceso migratorio que pudo haber terminado de forma muy distinta, de no ser porque buscó la orientación correcta a tiempo.\n\nEsa experiencia marcó cómo entiende el costo real de un mal proceso legal, no en dinero, sino en tiempo con la familia que nunca se recupera.")}
             </span>
             <span className="hidden movil:inline">
               <TextoMisionMovil />

@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { AgendaConsulta } from "@/components/sections/agenda-consulta";
 import { Articulo } from "@/components/sections/articulo";
 import { articulos, buscarArticulo } from "@/lib/articulo";
+import { fijarIdioma, metadatos, traducirServidor } from "@/lib/i18n/servidor";
 
 /**
  * La página de un artículo — frame `802:564` de Figma, 1920 × 4346.
@@ -20,23 +21,25 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { lang, slug } = await params;
   const articulo = buscarArticulo(slug);
   if (!articulo) return {};
-  return {
-    title: articulo.titulo.join(" ").replace(/\s+/g, " "),
+  const idioma = fijarIdioma(lang);
+  return metadatos(lang, `/blog/${articulo.slug}`, {
+    title: articulo.titulo.map((linea) => traducirServidor(idioma, linea)).join(" ").replace(/\s+/g, " "),
     description: articulo.descripcion,
-  };
+  });
 }
 
 export default async function ArticuloPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { lang, slug } = await params;
+  fijarIdioma(lang);
   const articulo = buscarArticulo(slug);
   if (!articulo) notFound();
 

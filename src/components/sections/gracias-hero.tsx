@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { socialsCabecera } from "@/lib/site";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Página de gracias — frame `795:454`, rango y=0..938.
@@ -55,24 +56,21 @@ export function GraciasHero() {
 
         <h1 className="mt-6 text-[44px] leading-[48px] uppercase sm:text-[62px] sm:leading-[66px] movil:absolute movil:top-[305px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[40px] movil:leading-[42px] design:absolute design:top-[257px] design:left-[237px] design:mt-0 design:w-[1200px] design:text-[82px] design:leading-[85px]">
           <span className="block">
-            <span className="text-vernal-accent">¡Gracias</span>{" "}
-            <span className="text-white">por</span>
+            <span className="text-vernal-accent">{t("¡Gracias")}</span>{" "}
+            <span className="text-white">{t("por")}</span>
           </span>
-          <span className="block text-white">contactarnos!</span>
+          <span className="block text-white">{t("contactarnos!")}</span>
         </h1>
 
         <p className="mt-6 max-w-[680px] text-[16px] leading-[22px] text-white movil:absolute movil:top-[407px] movil:left-[42px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[467px] design:left-[237px] design:mt-0 design:w-[700px] design:max-w-none design:leading-[17px]">
-          Hemos recibido tu información.{" "}
+          {t("Hemos recibido tu información.")}{" "}
           <span className="text-vernal-accent">
-            Un miembro de nuestro equipo se pondrá en contacto contigo pronto para
-            orientarte sobre tu caso.
+            {t("Un miembro de nuestro equipo se pondrá en contacto contigo pronto para orientarte sobre tu caso.")}
           </span>
         </p>
 
         <p className="mt-5 max-w-[680px] text-[16px] leading-[22px] text-white movil:absolute movil:top-[492px] movil:left-[42px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[518px] design:left-[237px] design:mt-0 design:w-[640px] design:max-w-none design:leading-[17px]">
-          Mientras tanto, no te pierdas nuestras transmisiones en vivo Inmigrantes Como Tú
-          cada martes a las 5:00 p.m., donde el Abogado Vernal responde preguntas y
-          comparte las últimas actualizaciones en inmigración.
+          {t("Mientras tanto, no te pierdas nuestras transmisiones en vivo Inmigrantes Como Tú cada martes a las 5:00 p.m., donde el Abogado Vernal responde preguntas y comparte las últimas actualizaciones en inmigración.")}
         </p>
 
         {/* Tarjeta de redes, con el mismo radial girado que las otras tarjetas. */}
@@ -88,9 +86,9 @@ export function GraciasHero() {
           <p className="relative p-8 text-[28px] leading-[32px] font-light text-white sm:text-[32px] movil:absolute movil:top-[21px] movil:left-[23px] movil:w-[235px] movil:p-0 movil:text-[20px] movil:leading-[21px] design:absolute design:top-[87px] design:left-[32px] design:p-0 design:text-[36px] design:leading-[37px]">
             {/* En 402 el archivo parte las tres líneas en otro sitio, así que
                 ahí fluyen y las parte la caja. */}
-            <span className="block text-white movil:inline">Síguenos en redes</span>{" "}
-            <span className="text-vernal-accent block movil:inline">para no perderte</span>{" "}
-            <span className="text-vernal-accent block movil:inline">el próximo live.</span>
+            <span className="block text-white movil:inline">{t("Síguenos en redes")}</span>{" "}
+            <span className="text-vernal-accent block movil:inline">{t("para no perderte")}</span>{" "}
+            <span className="text-vernal-accent block movil:inline">{t("el próximo live.")}</span>
           </p>
 
           <ul className="relative flex gap-x-[11px] px-8 pb-8 movil:absolute movil:top-[105px] movil:left-[23px] movil:p-0 design:absolute design:top-[218px] design:left-[32px] design:p-0">

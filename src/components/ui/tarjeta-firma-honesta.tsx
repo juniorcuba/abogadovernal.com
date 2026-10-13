@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * Tarjeta decorativa "una firma imperfectamente honesta", 322×291. Sale igual en
@@ -26,8 +27,8 @@ export function TarjetaFirmaHonesta({ className = "" }: { className?: string }) 
         className="absolute top-[26.8px] left-[33.9px] h-[80.35px] w-[74.22px]"
       />
       <p className="absolute top-[125.3px] left-[34px] text-[36px] leading-[37px] font-light whitespace-pre text-white">
-        {'una firma\n"imperfecta\nmente\n'}
-        <span className="text-vernal-accent">honesta”</span>
+        {t("una firma\n\"imperfecta\nmente\n")}
+        <span className="text-vernal-accent">{t("honesta”")}</span>
       </p>
     </div>
   );

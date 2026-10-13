@@ -16,21 +16,21 @@ de cada vista:
 
 | Carril | Página | Componentes | Datos |
 |---|---|---|---|
-| Nosotros | `src/app/nosotros/` | `src/components/sections/nosotros-*.tsx` | — |
-| Testimoniales | `src/app/testimoniales/` | `sections/testimoniales.tsx` | `src/lib/testimonios.ts` |
-| Nuestro equipo | `src/app/nuestro-equipo/` | `sections/equipo.tsx` | `src/lib/equipo.ts` |
-| Sedes | `src/app/areas-de-servicio/[sede]/` | `sections/sede.tsx` | `src/lib/sedes.ts` |
-| Blog y artículo | `src/app/blog/` | `sections/blog-listado.tsx`, `articulo.tsx`, `tarjeta-articulo.tsx` | `src/lib/blog.ts`, `articulo.ts` |
-| FAQs | `src/app/faqs/` | `sections/faqs-*.tsx`, `ui/lista-preguntas.tsx` | `src/lib/preguntas.ts` |
-| Contacto | `src/app/contacto/` | `sections/contacto-hero.tsx` | — |
-| Home | `src/app/page.tsx` | `hero`, `sobre-nosotros`, `bio-vernal`, `nuestro-equipo`, `nuestro-compromiso`, `servicios`, `como-trabajamos`, `transmisiones`, `testimonios` | — |
+| Nosotros | `src/app/[lang]/nosotros/` | `src/components/sections/nosotros-*.tsx` | — |
+| Testimoniales | `src/app/[lang]/testimoniales/` | `sections/testimoniales.tsx` | `src/lib/testimonios.ts` |
+| Nuestro equipo | `src/app/[lang]/nuestro-equipo/` | `sections/equipo.tsx` | `src/lib/equipo.ts` |
+| Sedes | `src/app/[lang]/areas-de-servicio/[sede]/` | `sections/sede.tsx` | `src/lib/sedes.ts` |
+| Blog y artículo | `src/app/[lang]/blog/` | `sections/blog-listado.tsx`, `articulo.tsx`, `tarjeta-articulo.tsx` | `src/lib/blog.ts`, `articulo.ts` |
+| FAQs | `src/app/[lang]/faqs/` | `sections/faqs-*.tsx`, `ui/lista-preguntas.tsx` | `src/lib/preguntas.ts` |
+| Contacto | `src/app/[lang]/contacto/` | `sections/contacto-hero.tsx` | — |
+| Home | `src/app/[lang]/page.tsx` | `hero`, `sobre-nosotros`, `bio-vernal`, `nuestro-equipo`, `nuestro-compromiso`, `servicios`, `como-trabajamos`, `transmisiones`, `testimonios` | — |
 
 Las imágenes de cada vista van en su carpeta de `public/images/<vista>/`.
 
 ### Reglas para no pisarse
 
 1. **Toca solo los archivos de tu carril.** Antes de editar un archivo compartido,
-   dilo y espera el visto bueno de Roberto. Son compartidos: `src/app/layout.tsx`,
+   dilo y espera el visto bueno de Roberto. Son compartidos: `src/app/[lang]/layout.tsx`,
    `src/app/globals.css`, `src/lib/site.ts`, todo `src/components/layout/`, todo
    `src/components/ui/`, y las secciones que usan varias páginas
    (`blog-resenas.tsx`, `agenda-consulta.tsx`, `bloque-preguntas.tsx`).
@@ -69,6 +69,31 @@ el rango `y` de su banda y lo que se decidió: léelo antes de tocar.
 Sobre la franja apilada, lo que Roberto ha pedido: textos, titulares y botones
 **centrados**; las fotos tienen que **llenar su caja** (las medidas fijas de 1920
 dejan franjas vacías); que nada tape la cara de una persona; aire arriba y abajo.
+
+## Idiomas (español e inglés)
+
+El sitio está en dos idiomas desde el 2026-10-12. El español es la raíz
+(`/nosotros`) y el inglés cuelga de `/en` (`/en/nosotros`). Por dentro es una
+sola ruta, `src/app/[lang]/...`: `next.config.ts` reescribe la raíz a `/es`.
+
+- **El texto en español es la clave.** En el código se escribe en español y se
+  envuelve en `t("…")`; el inglés está en `src/lib/i18n/en.ts` (lo que pinta
+  algún componente de cliente) y `en-servidor.ts` (lo demás). Una cadena sin
+  traducir no rompe nada: sale en español.
+- Componente de servidor: `import { t } from "@/lib/i18n/servidor"`. Componente
+  de cliente: `const t = useT()` de `@/lib/i18n/cliente`. Los textos que vienen
+  de datos (`src/lib/*.ts`) se pasan por `t()` donde se pintan.
+- **Si cambias o añades un texto en español, añade su traducción** con la misma
+  cadena exacta como clave. Si no, en `/en` saldrá en español.
+- Los enlaces internos van con el `Link` de `@/components/ui/enlace` (o
+  `ButtonLink`), que antepone `/en` solo; no uses el de `next/link`.
+- Cada página llama a `fijarIdioma((await params).lang)` y saca sus metadatos
+  con `metadatos(lang, ruta, {...})`.
+- El inglés no tiene diseño: va en las mismas cajas que el español. Tras tocar
+  textos, `node scripts/revision/idiomas.mjs http://localhost:3100 /ruta 1440`
+  (y `402`) lista los que en inglés ocupan más renglones que en español.
+- **Política de privacidad y términos y condiciones van en inglés en los dos
+  idiomas** (lo pidió el despacho por la TCPA). No pasan por `t()`.
 
 ## El diseño
 

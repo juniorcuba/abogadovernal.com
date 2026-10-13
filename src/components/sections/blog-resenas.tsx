@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ConsentNotice } from "@/components/ui/consent-notice";
 import { Carrusel } from "@/components/ui/carrusel";
 import { FlechaEnlace } from "@/components/ui/iconos";
+import { useT } from "@/lib/i18n/cliente";
 
 /**
  * "Mantente informado" (newsletter) + reseñas de Google — nodos del rango
@@ -68,10 +69,11 @@ const resenas = [
 ];
 
 function Estrellas({ className }: { className?: string }) {
+  const t = useT();
   return (
     // Paso de 34 entre estrellas en el archivo (23 de estrella + 11 de hueco),
     // que deja la fila en 159 de ancho.
-    <span className={`flex gap-x-[11px] ${className ?? ""}`} aria-label="5 de 5 estrellas">
+    <span className={`flex gap-x-[11px] ${className ?? ""}`} aria-label={t("5 de 5 estrellas")}>
       {[0, 1, 2, 3, 4].map((i) => (
         <Image key={i} src="/icons/estrella.svg" alt="" width={23} height={22} />
       ))}
@@ -80,6 +82,7 @@ function Estrellas({ className }: { className?: string }) {
 }
 
 export function BlogResenas({ className }: { className?: string } = {}) {
+  const t = useT();
   return (
     <section
       className={`relative overflow-hidden bg-[linear-gradient(82.07deg,#172339_28.78%,#0F0F0F_43.26%)] movil:h-[1272px] movil:bg-[linear-gradient(88.86deg,#172339_28.76%,#0F0F0F_43.26%)] design:h-[877px] ${className ?? ""}`}
@@ -99,14 +102,14 @@ export function BlogResenas({ className }: { className?: string } = {}) {
 
       <div className="relative mx-auto max-w-[1040px] design:max-w-[1920px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:py-20 movil:h-[1272px] movil:p-0 design:h-[877px] design:p-0">
         <h2 className="text-[38px] leading-[40px] font-semibold text-white uppercase sm:text-[48px] movil:absolute movil:top-[69px] movil:left-[41px] movil:w-[300px] movil:leading-[48px] movil:text-[46px] design:absolute design:top-[95px] design:left-[265px] design:w-[745px] design:leading-[67px] design:text-[64px]">
-          Mantente informado
+          {t("Mantente informado")}
         </h2>
 
         <p className="mt-6 max-w-[541px] text-[16px] leading-[17px] text-white movil:absolute movil:top-[183px] movil:left-[41px] movil:mt-0 movil:w-[330px] movil:max-w-none design:absolute design:top-[183px] design:left-[271px] design:mt-0 design:w-[541px]">
-          Cambios en las leyes de
-          <br className="hidden movil:inline" /> inmigración, consejos prácticos
-          <br className="hidden movil:inline" /> y respuestas a las dudas más
-          <br className="hidden movil:inline" /> comunes de nuestra comunidad.
+          {t("Cambios en las leyes de")}
+          <br className="hidden movil:inline" />{t(" inmigración, consejos prácticos")}
+          <br className="hidden movil:inline" />{t(" y respuestas a las dudas más")}
+          <br className="hidden movil:inline" />{t(" comunes de nuestra comunidad.")}
         </p>
 
         <form className="mt-8 flex max-w-[562px] movil:absolute movil:top-[283px] movil:left-[40px] movil:mt-0 movil:w-[322px] movil:max-w-none design:absolute design:top-[258px] design:left-[271px] design:mt-0 design:w-[562px]">
@@ -122,14 +125,14 @@ export function BlogResenas({ className }: { className?: string } = {}) {
               type="email"
               name="correo"
               required
-              aria-label="Correo Electrónico"
-              placeholder="Correo Electrónico"
+              aria-label={t("Correo Electrónico")}
+              placeholder={t("Correo Electrónico")}
               className="ml-[17px] h-full w-full bg-transparent movil:ml-[12px] text-[15px] leading-[16px] text-black outline-none placeholder:text-black"
             />
           </div>
           <button
             type="submit"
-            aria-label="Suscribirse"
+            aria-label={t("Suscribirse")}
             className="bg-vernal-accent text-vernal-navy flex h-[52px] w-[124px] shrink-0 cursor-pointer items-center justify-center transition-opacity hover:opacity-90 movil:h-[48px] movil:w-[114px] design:absolute design:left-[438px]"
           >
             <FlechaEnlace />
@@ -143,13 +146,13 @@ export function BlogResenas({ className }: { className?: string } = {}) {
             doble de alto. `design:contents` deshace la fila a 1920. */}
         <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-4 movil:contents design:mt-0 design:contents">
           <p className="text-[26px] leading-[28px] font-light sm:text-[28px] sm:leading-[29px] movil:absolute movil:top-[507px] movil:left-0 movil:w-[402px] movil:text-center movil:text-[24px] movil:leading-[25px] design:absolute design:top-[449px] design:left-[278px] design:w-[422px] design:leading-[37px] design:text-[36px]">
-            <span className="block text-white">Lo que piensan</span>
-            <span className="text-vernal-accent block">nuestros clientes</span>
+            <span className="block text-white">{t("Lo que piensan")}</span>
+            <span className="text-vernal-accent block">{t("nuestros clientes")}</span>
           </p>
 
           <Image
             src="/icons/google-reviews.svg"
-            alt="Google Customer Reviews"
+            alt={t("Google Customer Reviews")}
             width={190}
             height={63}
             className="movil:absolute movil:top-[580px] movil:left-[106px] design:absolute design:top-[456px] design:left-[618px]"
@@ -168,7 +171,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
               <button
                 type="button"
                 onClick={anterior}
-                aria-label="Reseña anterior"
+                aria-label={t("Reseña anterior")}
                 className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 flex h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 movil:absolute movil:top-[773px] movil:left-[24px] design:absolute design:top-[654px] design:left-[195px]"
               >
                 ←
@@ -176,7 +179,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
               <button
                 type="button"
                 onClick={siguiente}
-                aria-label="Reseña siguiente"
+                aria-label={t("Reseña siguiente")}
                 className="bg-vernal-accent text-vernal-navy shadow-vernal-1 z-20 flex h-[55px] w-[55px] cursor-pointer items-center justify-center rounded-full text-[22px] transition-opacity hover:opacity-90 movil:absolute movil:top-[772px] movil:left-[319px] design:absolute design:top-[654px] design:left-[1008px]"
               >
                 →
@@ -197,7 +200,7 @@ export function BlogResenas({ className }: { className?: string } = {}) {
               <Estrellas className="justify-center movil:justify-start movil:pl-[30.5px]" />
               <div key={relevo} className="animate-vernal-relevo">
                 <p className="mt-[18px] text-center text-[16px] leading-[17px] text-white movil:mt-[22px]">
-                  {r.texto}
+                  {t(r.texto)}
                 </p>
                 <p className="text-vernal-accent mt-[10px] text-center text-[16px] leading-[17px] font-bold movil:mt-[15px] design:mt-[22px]">
                   {r.autor}

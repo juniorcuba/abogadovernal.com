@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "+15,000 personas asesoradas" — frame `181:2125`, export del 2026-09-13,
@@ -65,31 +66,31 @@ export function NosotrosCifras() {
             +15,000
           </p>
           <p className="text-center text-[24px] leading-[28px] font-semibold text-white uppercase sm:text-[32px] sm:leading-[36px] movil:absolute movil:top-[36.35px] movil:left-0 movil:w-full movil:text-center movil:text-[21px] movil:leading-[22px] movil:drop-shadow-[4px_3px_14px_#000] design:absolute design:top-[86px] design:left-[686px] design:text-left design:text-[45px] design:leading-[47px]">
-            Personas asesoradas
+            {t("Personas asesoradas")}
           </p>
         </div>
 
         <p className="mx-auto mt-10 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:hidden design:absolute design:top-[224px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
-          {"Ese enfoque se refleja en los números. A lo largo de su trayectoria, "}
+          {t("Ese enfoque se refleja en los números. A lo largo de su trayectoria, ")}
           <span className="text-vernal-accent">
-            el despacho ha acompañado a más de 15,000 personas en su proceso migratorio,
+            {t("el despacho ha acompañado a más de 15,000 personas en su proceso migratorio,")}
           </span>
-          {" desde peticiones familiares hasta casos de asilo y defensa contra la deportación y ha ayudado a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos.\n\nPero para el Abogado Vernal, ese número no se mide en casos cerrados, sino en las cenas familiares, los cumpleaños y los momentos cotidianos que esas 10,000 familias pudieron volver a compartir gracias a un proceso bien llevado.\n\nSu firma ha sido mencionada en medios como "}
-          <strong className="font-bold">Univisión, Telemundo y Estrella TV</strong>
-          {" pero su filosofía sigue siendo la misma desde el primer día: contratar personas a quienes de verdad les importe la historia de cada cliente, no solo su caso, y construir, como él lo describe, una firma "}
-          <span className="text-vernal-accent">{'"imperfectamente honesta”'}</span>
+          {t(" desde peticiones familiares hasta casos de asilo y defensa contra la deportación y ha ayudado a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos.\n\nPero para el Abogado Vernal, ese número no se mide en casos cerrados, sino en las cenas familiares, los cumpleaños y los momentos cotidianos que esas 10,000 familias pudieron volver a compartir gracias a un proceso bien llevado.\n\nSu firma ha sido mencionada en medios como ")}
+          <strong className="font-bold">{t("Univisión, Telemundo y Estrella TV")}</strong>
+          {t(" pero su filosofía sigue siendo la misma desde el primer día: contratar personas a quienes de verdad les importe la historia de cada cliente, no solo su caso, y construir, como él lo describe, una firma ")}
+          <span className="text-vernal-accent">{t("\"imperfectamente honesta”")}</span>
         </p>
 
         {/* Logos de los medios que lo han mencionado. */}
         <ul className="mt-12 flex items-center justify-center gap-x-10 movil:contents design:contents">
           <li className="movil:absolute movil:top-[105px] movil:left-[59px] design:absolute design:top-[544.89px] design:left-[634px]">
-            <Image src="/icons/nosotros/telemundo.svg" alt="Telemundo" width={143} height={112} className="h-[70px] w-auto movil:h-[101px] movil:w-[129px] design:h-[112.28px] design:w-[143px]" />
+            <Image src="/icons/nosotros/telemundo.svg" alt={t("Telemundo")} width={143} height={112} className="h-[70px] w-auto movil:h-[101px] movil:w-[129px] design:h-[112.28px] design:w-[143px]" />
           </li>
           <li className="movil:absolute movil:top-[107px] movil:left-[253px] design:absolute design:top-[545px] design:left-[916px]">
-            <Image src="/icons/nosotros/univision.svg" alt="Univision" width={86} height={112} className="h-[70px] w-auto movil:h-[101px] movil:w-[77px] design:h-[112px] design:w-[86px]" />
+            <Image src="/icons/nosotros/univision.svg" alt={t("Univision")} width={86} height={112} className="h-[70px] w-auto movil:h-[101px] movil:w-[77px] design:h-[112px] design:w-[86px]" />
           </li>
           <li className="movil:absolute movil:top-[255px] movil:left-[155px] design:absolute design:top-[541px] design:left-[1141px]">
-            <Image src="/icons/nosotros/estrella-tv.svg" alt="Estrella TV" width={98} height={116} className="h-[72px] w-auto movil:h-[104px] movil:w-[88px] design:h-[116.2px] design:w-[98px]" />
+            <Image src="/icons/nosotros/estrella-tv.svg" alt={t("Estrella TV")} width={98} height={116} className="h-[72px] w-auto movil:h-[104px] movil:w-[88px] design:h-[116.2px] design:w-[98px]" />
           </li>
         </ul>
       </div>

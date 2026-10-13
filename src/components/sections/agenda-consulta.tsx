@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
+import { t } from "@/lib/i18n/servidor";
 
 /**
  * "Agenda tu consulta" — grupo 612:409 de las sedes (2026-09-19), el mismo que
@@ -53,12 +54,12 @@ export function AgendaConsulta({
 
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 movil:h-[943px] movil:max-w-none movil:p-0 design:h-[755px] design:max-w-[1920px] design:p-0">
         <h2 className="text-[38px] leading-[42px] font-semibold uppercase movil:hidden sm:text-[48px] sm:leading-[52px] design:absolute design:top-[145.23px] design:left-[265px] design:w-[722px] design:text-[64px] design:leading-[66.56px]">
-          <span className="text-white">Agenda</span>{" "}
-          <span className="text-vernal-accent">tu consulta</span>
+          <span className="text-white">{t("Agenda")}</span>{" "}
+          <span className="text-vernal-accent">{t("tu consulta")}</span>
         </h2>
         <p className="mt-4 max-w-[541px] text-[16px] leading-[20px] text-white movil:hidden sm:text-justify design:absolute design:top-[232.77px] design:left-[271px] design:mt-0 design:w-[541px] design:leading-[16.64px]">
-          Cambios en las leyes de inmigración, consejos prácticos
-          <br className="hidden sm:inline" /> y respuestas a las dudas más comunes de nuestra comunidad.
+          {t("Cambios en las leyes de inmigración, consejos prácticos")}
+          <br className="hidden sm:inline" />{t(" y respuestas a las dudas más comunes de nuestra comunidad.")}
         </p>
 
         <form className="mt-8 max-w-[565px] movil:absolute movil:top-[395px] movil:left-[38px] movil:mt-0 movil:w-[325px] movil:max-w-none design:absolute design:top-[297.42px] design:left-[265px] design:mt-0 design:w-[565px] design:max-w-none">
