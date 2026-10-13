@@ -23,12 +23,13 @@ export const site = {
   privacyUrl: "/politicas-de-privacidad",
   termsUrl: "/terminos-y-condiciones",
   /**
-   * Las transmisiones del canal. El botón "Ver retransmisiones" del home lleva a
-   * la pestaña de directos, que es el enlace de prototipo que trae el archivo
-   * (nodos 67:6 y 97:30). `youtubeDirectos` es esa misma lista para incrustarla:
-   * "UULV" + el id del canal sin su "UC" es la lista de directos de un canal.
+   * Las transmisiones. El botón "Ver retransmisiones" del home lleva a los
+   * vídeos en vivo de Facebook: lo pidió el despacho el 2026-10-12 (el archivo
+   * de diseño apuntaba a los directos de YouTube). El play de esa sección sí
+   * monta los directos de YouTube: `youtubeDirectos` es esa lista para
+   * incrustarla ("UULV" + el id del canal sin su "UC").
    */
-  youtube: "https://www.youtube.com/@abogadovernal/streams",
+  transmisiones: "https://www.facebook.com/AbogadoVernal/live_videos?locale=es_LA",
   youtubeDirectos: "videoseries?list=UULVJdRtM7Zp5XVR0kvBSxPqOA",
   /**
    * Enlace de WhatsApp del despacho: el mismo que usa su sitio anterior
@@ -68,6 +69,8 @@ export type NavItem = {
   lineas?: [string, string];
   /** Qué despliega al pasar el ratón; las opciones están en `nav-link.tsx`. */
   menu?: "nosotros" | "sedes";
+  /** No se marca como página actual: su destino es el de otro enlace del menú. */
+  sinActivo?: true;
 };
 
 /**
@@ -81,6 +84,10 @@ export type NavItem = {
  * permisos por escrito de los clientes que salen en esa página; Roberto pidió
  * devolverla. La x va con cada enlace y no en una lista aparte, para que quitar
  * uno no descoloque a los demás.
+ *
+ * "EB1" ocupa desde el 2026-10-12 el sitio de "FAQS" (x1083): la página de
+ * preguntas se retiró por ahora (redirige a /contacto desde next.config.ts) y
+ * el despacho pidió ese rótulo, que lleva a Contacto. No hay página de EB1.
  */
 export const navItems: NavItem[] = [
   { label: "Inicio", href: "/", x: 242, grupo: "izq" },
@@ -95,7 +102,7 @@ export const navItems: NavItem[] = [
   },
   { label: "Testimoniales", href: "/testimoniales", x: 644, grupo: "izq" },
   { label: "Blogs", href: "/blog", x: 802, grupo: "izq" },
-  { label: "FAQS", href: "/faqs", x: 1083, grupo: "der" },
+  { label: "EB1", href: "/contacto", x: 1083, grupo: "der", sinActivo: true },
   { label: "Contacto", href: "/contacto", x: 1169, grupo: "der" },
 ];
 

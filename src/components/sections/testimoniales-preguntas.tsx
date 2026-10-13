@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ButtonLink } from "@/components/ui/button";
 import { ListaPreguntas } from "@/components/ui/lista-preguntas";
 import { preguntasSede } from "@/lib/preguntas";
 
@@ -21,9 +20,10 @@ import { preguntasSede } from "@/lib/preguntas";
  * En el lienzo de 402 la banda mide 1192: título a +52, entradilla a +216,
  * filas desde +389 y botón a +1050. Ahí la fila abierta no tiene alto fijo, de
  * modo que la lista y el botón van en el flujo y la sección crece sola.
+ * El botón "Ver más preguntas" que cerraba la banda (y1067, a /faqs) se quitó
+ * el 2026-10-12 con la página de preguntas, y la banda mide 90 menos.
  */
-const ALTO = 1216;
-const BOTON = 1067;
+const ALTO = 1126;
 
 export function TestimonialesPreguntas() {
   const [crecimiento, setCrecimiento] = useState(0);
@@ -84,15 +84,6 @@ export function TestimonialesPreguntas() {
           onAlto={setCrecimiento}
           className="mt-10 movil:mx-[33px] movil:mt-0 movil:border-b-0 design:top-[449px] design:mt-0"
         />
-
-        <div
-          className="mt-10 flex justify-center movil:mt-[51px] movil:ml-[62px] movil:block design:absolute design:top-[var(--boton)] design:left-[821px] design:mt-0 design:block design:transition-[top] design:duration-300 design:ease-out"
-          style={{ "--boton": `${BOTON + crecimiento}px` } as React.CSSProperties}
-        >
-          <ButtonLink href="/faqs" className="w-full sm:w-[277px] apilada:w-[277px] movil:w-[277px]">
-            Ver más preguntas
-          </ButtonLink>
-        </div>
       </div>
     </section>
   );

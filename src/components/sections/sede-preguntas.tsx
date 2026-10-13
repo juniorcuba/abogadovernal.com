@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { ListaPreguntas } from "@/components/ui/lista-preguntas";
 import { preguntasSede } from "@/lib/preguntas";
@@ -18,9 +17,10 @@ import { preguntasSede } from "@/lib/preguntas";
  * van en el flujo y la sección crece sola (cerrada mide los 1192 del archivo).
  *
  * Va en su propio archivo porque necesita estado y `sede.tsx` es de servidor.
+ * El botón "Ver más preguntas" que cerraba la banda (y1067, a /faqs) se quitó
+ * el 2026-10-12 con la página de preguntas, y la banda mide 90 menos.
  */
-const ALTO = 1211;
-const BOTON = 1067;
+const ALTO = 1121;
 
 export function SedePreguntas() {
   const [crecimiento, setCrecimiento] = useState(0);
@@ -77,18 +77,6 @@ export function SedePreguntas() {
           onAlto={setCrecimiento}
           className="mt-10 movil:mx-[33px] movil:mt-0 movil:border-b-0 design:top-[449px] design:mt-0"
         />
-
-        <div
-          className="mt-10 flex justify-center movil:mt-[51px] movil:ml-[62px] movil:block design:absolute design:top-[var(--boton)] design:left-[821px] design:mt-0 design:block design:transition-[top] design:duration-300 design:ease-out"
-          style={{ "--boton": `${BOTON + crecimiento}px` } as React.CSSProperties}
-        >
-          <Link
-            href="/faqs"
-            className="bg-vernal-accent text-vernal-navy inline-flex h-[52px] w-[277px] items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90"
-          >
-            Ver más preguntas
-          </Link>
-        </div>
       </div>
     </section>
   );

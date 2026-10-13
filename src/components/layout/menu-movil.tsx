@@ -232,8 +232,9 @@ export function MenuMovil() {
                 </Link>
               </li>
               <li className={FILA}>
-                <Link href="/faqs" onClick={cerrar} className={`${ENLACE} font-normal`}>
-                  FAQS
+                {/* Era "FAQS": la página se retiró por ahora (2026-10-12). */}
+                <Link href="/contacto" onClick={cerrar} className={`${ENLACE} font-normal`}>
+                  EB1
                 </Link>
               </li>
               <li className={FILA}>

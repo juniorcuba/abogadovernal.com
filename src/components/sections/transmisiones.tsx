@@ -115,7 +115,7 @@ export function Transmisiones() {
         </p>
 
         <ButtonLink
-          href={site.youtube}
+          href={site.transmisiones}
           variant="green"
           className="mt-8 w-full sm:w-[277px] apilada:w-[277px] movil:absolute movil:top-[573px] movil:left-[40px] movil:mt-0 movil:w-[277px] design:absolute design:top-[534px] design:left-[264px] design:mt-0 design:bg-vernal-accent"
         >

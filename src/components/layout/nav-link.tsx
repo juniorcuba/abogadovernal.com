@@ -54,8 +54,9 @@ export function NavLink({
 }) {
   const ruta = usePathname();
   const activo =
-    esActivo(ruta, item.href) ||
-    (item.menu ? MENUS[item.menu].some((o) => esActivo(ruta, o.href)) : false);
+    !item.sinActivo &&
+    (esActivo(ruta, item.href) ||
+      (item.menu ? MENUS[item.menu].some((o) => esActivo(ruta, o.href)) : false));
   const color = activo ? "text-vernal-accent" : "text-white hover:text-vernal-accent";
 
   // Dos líneas centradas, 16px con interlineado 1.04: la caja de 143 empieza en

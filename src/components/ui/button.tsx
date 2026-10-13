@@ -45,8 +45,14 @@ export function ButtonLink({
   variant?: Variant;
   className?: string;
 }) {
+  // Los enlaces a otro sitio (Facebook, YouTube) se abren en pestaña nueva.
+  const externo = /^https?:\/\//.test(href);
   return (
-    <Link href={href} className={`${base} ${variants[variant]} ${className ?? ""}`}>
+    <Link
+      href={href}
+      className={`${base} ${variants[variant]} ${className ?? ""}`}
+      {...(externo ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
       {children}
     </Link>
   );

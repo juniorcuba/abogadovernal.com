@@ -10,7 +10,7 @@ import { navItems, site, socialsCabecera } from "@/lib/site";
  * Header del sitio — frame 1:2, 1920×128. Medidas del export SVG del 2026-09-13.
  *
  *   enlaces   Inicio x242 · Nosotros x336 · Áreas de práctica x454 ·
- *             Testimoniales x644 · Blogs x802 | logo | FAQS x1083 ·
+ *             Testimoniales x644 · Blogs x802 | logo | EB1 x1083 ·
  *             Contacto x1169 · "Llamanós" x1289 · teléfono x1366.8
  *             Poppins 16/400, línea base y84.1
  *   logo      x905 y25  111×78, centrado exacto (centro 960.5)
@@ -65,7 +65,7 @@ export function SiteHeader() {
             {navItems
               .filter((item) => item.grupo === "izq")
               .map((item) => (
-                <NavLink key={item.href} item={item} x={item.x - GRUPO_IZQ.x} y={0} />
+                <NavLink key={item.label} item={item} x={item.x - GRUPO_IZQ.x} y={0} />
               ))}
           </nav>
   
@@ -84,7 +84,7 @@ export function SiteHeader() {
                   .filter((item) => item.grupo === "der")
                   .map((item) => (
                     <NavLink
-                      key={item.href}
+                      key={item.label}
                       item={item}
                       x={item.x - GRUPO_DER.x}
                       y={GRUPO_IZQ.y - GRUPO_DER.y}

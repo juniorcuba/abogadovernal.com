@@ -19,6 +19,9 @@ import { preguntasSede } from "@/lib/preguntas";
  * | 4478 |  468 | footer                                  | el de siempre |
  *
  * Solo hay artboard de escritorio.
+ *
+ * La banda de preguntas llevaba al final "Ver más preguntas" (a /faqs); se quitó
+ * el 2026-10-12 con la página de preguntas, y la banda mide 90 menos (1181).
  */
 
 export const metadata: Metadata = {
@@ -36,11 +39,10 @@ export default function BlogPage() {
         <BlogListado />
         <BloquePreguntas
           preguntas={preguntasSede}
-          alto={1271}
+          alto={1181}
           fotoArriba={-781}
           gradiente="linear-gradient(93.83deg,#000000 12.27%,#00000000 61.14%)"
-          tops={{ titulo: 91, entrada: 338, lista: 449, boton: 1067 }}
-          boton={{ texto: "Ver más preguntas", href: "/faqs" }}
+          tops={{ titulo: 91, entrada: 338, lista: 449 }}
         />
         {/* En el archivo el bloque se monta 59px sobre las preguntas. */}
         <AgendaConsulta solape={59} solapeMovil={28} />

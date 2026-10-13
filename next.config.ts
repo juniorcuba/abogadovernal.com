@@ -27,6 +27,14 @@ const nextConfig: NextConfig = {
         destination: "/areas-de-servicio/dallas",
         permanent: false,
       },
+      // La página de preguntas frecuentes se retiró por ahora (2026-10-12): el
+      // enlace del menú pasó a ser "EB1" y lleva a Contacto. Temporal (307): la
+      // página sigue en src/app/faqs para cuando vuelva.
+      {
+        source: "/faqs",
+        destination: "/contacto",
+        permanent: false,
+      },
       {
         source: "/politicas_privacidad.html",
         destination: "/politicas-de-privacidad",
