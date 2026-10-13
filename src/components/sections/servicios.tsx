@@ -15,7 +15,8 @@ import { ButtonLink } from "@/components/ui/button";
  *   cuerpo   59:36    x290 y270  580×209  Poppins 400 16px lh1.04 justificado, blanco
  *                     con una frase en #08b6ff
  *   botón    73:37    x290 y479  277×52   #08b6ff, texto 16px
- *   play     129:1293 x1262 y256 96×96    círculo blanco con triángulo
+ *   play     129:1293 x1262 y256 96×96    círculo blanco con triángulo — NO se
+ *                     pinta desde el 2026-10-12: esta parte ya no es un vídeo
  *   claim    83:148   x1032 y400 556×157  Poppins 300 36px lh1.04, CENTRADO
  *                     (las tres líneas comparten centro en x1310),
  *                     primera línea en #08b6ff, resto blanco.
@@ -92,18 +93,6 @@ export function Servicios() {
           <span className="movil:hidden">Agenda una consulta</span>
           <span className="hidden movil:inline">Agenda tu consulta</span>
         </ButtonLink>
-
-        {/* Botón de play (nodo 129:1293): círculo blanco de 96 con triángulo oscuro. */}
-        <button
-          type="button"
-          aria-label="Ver vídeo"
-          className="mt-10 flex h-[72px] w-[72px] cursor-pointer items-center justify-center rounded-full bg-white shadow-vernal-1 transition-transform hover:scale-105 movil:absolute movil:top-[728px] movil:left-[153px] movil:mt-0 movil:h-[96px] movil:w-[96px] design:absolute design:top-[256px] design:left-[1262px] design:mt-0 design:h-[96px] design:w-[96px]"
-        >
-          <span
-            aria-hidden
-            className="ml-[6px] border-t-[13px] border-b-[13px] border-l-[22px] border-t-transparent border-b-transparent border-l-[#161616] movil:border-t-[17px] movil:border-b-[17px] movil:border-l-[29px] design:border-t-[17px] design:border-b-[17px] design:border-l-[29px]"
-          />
-        </button>
 
         <p className="mt-8 max-w-[556px] text-center text-[24px] leading-[25px] font-light text-white movil:absolute movil:top-[848px] movil:left-[16px] movil:mt-0 movil:w-[370px] movil:max-w-none design:absolute design:top-[400px] design:left-[1032px] design:mt-0 design:w-[556px] design:leading-[37px] design:text-[36px]">
           <span className="text-vernal-accent">Nos adaptamos a tu caso y</span>{" "}
