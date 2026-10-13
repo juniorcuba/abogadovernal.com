@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FlechaEnlace } from "@/components/ui/iconos";
-import { TarjetaArticulo } from "@/components/sections/tarjeta-articulo";
-import { entradasBlog, filtrosBlog, topTitulo } from "@/lib/blog";
+import { BlogTarjetas } from "@/components/sections/blog-tarjetas";
+import { entradasBlog, filtrosBlog } from "@/lib/blog";
 
 /**
  * /blog — frame `703:807` de Figma (2026-09-26).
@@ -13,6 +12,9 @@ import { entradasBlog, filtrosBlog, topTitulo } from "@/lib/blog";
  *
  * Los filtros vienen marcados a mano en el archivo (cuatro activos); aquí se
  * pintan igual, pero todavía no filtran nada.
+ *
+ * Las tarjetas y el botón "Cargar más" viven en `blog-tarjetas.tsx`, que es
+ * quien da el alto a la banda blanca según las filas que haya a la vista.
  *
  * El lienzo de 402 sale de "VESPER AGENCY LANDING - MOBILE (7)" (402 x 7426):
  *
@@ -42,9 +44,6 @@ const CHIPS_MOVIL = [
   { left: 35, top: 346, ancho: 178, alto: 28 },
 ];
 
-/** y de cada tarjeta en el lienzo de 402; todas a x23. */
-const TARJETAS_MOVIL = [410, 876, 1348, 1820, 2286, 2758];
-
 const CHIPS = [
   { left: 1005, top: 111 },
   { left: 1092, top: 111 },
@@ -56,16 +55,6 @@ const CHIPS = [
   { left: 1242, top: 149 },
   { left: 1335, top: 149 },
   { left: 1486, top: 149 },
-];
-
-/** Posición de cada tarjeta y y del título, que el archivo coloca a mano. */
-const TARJETAS = [
-  { left: 252.5, top: 257.5, titulo: 248.4 },
-  { left: 740.5, top: 257.5, titulo: 265.4 },
-  { left: 1228.5, top: 257.5, titulo: 268.4 },
-  { left: 252.5, top: 875.5, titulo: 275.4 },
-  { left: 740.5, top: 875.5, titulo: 275.4 },
-  { left: 1228.5, top: 875.5, titulo: 280.4 },
 ];
 
 export function BlogHero() {
@@ -162,8 +151,8 @@ export function BlogHero() {
 
 export function BlogListado() {
   return (
-    <section className="relative overflow-hidden bg-white movil:h-[3351px] design:h-[1636px]">
-      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:h-[3351px] movil:max-w-none movil:p-0 design:h-[1636px] design:max-w-[1920px] design:p-0">
+    <section className="relative overflow-hidden bg-white">
+      <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:max-w-none movil:p-0 design:max-w-[1920px] design:p-0">
         <h2 className="text-vernal-navy text-[26px] leading-[32px] font-light sm:text-[32px] movil:absolute movil:top-[32px] movil:left-[34px] movil:w-[280px] movil:text-[32px] movil:leading-[33px] movil:text-black design:absolute design:top-[56.8px] design:left-[247px] design:text-[36px] design:leading-[37.44px] design:text-black">
           No te pierdas las ultimas noticias
         </h2>
@@ -229,34 +218,7 @@ export function BlogListado() {
           ))}
         </ul>
 
-        <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 apilada:grid-cols-2 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:w-full">
-          {entradasBlog.map((e, i) => (
-            <TarjetaArticulo
-              key={e.slug}
-              entrada={e}
-              arriba={topTitulo(e.titulo, TARJETAS[i].titulo)}
-              icono={{ left: 40.5, top: topTitulo(e.titulo, TARJETAS[i].titulo) - 51 }}
-              id={`blog-trazo-${i}`}
-              className="movil:absolute movil:top-[var(--mt)] movil:left-[23px] design:top-[var(--t)] design:left-[var(--l)]"
-              estilo={
-                {
-                  "--t": `${TARJETAS[i].top}px`,
-                  "--l": `${TARJETAS[i].left}px`,
-                  "--mt": `${TARJETAS_MOVIL[i]}px`,
-                } as React.CSSProperties
-              }
-            />
-          ))}
-        </ul>
-
-        <div className="mt-10 flex justify-center movil:absolute movil:top-[3242px] movil:left-[62px] movil:mt-0 movil:block design:absolute design:top-[1520px] design:left-[821px] design:mt-0 design:block">
-          <Link
-            href="/blog"
-            className="bg-vernal-navy text-vernal-accent flex h-[52px] w-full items-center justify-center text-[16px] leading-[17px] transition-opacity hover:opacity-90 sm:w-[277px] apilada:w-[277px] movil:w-[277px]"
-          >
-            Cargar más
-          </Link>
-        </div>
+        <BlogTarjetas entradas={entradasBlog} />
       </div>
     </section>
   );
