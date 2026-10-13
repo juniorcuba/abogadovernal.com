@@ -1,74 +1,81 @@
 /**
- * Texto de los Términos y Condiciones — LITERAL del artboard "VERNAL - TERMINOS
- * Y CONDICIONES" (nodo 809:1815, export del 2026-09-26).
+ * Texto de los Términos y Condiciones — artboard "VERNAL - TERMINOS Y
+ * CONDICIONES" (nodo 809:1815, export del 2026-09-26), EN INGLÉS.
  *
- * Como la política de privacidad, es un documento legal: no se reescribe ni se
- * "mejora". Cualquier cambio viene del cliente.
+ * Como la política de privacidad, va en inglés por la TCPA desde el 2026-10-12,
+ * también en la versión en español del sitio. Es una traducción nuestra del
+ * texto en español del artboard, sin añadir ni quitar nada: PENDIENTE de que la
+ * revise un abogado del despacho. El original en español está en el historial
+ * de git.
  *
- * El teléfono del punto 9, "833-887-7273", es el correcto (confirmado el 2026-10-09).
+ * Es un documento legal: no se reescribe ni se "mejora". Cualquier cambio viene
+ * del cliente.
+ *
+ * El teléfono del punto 9 es el 833-887-7273: el despacho pidió mantenerlo en
+ * los textos legales aunque el resto del sitio use otro.
  */
 
 /** El recuadro cian de arriba: el descargo de responsabilidad. */
 export const descargoInmigracion = {
-  titulo: "Descargo de responsabilidad de inmigración",
+  titulo: "Immigration Disclaimer",
   /** Los trozos en negrita van marcados, como en el archivo. */
   parrafo: [
-    "The Law Office of Vernal Farnum Mejia es una firma privada y ",
-    { negrita: "no está afiliada ni es parte del Departamento de Seguridad Nacional (DHS), USCIS, ICE, CBP ni ninguna agencia gubernamental." },
-    " La información proporcionada en este sitio es únicamente de carácter general y ",
-    { negrita: "no constituye asesoría legal." },
-    " Las decisiones migratorias dependen de múltiples factores y resultados pasados no garantizan resultados futuros. Se recomienda a los usuarios consultar directamente con uno de nuestros abogados para recibir orientación legal personalizada.",
+    "The Law Office of Vernal Farnum Mejia is a private firm and ",
+    { negrita: "is not affiliated with or part of the Department of Homeland Security (DHS), USCIS, ICE, CBP or any government agency." },
+    " The information provided on this site is of a general nature only and ",
+    { negrita: "does not constitute legal advice." },
+    " Immigration decisions depend on multiple factors, and past results do not guarantee future results. Users are advised to consult directly with one of our attorneys to receive personalized legal guidance.",
   ] as (string | { negrita: string })[],
 };
 
-export const actualizacion = "Última actualización: Diciembre 2025";
+export const actualizacion = "Last updated: December 2025";
 
 export type SeccionTerminos = { titulo: string; parrafo: string };
 
 export const terminos: SeccionTerminos[] = [
   {
-    titulo: "1. Aceptación de los Términos",
+    titulo: "1. Acceptance of the Terms",
     parrafo:
-      "Al acceder o utilizar este sitio web, usted acepta cumplir con los presentes Términos y Condiciones. Si no está de acuerdo, debe abstenerse de utilizarlo.",
+      "By accessing or using this website, you agree to comply with these Terms and Conditions. If you do not agree, you must refrain from using it.",
   },
   {
-    titulo: "2. Uso del Sitio Web",
+    titulo: "2. Use of the Website",
     parrafo:
-      "Este sitio web proporciona información general sobre servicios legales de inmigración. El contenido es meramente informativo y no constituye asesoría legal.",
+      "This website provides general information about immigration legal services. The content is for informational purposes only and does not constitute legal advice.",
   },
   {
-    titulo: "3. No Existe Relación Abogado-Cliente",
+    titulo: "3. No Attorney-Client Relationship",
     parrafo:
-      "El uso del sitio web o el envío de un formulario de contacto no crea una relación abogado-cliente. Esta solo se formaliza mediante acuerdo por escrito.",
+      "Use of the website or the submission of a contact form does not create an attorney-client relationship. Such a relationship is only formalized by written agreement.",
   },
   {
-    titulo: "4. Propiedad Intelectual",
+    titulo: "4. Intellectual Property",
     parrafo:
-      "Todo el contenido del sitio, incluyendo textos, logotipos y documentos, es propiedad de la Firma y no puede ser reproducido sin autorización.",
+      "All content on the site, including text, logos and documents, is the property of the Firm and may not be reproduced without authorization.",
   },
   {
-    titulo: "5. Limitación de Responsabilidad",
+    titulo: "5. Limitation of Liability",
     parrafo:
-      "La Firma no garantiza que el contenido del sitio sea exacto, completo o actualizado. No seremos responsables de daños derivados del uso del sitio o de confiar en su contenido.",
+      "The Firm does not guarantee that the content of the site is accurate, complete or up to date. We will not be liable for damages arising from the use of the site or from reliance on its content.",
   },
   {
-    titulo: "6. Enlaces a Terceros",
+    titulo: "6. Third-Party Links",
     parrafo:
-      "Nuestro sitio puede contener enlaces a páginas de terceros. No nos hacemos responsables por su contenido o políticas.",
+      "Our site may contain links to third-party pages. We are not responsible for their content or policies.",
   },
   {
-    titulo: "7. Modificaciones",
+    titulo: "7. Modifications",
     parrafo:
-      "Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Las actualizaciones se publicarán en esta misma página.",
+      "We reserve the right to modify these Terms and Conditions at any time. Updates will be published on this same page.",
   },
   {
-    titulo: "8. Legislación Aplicable",
+    titulo: "8. Governing Law",
     parrafo:
-      "Estos Términos se regirán por las leyes aplicables en el estado de Texas, Estados Unidos.",
+      "These Terms shall be governed by the applicable laws of the State of Texas, United States.",
   },
   {
-    titulo: "9. Contacto",
-    parrafo: "Si tiene dudas sobre estos Términos, puede llamarnos al:",
+    titulo: "9. Contact",
+    parrafo: "If you have questions about these Terms, you may call us at:",
   },
 ];
 

@@ -1,22 +1,23 @@
 /**
- * Texto de la Política de Privacidad — LITERAL del artboard "VERNAL - POLITICAS
- * DE PRIVACIDAD" (nodo 425:2203, export del 2026-09-13).
+ * Texto de la Política de Privacidad — artboard "VERNAL - POLITICAS DE
+ * PRIVACIDAD" (nodo 425:2203, export del 2026-09-13), EN INGLÉS.
  *
- * Es un texto legal (A2P 10DLC, consentimiento de SMS/WhatsApp): no se reescribe
- * ni se "mejora". Cualquier cambio tiene que venir del cliente.
+ * El despacho pidió el 2026-10-12 que este texto y el de términos y condiciones
+ * vayan en inglés por la TCPA, también en la versión en español del sitio (la
+ * revisión de las campañas A2P 10DLC la hacen en inglés). Es una traducción
+ * nuestra del texto en español del artboard, apartado por apartado y sin
+ * añadir ni quitar nada: PENDIENTE de que la revise un abogado del despacho. El
+ * original en español está en el historial de git (commit anterior a este).
  *
- * PENDIENTE DE CONFIRMAR CON EL CLIENTE antes de publicar, porque no coincide
- * con los datos del resto del sitio (src/lib/site.ts):
- *   - Austin y Fort Worth también cambian la forma ("suite 745", sin "Suite").
- * Se deja literal porque es un documento legal: si los datos están mal, se
- * corrigen en ambos sitios a la vez, no solo en uno.
+ * Es un texto legal (consentimiento de SMS/WhatsApp): no se reescribe ni se
+ * "mejora". Cualquier cambio tiene que venir del cliente.
  *
- * Corregido por indicación del cliente el 2026-10-09: Houston es "Suite 105"
- * (el artboard traía "Ste 580") y el teléfono bueno es el 833-887-7273.
+ * Datos de contacto: Houston es "Suite 105" (el artboard traía "Ste 580") y el
+ * teléfono de este documento es el 833-887-7273, que el despacho pidió mantener
+ * aquí aunque el resto del sitio use otro. Austin y Fort Worth van con la forma
+ * del artboard ("suite 745", sin "Suite").
  *
- * Hasta el export del 2026-10-11 los apartados 1 a 4 (y 2.1, 2.2) iban en
- * negrita y del 5 al 11 en peso normal; desde entonces van todos en peso
- * normal. `negrita` se conserva por si el diseño vuelve a distinguirlos.
+ * `negrita` se conserva por si el diseño vuelve a distinguir apartados.
  */
 
 /** Un trozo de texto; `cian` lo pinta en #08B6FF. */
@@ -37,238 +38,234 @@ export type Bloque =
 export type BloqueConHueco = Bloque & { pegado?: true };
 
 export const politicaPrivacidad: BloqueConHueco[] = [
-  { tipo: "titulo", nivel: 2, texto: "1. Introducción", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "1. Introduction", negrita: false },
   {
     tipo: "parrafo",
     texto: [
       "The Law Office of ",
       { texto: "Vernal Farnum Mejia", cian: true },
-      " es una firma de abogados de inmigración ubicada en Texas con oficinas en Dallas, Houston, Austin y Fort Worth. Esta Política de Privacidad describe cómo The Law Office of Vernal Farnum Mejia recopila, utiliza, almacena y protege la información personal proporcionada por los usuarios de nuestro sitio web y nuestros servicios legales de inmigración.",
+      " is an immigration law firm located in Texas with offices in Dallas, Houston, Austin and Fort Worth. This Privacy Policy describes how The Law Office of Vernal Farnum Mejia collects, uses, stores and protects the personal information provided by the users of our website and our immigration legal services.",
     ],
   },
   {
     tipo: "parrafo",
     texto: [
-      "Al utilizar nuestro sitio web o proporcionarnos información personal por cualquiera de nuestros formularios de registro, usted acepta las prácticas descritas en esta Política de Privacidad.",
+      "By using our website or providing us with personal information through any of our registration forms, you accept the practices described in this Privacy Policy.",
     ],
   },
   {
     tipo: "parrafo",
     texto: [
-      "Al comunicarte con nosotros a través de nuestros canales de contacto, aceptas que la firma recopile y almacene distintos tipos de datos personales, obtenidos de diversas fuentes, entre ellas:",
+      "By communicating with us through our contact channels, you agree that the firm may collect and store different types of personal data, obtained from various sources, including:",
     ],
   },
   {
     tipo: "lista",
     items: [
       {
-        texto: "Datos que tú nos compartes directamente:",
+        texto: "Data you share with us directly:",
         sub: [
-          "Al llenar formularios o cuestionarios en anuncios digitales de Facebook, Instagram, Google, TikTok, YouTube, páginas de aterrizaje, o al registrarte en algún evento.",
-          "A través de canales orgánicos, como mensajes en Messenger, Instagram y TikTok, formularios en el sitio web, chats de Google Business Profile, correos electrónicos y mensajes de texto.",
+          "When filling out forms or questionnaires in digital ads on Facebook, Instagram, Google, TikTok, YouTube, landing pages, or when registering for an event.",
+          "Through organic channels, such as messages on Messenger, Instagram and TikTok, forms on the website, Google Business Profile chats, emails and text messages.",
         ],
       },
       {
-        texto: "Datos por contacto telefónico:",
+        texto: "Data from telephone contact:",
         sub: [
-          "Cuando te comunicas con nosotros a los números de teléfono publicados en nuestras redes sociales, campañas publicitarias o sitio web.",
+          "When you contact us at the telephone numbers published on our social media, advertising campaigns or website.",
         ],
       },
       {
-        texto: "Datos de tu navegación en el sitio:",
+        texto: "Data from your browsing on the site:",
         sub: [
-          "Información recopilada mediante cookies y dispositivos, incluyendo dirección IP, páginas visitadas y fecha de cada visita.",
+          "Information collected through cookies and devices, including IP address, pages visited and the date of each visit.",
         ],
       },
       {
-        texto: "Datos obtenidos de terceros:",
-        sub: ["Proporcionados por abogados de la firma, paralegales, y representantes de la firma."],
+        texto: "Data obtained from third parties:",
+        sub: ["Provided by the firm's attorneys, paralegals and representatives of the firm."],
       },
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "2. Información que Recopilamos", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "2. Information We Collect", negrita: false },
   {
     tipo: "titulo",
     nivel: 3,
-    texto: "2.1 Información Personal Proporcionada Voluntariamente",
+    texto: "2.1 Personal Information Provided Voluntarily",
     negrita: false,
   },
   {
     tipo: "parrafo",
-    texto: [
-      "Podemos recopilar información personal que usted nos proporciona directamente, incluyendo:",
-    ],
+    texto: ["We may collect personal information that you provide to us directly, including:"],
   },
   {
     tipo: "lista",
     items: [
-      { texto: "Nombre completo" },
-      { texto: "Dirección de correo electrónico" },
-      { texto: "Número de teléfono" },
+      { texto: "Full name" },
+      { texto: "Email address" },
+      { texto: "Telephone number" },
       {
         texto:
-          "País de origen y situación migratoria (solo cuando sea estrictamente necesario para evaluar su caso)",
+          "Country of origin and immigration status (only when strictly necessary to evaluate your case)",
       },
       {
         texto:
-          "Documentación legal o personal enviada como parte de nuestros servicios (solo cuando sea estrictamente necesario para evaluar su caso)",
+          "Legal or personal documentation submitted as part of our services (only when strictly necessary to evaluate your case)",
       },
     ],
   },
-  { tipo: "titulo", nivel: 3, texto: "2.2 Información Recopilada Automáticamente", negrita: false },
+  { tipo: "titulo", nivel: 3, texto: "2.2 Information Collected Automatically", negrita: false },
   {
     tipo: "parrafo",
-    texto: [
-      "Podemos recopilar información no identificable mediante herramientas como cookies, incluyendo:",
-    ],
+    texto: ["We may collect non-identifiable information through tools such as cookies, including:"],
   },
   {
     tipo: "lista",
     items: [
-      { texto: "Dirección IP" },
-      { texto: "Tipo de navegador" },
-      { texto: "Páginas visitadas en nuestro sitio" },
-      { texto: "Tiempo de navegación" },
+      { texto: "IP address" },
+      { texto: "Browser type" },
+      { texto: "Pages visited on our site" },
+      { texto: "Browsing time" },
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "3. Uso de la Información", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "3. Use of Information", negrita: false },
   {
     tipo: "lista",
     items: [
-      { texto: "La información recopilada puede ser utilizada para:" },
-      { texto: "Proporcionar asesoría legal y evaluar casos migratorios" },
-      { texto: "Responder a consultas o solicitudes" },
-      { texto: "Mejorar nuestro sitio web y servicios" },
-      { texto: "Cumplir con requerimientos legales o regulatorios" },
+      { texto: "The information collected may be used to:" },
+      { texto: "Provide legal advice and evaluate immigration cases" },
+      { texto: "Respond to inquiries or requests" },
+      { texto: "Improve our website and services" },
+      { texto: "Comply with legal or regulatory requirements" },
       {
         texto:
-          "Comunicarnos con usted a través de mensajes transaccionales e informativos de WhatsApp, SMS o llamadas telefónicas relacionados con su caso o consulta legal",
+          "Communicate with you through transactional and informational WhatsApp messages, SMS or telephone calls related to your case or legal consultation",
       },
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "4. Divulgación de la Información", negrita: false },
-  { tipo: "parrafo", texto: ["No compartimos información personal con terceros excepto:"] },
+  { tipo: "titulo", nivel: 2, texto: "4. Disclosure of Information", negrita: false },
+  { tipo: "parrafo", texto: ["We do not share personal information with third parties except:"] },
   {
     tipo: "lista",
     items: [
-      { texto: "Cuando sea necesario para la representación legal del cliente" },
-      { texto: "Cuando el cliente lo autorice explícitamente" },
-      { texto: "Para cumplir con obligaciones legales, regulatorias o decisiones judiciales" },
+      { texto: "When necessary for the legal representation of the client" },
+      { texto: "When the client explicitly authorizes it" },
+      { texto: "To comply with legal or regulatory obligations or court orders" },
       {
         texto:
-          "No compartimos, vendemos ni proporcionamos su número de teléfono móvil ni sus datos de consentimiento de mensajería (SMS/WhatsApp) a terceros o afiliados con fines de marketing o promocionales.",
+          "We do not share, sell or provide your mobile telephone number or your messaging consent data (SMS/WhatsApp) to third parties or affiliates for marketing or promotional purposes.",
       },
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "5. Seguridad de la Información", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "5. Information Security", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "Implementamos medidas técnicas y administrativas razonables para proteger la información personal contra acceso no autorizado, pérdida o divulgación.",
+      "We implement reasonable technical and administrative measures to protect personal information against unauthorized access, loss or disclosure.",
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "6. Retención de Datos", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "6. Data Retention", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "La información personal se conserva únicamente durante el tiempo necesario para cumplir los fines descritos en esta Política o según lo exija la ley.",
+      "Personal information is retained only for as long as necessary to fulfill the purposes described in this Policy or as required by law.",
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "7. Cumplimiento con A2P 10DLC", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "7. A2P 10DLC Compliance", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "Para cumplir con los requisitos de A2P 10DLC y garantizar la transparencia en el uso de mensajería SMS y WhatsApp, informamos lo siguiente:",
+      "To comply with A2P 10DLC requirements and ensure transparency in the use of SMS and WhatsApp messaging, we inform you of the following:",
     ],
   },
-  { tipo: "titulo", nivel: 3, texto: "7.1 Consentimiento Expreso (Opt-In)", negrita: false },
+  { tipo: "titulo", nivel: 3, texto: "7.1 Express Consent (Opt-In)", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "Al proporcionar su número telefónico a The Law Office of Vernal Farnum Mejia mediante formularios en nuestro sitio web, mensajes directos, WhatsApp o cualquier otro medio, usted otorga consentimiento explícito para recibir:",
+      "By providing your telephone number to The Law Office of Vernal Farnum Mejia through forms on our website, direct messages, WhatsApp or any other means, you give explicit consent to receive:",
     ],
   },
   {
     tipo: "lista",
     items: [
-      { texto: "Confirmaciones de citas" },
-      { texto: "Comunicaciones sobre su caso" },
-      { texto: "Mensajes informativos o administrativos" },
-      { texto: "Actualizaciones relacionadas con nuestros servicios legales" },
+      { texto: "Appointment confirmations" },
+      { texto: "Communications about your case" },
+      { texto: "Informational or administrative messages" },
+      { texto: "Updates related to our legal services" },
     ],
   },
   {
     tipo: "parrafo",
     pegado: true,
     texto: [
-      "Los mensajes y llamadas que enviamos son estrictamente de servicio e informativos, relacionados directamente con su caso migratorio. No utilizamos estos canales para mensajería promocional o de marketing.",
+      "The messages and calls we send are strictly service-related and informational, directly related to your immigration case. We do not use these channels for promotional or marketing messaging.",
     ],
   },
-  { tipo: "titulo", nivel: 3, texto: "7.2 Cancelación (Opt-Out)", negrita: false },
+  { tipo: "titulo", nivel: 3, texto: "7.2 Cancellation (Opt-Out)", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      'Usted puede cancelar la recepción de mensajes en cualquier momento respondiendo con la palabra "STOP". Después de recibir su solicitud, dejaremos de enviarle mensajes, excepto aquellos necesarios para cumplir con obligaciones legales o regulatorias.',
+      'You may cancel the receipt of messages at any time by replying with the word "STOP". After receiving your request, we will stop sending you messages, except those necessary to comply with legal or regulatory obligations.',
     ],
   },
-  { tipo: "titulo", nivel: 3, texto: "7.3 Cargos por Mensajes", negrita: false },
+  { tipo: "titulo", nivel: 3, texto: "7.3 Message Charges", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "Dependiendo de su proveedor celular, pueden aplicar tarifas estándar de mensajes y datos. La Firma no es responsable por cargos generados por su compañía telefónica.",
+      "Depending on your mobile carrier, standard message and data rates may apply. The Firm is not responsible for charges generated by your telephone company.",
     ],
   },
-  { tipo: "titulo", nivel: 3, texto: "7.4 Frecuencia de Mensajes", negrita: false },
+  { tipo: "titulo", nivel: 3, texto: "7.4 Message Frequency", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "La frecuencia de mensajes puede variar según el caso o la etapa del servicio legal. Nos comprometemos a enviar únicamente comunicaciones relevantes.",
+      "Message frequency may vary depending on the case or the stage of the legal service. We are committed to sending only relevant communications.",
     ],
   },
-  { tipo: "titulo", nivel: 3, texto: "7.5 Uso de Datos para Mensajería", negrita: false },
+  { tipo: "titulo", nivel: 3, texto: "7.5 Use of Data for Messaging", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "Su número telefónico será utilizado exclusivamente para fines relacionados con la prestación de nuestros servicios legales y comunicaciones autorizadas por usted. No compartimos, vendemos ni proporcionamos su número de teléfono móvil ni sus datos de consentimiento de mensajería a terceros o afiliados con fines de marketing o promocionales.",
+      "Your telephone number will be used exclusively for purposes related to the provision of our legal services and communications authorized by you. We do not share, sell or provide your mobile telephone number or your messaging consent data to third parties or affiliates for marketing or promotional purposes.",
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "8. Derechos del Usuario", negrita: false },
-  { tipo: "parrafo", texto: ["Usted tiene derecho a:"] },
+  { tipo: "titulo", nivel: 2, texto: "8. User Rights", negrita: false },
+  { tipo: "parrafo", texto: ["You have the right to:"] },
   {
     tipo: "lista",
     items: [
-      { texto: "Acceder a su información personal" },
-      { texto: "Solicitar correcciones" },
-      { texto: "Solicitar la eliminación de su información cuando aplicable" },
-      { texto: "Revocar el consentimiento proporcionado" },
+      { texto: "Access your personal information" },
+      { texto: "Request corrections" },
+      { texto: "Request the deletion of your information when applicable" },
+      { texto: "Revoke the consent provided" },
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "9. Enlaces a Sitios Externos", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "9. Links to External Sites", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "Nuestro sitio puede contener enlaces a sitios web externos. No somos responsables de sus prácticas de privacidad.",
+      "Our site may contain links to external websites. We are not responsible for their privacy practices.",
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "10. Cambios a Esta Política", negrita: false },
+  { tipo: "titulo", nivel: 2, texto: "10. Changes to This Policy", negrita: false },
   {
     tipo: "parrafo",
     texto: [
-      "Podemos actualizar esta Política periódicamente. La versión más reciente estará disponible en nuestro sitio web.",
+      "We may update this Policy periodically. The most recent version will be available on our website.",
     ],
   },
 
-  { tipo: "titulo", nivel: 2, texto: "11. Contacto", negrita: false },
-  { tipo: "parrafo", texto: ["Direcciones de Nuestras Oficinas:"] },
+  { tipo: "titulo", nivel: 2, texto: "11. Contact", negrita: false },
+  { tipo: "parrafo", texto: ["Addresses of Our Offices:"] },
   {
     tipo: "lineas",
     lineas: [
@@ -277,8 +274,8 @@ export const politicaPrivacidad: BloqueConHueco[] = [
       "Austin: 13809 Research Blvd suite 745, Austin, TX 78750",
       "Fort Worth: 2001 Beach St #225, Fort Worth, TX 76103",
       "San Antonio: 1802 NE LOOP 410 Ste 120 San Antonio TX 78217",
-      "Teléfono: +1 833-887-7273",
+      "Telephone: +1 833-887-7273",
     ],
   },
-  { tipo: "parrafo", texto: ["Última actualización: Agosto 2026"] },
+  { tipo: "parrafo", texto: ["Last updated: August 2026"] },
 ];
