@@ -149,6 +149,32 @@ export function cargaParaCrm(consulta: Consulta, sitio: string, ahora: Date): Ca
 }
 
 /**
+ * Lo que se puede escribir de un envío en los registros del servidor: lo justo
+ * para saber que llegó y reconocerlo en el CRM, sin dejar el dato entero. Los
+ * registros los puede leer quien tenga acceso al panel del alojamiento, que no
+ * es el mismo público que el CRM; por eso el nombre va en iniciales, el correo
+ * con el usuario recortado y el teléfono con solo sus cuatro últimos dígitos.
+ * Los comentarios no se escriben: solo cuánto ocupan.
+ */
+export function resumenParaRegistro(consulta: Consulta) {
+  const [usuario, dominio = ""] = consulta.correo.split("@");
+  const digitos = consulta.telefono.replace(/\D/g, "");
+  return {
+    nombre: consulta.nombre
+      .split(" ")
+      .filter(Boolean)
+      .map((parte) => `${Array.from(parte)[0].toUpperCase()}.`)
+      .join(" "),
+    correo: `${usuario.slice(0, 2)}***@${dominio}`,
+    telefono: `***${digitos.slice(-4)}`,
+    oficina: consulta.oficina || "(sin elegir)",
+    idioma: consulta.idioma,
+    pagina: consulta.pagina,
+    comentarios: `${consulta.comentarios.length} caracteres`,
+  };
+}
+
+/**
  * Registro en memoria con caducidad: sirve para no mandar dos veces el mismo
  * envío (idempotencia) y para limitar cuántos llegan desde una misma IP.
  *

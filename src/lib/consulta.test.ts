@@ -1,7 +1,7 @@
 // Pruebas de la lógica del formulario: `npm test`.
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { cargaParaCrm, RegistroTemporal, rutaLimpia, validarConsulta } from "./consulta.ts";
+import { cargaParaCrm, RegistroTemporal, resumenParaRegistro, rutaLimpia, validarConsulta } from "./consulta.ts";
 
 const buena = {
   nombre: "  María   Pérez ",
@@ -111,4 +111,30 @@ test("el registro temporal no crece sin límite", () => {
   for (const k of ["a", "b", "c", "d", "e"]) reg.contar(k, 0);
   assert.ok(!reg.tiene("a", 1));
   assert.ok(reg.tiene("e", 1));
+});
+
+test("el resumen para los registros no deja ningún dato personal entero", () => {
+  const r = validarConsulta(buena);
+  assert.ok(r.ok);
+  const resumen = resumenParaRegistro(r.consulta);
+  assert.deepEqual(resumen, {
+    nombre: "M. P.",
+    correo: "ma***@example.com",
+    telefono: "***0123",
+    oficina: "Dallas",
+    idioma: "es",
+    pagina: "/contacto",
+    comentarios: "35 caracteres",
+  });
+  const texto = JSON.stringify(resumen);
+  for (const dato of ["María", "Pérez", "maria@", "555", "califico"]) assert.ok(!texto.includes(dato), dato);
+});
+
+test("el resumen aguanta correos cortos y oficina sin elegir", () => {
+  const r = validarConsulta({ ...buena, correo: "a@b.co", oficina: "", comentarios: "" });
+  assert.ok(r.ok);
+  const resumen = resumenParaRegistro(r.consulta);
+  assert.equal(resumen.correo, "a***@b.co");
+  assert.equal(resumen.oficina, "(sin elegir)");
+  assert.equal(resumen.comentarios, "0 caracteres");
 });

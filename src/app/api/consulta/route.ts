@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { cargaParaCrm, RegistroTemporal, validarConsulta } from "@/lib/consulta";
+import { cargaParaCrm, RegistroTemporal, resumenParaRegistro, validarConsulta } from "@/lib/consulta";
 import { site } from "@/lib/site";
 
 /**
@@ -24,7 +24,12 @@ import { site } from "@/lib/site";
  * La URL del webhook es un secreto (quien la tenga puede meter contactos en el
  * CRM): va en la variable de entorno LEAD_WEBHOOK_URL, nunca en el código.
  *
- * En los registros no se escribe ningún dato de la persona: solo qué pasó.
+ * Cada envío deja una línea en los registros del servidor (en Render, la
+ * pestaña Logs), que empieza por "[consulta]" y va en JSON: qué pasó, cuándo,
+ * desde qué página y un resumen ENMASCARADO de la persona (iniciales, correo
+ * recortado, cuatro últimos dígitos del teléfono). Sirve para comprobar que un
+ * contacto llegó y encontrarlo en el CRM; el dato completo solo está en el CRM.
+ * Los rechazos también se apuntan, con el motivo y sin datos.
  */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -38,6 +43,13 @@ const porIp = new RegistroTemporal(DIEZ_MINUTOS);
 const enviados = new RegistroTemporal(DIEZ_MINUTOS);
 
 type Respuesta = { ok: true } | { ok: false; error: string; campos?: string[] };
+
+/** Una línea por envío. `console.error` solo para lo que hay que mirar. */
+function apuntar(resultado: string, detalle: Record<string, unknown> = {}, grave = false) {
+  const linea = `[consulta] ${JSON.stringify({ resultado, cuando: new Date().toISOString(), ...detalle })}`;
+  if (grave) console.error(linea);
+  else console.log(linea);
+}
 
 function mismoSitio(peticion: Request): boolean {
   const anfitrion = (peticion.headers.get("x-forwarded-host") ?? peticion.headers.get("host") ?? "").toLowerCase();
@@ -76,20 +88,28 @@ async function leerCuerpo(peticion: Request): Promise<{ datos: Record<string, un
 }
 
 export async function POST(peticion: Request): Promise<Response> {
-  if (!mismoSitio(peticion)) return responder({ ok: false, error: "origen" }, 403, true, "es");
+  if (!mismoSitio(peticion)) {
+    apuntar("rechazado: no viene de este sitio");
+    return responder({ ok: false, error: "origen" }, 403, true, "es");
+  }
 
   const grande = Number(peticion.headers.get("content-length") ?? 0) > MAX_BYTES;
   const cuerpo = grande ? null : await leerCuerpo(peticion);
-  if (!cuerpo) return responder({ ok: false, error: "formato" }, 400, true, "es");
+  if (!cuerpo) {
+    apuntar("rechazado: formato o tamaño");
+    return responder({ ok: false, error: "formato" }, 400, true, "es");
+  }
   const { datos, json } = cuerpo;
   const idioma = datos.idioma === "en" ? "en" : "es";
 
   // Señuelo: una persona no rellena este campo. Se contesta como si hubiera ido bien.
   if (typeof datos.sitio_web === "string" && datos.sitio_web.trim() !== "") {
+    apuntar("descartado: bot (campo señuelo relleno)");
     return responder({ ok: true }, 200, json, idioma);
   }
 
   if (porIp.contar(ipDe(peticion)) > MAX_POR_IP) {
+    apuntar("rechazado: demasiados envíos desde la misma IP");
     return responder({ ok: false, error: "limite" }, 429, json, idioma);
   }
 
@@ -104,9 +124,11 @@ export async function POST(peticion: Request): Promise<Response> {
 
   const validacion = validarConsulta(datos);
   if (!validacion.ok) {
+    apuntar("rechazado: datos no válidos", { campos: validacion.errores });
     return responder({ ok: false, error: "datos", campos: validacion.errores }, 400, json, idioma);
   }
   const { consulta } = validacion;
+  const resumen = resumenParaRegistro(consulta);
 
   // Clave del envío: la del formulario si es un UUID; si no, una huella de su
   // contenido, para que reenviar lo mismo tampoco duplique.
@@ -114,17 +136,23 @@ export async function POST(peticion: Request): Promise<Response> {
   const clave = /^[0-9a-f-]{36}$/i.test(propia)
     ? propia.toLowerCase()
     : createHash("sha256").update(`${consulta.correo}|${consulta.telefono}|${consulta.comentarios}`).digest("hex");
-  if (enviados.tiene(clave)) return responder({ ok: true }, 200, json, idioma);
+  // Los ocho primeros caracteres bastan para seguir un envío en los registros.
+  const envio = clave.slice(0, 8);
+  if (enviados.tiene(clave)) {
+    apuntar("repetido: ya estaba entregado, no se manda otra vez", { envio, ...resumen });
+    return responder({ ok: true }, 200, json, idioma);
+  }
 
   const destino = process.env.LEAD_WEBHOOK_URL;
   if (!destino) {
-    console.error("[consulta] falta LEAD_WEBHOOK_URL: el envío no se pudo entregar");
+    apuntar("NO ENTREGADO: falta la variable LEAD_WEBHOOK_URL", { envio, ...resumen }, true);
     return responder({ ok: false, error: "servicio" }, 503, json, idioma);
   }
 
   // Se apunta ANTES de mandar: un segundo clic mientras el primero sigue en
   // curso no dispara otro envío. Si el CRM falla, se borra para poder reintentar.
   enviados.contar(clave);
+  const inicio = Date.now();
   try {
     const respuesta = await fetch(destino, {
       method: "POST",
@@ -134,15 +162,20 @@ export async function POST(peticion: Request): Promise<Response> {
     });
     if (!respuesta.ok) {
       enviados.quitar(clave);
-      console.error(`[consulta] el CRM respondió ${respuesta.status}`);
+      apuntar("NO ENTREGADO: el CRM respondió con error", { envio, crm: respuesta.status, ...resumen }, true);
       return responder({ ok: false, error: "servicio" }, 502, json, idioma);
     }
   } catch (e) {
     enviados.quitar(clave);
-    console.error(`[consulta] no se pudo contactar con el CRM: ${e instanceof Error ? e.name : "error"}`);
+    apuntar(
+      "NO ENTREGADO: no se pudo contactar con el CRM",
+      { envio, motivo: e instanceof Error ? e.name : "error", ...resumen },
+      true,
+    );
     return responder({ ok: false, error: "servicio" }, 502, json, idioma);
   }
 
+  apuntar("entregado al CRM", { envio, ms: Date.now() - inicio, ...resumen });
   return responder({ ok: true }, 200, json, idioma);
 }
 
