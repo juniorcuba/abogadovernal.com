@@ -102,7 +102,8 @@ export function FieldSelect({
   iconHeight,
   options,
   className,
-}: Omit<FieldProps, "type" | "required"> & { options: string[] }) {
+  required,
+}: Omit<FieldProps, "type"> & { options: string[] }) {
   return (
     <div className={`relative flex h-[52px] items-center bg-white/97 pl-3 ${className ?? ""}`}>
       <Image
@@ -117,6 +118,7 @@ export function FieldSelect({
         id={name}
         name={name}
         defaultValue=""
+        required={required}
         aria-label={label}
         className="ml-[17px] h-full w-full appearance-none bg-transparent pr-[50px] text-[15px] leading-[16px] text-black outline-none"
       >

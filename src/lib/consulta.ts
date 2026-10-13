@@ -92,10 +92,11 @@ export function validarConsulta(datos: Record<string, unknown>): ResultadoValida
   const correo = linea(datos.correo).toLowerCase();
   if (correo.length > LIMITES.correo || !CORREO.test(correo)) errores.push("correo");
 
-  // La oficina es opcional; si viene, tiene que ser una de las del desplegable.
+  // La oficina es obligatoria (lo pidió el despacho el 2026-10-13) y tiene que
+  // ser una de las del desplegable.
   const bruta = linea(datos.oficina);
   const oficina = OFICINA_ALIAS[bruta] ?? bruta;
-  if (oficina !== "" && !(OFICINAS as readonly string[]).includes(oficina)) errores.push("oficina");
+  if (!(OFICINAS as readonly string[]).includes(oficina)) errores.push("oficina");
 
   const comentarios = parrafo(datos.comentarios);
   if (comentarios.length > LIMITES.comentarios) errores.push("comentarios");
@@ -167,7 +168,7 @@ export function resumenParaRegistro(consulta: Consulta) {
       .join(" "),
     correo: `${usuario.slice(0, 2)}***@${dominio}`,
     telefono: `***${digitos.slice(-4)}`,
-    oficina: consulta.oficina || "(sin elegir)",
+    oficina: consulta.oficina,
     idioma: consulta.idioma,
     pagina: consulta.pagina,
     comentarios: `${consulta.comentarios.length} caracteres`,

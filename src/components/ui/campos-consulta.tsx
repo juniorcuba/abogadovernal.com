@@ -27,7 +27,7 @@ export function CamposConsulta({ espaciado = "hero" }: { espaciado?: "hero" | "b
         <Field name="correo" label={t("Correo")} type="email" icon="/icons/form/mail.svg" iconWidth={18} iconHeight={14} required />
         {/* Las opciones son las 5 sedes y, desde el 2026-10-12, "Oficina
             virtual", que pidió el despacho y el Figma no lista. */}
-        <FieldSelect name="oficina" label={t("Oficina o modalidad de atención:")} icon="/icons/form/office.svg" iconWidth={21} iconHeight={22} options={[...offices.map((o) => o.city), t("Oficina virtual")]} />
+        <FieldSelect name="oficina" label={t("Oficina o modalidad de atención:")} icon="/icons/form/office.svg" iconWidth={21} iconHeight={22} options={[...offices.map((o) => o.city), t("Oficina virtual")]} required />
         <FieldArea name="comentarios" label={t("Comentarios")} icon="/icons/form/comment.svg" iconWidth={20} iconHeight={20} className="sm:col-span-2" />
       </div>
 

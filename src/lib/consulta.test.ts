@@ -23,10 +23,18 @@ test("acepta un envío correcto y lo normaliza", () => {
   assert.equal(r.consulta.pagina, "/contacto");
 });
 
-test("la oficina y los comentarios son opcionales", () => {
-  const r = validarConsulta({ ...buena, oficina: "", comentarios: "" });
+test("los comentarios son opcionales", () => {
+  const r = validarConsulta({ ...buena, comentarios: "" });
   assert.ok(r.ok);
-  assert.equal(r.consulta.oficina, "");
+  assert.equal(r.consulta.comentarios, "");
+});
+
+test("la oficina es obligatoria", () => {
+  const r = validarConsulta({ ...buena, oficina: "" });
+  assert.ok(!r.ok);
+  assert.deepEqual(r.errores, ["oficina"]);
+  const sinCampo = validarConsulta({ ...buena, oficina: undefined });
+  assert.ok(!sinCampo.ok);
 });
 
 test("la oficina virtual llega igual desde el formulario en inglés", () => {
@@ -130,11 +138,10 @@ test("el resumen para los registros no deja ningún dato personal entero", () =>
   for (const dato of ["María", "Pérez", "maria@", "555", "califico"]) assert.ok(!texto.includes(dato), dato);
 });
 
-test("el resumen aguanta correos cortos y oficina sin elegir", () => {
-  const r = validarConsulta({ ...buena, correo: "a@b.co", oficina: "", comentarios: "" });
+test("el resumen aguanta correos cortos y comentarios vacíos", () => {
+  const r = validarConsulta({ ...buena, correo: "a@b.co", comentarios: "" });
   assert.ok(r.ok);
   const resumen = resumenParaRegistro(r.consulta);
   assert.equal(resumen.correo, "a***@b.co");
-  assert.equal(resumen.oficina, "(sin elegir)");
   assert.equal(resumen.comentarios, "0 caracteres");
 });
