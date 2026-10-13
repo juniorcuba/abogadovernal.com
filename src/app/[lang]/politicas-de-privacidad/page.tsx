@@ -12,7 +12,7 @@ import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
  * |------|------|------------------------------------------|--------|
  * | 0    | 128  | cabecera                                 | la de la home |
  * | 0    | 3188 | foto, título, texto legal, tarjeta, CTA  | propio |
- * | 3188 | 877  | "Mantente informado" + reseñas           | el de la home |
+ * | 3188 | 523  | reseñas (el boletín se quitó)              | el de la home |
  * | 4065 | 468  | footer                                   | el de la home |
  *
  * Solo hay artboard de escritorio.

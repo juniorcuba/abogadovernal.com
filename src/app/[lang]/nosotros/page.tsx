@@ -23,7 +23,7 @@ import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
  * | 1634 |  648 | banda cian "El caso que lo confirmó todo"         | propio |
  * | 2282 |  883 | "Hoy, al frente de un equipo…" + tira de 5 fotos  | propio |
  * | 3168 |  793 | "+15,000 personas asesoradas" + logos de medios   | propio |
- * | 3964 |  877 | "Mantente informado" + reseñas                    | el de la home |
+ * | 3964 |  523 | reseñas (el boletín se quitó)                       | el de la home |
  * | 4841 |  468 | footer                                            | el de la home |
  *
  * Entre "Hoy" y "+15,000", y entre "+15,000" y "Mantente informado", el archivo
