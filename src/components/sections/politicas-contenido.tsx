@@ -8,6 +8,12 @@ import { t } from "@/lib/i18n/servidor";
 
 /**
  * Cuerpo de /politicas-de-privacidad — nodo 425:2203, rango y=0..3188.
+ *
+ * OJO: en el lienzo de 1920 la sección mide 3460 y no los 3188 del artboard.
+ * El 2026-10-17 se añadió el apartado 2.3 sobre el píxel de TikTok (272 de
+ * alto) y el texto llegaba a 7 del borde: se alarga lo mismo que creció para
+ * conservar el aire de debajo. Si el texto vuelve a crecer, crece esto también;
+ * la sección recorta lo que sobra sin avisar.
  * Coordenadas relativas a la sección, que empieza en y0 (se mete 128px bajo la
  * cabecera, como los heros).
  *
@@ -115,7 +121,7 @@ function BloqueLegal({ bloque, primero }: { bloque: BloqueConHueco; primero: boo
 
 export function PoliticasContenido() {
   return (
-    <section className="relative -mt-[128px] overflow-hidden bg-[#0F0F10] movil:-mt-[106px] design:h-[3188px]">
+    <section className="relative -mt-[128px] overflow-hidden bg-[#0F0F10] movil:-mt-[106px] design:h-[3460px]">
       {/* Fondo: foto a la derecha fundida a negro. Fuera del lienzo de 1920 la
           foto NO se recorta a lo ancho: es vertical y con object-cover la franja
           le cortaba la cabeza. Se alinea a la derecha con su alto completo. */}
@@ -136,7 +142,7 @@ export function PoliticasContenido() {
         <div className="absolute inset-0 hidden movil:block movil:bg-[linear-gradient(326.89deg,#0F0F1000_57.30%,#0F0F10_78.61%)] design:block design:bg-[linear-gradient(357.15deg,#0F0F0F_2.18%,#0F0F0F00_27.19%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 movil:max-w-none movil:px-0 movil:pt-[496px] movil:pb-[16px] design:h-[3188px] design:max-w-[1920px] design:p-0">
+      <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 movil:max-w-none movil:px-0 movil:pt-[496px] movil:pb-[16px] design:h-[3460px] design:max-w-[1920px] design:p-0">
         <h1 className="text-[40px] leading-[42px] font-normal uppercase sm:text-[56px] sm:leading-[58px] movil:absolute movil:top-[362px] movil:left-[38px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[217px] design:left-[255px] design:text-[64px] design:leading-[67px]">
           {/* En inglés en los dos idiomas, como todo el texto legal (2026-10-12). */}
           <span className="block text-white">Privacy</span>

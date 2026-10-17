@@ -18,6 +18,13 @@
  * del artboard ("suite 745", sin "Suite").
  *
  * `negrita` se conserva por si el diseño vuelve a distinguir apartados.
+ *
+ * AÑADIDO 2026-10-17, a petición de Roberto: el apartado "2.3 Advertising
+ * Measurement (TikTok Pixel)" y su excepción en el apartado 4, porque el sitio
+ * carga el píxel de TikTok (components/layout/pixel-tiktok.tsx) cuando se acepta
+ * la categoría "Marketing" de las cookies. No viene del artboard: está
+ * redactado para describir lo que hace el sitio y TAMBIÉN está pendiente de que
+ * lo revise un abogado del despacho.
  */
 
 /** Un trozo de texto; `cian` lo pinta en #08B6FF. */
@@ -129,6 +136,30 @@ export const politicaPrivacidad: BloqueConHueco[] = [
       { texto: "Browsing time" },
     ],
   },
+  {
+    tipo: "titulo",
+    nivel: 3,
+    texto: "2.3 Advertising Measurement (TikTok Pixel)",
+    negrita: false,
+  },
+  {
+    tipo: "parrafo",
+    texto: [
+      "Our website uses the TikTok Pixel, a tool provided by TikTok, to measure the effectiveness of our advertising and to show relevant ads. The TikTok Pixel is only activated if you accept the \"Marketing\" category in our cookie preferences; if you do not accept it, it is not loaded.",
+    ],
+  },
+  {
+    tipo: "parrafo",
+    texto: [
+      "When it is active, TikTok may collect information such as your IP address, browser and device information, the pages you visit on our site and the actions you take on it, and may use cookies for this purpose. TikTok processes this information under its own privacy policy, available at https://www.tiktok.com/legal/privacy-policy.",
+    ],
+  },
+  {
+    tipo: "parrafo",
+    texto: [
+      "You can change or withdraw your consent at any time through the \"Cookie preferences\" (\"Preferencias de cookies\") link at the bottom of every page of our website.",
+    ],
+  },
 
   { tipo: "titulo", nivel: 2, texto: "3. Use of Information", negrita: false },
   {
@@ -154,6 +185,10 @@ export const politicaPrivacidad: BloqueConHueco[] = [
       { texto: "When necessary for the legal representation of the client" },
       { texto: "When the client explicitly authorizes it" },
       { texto: "To comply with legal or regulatory obligations or court orders" },
+      {
+        texto:
+          "With advertising measurement providers (TikTok), only if you accept the \"Marketing\" cookies, as described in section 2.3",
+      },
       {
         texto:
           "We do not share, sell or provide your mobile telephone number or your messaging consent data (SMS/WhatsApp) to third parties or affiliates for marketing or promotional purposes.",
