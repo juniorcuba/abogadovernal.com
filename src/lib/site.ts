@@ -86,8 +86,8 @@ export type NavItem = {
  * uno no descoloque a los demás.
  *
  * "EB1" ocupa desde el 2026-10-12 el sitio de "FAQS" (x1083): la página de
- * preguntas se retiró por ahora (redirige a /contacto desde next.config.ts) y
- * el despacho pidió ese rótulo, que lleva a Contacto. No hay página de EB1.
+ * preguntas se retiró por ahora y el despacho pidió ese rótulo. Desde el
+ * 2026-10-17 lleva a su página, /eb-1a, y /faqs redirige ahí.
  */
 export const navItems: NavItem[] = [
   { label: "Inicio", href: "/", x: 242, grupo: "izq" },
@@ -102,7 +102,7 @@ export const navItems: NavItem[] = [
   },
   { label: "Testimoniales", href: "/testimoniales", x: 644, grupo: "izq" },
   { label: "Blogs", href: "/blog", x: 802, grupo: "izq" },
-  { label: "EB1", href: "/contacto", x: 1083, grupo: "der", sinActivo: true },
+  { label: "EB1", href: "/eb-1a", x: 1083, grupo: "der" },
   { label: "Contacto", href: "/contacto", x: 1169, grupo: "der" },
 ];
 

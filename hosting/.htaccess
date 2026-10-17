@@ -37,8 +37,8 @@ DirectoryIndex index.html
     RewriteRule ^terminos_condiciones\.html$ /terminos-y-condiciones/ [R=301,L]
     RewriteRule ^areas-de-servicio/?$ /areas-de-servicio/dallas/ [R=302,L]
     RewriteRule ^en/areas-de-servicio/?$ /en/areas-de-servicio/dallas/ [R=302,L]
-    RewriteRule ^faqs/?$ /contacto/ [R=302,L]
-    RewriteRule ^en/faqs/?$ /en/contacto/ [R=302,L]
+    RewriteRule ^faqs/?$ /eb-1a/ [R=302,L]
+    RewriteRule ^en/faqs/?$ /en/eb-1a/ [R=302,L]
 
     # Barra final, como las genera el build (cada página es una carpeta). Sin ella
     # Apache añadiría la barra por su cuenta DESPUÉS de reescribir, y el visitante

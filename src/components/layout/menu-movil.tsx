@@ -232,8 +232,8 @@ export function MenuMovil() {
                 </Link>
               </li>
               <li className={FILA}>
-                {/* Era "FAQS": la página se retiró por ahora (2026-10-12). */}
-                <Link href="/contacto" onClick={cerrar} className={`${ENLACE} font-normal`}>
+                {/* Era "FAQS" (retirada el 2026-10-12); lleva a /eb-1a desde el 2026-10-17. */}
+                <Link href="/eb-1a" onClick={cerrar} className={`${ENLACE} font-normal`}>
                   {t("EB1")}
                 </Link>
               </li>

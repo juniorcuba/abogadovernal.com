@@ -78,7 +78,7 @@ async function redirects() {
     { source: "/es", destination: "/", permanent: false },
     { source: "/es/:ruta*", destination: "/:ruta*", permanent: false },
     { source: "/en/areas-de-servicio", destination: "/en/areas-de-servicio/dallas", permanent: false },
-    { source: "/en/faqs", destination: "/en/contacto", permanent: false },
+    { source: "/en/faqs", destination: "/en/eb-1a", permanent: false },
     // La página índice de áreas se quitó el 2026-10-11: las sedes cuelgan del
     // menú. Temporal (307) por si vuelve.
     {
@@ -87,11 +87,12 @@ async function redirects() {
       permanent: false,
     },
     // La página de preguntas frecuentes se retiró por ahora (2026-10-12): el
-    // enlace del menú pasó a ser "EB1" y lleva a Contacto. Temporal (307): la
-    // página sigue en src/app/faqs para cuando vuelva.
+    // enlace del menú pasó a ser "EB1" y desde el 2026-10-17 lleva a /eb-1a,
+    // que la sustituye. Temporal (307): la página sigue en src/app/faqs para
+    // cuando vuelva.
     {
       source: "/faqs",
-      destination: "/contacto",
+      destination: "/eb-1a",
       permanent: false,
     },
     {
