@@ -24,7 +24,8 @@
  * carga el píxel de TikTok (components/layout/pixel-tiktok.tsx) cuando se acepta
  * la categoría "Marketing" de las cookies. No viene del artboard: está
  * redactado para describir lo que hace el sitio y TAMBIÉN está pendiente de que
- * lo revise un abogado del despacho.
+ * lo revise un abogado del despacho. El mismo día se amplió al píxel de Meta
+ * (components/layout/pixel-meta.tsx).
  */
 
 /** Un trozo de texto; `cian` lo pinta en #08B6FF. */
@@ -139,19 +140,19 @@ export const politicaPrivacidad: BloqueConHueco[] = [
   {
     tipo: "titulo",
     nivel: 3,
-    texto: "2.3 Advertising Measurement (TikTok Pixel)",
+    texto: "2.3 Advertising Measurement (TikTok Pixel and Meta Pixel)",
     negrita: false,
   },
   {
     tipo: "parrafo",
     texto: [
-      "Our website uses the TikTok Pixel, a tool provided by TikTok, to measure the effectiveness of our advertising and to show relevant ads. The TikTok Pixel is only activated if you accept the \"Marketing\" category in our cookie preferences; if you do not accept it, it is not loaded.",
+      "Our website uses the TikTok Pixel, provided by TikTok, and the Meta Pixel, provided by Meta Platforms (Facebook and Instagram), to measure the effectiveness of our advertising and to show relevant ads. These pixels are only activated if you accept the \"Marketing\" category in our cookie preferences; if you do not accept it, they are not loaded.",
     ],
   },
   {
     tipo: "parrafo",
     texto: [
-      "When it is active, TikTok may collect information such as your IP address, browser and device information, the pages you visit on our site and the actions you take on it, and may use cookies for this purpose. TikTok processes this information under its own privacy policy, available at https://www.tiktok.com/legal/privacy-policy.",
+      "When they are active, TikTok and Meta may collect information such as your IP address, browser and device information, the pages you visit on our site and the actions you take on it, and may use cookies for this purpose. Each processes this information under its own privacy policy, available at https://www.tiktok.com/legal/privacy-policy and https://www.facebook.com/privacy/policy.",
     ],
   },
   {
@@ -187,7 +188,7 @@ export const politicaPrivacidad: BloqueConHueco[] = [
       { texto: "To comply with legal or regulatory obligations or court orders" },
       {
         texto:
-          "With advertising measurement providers (TikTok), only if you accept the \"Marketing\" cookies, as described in section 2.3",
+          "With advertising measurement providers (TikTok and Meta), only if you accept the \"Marketing\" cookies, as described in section 2.3",
       },
       {
         texto:

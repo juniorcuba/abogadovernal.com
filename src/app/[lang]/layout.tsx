@@ -4,6 +4,7 @@ import "../globals.css";
 import { site } from "@/lib/site";
 import { LienzoDiseno } from "@/components/layout/lienzo-diseno";
 import { FloatingCta } from "@/components/layout/floating-cta";
+import { PixelMeta } from "@/components/layout/pixel-meta";
 import { PixelTiktok } from "@/components/layout/pixel-tiktok";
 import { ProveedorIdioma } from "@/lib/i18n/cliente";
 import { idiomas } from "@/lib/i18n/idiomas";
@@ -78,8 +79,9 @@ export default async function RootLayout({
     <html lang={idioma} className={poppins.variable}>
       <body className="antialiased">
         <ProveedorIdioma idioma={idioma}>
-          {/* No pinta nada: solo carga el píxel si se aceptó "Marketing". */}
+          {/* No pintan nada: solo cargan los píxeles si se aceptó "Marketing". */}
           <PixelTiktok />
+          <PixelMeta />
           <LienzoDiseno>
             {children}
             <FloatingCta />

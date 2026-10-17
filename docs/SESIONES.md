@@ -171,8 +171,8 @@ no. En Git Bash, `node` necesita `export PATH="/c/Program Files/nodejs:$PATH"`.
   YouTube dentro de su caja con `components/ui/video-youtube.tsx`; los enlaces
   salen de los prototipos del Figma (2026-10-12). El play de "Nuestros
   servicios" del home se quitó: ya no es un vídeo.
-- La página /faqs está retirada por ahora (2026-10-12): redirige a Contacto y su
-  enlace del menú dice "EB1". Las preguntas desplegables de sedes, blog y
+- La página /faqs está retirada por ahora (2026-10-12) y su enlace del menú dice
+  "EB1". Desde el 2026-10-17 los dos llevan a la página `/eb-1a`, que la sustituye. Las preguntas desplegables de sedes, blog y
   testimoniales siguen, sin el botón "Ver más preguntas".
 - "Ver retransmisiones" lleva a los vídeos en vivo de Facebook; "Mas información" de las sedes, a
   Contacto; tras enviar un formulario, la página `/gracias` (sin overlay).
