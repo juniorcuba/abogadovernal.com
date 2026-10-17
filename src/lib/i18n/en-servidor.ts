@@ -6,6 +6,9 @@
 export const enServidor: Record<string, string> = {
   "Próximamente":
     "Coming soon",
+  // Título de la página 404 del sitio estático (no-encontrada/page.estatico.tsx).
+  "Página no encontrada":
+    "Page not found",
   "Esta página todavía está en construcción":
     "This page is still under construction",
   "Estamos terminando esta sección. Mientras tanto puedes volver al inicio o escribirnos directamente: la primera consulta es el mejor punto de partida.":

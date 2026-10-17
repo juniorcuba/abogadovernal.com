@@ -1,0 +1,108 @@
+# abogadovernal.com — hosting Apache + PHP (GoDaddy). Va en la raíz del sitio,
+# junto al contenido de out/. Hace lo que en el build con servidor hace
+# next.config.ts (idiomas, redirecciones, cabeceras), que la exportación
+# estática no admite. Si cambias algo allí, cámbialo aquí.
+#
+# Lo arma scripts/build-estatico.mjs a partir de este archivo: las líneas
+# marcadas @HTTPS@ y @NOINDEX@ se activan o se quitan según el destino.
+# Basado en el de marlenebatta.com, que corre en este mismo tipo de hosting.
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # @HTTPS@ Siempre HTTPS (solo cuando el certificado del dominio es válido).
+    # @HTTPS@ RewriteCond %{HTTPS} !=on
+    # @HTTPS@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Nada que empiece por punto es público (salvo .well-known, para el
+    # certificado), ni la carpeta privado/ (secretos, marcas de envío y el
+    # registro del formulario). privado/ tiene además su propio .htaccess.
+    RewriteRule (^|/)\.(?!well-known/) - [F]
+    RewriteRule ^privado(/|$) - [F]
+
+    # El formulario llama a /api/consulta; lo atiende el script PHP.
+    RewriteRule ^api/consulta/?$ consulta.php [L]
+
+    # /es no es una dirección pública: el español es la raíz. Solo si la pidió el
+    # visitante (THE_REQUEST es la petición original), no en la vuelta interna de
+    # la reescritura de más abajo, que si no daría un bucle.
+    RewriteCond %{THE_REQUEST} \s/es[/?\s]
+    RewriteRule ^es(?:/(.*))?$ /$1 [R=302,L]
+
+    # Redirecciones de next.config.ts.
+    RewriteRule ^politicas_privacidad\.html$ /politicas-de-privacidad/ [R=301,L]
+    RewriteRule ^terminos_condiciones\.html$ /terminos-y-condiciones/ [R=301,L]
+    RewriteRule ^areas-de-servicio/?$ /areas-de-servicio/dallas/ [R=302,L]
+    RewriteRule ^en/areas-de-servicio/?$ /en/areas-de-servicio/dallas/ [R=302,L]
+    RewriteRule ^faqs/?$ /contacto/ [R=302,L]
+    RewriteRule ^en/faqs/?$ /en/contacto/ [R=302,L]
+
+    # Barra final, como las genera el build (cada página es una carpeta). Sin ella
+    # Apache añadiría la barra por su cuenta DESPUÉS de reescribir, y el visitante
+    # acabaría viendo /es/... en la barra de direcciones.
+    RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
+    RewriteCond %{REQUEST_URI} !/$
+    RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+    # La portada en español.
+    RewriteRule ^$ es/index.html [L]
+
+    # Lo que existe (recursos, /en/..., /_next/...) se sirve tal cual.
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # El resto es una página en español: se sirve desde /es por dentro.
+    RewriteCond %{REQUEST_URI} !^/(?:en|es|_next)(?:/|$)
+    RewriteRule ^(.*)$ es/$1 [L]
+
+    # Y si tampoco existe en /es, página 404 propia con estado 404 real. Este
+    # hosting ignora ErrorDocument para archivos estáticos (lo comprobamos en
+    # marlenebatta.com), por eso pasa por PHP.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ 404.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    # @NOINDEX@ Header always set X-Robots-Tag "noindex, nofollow"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Frame-Options "DENY"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
+    # Archivos con huella en el nombre (/_next/static): caché de un año.
+    <If "%{REQUEST_URI} =~ m#^/_next/static/#">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </If>
+    # Imágenes e iconos: un mes (su nombre no cambia cuando cambia el contenido).
+    <FilesMatch "\.(webp|avif|png|jpe?g|svg|ico|woff2)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+    # Los .txt de Next son datos internos con el mismo texto que la página: que
+    # Google no los indexe como contenido duplicado.
+    <FilesMatch "^(index|_not-found|__next\..*)\.txt$">
+        Header set X-Robots-Tag "noindex"
+    </FilesMatch>
+    # El HTML siempre se revalida, para que un despliegue se vea al momento.
+    <FilesMatch "\.(html|txt|xml)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+    AddOutputFilterByType DEFLATE text/javascript application/javascript application/json application/xml image/svg+xml
+    AddOutputFilterByType DEFLATE application/manifest+json
+</IfModule>
+
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType font/woff2 .woff2
+    AddType application/manifest+json .webmanifest
+    AddCharset utf-8 .html .css .js .txt .xml .svg
+</IfModule>

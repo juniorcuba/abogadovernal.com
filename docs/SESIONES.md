@@ -112,6 +112,27 @@ artboard por archivo). Los que hay:
 Para identificar un export, mira su tamaño y sus textos con `textos.py`. No hay
 artboard móvil de `/areas-de-servicio`, de términos ni de testimoniales.
 
+## Dos destinos de build: Render y GoDaddy (2026-10-17)
+
+Además de Render (Node), el sitio sale como **estático para el hosting de
+GoDaddy** del despacho (Apache + PHP, sin Node), de momento en las pruebas
+`2020.abogadovernal.com`. Lo explica la cabecera de `next.config.ts`. Lo que
+afecta al trabajo de todos:
+
+- `npm run build:estatico` genera `out/` (construye en `.next-estatico/`, no
+  toca `.next/` ni el servidor de desarrollo). `bash scripts/desplegar-ftp.sh`
+  lo sube; **solo con permiso de Roberto**, como un push.
+- Un archivo de `app/` que **solo pueda existir con servidor** (una ruta POST,
+  una página que lea cookies, una ruta comodín) se llama `*.servidor.ts(x)`; uno
+  que solo exista en el estático, `*.estatico.tsx`. Hoy:
+  `api/consulta/route.servidor.ts` y `[...resto]/page.servidor.tsx`. Si creas
+  una página normal no tienes que hacer nada.
+- En el estático **no hay `rewrites` ni `redirects`**: los repite
+  `hosting/.htaccess`. Si tocas uno en `next.config.ts`, cámbialo también allí.
+- El formulario tiene un **gemelo en PHP**, `hosting/consulta.php`. Si cambias
+  la validación o el JSON del CRM en `src/lib/consulta.ts`, cámbialo también en
+  el PHP y pasa `npm run test:php`, que compara los dos.
+
 ## Cómo comprobar un cambio
 
 Herramientas en `scripts/revision/` (lanzar desde la raíz del repo):

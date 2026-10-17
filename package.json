@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --no-warnings --test src/lib/consulta.test.ts"
+    "test": "node --experimental-strip-types --no-warnings --test src/lib/consulta.test.ts",
+    "build:estatico": "node scripts/build-estatico.mjs",
+    "test:php": "node --experimental-strip-types --no-warnings --test src/lib/consulta-paridad.test.ts"
   },
   "dependencies": {
     "next": "16.3.4",

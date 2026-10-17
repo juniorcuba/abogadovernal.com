@@ -1,0 +1,4 @@
+# Los scripts de shell con saltos de línea de Unix siempre: con los de Windows
+# (
+) bash falla en cada línea. Ver scripts/desplegar-ftp.sh.
+*.sh text eol=lf

@@ -2,7 +2,7 @@
  * Lógica del formulario "Agenda tu consulta": validar lo que llega del
  * navegador y armar el JSON que espera el CRM del despacho (LeadConnector).
  *
- * Va aparte del manejador de la ruta (`app/api/consulta/route.ts`) y sin
+ * Va aparte del manejador de la ruta (`app/api/consulta/route.servidor.ts`) y sin
  * dependencias, para poder probarla sola: `npm test`.
  *
  * El CRM recibe ocho campos, acordados con quien lo lleva el 2026-10-13:

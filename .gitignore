@@ -50,3 +50,8 @@ next-env.d.ts
 
 # Clave de API de Render (vive en ~/.render-token; igual que la anterior)
 .render-token
+
+# Build estático para GoDaddy (scripts/build-estatico.mjs)
+/.next-estatico/
+# La configuración real del formulario PHP lleva el secreto del CRM: nunca al repo
+/hosting/privado/config.php
