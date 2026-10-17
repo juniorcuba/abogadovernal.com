@@ -907,4 +907,83 @@ export const enServidor: Record<string, string> = {
     "Conditions",
   "Términos y condiciones de uso del sitio de The Law Office of Vernal Farnum Mejia.":
     "Terms and conditions of use of the website of The Law Office of Vernal Farnum Mejia.",
+  // EB-1A (2026-10-17)
+  "EB-1A y NIW":
+    "EB-1A and NIW",
+  "Residencia permanente en EE. UU. sin depender de un empleador: te ayudamos a ver si tu perfil encaja en la EB-1A o la NIW.":
+    "U.S. permanent residence without depending on an employer: we help you see whether your profile fits the EB-1A or the NIW.",
+  "Tu residencia en EE. UU.,":
+    "Your U.S. residency,",
+  "sin depender de un empleador":
+    "without depending on an employer",
+  "te permiten pedir tu residencia por cuenta propia, sin oferta de trabajo ni patrocinio. Te ayudamos a ver si tu perfil encaja.":
+    "let you apply for residency on your own, with no job offer or sponsorship. We help you see whether your profile fits.",
+  "Hacer evaluación":
+    "Get evaluated",
+  "Tus habilidades\npodrían\ncambiar ":
+    "Your skills\ncould\nchange ",
+  "tu\nsituación\nmigratoria.":
+    "your\nimmigration\nstatus.",
+  "Qué son":
+    "What are",
+  "Son dos vías de residencia permanente en las que tú presentas tu petición, sin que un empleador te patrocine. Lo que debes demostrar cambia en cada una.":
+    "They are two paths to permanent residence where you file your own petition, without an employer sponsoring you. What you must prove differs for each one.",
+  "(habilidad\nextraordinaria).":
+    " (extraordinary\nability).",
+  " (exención por\ninterés nacional).":
+    " (national\ninterest waiver).",
+  "Para profesionales con una trayectoria sobresaliente en su campo. Debes cumplir al menos 3 de 10 criterios de logros y pasar una evaluación global de tu trayectoria.":
+    "For professionals with an outstanding track record in their field. You must meet at least 3 of 10 achievement criteria and pass an overall evaluation of your career.",
+  "Requiere título avanzado o habilidad excepcional. Se evalúa que tu trabajo tenga importancia nacional, que estés bien posicionado para avanzarlo y que a EE. UU. le convenga eximir la oferta de trabajo.":
+    "Requires an advanced degree or exceptional ability. It assesses whether your work has national importance, whether you are well positioned to advance it, and whether it benefits the U.S. to waive the job offer.",
+  "No hay una vía “mejor”.":
+    "There is no “better” path.",
+  "La adecuada depende de tu perfil":
+    "The right one depends on your profile",
+  "y se define en la consulta.":
+    "and is defined in the consultation.",
+  "Para quién es":
+    "Who it is for",
+  "Vale la pena":
+    "It is worth",
+  "evaluar tu caso":
+    "evaluating your case",
+  "si:":
+    "if:",
+  "Tienes estudios universitarios o posgrado, y experiencia sólida en tu campo.":
+    "You have a university or graduate degree and solid experience in your field.",
+  "Has publicado, recibido premios o salido en medios por tu trabajo.":
+    "You have published, won awards or been in the media for your work.",
+  "Has liderado equipos, proyectos o empresas con impacto medible.":
+    "You have led teams, projects or companies with measurable impact.",
+  "Has sido jurado, revisor o evaluador del trabajo de otros profesionales.":
+    "You have been a judge, reviewer or evaluator of other professionals’ work.",
+  "Tu trabajo es valioso en un campo de interés para EE. UU., como tecnología, salud, ingeniería, investigación o negocios.":
+    "Your work is valuable in a field of interest to the U.S., such as technology, health, engineering, research or business.",
+  "No necesitas cumplir todo. Tus logros cuentan sin importar en qué país los construiste.":
+    "You don’t have to meet every point. Your achievements count wherever you earned them.",
+  "Cómo funciona":
+    "How it works",
+  "Una médica y un profesional muestran su tarjeta de residencia frente al Capitolio":
+    "A doctor and a professional show their green cards in front of the Capitol",
+  "Cuéntanos tu perfil.":
+    "Tell us about your profile.",
+  "Llena el formulario con tus datos y un resumen de tu trayectoria.":
+    "Fill out the form with your details and a summary of your career.",
+  "Consulta con el abogado.":
+    "Consult with the attorney.",
+  "Revisamos tu perfil y te decimos qué vía puede ajustarse a ti.":
+    "We review your profile and tell you which path may suit you.",
+  "Presentamos tu petición.":
+    "We file your petition.",
+  "Preparamos y enviamos tu caso a las autoridades migratorias.":
+    "We prepare and send your case to the immigration authorities.",
+  "Seguimiento.":
+    "Follow-up.",
+  "Te acompañamos hasta la resolución.":
+    "We stay with you until the decision.",
+  "Los tiempos dependen de tu situación y de dónde vives,":
+    "Timelines depend on your situation and where you live,",
+  "y se explican en la consulta.":
+    "and are explained in the consultation.",
 };
