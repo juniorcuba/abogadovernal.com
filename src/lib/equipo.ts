@@ -11,7 +11,8 @@
  *
  * El 2026-10-21 Roberto pidió quitar a Cecilia Scaiola de todo el sitio: quedan
  * once, y la última fila de la rejilla va centrada (ver `posicion` en
- * sections/equipo.tsx).
+ * sections/equipo.tsx). El mismo día, Luis Escorcia pasa de "Paralegal" a
+ * "Abogado".
  */
 export type Ficha = {
   nombre: string;
@@ -29,7 +30,7 @@ export const equipo: Ficha[] = [
   { nombre: "Adriana Roman", cargo: "Asistente legal", foto: "/images/equipo/ficha/adriana-roman.webp" },
   { nombre: "Edna Chavez", cargo: "Gestora de casos", foto: "/images/equipo/ficha/edna-chavez.webp" },
   { nombre: "Pedro Vargas", cargo: "Paralegal", foto: "/images/equipo/ficha/pedro-vargas.webp" },
-  { nombre: "Luis Escorcia", cargo: "Paralegal", foto: "/images/equipo/ficha/luis-escorcia.webp" },
+  { nombre: "Luis Escorcia", cargo: "Abogado", foto: "/images/equipo/ficha/luis-escorcia.webp" },
   { nombre: "Lorena Gomez", cargo: "Paralegal", foto: "/images/equipo/ficha/lorena-gomez.webp" },
   { nombre: "Yannellys Mendoza", cargo: "Human Resources Manager", foto: "/images/equipo/ficha/yannellys-m.webp" },
   { nombre: "Vianery Rincon", cargo: "Recepcionista", foto: "/images/equipo/ficha/vianery-rincon.webp" },
