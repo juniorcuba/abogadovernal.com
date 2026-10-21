@@ -79,7 +79,7 @@ export function Servicios() {
         </h2>
 
         <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-white movil:absolute movil:top-[194px] movil:left-[38px] movil:mt-0 movil:w-[325px] movil:max-w-none movil:text-justify design:absolute design:top-[270px] design:left-[290px] design:mt-0 design:w-[580px]">
-          {t("Como firma de inmigración en Texas, ")}
+          {t("Como firma de inmigración, ")}
           <span className="text-vernal-accent">
             {t("podemos ayudarte a través de distintas áreas de práctica, adaptadas a las diferentes etapas y necesidades de tu proceso migratorio.")}
           </span>

@@ -101,7 +101,7 @@ export function NosotrosCaso() {
 
           <p className="text-white mt-6 max-w-[680px] text-[16px] leading-[22px] sm:text-justify movil:absolute movil:top-[212px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[362px] design:left-[296px] design:mt-0 design:w-[580px] design:max-w-none design:leading-[17px]">
             <span className="movil:hidden">
-            {t("Entre los casos que marcaron su carrera como abogado de inmigración en Texas, destaca uno que llegó casi por accidente: una familia con un menor que enfrentaba una situación médica delicada, y que ya había sido rechazada por varios abogados antes de encontrarlo a él.")}{" "}
+            {t("Entre los casos que marcaron su carrera como abogado de inmigración, destaca uno que llegó casi por accidente: una familia con un menor que enfrentaba una situación médica delicada, y que ya había sido rechazada por varios abogados antes de encontrarlo a él.")}{" "}
             <strong className="font-bold">
               {t("Con creatividad legal, su equipo encontró un camino migratorio que permitió a la familia acceder a la atención médica que necesitaban en Estados Unidos.")}
             </strong>

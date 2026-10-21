@@ -49,7 +49,7 @@ export async function generateMetadata({
     // y `new URL("")` lanza.
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || site.url),
     title: {
-      default: traducirServidor(idioma, "Abogado Vernal | Abogado de inmigración en Texas"),
+      default: traducirServidor(idioma, "Abogado Vernal | Abogado de inmigración"),
       template: "%s | Abogado Vernal",
     },
     description: traducirServidor(idioma, site.tagline),
