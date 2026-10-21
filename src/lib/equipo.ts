@@ -1,5 +1,5 @@
 /**
- * Las doce fichas de /nuestro-equipo — frame `770:403` de Figma.
+ * Las fichas de /nuestro-equipo — frame `770:403` de Figma.
  *
  * Todo sale del export `VERNAL - NUESTRO EQUIPO (1).svg` (2026-10-11): los
  * nombres, los cargos, el orden y los recortes con alfa de
@@ -8,6 +8,10 @@
  * "Paralegal" y Yannellys ya trae apellido y cargo.
  *
  * El archivo escribe "Receptionista"; aquí va "Recepcionista".
+ *
+ * El 2026-10-21 Roberto pidió quitar a Cecilia Scaiola de todo el sitio: quedan
+ * once, y la última fila de la rejilla va centrada (ver `posicion` en
+ * sections/equipo.tsx).
  */
 export type Ficha = {
   nombre: string;
@@ -24,7 +28,6 @@ export const equipo: Ficha[] = [
   { nombre: "Marysol Rogel", cargo: "Asistente legal", foto: "/images/equipo/ficha/marysol-rogel.webp" },
   { nombre: "Adriana Roman", cargo: "Asistente legal", foto: "/images/equipo/ficha/adriana-roman.webp" },
   { nombre: "Edna Chavez", cargo: "Gestora de casos", foto: "/images/equipo/ficha/edna-chavez.webp" },
-  { nombre: "Cecilia Scaiola.", cargo: "Paralegal", foto: "/images/equipo/ficha/cecilia-scaiola.webp" },
   { nombre: "Pedro Vargas", cargo: "Paralegal", foto: "/images/equipo/ficha/pedro-vargas.webp" },
   { nombre: "Luis Escorcia", cargo: "Paralegal", foto: "/images/equipo/ficha/luis-escorcia.webp" },
   { nombre: "Lorena Gomez", cargo: "Paralegal", foto: "/images/equipo/ficha/lorena-gomez.webp" },

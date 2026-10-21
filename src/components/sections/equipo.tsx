@@ -16,7 +16,7 @@ const PASO_MOVIL = 371;
  * `VERNAL - NUESTRO EQUIPO.svg`.
  *
  *   hero        0..897
- *   el equipo   897..2266: título y las doce fichas en 4 + 4 + 4
+ *   el equipo   897..2266: título y las fichas en 4 + 4 + 3 (eran doce)
  *   compromiso  2266..3321: título, tres párrafos y el vídeo
  *   agenda      3263..4018 (el bloque compartido, que se mete 58 encima)
  *   footer      4018..4486
@@ -127,9 +127,13 @@ export function EquipoHero() {
 export function EquipoRejilla() {
   const t = useT();
   const { izquierdas, filas, foto, cargoDesde } = rejillaEquipo;
+  // Cuatro por fila. Si la última no se llena, se centra: se desplaza la mitad
+  // de lo que le falta para llegar a la cuarta columna.
   const posicion = (i: number) => {
-    const fila = i < 4 ? 0 : i < 8 ? 1 : 2;
-    return { left: izquierdas[i - fila * 4], top: filas[fila] };
+    const fila = Math.floor(i / 4);
+    const enFila = Math.min(4, equipo.length - fila * 4);
+    const ajuste = (izquierdas[3] - izquierdas[enFila - 1]) / 2;
+    return { left: izquierdas[i - fila * 4] + ajuste, top: filas[fila] };
   };
   const [todas, setTodas] = useState(false);
   // Alto de la banda en móvil: la última foto acaba a +330.8 de su ficha.
@@ -162,11 +166,13 @@ export function EquipoRejilla() {
           {t("El equipo")}
         </h2>
 
-        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 apilada:grid-cols-3 movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:w-full">
+        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4 apilada:flex apilada:flex-wrap apilada:justify-center movil:absolute movil:top-0 movil:left-0 movil:mt-0 movil:block movil:w-full design:absolute design:top-0 design:left-0 design:mt-0 design:block design:w-full">
+          {/* En la apilada van de tres en tres con flex, no con grid, para que la
+              última fila, si no se llena, quede centrada como en escritorio. */}
           {equipo.map((f, i) => (
             <li
               key={f.nombre}
-              className={`text-center movil:absolute movil:top-[var(--tm)] movil:left-[89px] movil:w-[var(--w)] design:absolute design:top-[var(--t)] design:left-[var(--l)] design:w-[var(--w)] ${
+              className={`text-center apilada:w-[calc((100%-48px)/3)] movil:absolute movil:top-[var(--tm)] movil:left-[89px] movil:w-[var(--w)] design:absolute design:top-[var(--t)] design:left-[var(--l)] design:w-[var(--w)] ${
                 !todas && i > 3 ? "movil:hidden" : ""
               }`}
               style={
