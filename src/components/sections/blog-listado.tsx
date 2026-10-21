@@ -124,7 +124,7 @@ export function BlogHero() {
 
         <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white movil:absolute movil:top-[460px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:space-y-0 movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[493px] design:left-[247px] design:mt-0 design:w-[580px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
-            {t("El proceso migratorio en Estados Unidos puede sentirse abrumador, sobre todo cuando la información que encuentras en internet es confusa, contradictoria, o simplemente no aplica a tu situación. Por eso creamos este espacio: un blog de inmigración escrito por el equipo de Abogado Vernal, pensado para mantener informada a nuestra comunidad en Texas sobre los temas migratorios que más le afectan.")}
+            {t("El proceso migratorio en Estados Unidos puede sentirse abrumador, sobre todo cuando la información que encuentras en internet es confusa, contradictoria, o simplemente no aplica a tu situación. Por eso creamos este espacio: un blog de inmigración escrito por el equipo de Abogado Vernal, pensado para mantener informada a nuestra comunidad sobre los temas migratorios que más le afectan.")}
           </p>
           <p className="movil:mt-[16px] design:mt-[17px]">
             {t("Aquí encontrarás artículos sobre los trámites migratorios más comunes, actualizaciones sobre cambios recientes en las leyes de inmigración, y respuestas a las preguntas que más escuchamos de nuestra comunidad en Dallas, Houston, Austin, Fort Worth y San Antonio.")}

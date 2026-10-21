@@ -127,7 +127,7 @@ export function BloquePreguntas({
             } as React.CSSProperties
           }
         >
-          {t("Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una y otra vez señal de que hay información que no siempre es fácil de encontrar, o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra comunidad, explicadas de forma simple y directa.")}
+          {t("Cada semana, en nuestras oficinas escuchamos las mismas preguntas una y otra vez señal de que hay información que no siempre es fácil de encontrar, o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra comunidad, explicadas de forma simple y directa.")}
         </p>
 
         <ListaPreguntas

@@ -35,7 +35,7 @@ import { t } from "@/lib/i18n/servidor";
 export function TextoMisionMovil() {
   return (
     <>
-      {t("En Texas, Estados Unidos, la oficina del ")}
+      {t("En Estados Unidos, la oficina del ")}
       <strong className="font-bold">{t("Abogado Vernal Farnum Mejía")}</strong>
       {
         t(" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca.")

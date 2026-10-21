@@ -96,7 +96,7 @@ export const sedes: Sede[] = [
     nombreDiseno: "Houston",
     rotulo: "Houston, TX",
     intro:
-      "Houston es una de las ciudades con mayor población inmigrante de Texas, y también una de las que enfrenta más dudas sobre cómo navegar el sistema migratorio. Desde nuestra oficina en Houston, ofrecemos representación legal en las siguientes áreas:",
+      "Houston es una de las ciudades con mayor población inmigrante del estado, y también una de las que enfrenta más dudas sobre cómo navegar el sistema migratorio. Desde nuestra oficina en Houston, ofrecemos representación legal en las siguientes áreas:",
     introHumanitarias:
       "Houston también es sede de representación en tres tipos de protección para víctimas:",
     direccion: direccionDe("Houston"),
@@ -115,7 +115,7 @@ export const sedes: Sede[] = [
     nombreDiseno: "Austin",
     rotulo: "Austin, TX",
     intro:
-      "En la capital de Texas, muchas familias inmigrantes buscan claridad sobre su situación legal sin saber por dónde empezar. Nuestra oficina en Austin está aquí para acompañarte en cada una de estas áreas:",
+      "En la capital del estado, muchas familias inmigrantes buscan claridad sobre su situación legal sin saber por dónde empezar. Nuestra oficina en Austin está aquí para acompañarte en cada una de estas áreas:",
     introHumanitarias: INTRO_HUMANITARIAS_COMUN,
     direccion: direccionDe("Austin"),
     hero: {
@@ -151,7 +151,7 @@ export const sedes: Sede[] = [
     nombreDiseno: "San Antonio",
     rotulo: "San Antonio, TX",
     intro:
-      "San Antonio es una de las ciudades con mayor crecimiento de comunidad inmigrante en Texas, y nuestra oficina está aquí para acompañarte en cada etapa de tu proceso migratorio. Desde nuestra sede en San Antonio, ofrecemos representación en las siguientes áreas:",
+      "San Antonio es una de las ciudades con mayor crecimiento de comunidad inmigrante del estado, y nuestra oficina está aquí para acompañarte en cada etapa de tu proceso migratorio. Desde nuestra sede en San Antonio, ofrecemos representación en las siguientes áreas:",
     introHumanitarias: INTRO_HUMANITARIAS_COMUN,
     direccion: direccionDe("San Antonio"),
     hero: {

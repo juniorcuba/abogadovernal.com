@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return metadatos((await params).lang, "/blog", {
     title: "Blog de inmigración",
     description:
-      "Artículos del equipo del Abogado Vernal sobre trámites migratorios, cambios en las leyes y las dudas más comunes de la comunidad en Texas.",
+      "Artículos del equipo del Abogado Vernal sobre trámites migratorios, cambios en las leyes y las dudas más comunes de nuestra comunidad.",
   });
 }
 

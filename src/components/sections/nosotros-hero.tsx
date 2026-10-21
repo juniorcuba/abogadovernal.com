@@ -11,7 +11,7 @@ import { t } from "@/lib/i18n/servidor";
  *              3. linear-gradient(352.05deg, #0F0F10 19.13% → transparente 56.35%)
  *   retrato  caja x876 y205 793×821: foto 859×1288 en (−53, −72) y encima
  *            linear-gradient(182.83deg, transparente 57.70% → #0F0F10 97.99%)
- *   antetítulo "Tu defensa en Texas"  x223, línea base 295.1, Poppins 36/300
+ *   antetítulo "Tu defensa legal"  x223, línea base 295.1, Poppins 36/300
  *   h1       x223, líneas base 383.2 / 468.2, Poppins 82/600, "VERNAL" en cian,
  *            con la Vernal Shadow 1
  *   cuerpo   x223 y531, caja de 560, 16/17 justificado, "Abogado Vernal Farum" en cian
@@ -86,7 +86,7 @@ export function NosotrosHero() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[152px] pb-16 lg:px-12 apilada:max-w-[880px] apilada:px-10 apilada:pb-20 movil:block movil:h-[1349px] movil:max-w-none movil:p-0 design:block design:h-[1026px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] sm:leading-[32px] apilada:text-center movil:absolute movil:top-[571.5px] movil:left-[38px] movil:text-[24px] movil:leading-[26px] design:absolute design:top-[264px] design:left-[223px] design:text-[36px] design:leading-[37px]">
-          {t("Tu defensa en Texas")}
+          {t("Tu defensa legal")}
         </p>
         <h1 className="drop-shadow-vernal-1 mt-2 text-[46px] leading-[48px] font-semibold uppercase sm:text-[62px] sm:leading-[64px] apilada:text-center movil:absolute movil:top-[607px] movil:left-[38px] movil:mt-0 movil:text-[46px] movil:leading-[48px] design:absolute design:top-[312px] design:left-[223px] design:mt-0 design:text-[82px] design:leading-[85px]">
           <span className="block text-white">{t("Abogado")}</span>

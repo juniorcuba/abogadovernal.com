@@ -108,16 +108,16 @@ export const en: Record<string, string> = {
     "5 out of 5 stars",
   "Preferencias de cookies":
     "Cookie preferences",
-  "Tu defensa en Texas":
-    "Your defense in Texas",
+  "Tu defensa legal":
+    "Your legal defense",
   "Hoy, al frente de":
     "Leading",
   "un equipo que piensa igual":
     "a like-minded team",
   "Hoy, el":
     "Today,",
-  "lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.":
-    "leads a team of more than 50 people, spread across his immigration offices in Dallas, Houston, Austin and Fort Worth, four Texas cities where the Hispanic community faces, every day, the same questions he watched his own family face.",
+  "lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.":
+    "leads a team of more than 50 people, spread across his immigration offices in Dallas, Houston, Austin and Fort Worth, four cities where the Hispanic community faces, every day, the same questions he watched his own family face.",
   "Detrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.":
     "Behind each of those offices are attorneys, paralegals and support staff who share one criterion when it comes to hiring: caring about the story of the person in front of them, not just their file.",
   "El equipo":
@@ -170,8 +170,8 @@ export const en: Record<string, string> = {
     "answered",
   "claridad.":
     "clearly.",
-  "Cada semana, en nuestras oficinas de Texas escuchamos las mismas preguntas una y otra vez señal de que hay información que no siempre es fácil de encontrar, o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra comunidad, explicadas de forma simple y directa.":
-    "Every week, at our Texas offices, we hear the same questions over and over: a sign that some information is not always easy to find, or lends itself to confusion. Here we gather our community's most common questions, explained simply and directly.",
+  "Cada semana, en nuestras oficinas escuchamos las mismas preguntas una y otra vez señal de que hay información que no siempre es fácil de encontrar, o que se presta a confusión. Aquí reunimos las dudas más comunes de nuestra comunidad, explicadas de forma simple y directa.":
+    "Every week, at our offices, we hear the same questions over and over: a sign that some information is not always easy to find, or lends itself to confusion. Here we gather our community's most common questions, explained simply and directly.",
   "¿Cuál es el horario de atención al cliente en la Oficina del Abogado Vernal?":
     "What are the customer service hours at Attorney Vernal's office?",
   "Ver respuesta":

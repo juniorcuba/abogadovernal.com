@@ -111,7 +111,7 @@ export function SobreNosotros() {
             blanco entre párrafos mide exactamente un interlineado, en vez de un
             margen aproximado entre dos <p>. */}
         <p className="mt-8 max-w-[580px] text-[16px] leading-[17px] whitespace-pre-line design:text-justify text-black movil:absolute movil:top-[166px] movil:left-[41px] movil:mt-0 movil:w-[315px] movil:max-w-none movil:text-justify design:absolute design:top-[302px] design:left-[279px] design:mt-0 design:w-[580px]">
-          {t("En Texas, Estados Unidos, la oficina del ")}
+          {t("En Estados Unidos, la oficina del ")}
           <span className="font-bold">{t("Abogado Vernal Farnum Mejía")}</span>
           {t(" se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca.")}
         </p>

@@ -100,7 +100,7 @@ export const preguntasFrecuentes: PreguntaFrecuente[] = [
     arribaMovil: 26,
   },
   {
-    texto: "¿El abogado Vernal me puede representar incluso si vivo fuera del estado de Texas?",
+    texto: "¿El abogado Vernal me puede representar incluso si vivo en otro estado?",
     respuesta: ["Por supuesto que sí, las leyes de inmigración son de carácter federal y estamos completamente listos y disponibles para ofrecerle una representación legal efectiva en cualquier parte de los Estados Unidos."],
     respuestaArriba: 107.5,
     altoMovil: 122,

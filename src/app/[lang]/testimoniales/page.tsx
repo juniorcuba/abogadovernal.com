@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return metadatos((await params).lang, "/testimoniales", {
     title: "Testimonios y casos de éxito",
     description:
-      "Historias reales de clientes del Abogado Vernal en Texas: peticiones familiares, asilo, visas U y VAWA, naturalización y defensa contra la deportación.",
+      "Historias reales de clientes del Abogado Vernal: peticiones familiares, asilo, visas U y VAWA, naturalización y defensa contra la deportación.",
     robots: { index: false, follow: false },
   });
 }

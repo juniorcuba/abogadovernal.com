@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return metadatos((await params).lang, "/faqs", {
     title: "Preguntas frecuentes",
     description:
-      "Las dudas que más escuchamos en las oficinas del Abogado Vernal en Texas, respondidas con claridad.",
+      "Las dudas que más escuchamos en las oficinas del Abogado Vernal, respondidas con claridad.",
   });
 }
 

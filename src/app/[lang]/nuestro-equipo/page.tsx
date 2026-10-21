@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return metadatos((await params).lang, "/nuestro-equipo", {
     title: "Nuestro equipo",
     description:
-      "Las personas que atienden cada caso en las oficinas del Abogado Vernal en Texas: abogados, paralegales y personal de apoyo.",
+      "Las personas que atienden cada caso en las oficinas del Abogado Vernal: abogados, paralegales y personal de apoyo.",
   });
 }
 

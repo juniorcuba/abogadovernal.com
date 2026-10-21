@@ -33,8 +33,6 @@ export const enServidor: Record<string, string> = {
     "immigration",
   "inmigración":
     "attorney",
-  "en texas":
-    "in texas",
   "Nombre":
     "Name",
   "Teléfono":
@@ -53,8 +51,8 @@ export const enServidor: Record<string, string> = {
     "About",
   "nosotros":
     "us",
-  "En Texas, Estados Unidos, la oficina del":
-    "In Texas, United States, the office of",
+  "En Estados Unidos, la oficina del":
+    "In the United States, the office of",
   "Abogado Vernal Farnum Mejía":
     "Attorney Vernal Farnum Mejía",
   "se dedica a defender los derechos de los inmigrantes. Su compromiso es simple: proteger los derechos de cada cliente y acompañarlo hasta que logre un estatus legal en este país.\n\nA lo largo de su trayectoria, la firma ha acompañado a más de 15,000 personas en la obtención de su permiso de trabajo, su residencia, su ciudadanía y mucho más, ayudando a cerca de 10,000 familias a reunirse o permanecer juntas en Estados Unidos. Lo hace porque el equipo comparte esa misma experiencia migratoria: para ellos, cada caso no es solo un expediente, es una historia que entienden de cerca.":
@@ -128,7 +126,7 @@ export const enServidor: Record<string, string> = {
   "5 sedes":
     "5 cities",
   "operando en el estado":
-    "with offices in Texas",
+    "operating across the state",
   "Somos":
     "We are",
   "inmigrantes":
@@ -205,8 +203,8 @@ export const enServidor: Record<string, string> = {
     "that",
   "piensa igual":
     "thinks alike",
-  "Hoy, el Abogado Vernal lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.\n\nDetrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.":
-    "Today, Attorney Vernal leads a team of more than 50 people, spread across his immigration offices in Dallas, Houston, Austin and Fort Worth, four Texas cities where the Hispanic community faces, every day, the same questions he watched his own family face.\n\nBehind each of those offices are attorneys, paralegals and support staff who share one criterion when it comes to hiring: caring about the story of the person in front of them, not just their file.",
+  "Hoy, el Abogado Vernal lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.\n\nDetrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.":
+    "Today, Attorney Vernal leads a team of more than 50 people, spread across his immigration offices in Dallas, Houston, Austin and Fort Worth, four cities where the Hispanic community faces, every day, the same questions he watched his own family face.\n\nBehind each of those offices are attorneys, paralegals and support staff who share one criterion when it comes to hiring: caring about the story of the person in front of them, not just their file.",
   "Clientes del despacho con su documentación migratoria":
     "Clients of the firm with their immigration documents",
   "Personas asesoradas":
@@ -223,8 +221,8 @@ export const enServidor: Record<string, string> = {
     "but his philosophy remains the same as on day one: hire people who truly care about each client's story, not just their case, and build, as he describes it, an",
   "\"imperfectamente honesta”":
     "\"imperfectly honest” firm",
-  "La historia del Abogado Vernal Farnum Mejía y del equipo que hoy atiende a la comunidad inmigrante en Texas.":
-    "The story of Attorney Vernal Farnum Mejía and of the team that serves the immigrant community in Texas today.",
+  "La historia del Abogado Vernal Farnum Mejía y del equipo que hoy atiende a la comunidad inmigrante.":
+    "The story of Attorney Vernal Farnum Mejía and of the team that serves the immigrant community today.",
   "Estamos para ayudarte,":
     "We are here to help you,",
   "sin importar dónde te encuentres.":
@@ -263,8 +261,8 @@ export const enServidor: Record<string, string> = {
     "Changes in immigration law, practical advice",
   "y respuestas a las dudas más comunes de nuestra comunidad.":
     "and answers to our community's most common questions.",
-  "Las personas que atienden cada caso en las oficinas del Abogado Vernal en Texas: abogados, paralegales y personal de apoyo.":
-    "The people who handle each case at Attorney Vernal's offices in Texas: attorneys, paralegals and support staff.",
+  "Las personas que atienden cada caso en las oficinas del Abogado Vernal: abogados, paralegales y personal de apoyo.":
+    "The people who handle each case at Attorney Vernal's offices: attorneys, paralegals and support staff.",
   "Testimonios y":
     "Testimonials and",
   "casos de éxito":
@@ -435,16 +433,16 @@ export const enServidor: Record<string, string> = {
     "See more articles",
   "Testimonios y casos de éxito":
     "Testimonials and success stories",
-  "Historias reales de clientes del Abogado Vernal en Texas: peticiones familiares, asilo, visas U y VAWA, naturalización y defensa contra la deportación.":
-    "Real stories from Attorney Vernal's clients in Texas: family petitions, asylum, U and VAWA visas, naturalization and deportation defense.",
+  "Historias reales de clientes del Abogado Vernal: peticiones familiares, asilo, visas U y VAWA, naturalización y defensa contra la deportación.":
+    "Real stories from Attorney Vernal's clients: family petitions, asylum, U and VAWA visas, naturalization and deportation defense.",
   "Blog de Inmigración Abogado Vernal":
     "Abogado Vernal Immigration Blog",
   "Información clara,":
     "Clear information",
   "para mantenerte al día.":
     "to keep you up to date.",
-  "El proceso migratorio en Estados Unidos puede sentirse abrumador, sobre todo cuando la información que encuentras en internet es confusa, contradictoria, o simplemente no aplica a tu situación. Por eso creamos este espacio: un blog de inmigración escrito por el equipo de Abogado Vernal, pensado para mantener informada a nuestra comunidad en Texas sobre los temas migratorios que más le afectan.":
-    "The immigration process in the United States can feel overwhelming, especially when the information you find online is confusing, contradictory, or simply does not apply to your situation. That is why we created this space: an immigration blog written by the Abogado Vernal team, designed to keep our community in Texas informed about the immigration topics that affect it most.",
+  "El proceso migratorio en Estados Unidos puede sentirse abrumador, sobre todo cuando la información que encuentras en internet es confusa, contradictoria, o simplemente no aplica a tu situación. Por eso creamos este espacio: un blog de inmigración escrito por el equipo de Abogado Vernal, pensado para mantener informada a nuestra comunidad sobre los temas migratorios que más le afectan.":
+    "The immigration process in the United States can feel overwhelming, especially when the information you find online is confusing, contradictory, or simply does not apply to your situation. That is why we created this space: an immigration blog written by the Abogado Vernal team, designed to keep our community informed about the immigration topics that affect it most.",
   "Aquí encontrarás artículos sobre los trámites migratorios más comunes, actualizaciones sobre cambios recientes en las leyes de inmigración, y respuestas a las preguntas que más escuchamos de nuestra comunidad en Dallas, Houston, Austin, Fort Worth y San Antonio.":
     "Here you will find articles about the most common immigration procedures, updates on recent changes in immigration law, and answers to the questions we hear most from our community in Dallas, Houston, Austin, Fort Worth and San Antonio.",
   "Este contenido tiene fines informativos y no debe tomarse como asesoría legal. Cada caso migratorio es distinto, y la única forma de saber qué aplica a tu situación específica es a través de una consulta directa con nuestro equipo.":
@@ -461,16 +459,16 @@ export const enServidor: Record<string, string> = {
     "K-1 Visa",
   "Blog de inmigración":
     "Immigration blog",
-  "Artículos del equipo del Abogado Vernal sobre trámites migratorios, cambios en las leyes y las dudas más comunes de la comunidad en Texas.":
-    "Articles from Attorney Vernal's team about immigration procedures, changes in the law and the most common questions from the community in Texas.",
+  "Artículos del equipo del Abogado Vernal sobre trámites migratorios, cambios en las leyes y las dudas más comunes de nuestra comunidad.":
+    "Articles from Attorney Vernal's team about immigration procedures, changes in the law and the most common questions from our community.",
   "Justicia sin fronteras":
     "Justice without borders",
   "Abogado de":
     "Immigration",
   "en":
     "in",
-  "En la capital de Texas, muchas familias inmigrantes buscan claridad sobre su situación legal sin saber por dónde empezar. Nuestra oficina en Austin está aquí para acompañarte en cada una de estas áreas:":
-    "In the capital of Texas, many immigrant families are looking for clarity about their legal situation without knowing where to start. Our Austin office is here to guide you in each of these areas:",
+  "En la capital del estado, muchas familias inmigrantes buscan claridad sobre su situación legal sin saber por dónde empezar. Nuestra oficina en Austin está aquí para acompañarte en cada una de estas áreas:":
+    "In the state capital, many immigrant families are looking for clarity about their legal situation without knowing where to start. Our Austin office is here to guide you in each of these areas:",
   "Reunir a tu familia empieza con entender qué categoría aplica a tu caso. En Austin evaluamos tu relación con quien solicita (cónyuge, hijo, padre, hermano) y te explicamos con precisión los tiempos de espera según tu categoría específica, no estimaciones genéricas.":
     "Reuniting your family starts with understanding which category applies to your case. In Austin we evaluate your relationship with the petitioner (spouse, child, parent, sibling) and explain precisely the waiting times for your specific category, not generic estimates.",
   "Convertirte en ciudadano requiere cumplir requisitos de tiempo, presencia y conducta que no siempre son evidentes. Desde Austin, confirmamos que estás listo antes de presentar tu solicitud, y te acompañamos hasta tu entrevista y examen final con USCIS":
@@ -531,8 +529,8 @@ export const enServidor: Record<string, string> = {
     "for victims of human trafficking (labor or sex trafficking)",
   ", ofrece protección migratoria y camino a la residencia permanente para quienes colaboran con las autoridades en la investigación del delito.":
     ", it offers immigration protection and a path to permanent residency for those who cooperate with the authorities in the investigation of the crime.",
-  "San Antonio es una de las ciudades con mayor crecimiento de comunidad inmigrante en Texas, y nuestra oficina está aquí para acompañarte en cada etapa de tu proceso migratorio. Desde nuestra sede en San Antonio, ofrecemos representación en las siguientes áreas:":
-    "San Antonio is one of the cities with the fastest-growing immigrant community in Texas, and our office is here to guide you at every stage of your immigration process. From our San Antonio office, we offer representation in the following areas:",
+  "San Antonio es una de las ciudades con mayor crecimiento de comunidad inmigrante del estado, y nuestra oficina está aquí para acompañarte en cada etapa de tu proceso migratorio. Desde nuestra sede en San Antonio, ofrecemos representación en las siguientes áreas:":
+    "San Antonio is one of the cities with the fastest-growing immigrant community in the state, and our office is here to guide you at every stage of your immigration process. From our San Antonio office, we offer representation in the following areas:",
   "Si buscas reunir a tu familia en Estados Unidos, evaluamos tu categoría de parentesco y te explicamos con claridad los tiempos de espera reales para tu caso específico, sin promesas genéricas.":
     "If you are looking to reunite your family in the United States, we evaluate your family category and clearly explain the real waiting times for your specific case, with no generic promises.",
   "Te acompañamos en tu camino hacia la ciudadanía americana: confirmamos que cumples con los requisitos de residencia, presencia física y buena conducta, y te preparamos para tu examen y entrevista final.":
@@ -563,8 +561,8 @@ export const enServidor: Record<string, string> = {
     "If you or a loved one is detained by immigration in a way you consider unjust or illegal, a writ of Habeas Corpus may be the way to challenge that detention before a federal court. We act quickly in these cases, since time is critical when someone is detained.",
   "Existen distintas protecciones migratorias diseñadas para personas que han sido víctimas de violencia o delitos graves. Desde Dallas, ofrecemos representación en:":
     "There are different immigration protections designed for people who have been victims of violence or serious crimes. From Dallas, we offer representation in:",
-  "Houston es una de las ciudades con mayor población inmigrante de Texas, y también una de las que enfrenta más dudas sobre cómo navegar el sistema migratorio. Desde nuestra oficina en Houston, ofrecemos representación legal en las siguientes áreas:":
-    "Houston is one of the cities with the largest immigrant population in Texas, and also one with the most questions about how to navigate the immigration system. From our Houston office, we offer legal representation in the following areas:",
+  "Houston es una de las ciudades con mayor población inmigrante del estado, y también una de las que enfrenta más dudas sobre cómo navegar el sistema migratorio. Desde nuestra oficina en Houston, ofrecemos representación legal en las siguientes áreas:":
+    "Houston is one of the cities with the largest immigrant population in the state, and also one with the most questions about how to navigate the immigration system. From our Houston office, we offer legal representation in the following areas:",
   "en Houston, TX":
     "in Houston, TX",
   "¿Tienes un familiar que quieres traer a Estados Unidos, o ya iniciaste el proceso y no sabes en qué etapa vas? Nuestro equipo en Houston revisa tu situación específica, sea que califiques como familiar inmediato o dentro de alguna categoría de preferencia, y te explica con claridad los tiempos de espera reales, no los que aparecen en internet sin contexto de tu caso.":

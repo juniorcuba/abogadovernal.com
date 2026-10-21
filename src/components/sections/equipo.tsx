@@ -91,7 +91,7 @@ export function EquipoHero() {
 
       <div className="relative mx-auto max-w-[1040px] px-6 pt-[168px] pb-20 lg:px-12 apilada:max-w-[880px] apilada:px-10 movil:max-w-none movil:px-0 movil:pt-0 movil:pb-0 movil:h-[821px] design:h-[897px] design:max-w-[1920px] design:p-0">
         <p className="text-[24px] leading-[26px] font-light text-white sm:text-[30px] movil:absolute movil:top-[177px] movil:left-[38px] movil:text-[24px] movil:leading-[25px] design:absolute design:top-[216px] design:left-[242px] design:text-[36px] design:leading-[37.44px]">
-          {t("Tu defensa en Texas")}
+          {t("Tu defensa legal")}
         </p>
 
         <h1 className="mt-3 text-[40px] leading-[44px] font-semibold uppercase sm:text-[58px] sm:leading-[62px] movil:absolute movil:top-[213px] movil:left-[38px] movil:mt-0 movil:w-[330px] movil:text-[46px] movil:leading-[48px] design:absolute design:top-[271px] design:left-[237px] design:mt-0 design:w-[752px] design:text-[82px] design:leading-[85px]">
@@ -101,7 +101,7 @@ export function EquipoHero() {
 
         <div className="mt-8 max-w-[680px] space-y-5 text-[16px] leading-[22px] text-white movil:absolute movil:top-[426px] movil:left-[41px] movil:mt-0 movil:w-[316px] movil:max-w-none movil:space-y-0 movil:text-justify movil:text-[15px] movil:leading-[16px] design:absolute design:top-[551px] design:left-[243px] design:mt-0 design:w-[580px] design:max-w-none design:space-y-0 design:text-justify design:leading-[17px]">
           <p>
-            {t("Hoy, el ")}<span className="text-vernal-accent">{t("Abogado Vernal")}</span>{t(" lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.")}
+            {t("Hoy, el ")}<span className="text-vernal-accent">{t("Abogado Vernal")}</span>{t(" lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.")}
           </p>
           <p className="movil:mt-[16px] design:mt-[17px]">
             {t("Detrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.")}

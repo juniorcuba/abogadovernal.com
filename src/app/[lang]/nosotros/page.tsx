@@ -18,7 +18,7 @@ import { fijarIdioma, metadatos } from "@/lib/i18n/servidor";
  * |    y | alto | bloque                                            | estado |
  * |------|------|---------------------------------------------------|--------|
  * |    0 |  128 | cabecera                                          | la de la home |
- * |   −1 | 1027 | hero: "Tu defensa en Texas" + retrato + tarjeta   | propio |
+ * |   −1 | 1027 | hero: "Tu defensa legal" + retrato + tarjeta   | propio |
  * | 1026 |  608 | "Una lección que su propia familia le enseñó"     | propio |
  * | 1634 |  648 | banda cian "El caso que lo confirmó todo"         | propio |
  * | 2282 |  883 | "Hoy, al frente de un equipo…" + tira de 5 fotos  | propio |
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return metadatos((await params).lang, "/nosotros", {
     title: "Abogado Vernal",
     description:
-      "La historia del Abogado Vernal Farnum Mejía y del equipo que hoy atiende a la comunidad inmigrante en Texas.",
+      "La historia del Abogado Vernal Farnum Mejía y del equipo que hoy atiende a la comunidad inmigrante.",
   });
 }
 

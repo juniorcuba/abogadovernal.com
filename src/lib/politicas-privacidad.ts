@@ -52,7 +52,7 @@ export const politicaPrivacidad: BloqueConHueco[] = [
     texto: [
       "The Law Office of ",
       { texto: "Vernal Farnum Mejia", cian: true },
-      " is an immigration law firm located in Texas with offices in Dallas, Houston, Austin and Fort Worth. This Privacy Policy describes how The Law Office of Vernal Farnum Mejia collects, uses, stores and protects the personal information provided by the users of our website and our immigration legal services.",
+      " is an immigration law firm with offices in Dallas, Houston, Austin and Fort Worth. This Privacy Policy describes how The Law Office of Vernal Farnum Mejia collects, uses, stores and protects the personal information provided by the users of our website and our immigration legal services.",
     ],
   },
   {

@@ -88,7 +88,7 @@ export function NosotrosHoy() {
         </h2>
 
         <p className="mt-6 max-w-[680px] text-[16px] leading-[22px] whitespace-pre-line text-white sm:text-justify movil:absolute movil:top-[192px] movil:left-[41px] movil:mt-0 movil:w-[320px] movil:max-w-none movil:text-justify movil:leading-[17px] design:absolute design:top-[265px] design:left-[549px] design:mt-0 design:w-[820px] design:max-w-none design:leading-[17px]">
-          {t("Hoy, el Abogado Vernal lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades de Texas donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.\n\nDetrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.")}
+          {t("Hoy, el Abogado Vernal lidera un equipo de más de 50 personas, repartido en sus oficinas de inmigración en Dallas, Houston, Austin y Fort Worth, cuatro ciudades donde la comunidad hispana enfrenta, todos los días, las mismas dudas que él mismo vio enfrentar a su familia.\n\nDetrás de cada una de esas oficinas hay abogados, paralegales y personal de apoyo que comparten un mismo criterio al momento de contratar: que les importe la historia de la persona que tienen enfrente, no solo su expediente.")}
         </p>
 
         <ButtonLink
