@@ -16,7 +16,11 @@ import { t } from "@/lib/i18n/servidor";
  *     "VERNAL"  129:193  +0,+20   Poppins 600 146px #08b6ff UPPER (detrás)
  *     retrato   129:194  +8,+0    546×546 (recorte con transparencia)
  *     "texas lawyer" 129:195  +30,+496  Poppins 700 35px #0f0f10,
- *                    tracking 21px, UPPER, con Vernal Shadow 1
+ *                    tracking 21px, UPPER, con Vernal Shadow 1. Desde el
+ *                    2026-10-21 dice "immigration lawyer" (lo pidió Roberto):
+ *                    a 33px con tracking 8 ocupa lo mismo que el original
+ *                    (518 frente a 516); en la apilada, 22px con tracking 5.
+ *                    Va centrado en el rect cian: left 22 (25 en la apilada).
  *   título      11:106   x1041 y138  587×134  Poppins 600 64px lh1.04
  *                        línea 1 blanca, línea 2 #08b6ff
  *   cuerpo      11:108   x1041 y335  580×336  Poppins 400 16px lh1.04 justificado,
@@ -92,8 +96,8 @@ export function BioVernal() {
             height={546}
             className="absolute top-0 left-[1.6px] h-[546px] w-[546px] max-w-none"
           />
-          <p className="text-shadow-vernal-1 absolute top-[496px] left-[30px] text-[35px] leading-[36px] font-bold tracking-[21px] text-[#0f0f10] uppercase">
-            {t("texas lawyer")}
+          <p className="text-shadow-vernal-1 absolute top-[496px] left-[22px] text-[33px] leading-[36px] font-bold tracking-[8px] text-[#0f0f10] uppercase">
+            {t("immigration lawyer")}
           </p>
         </div>
 
@@ -115,9 +119,9 @@ export function BioVernal() {
           />
           <p
             aria-hidden
-            className="text-shadow-vernal-1 absolute top-[344px] left-[21px] text-[24px] leading-[25px] font-bold tracking-[14px] text-[#0f0f10] uppercase design:top-[496px] design:left-[30px] design:leading-[36px] design:text-[35px] design:tracking-[21px]"
+            className="text-shadow-vernal-1 absolute top-[344px] left-[25px] text-[22px] leading-[25px] font-bold tracking-[5px] text-[#0f0f10] uppercase design:top-[496px] design:left-[22px] design:leading-[36px] design:text-[33px] design:tracking-[8px]"
           >
-            {t("texas lawyer")}
+            {t("immigration lawyer")}
           </p>
         </div>
 
