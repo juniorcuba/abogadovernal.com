@@ -54,7 +54,10 @@ export function AgendaConsulta({
       </div>
 
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 movil:h-[943px] movil:max-w-none movil:p-0 design:h-[755px] design:max-w-[1920px] design:p-0">
-        <h2 className="text-[38px] leading-[42px] font-semibold uppercase movil:hidden sm:text-[48px] sm:leading-[52px] design:absolute design:top-[145.23px] design:left-[265px] design:w-[722px] design:text-[64px] design:leading-[66.56px]">
+        {/* En escritorio, siempre en una línea: en inglés ("Book your
+            consultation", 881 px) no cabe en los 722 del diseño y la segunda
+            línea pisaba el texto de abajo. Hay sitio hasta el sello (x1433). */}
+        <h2 className="text-[38px] leading-[42px] font-semibold uppercase movil:hidden sm:text-[48px] sm:leading-[52px] design:absolute design:top-[145.23px] design:left-[265px] design:w-max design:whitespace-nowrap design:text-[64px] design:leading-[66.56px]">
           <span className="text-white">{t("Agenda")}</span>{" "}
           <span className="text-vernal-accent">{t("tu consulta")}</span>
         </h2>
