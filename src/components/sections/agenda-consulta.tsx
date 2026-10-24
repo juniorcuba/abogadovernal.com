@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CamposConsulta } from "@/components/ui/campos-consulta";
-import { t } from "@/lib/i18n/servidor";
+import { idiomaActual, t } from "@/lib/i18n/servidor";
 import { FormularioConsulta } from "@/components/ui/formulario-consulta";
 
 /**
@@ -54,10 +54,18 @@ export function AgendaConsulta({
       </div>
 
       <div className="relative mx-auto max-w-[1040px] px-6 py-16 lg:px-12 movil:h-[943px] movil:max-w-none movil:p-0 design:h-[755px] design:max-w-[1920px] design:p-0">
-        {/* En escritorio, siempre en una línea: en inglés ("Book your
-            consultation", 881 px) no cabe en los 722 del diseño y la segunda
-            línea pisaba el texto de abajo. Hay sitio hasta el sello (x1433). */}
-        <h2 className="text-[38px] leading-[42px] font-semibold uppercase movil:hidden sm:text-[48px] sm:leading-[52px] design:absolute design:top-[145.23px] design:left-[265px] design:w-max design:whitespace-nowrap design:text-[64px] design:leading-[66.56px]">
+        {/* En escritorio, siempre en una línea. En inglés ("Book your
+            consultation") a 64 px mide 881 y no cabe en los 722 del diseño: en
+            dos líneas pisaba el texto de abajo y en una tocaba la cabeza del
+            abogado. Por eso en inglés baja a 52 px, que ocupa lo mismo que el
+            español. */}
+        <h2
+          className={`text-[38px] leading-[42px] font-semibold uppercase movil:hidden sm:text-[48px] sm:leading-[52px] design:absolute design:left-[265px] design:w-max design:whitespace-nowrap ${
+            idiomaActual() === "en"
+              ? "design:top-[151px] design:text-[52px] design:leading-[54px]"
+              : "design:top-[145.23px] design:text-[64px] design:leading-[66.56px]"
+          }`}
+        >
           <span className="text-white">{t("Agenda")}</span>{" "}
           <span className="text-vernal-accent">{t("tu consulta")}</span>
         </h2>
